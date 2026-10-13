@@ -91,12 +91,11 @@ placement.
 
 ## License and sources
 
-Jorge Agra (JAG) dedicates the original proofs, worksheets, documentation, and
-the verification entry point to the public domain under
-[CC0 1.0 Universal](LICENSE). The separately retrieved `set.mm` is distributed
-under its upstream CC0 license. Mathematical attribution is recorded in
-[references.md](references.md); external formalizations are linked rather than
-bundled.
+Original proofs, worksheets, documentation, and the verification entry point 
+licensed  under [CC0 1.0 Universal](LICENSE). 
+The separately retrieved `set.mm` is distributed under its upstream CC0 license. 
+Mathematical attribution is recorded in [references.md](references.md); external f
+ormalizations are linked rather than bundled.
 
 ## Authorship and AI assistance
 
