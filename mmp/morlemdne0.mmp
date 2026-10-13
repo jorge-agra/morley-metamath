@@ -1,0 +1,93 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemdne0  LOC_AFTER=?
+
+h1::morlemdne0.s  |- ( ph -> S e. RR )
+h2::morlemdne0.t  |- ( ph -> T e. RR )
+h3::morlemdne0.u  |- ( ph -> U e. RR )
+h4::morlemdne0.ps  |- ( ph -> 0 < S )
+h5::morlemdne0.pt  |- ( ph -> 0 < T )
+h6::morlemdne0.pu  |- ( ph -> 0 < U )
+h7::morlemdne0.1  |- ( ph -> ( ( S + T ) + U ) = ( _pi / 3 ) )
+
+$( constants $)
+r2a::2re  |- 2 e. RR
+r2:r2a:a1i  |- ( ph -> 2 e. RR )
+c2a::2cn  |- 2 e. CC
+c2:c2a:a1i  |- ( ph -> 2 e. CC )
+p2a::2pos  |- 0 < 2
+p2:p2a:a1i  |- ( ph -> 0 < 2 )
+r3a::3re  |- 3 e. RR
+r3:r3a:a1i  |- ( ph -> 3 e. RR )
+c3a::3cn  |- 3 e. CC
+c3:c3a:a1i  |- ( ph -> 3 e. CC )
+rp2a::2rp  |- 2 e. RR+
+rp2:rp2a:a1i  |- ( ph -> 2 e. RR+ )
+n3a::3ne0  |- 3 =/= 0
+n3:n3a:a1i  |- ( ph -> 3 =/= 0 )
+p3a::3pos  |- 0 < 3
+p3:p3a:a1i  |- ( ph -> 0 < 3 )
+rpia::pire  |- _pi e. RR
+rpi:rpia:a1i  |- ( ph -> _pi e. RR )
+cpi:rpi:recnd  |- ( ph -> _pi e. CC )
+ppia::pipos  |- 0 < _pi
+ppi:ppia:a1i  |- ( ph -> 0 < _pi )
+cia::ax-icn  |- _i e. CC
+ci:cia:a1i  |- ( ph -> _i e. CC )
+cS:1:recnd  |- ( ph -> S e. CC )
+cT:2:recnd  |- ( ph -> T e. CC )
+rST:1,2:readdcld  |- ( ph -> ( S + T ) e. RR )
+cST:cS,cT:addcld  |- ( ph -> ( S + T ) e. CC )
+rT3:rpi,r3,n3:redivcld  |- ( ph -> ( _pi / 3 ) e. RR )
+pT3:rpi,r3,ppi,p3:divgt0d  |- ( ph -> 0 < ( _pi / 3 ) )
+rpT3:rT3,pT3:elrpd  |- ( ph -> ( _pi / 3 ) e. RR+ )
+
+$( S + T is strictly between 0 and _pi / 3 $)
+q1:1,2,4,5:addgt0d  |- ( ph -> 0 < ( S + T ) )
+q2a::ltaddpos  |- ( ( U e. RR /\ ( S + T ) e. RR ) -> ( 0 < U <-> ( S + T ) < ( ( S + T ) + U ) ) )
+q2:3,rST,q2a:syl2anc  |- ( ph -> ( 0 < U <-> ( S + T ) < ( ( S + T ) + U ) ) )
+q3:6,q2:mpbid  |- ( ph -> ( S + T ) < ( ( S + T ) + U ) )
+q4:q3,7:breqtrd  |- ( ph -> ( S + T ) < ( _pi / 3 ) )
+
+$( so 2 x. ( S + T ) is in ( 0 (,) _pi ) $)
+m1:rST,rT3,rp2:ltmul2d  |- ( ph -> ( ( S + T ) < ( _pi / 3 ) <-> ( 2 x. ( S + T ) ) < ( 2 x. ( _pi / 3 ) ) ) )
+m2:q4,m1:mpbid  |- ( ph -> ( 2 x. ( S + T ) ) < ( 2 x. ( _pi / 3 ) ) )
+m3a::2lt3  |- 2 < 3
+m3:m3a:a1i  |- ( ph -> 2 < 3 )
+m4:r2,r3,rpT3:ltmul1d  |- ( ph -> ( 2 < 3 <-> ( 2 x. ( _pi / 3 ) ) < ( 3 x. ( _pi / 3 ) ) ) )
+m5:m3,m4:mpbid  |- ( ph -> ( 2 x. ( _pi / 3 ) ) < ( 3 x. ( _pi / 3 ) ) )
+m6:cpi,c3,n3:divcan2d  |- ( ph -> ( 3 x. ( _pi / 3 ) ) = _pi )
+m7:m5,m6:breqtrd  |- ( ph -> ( 2 x. ( _pi / 3 ) ) < _pi )
+r2ST:r2,rST:remulcld  |- ( ph -> ( 2 x. ( S + T ) ) e. RR )
+r2T3:r2,rT3:remulcld  |- ( ph -> ( 2 x. ( _pi / 3 ) ) e. RR )
+m8:r2ST,r2T3,rpi,m2,m7:lttrd  |- ( ph -> ( 2 x. ( S + T ) ) < _pi )
+m9:r2,rST,p2,q1:mulgt0d  |- ( ph -> 0 < ( 2 x. ( S + T ) ) )
+x0a::0xr  |- 0 e. RR*
+x0:x0a:a1i  |- ( ph -> 0 e. RR* )
+xpi:rpi:rexrd  |- ( ph -> _pi e. RR* )
+m10:x0,xpi,r2ST,m9,m8:eliood  |- ( ph -> ( 2 x. ( S + T ) ) e. ( 0 (,) _pi ) )
+
+$( the product of the two exponentials is exp ( _i x. 2 ( S + T ) ) $)
+c2S:c2,cS:mulcld  |- ( ph -> ( 2 x. S ) e. CC )
+c2T:c2,cT:mulcld  |- ( ph -> ( 2 x. T ) e. CC )
+ciS:ci,c2S:mulcld  |- ( ph -> ( _i x. ( 2 x. S ) ) e. CC )
+ciT:ci,c2T:mulcld  |- ( ph -> ( _i x. ( 2 x. T ) ) e. CC )
+e1::efadd  |- ( ( ( _i x. ( 2 x. S ) ) e. CC /\ ( _i x. ( 2 x. T ) ) e. CC ) -> ( exp ` ( ( _i x. ( 2 x. S ) ) + ( _i x. ( 2 x. T ) ) ) ) = ( ( exp ` ( _i x. ( 2 x. S ) ) ) x. ( exp ` ( _i x. ( 2 x. T ) ) ) ) )
+e2:ciS,ciT,e1:syl2anc  |- ( ph -> ( exp ` ( ( _i x. ( 2 x. S ) ) + ( _i x. ( 2 x. T ) ) ) ) = ( ( exp ` ( _i x. ( 2 x. S ) ) ) x. ( exp ` ( _i x. ( 2 x. T ) ) ) ) )
+b1:c2,cS,cT:adddid  |- ( ph -> ( 2 x. ( S + T ) ) = ( ( 2 x. S ) + ( 2 x. T ) ) )
+b2:b1:oveq2d  |- ( ph -> ( _i x. ( 2 x. ( S + T ) ) ) = ( _i x. ( ( 2 x. S ) + ( 2 x. T ) ) ) )
+b3:ci,c2S,c2T:adddid  |- ( ph -> ( _i x. ( ( 2 x. S ) + ( 2 x. T ) ) ) = ( ( _i x. ( 2 x. S ) ) + ( _i x. ( 2 x. T ) ) ) )
+b4:b2,b3:eqtrd  |- ( ph -> ( _i x. ( 2 x. ( S + T ) ) ) = ( ( _i x. ( 2 x. S ) ) + ( _i x. ( 2 x. T ) ) ) )
+b5:b4:fveq2d  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( S + T ) ) ) ) = ( exp ` ( ( _i x. ( 2 x. S ) ) + ( _i x. ( 2 x. T ) ) ) ) )
+b6:b5,e2:eqtrd  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( S + T ) ) ) ) = ( ( exp ` ( _i x. ( 2 x. S ) ) ) x. ( exp ` ( _i x. ( 2 x. T ) ) ) ) )
+
+$( and it is not 1 $)
+k1:m10:morlemne1  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( S + T ) ) ) ) =/= 1 )
+k2:b6:eqcomd  |- ( ph -> ( ( exp ` ( _i x. ( 2 x. S ) ) ) x. ( exp ` ( _i x. ( 2 x. T ) ) ) ) = ( exp ` ( _i x. ( 2 x. ( S + T ) ) ) ) )
+k3:k2,k1:eqnetrd  |- ( ph -> ( ( exp ` ( _i x. ( 2 x. S ) ) ) x. ( exp ` ( _i x. ( 2 x. T ) ) ) ) =/= 1 )
+k4:k3:necomd  |- ( ph -> 1 =/= ( ( exp ` ( _i x. ( 2 x. S ) ) ) x. ( exp ` ( _i x. ( 2 x. T ) ) ) ) )
+ceS:ciS:efcld  |- ( ph -> ( exp ` ( _i x. ( 2 x. S ) ) ) e. CC )
+ceT:ciT:efcld  |- ( ph -> ( exp ` ( _i x. ( 2 x. T ) ) ) e. CC )
+cprod:ceS,ceT:mulcld  |- ( ph -> ( ( exp ` ( _i x. ( 2 x. S ) ) ) x. ( exp ` ( _i x. ( 2 x. T ) ) ) ) e. CC )
+c1:1:1cnd  |- ( ph -> 1 e. CC )
+qed:c1,cprod,k4:subne0d  |- ( ph -> ( 1 - ( ( exp ` ( _i x. ( 2 x. S ) ) ) x. ( exp ` ( _i x. ( 2 x. T ) ) ) ) ) =/= 0 )
+
+$)

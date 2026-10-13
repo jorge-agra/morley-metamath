@@ -1,0 +1,11 @@
+$( <MM> <PROOF_ASST> THEOREM=sinarg  LOC_AFTER=?
+
+d1::logcl  |- ( ( A e. CC /\ A =/= 0 ) -> ( log ` A ) e. CC )
+d2:d1:imcld  |- ( ( A e. CC /\ A =/= 0 ) -> ( Im ` ( log ` A ) ) e. RR )
+d3::resinval  |- ( ( Im ` ( log ` A ) ) e. RR -> ( sin ` ( Im ` ( log ` A ) ) ) = ( Im ` ( exp ` ( _i x. ( Im ` ( log ` A ) ) ) ) ) )
+d4:d2,d3:syl  |- ( ( A e. CC /\ A =/= 0 ) -> ( sin ` ( Im ` ( log ` A ) ) ) = ( Im ` ( exp ` ( _i x. ( Im ` ( log ` A ) ) ) ) ) )
+d5::efiarg  |- ( ( A e. CC /\ A =/= 0 ) -> ( exp ` ( _i x. ( Im ` ( log ` A ) ) ) ) = ( A / ( abs ` A ) ) )
+d6:d5:fveq2d  |- ( ( A e. CC /\ A =/= 0 ) -> ( Im ` ( exp ` ( _i x. ( Im ` ( log ` A ) ) ) ) ) = ( Im ` ( A / ( abs ` A ) ) ) )
+qed:d4,d6:eqtrd  |- ( ( A e. CC /\ A =/= 0 ) -> ( sin ` ( Im ` ( log ` A ) ) ) = ( Im ` ( A / ( abs ` A ) ) ) )
+
+$)

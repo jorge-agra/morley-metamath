@@ -1,0 +1,56 @@
+$( <MM> <PROOF_ASST> THEOREM=angioo  LOC_AFTER=?
+
+$d A x
+$d A y
+$d B x
+$d B y
+$d x y
+
+h1::angioo.1  |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` ( log ` ( y / x ) ) ) )
+h2::angioo.a  |- ( ph -> A e. CC )
+h3::angioo.an  |- ( ph -> A =/= 0 )
+h4::angioo.b  |- ( ph -> B e. CC )
+h5::angioo.bn  |- ( ph -> B =/= 0 )
+
+cW:4,2,3:divcld  |- ( ph -> ( B / A ) e. CC )
+nW:4,2,5,3:divne0d  |- ( ph -> ( B / A ) =/= 0 )
+cAW:cW:abscld  |- ( ph -> ( abs ` ( B / A ) ) e. RR )
+nAW:cW,nW:absne0d  |- ( ph -> ( abs ` ( B / A ) ) =/= 0 )
+r0::absrpcl  |- ( ( ( B / A ) e. CC /\ ( B / A ) =/= 0 ) -> ( abs ` ( B / A ) ) e. RR+ )
+r1:cW,nW,r0:syl2anc  |- ( ph -> ( abs ` ( B / A ) ) e. RR+ )
+r2:r1:rpgt0d  |- ( ph -> 0 < ( abs ` ( B / A ) ) )
+cIW:cW:imcld  |- ( ph -> ( Im ` ( B / A ) ) e. RR )
+
+$( the frame value is the argument $)
+a1:1,2,3,4,5:angvald  |- ( ph -> ( A F B ) = ( Im ` ( log ` ( B / A ) ) ) )
+a2:a1:eleq1d  |- ( ph -> ( ( A F B ) e. ( 0 (,) _pi ) <-> ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) )
+
+$( <- : set.mm's one-way argimgt0 $)
+y2a::argimgt0  |- ( ( ( B / A ) e. CC /\ 0 < ( Im ` ( B / A ) ) ) -> ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) )
+y2b:y2a:ex  |- ( ( B / A ) e. CC -> ( 0 < ( Im ` ( B / A ) ) -> ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) )
+y2:cW,y2b:syl  |- ( ph -> ( 0 < ( Im ` ( B / A ) ) -> ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) )
+
+$( -> : through the sine, which is positive on ( 0 (,) _pi ) $)
+u1::simpr  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) )
+u2a::sinq12gt0  |- ( ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) -> 0 < ( sin ` ( Im ` ( log ` ( B / A ) ) ) ) )
+u2:u1,u2a:syl  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> 0 < ( sin ` ( Im ` ( log ` ( B / A ) ) ) ) )
+dW:cW:adantr  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( B / A ) e. CC )
+dNW:nW:adantr  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( B / A ) =/= 0 )
+dAW:cAW:adantr  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( abs ` ( B / A ) ) e. RR )
+dNAW:nAW:adantr  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( abs ` ( B / A ) ) =/= 0 )
+dR2:r2:adantr  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> 0 < ( abs ` ( B / A ) ) )
+dIW:cIW:adantr  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( Im ` ( B / A ) ) e. RR )
+u3a::sinarg  |- ( ( ( B / A ) e. CC /\ ( B / A ) =/= 0 ) -> ( sin ` ( Im ` ( log ` ( B / A ) ) ) ) = ( Im ` ( ( B / A ) / ( abs ` ( B / A ) ) ) ) )
+u3:dW,dNW,u3a:syl2anc  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( sin ` ( Im ` ( log ` ( B / A ) ) ) ) = ( Im ` ( ( B / A ) / ( abs ` ( B / A ) ) ) ) )
+u4:dAW,dW,dNAW:imdivd  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( Im ` ( ( B / A ) / ( abs ` ( B / A ) ) ) ) = ( ( Im ` ( B / A ) ) / ( abs ` ( B / A ) ) ) )
+u5:u3,u4:eqtrd  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( sin ` ( Im ` ( log ` ( B / A ) ) ) ) = ( ( Im ` ( B / A ) ) / ( abs ` ( B / A ) ) ) )
+u6:u2,u5:breqtrd  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> 0 < ( ( Im ` ( B / A ) ) / ( abs ` ( B / A ) ) ) )
+u7a::gt0div  |- ( ( ( Im ` ( B / A ) ) e. RR /\ ( abs ` ( B / A ) ) e. RR /\ 0 < ( abs ` ( B / A ) ) ) -> ( 0 < ( Im ` ( B / A ) ) <-> 0 < ( ( Im ` ( B / A ) ) / ( abs ` ( B / A ) ) ) ) )
+u7:dIW,dAW,dR2,u7a:syl3anc  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> ( 0 < ( Im ` ( B / A ) ) <-> 0 < ( ( Im ` ( B / A ) ) / ( abs ` ( B / A ) ) ) ) )
+u8:u6,u7:mpbird  |- ( ( ph /\ ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) ) -> 0 < ( Im ` ( B / A ) ) )
+y1:u8:ex  |- ( ph -> ( ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) -> 0 < ( Im ` ( B / A ) ) ) )
+
+y:y1,y2:impbid  |- ( ph -> ( ( Im ` ( log ` ( B / A ) ) ) e. ( 0 (,) _pi ) <-> 0 < ( Im ` ( B / A ) ) ) )
+qed:a2,y:bitrd  |- ( ph -> ( ( A F B ) e. ( 0 (,) _pi ) <-> 0 < ( Im ` ( B / A ) ) ) )
+
+$)

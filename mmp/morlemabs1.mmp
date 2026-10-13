@@ -1,0 +1,49 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemabs1  LOC_AFTER=?
+
+h1::morlemabs1.j  |- ( ph -> J e. CC )
+h2::morlemabs1.1  |- ( ph -> ( J ^ 3 ) = 1 )
+
+$( closures $)
+c1:1:abscld  |- ( ph -> ( abs ` J ) e. RR )
+c2:c1:recnd  |- ( ph -> ( abs ` J ) e. CC )
+c3:1:1cnd  |- ( ph -> 1 e. CC )
+c4:1:1red  |- ( ph -> 1 e. RR )
+g0:1:absge0d  |- ( ph -> 0 <_ ( abs ` J ) )
+
+$( the modulus is a real cube root of 1 $)
+n3a::3nn0  |- 3 e. NN0
+n3:n3a:a1i  |- ( ph -> 3 e. NN0 )
+e1:1,n3:absexpd  |- ( ph -> ( abs ` ( J ^ 3 ) ) = ( ( abs ` J ) ^ 3 ) )
+e2:2:fveq2d  |- ( ph -> ( abs ` ( J ^ 3 ) ) = ( abs ` 1 ) )
+e3a::abs1  |- ( abs ` 1 ) = 1
+e3:e3a:a1i  |- ( ph -> ( abs ` 1 ) = 1 )
+e4:e2,e3:eqtrd  |- ( ph -> ( abs ` ( J ^ 3 ) ) = 1 )
+e5:e1,e4:eqtr3d  |- ( ph -> ( ( abs ` J ) ^ 3 ) = 1 )
+
+$( the same factorization as at J, now over RR $)
+m1:c2,e5:morlemfac1  |- ( ph -> ( ( ( abs ` J ) - 1 ) x. ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) = 0 )
+
+$( the second factor is at least 1, so it does not vanish $)
+p1:c1:resqcld  |- ( ph -> ( ( abs ` J ) ^ 2 ) e. RR )
+p2:p1,c1:readdcld  |- ( ph -> ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) e. RR )
+p3:c1:sqge0d  |- ( ph -> 0 <_ ( ( abs ` J ) ^ 2 ) )
+p4:p1,c1,p3,g0:addge0d  |- ( ph -> 0 <_ ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) )
+p5a::0lt1  |- 0 < 1
+p5:p5a:a1i  |- ( ph -> 0 < 1 )
+p6:p2,c4,p4,p5:addgegt0d  |- ( ph -> 0 < ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) )
+p7:p6:gt0ne0d  |- ( ph -> ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) =/= 0 )
+p8:p2,c4:readdcld  |- ( ph -> ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) e. RR )
+p9:p8:recnd  |- ( ph -> ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) e. CC )
+
+$( so the first factor does $)
+s1:c2,c3:subcld  |- ( ph -> ( ( abs ` J ) - 1 ) e. CC )
+d1:s1,p9,p7:divcan4d  |- ( ph -> ( ( ( ( abs ` J ) - 1 ) x. ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) / ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) = ( ( abs ` J ) - 1 ) )
+d2:m1:oveq1d  |- ( ph -> ( ( ( ( abs ` J ) - 1 ) x. ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) / ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) = ( 0 / ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) )
+d3:p9,p7:div0d  |- ( ph -> ( 0 / ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) = 0 )
+d4:d2,d3:eqtrd  |- ( ph -> ( ( ( ( abs ` J ) - 1 ) x. ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) / ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) = 0 )
+d5:d1,d4:eqtr3d  |- ( ph -> ( ( abs ` J ) - 1 ) = 0 )
+
+q1:c2,c3:subeq0ad  |- ( ph -> ( ( ( abs ` J ) - 1 ) = 0 <-> ( abs ` J ) = 1 ) )
+qed:d5,q1:mpbid  |- ( ph -> ( abs ` J ) = 1 )
+
+$)

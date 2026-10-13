@@ -1,0 +1,4 @@
+repository=https://github.com/metamath/set.mm
+commit=695145b14c6b0c018e53d0ca21b0eefb92d5d1e9
+url=https://raw.githubusercontent.com/metamath/set.mm/695145b14c6b0c018e53d0ca21b0eefb92d5d1e9/set.mm
+sha256=ed10a612535ba3344a52719d543bfe25f3b3a6c3fca9f90e078f86e957c525fb

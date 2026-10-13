@@ -1,0 +1,13 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemone  LOC_AFTER=?
+
+h1::morlemone.s  |- ( ph -> S e. CC )
+h2::morlemone.t  |- ( ph -> T e. CC )
+h3::morlemone.1  |- ( ph -> ( S x. T ) = U )
+
+c1:1:1cnd  |- ( ph -> 1 e. CC )
+d1:1,c1,2:subdid  |- ( ph -> ( S x. ( 1 - T ) ) = ( ( S x. 1 ) - ( S x. T ) ) )
+d2:1:mulridd  |- ( ph -> ( S x. 1 ) = S )
+d3:d2,3:oveq12d  |- ( ph -> ( ( S x. 1 ) - ( S x. T ) ) = ( S - U ) )
+qed:d1,d3:eqtrd  |- ( ph -> ( S x. ( 1 - T ) ) = ( S - U ) )
+
+$)

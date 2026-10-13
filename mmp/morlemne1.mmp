@@ -1,0 +1,36 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemne1  LOC_AFTER=?
+
+h1::morlemne1.s  |- ( ph -> S e. ( 0 (,) _pi ) )
+
+e0::elioore  |- ( S e. ( 0 (,) _pi ) -> S e. RR )
+rS:1,e0:syl  |- ( ph -> S e. RR )
+cS:rS:recnd  |- ( ph -> S e. CC )
+
+$( the imaginary part of exp ( _i x. S ) is sin S $)
+ev0::efival  |- ( S e. CC -> ( exp ` ( _i x. S ) ) = ( ( cos ` S ) + ( _i x. ( sin ` S ) ) ) )
+ev:cS,ev0:syl  |- ( ph -> ( exp ` ( _i x. S ) ) = ( ( cos ` S ) + ( _i x. ( sin ` S ) ) ) )
+rc:rS:recoscld  |- ( ph -> ( cos ` S ) e. RR )
+rs:rS:resincld  |- ( ph -> ( sin ` S ) e. RR )
+im0::crim  |- ( ( ( cos ` S ) e. RR /\ ( sin ` S ) e. RR ) -> ( Im ` ( ( cos ` S ) + ( _i x. ( sin ` S ) ) ) ) = ( sin ` S ) )
+im1s:rc,rs,im0:syl2anc  |- ( ph -> ( Im ` ( ( cos ` S ) + ( _i x. ( sin ` S ) ) ) ) = ( sin ` S ) )
+im2:ev:fveq2d  |- ( ph -> ( Im ` ( exp ` ( _i x. S ) ) ) = ( Im ` ( ( cos ` S ) + ( _i x. ( sin ` S ) ) ) ) )
+im3:im2,im1s:eqtrd  |- ( ph -> ( Im ` ( exp ` ( _i x. S ) ) ) = ( sin ` S ) )
+
+$( which is positive on ( 0 (,) _pi ) , so it is not the imaginary part of 1 $)
+sp0::sinq12gt0  |- ( S e. ( 0 (,) _pi ) -> 0 < ( sin ` S ) )
+sp:1,sp0:syl  |- ( ph -> 0 < ( sin ` S ) )
+sn:sp:gt0ne0d  |- ( ph -> ( sin ` S ) =/= 0 )
+sn2:im3,sn:eqnetrd  |- ( ph -> ( Im ` ( exp ` ( _i x. S ) ) ) =/= 0 )
+i1a::im1  |- ( Im ` 1 ) = 0
+i1b:i1a:eqcomi  |- 0 = ( Im ` 1 )
+i1:i1b:a1i  |- ( ph -> 0 = ( Im ` 1 ) )
+sn3:sn2,i1:neeqtrd  |- ( ph -> ( Im ` ( exp ` ( _i x. S ) ) ) =/= ( Im ` 1 ) )
+
+$( so exp ( _i x. S ) is not 1 $)
+gg1::fveq2  |- ( ( exp ` ( _i x. S ) ) = 1 -> ( Im ` ( exp ` ( _i x. S ) ) ) = ( Im ` 1 ) )
+gg1d:gg1:a1i  |- ( ph -> ( ( exp ` ( _i x. S ) ) = 1 -> ( Im ` ( exp ` ( _i x. S ) ) ) = ( Im ` 1 ) ) )
+gg2:sn3:neneqd  |- ( ph -> -. ( Im ` ( exp ` ( _i x. S ) ) ) = ( Im ` 1 ) )
+gg3:gg2,gg1d:mtod  |- ( ph -> -. ( exp ` ( _i x. S ) ) = 1 )
+qed:gg3:neqned  |- ( ph -> ( exp ` ( _i x. S ) ) =/= 1 )
+
+$)

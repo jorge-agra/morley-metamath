@@ -1,0 +1,60 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemcub  LOC_AFTER=?
+
+$d A x
+$d A y
+$d B x
+$d B y
+$d x y
+
+h1::morlemcub.f  |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` ( log ` ( y / x ) ) ) )
+h2::morlemcub.a  |- ( ph -> A e. CC )
+h3::morlemcub.an  |- ( ph -> A =/= 0 )
+h4::morlemcub.b  |- ( ph -> B e. CC )
+h5::morlemcub.bn  |- ( ph -> B =/= 0 )
+h6::morlemcub.x  |- X = ( ( A F B ) / 3 )
+
+$( the angle is a complex number $)
+cD:4,2,3:divcld  |- ( ph -> ( B / A ) e. CC )
+nD:4,2,5,3:divne0d  |- ( ph -> ( B / A ) =/= 0 )
+cL:cD,nD:logcld  |- ( ph -> ( log ` ( B / A ) ) e. CC )
+rI:cL:imcld  |- ( ph -> ( Im ` ( log ` ( B / A ) ) ) e. RR )
+cI:rI:recnd  |- ( ph -> ( Im ` ( log ` ( B / A ) ) ) e. CC )
+av:1,2,3,4,5:angvald  |- ( ph -> ( A F B ) = ( Im ` ( log ` ( B / A ) ) ) )
+cT:av,cI:eqeltrd  |- ( ph -> ( A F B ) e. CC )
+
+$( X is a complex number, and three times it is the angle $)
+c3a::3cn  |- 3 e. CC
+c3:c3a:a1i  |- ( ph -> 3 e. CC )
+n3a::3ne0  |- 3 =/= 0
+n3:n3a:a1i  |- ( ph -> 3 =/= 0 )
+dX:6:a1i  |- ( ph -> X = ( ( A F B ) / 3 ) )
+cQ:cT,c3,n3:divcld  |- ( ph -> ( ( A F B ) / 3 ) e. CC )
+cX:dX,cQ:eqeltrd  |- ( ph -> X e. CC )
+k1:dX:oveq2d  |- ( ph -> ( 3 x. X ) = ( 3 x. ( ( A F B ) / 3 ) ) )
+k2:cT,c3,n3:divcan2d  |- ( ph -> ( 3 x. ( ( A F B ) / 3 ) ) = ( A F B ) )
+k3:k1,k2:eqtrd  |- ( ph -> ( 3 x. X ) = ( A F B ) )
+
+$( rearranging the tripled argument $)
+ci0::ax-icn  |- _i e. CC
+ci:ci0:a1i  |- ( ph -> _i e. CC )
+c2a::2cn  |- 2 e. CC
+c2:c2a:a1i  |- ( ph -> 2 e. CC )
+c2X:c2,cX:mulcld  |- ( ph -> ( 2 x. X ) e. CC )
+ciX:ci,c2X:mulcld  |- ( ph -> ( _i x. ( 2 x. X ) ) e. CC )
+m1:c3,ci,c2X:mul12d  |- ( ph -> ( 3 x. ( _i x. ( 2 x. X ) ) ) = ( _i x. ( 3 x. ( 2 x. X ) ) ) )
+m2:c3,c2,cX:mul12d  |- ( ph -> ( 3 x. ( 2 x. X ) ) = ( 2 x. ( 3 x. X ) ) )
+m4:k3:oveq2d  |- ( ph -> ( 2 x. ( 3 x. X ) ) = ( 2 x. ( A F B ) ) )
+m5:m2,m4:eqtrd  |- ( ph -> ( 3 x. ( 2 x. X ) ) = ( 2 x. ( A F B ) ) )
+m6:m5:oveq2d  |- ( ph -> ( _i x. ( 3 x. ( 2 x. X ) ) ) = ( _i x. ( 2 x. ( A F B ) ) ) )
+m7:m1,m6:eqtrd  |- ( ph -> ( 3 x. ( _i x. ( 2 x. X ) ) ) = ( _i x. ( 2 x. ( A F B ) ) ) )
+
+$( and the cube of the exponential $)
+z3a::3z  |- 3 e. ZZ
+z3:z3a:a1i  |- ( ph -> 3 e. ZZ )
+e0::efexp  |- ( ( ( _i x. ( 2 x. X ) ) e. CC /\ 3 e. ZZ ) -> ( exp ` ( 3 x. ( _i x. ( 2 x. X ) ) ) ) = ( ( exp ` ( _i x. ( 2 x. X ) ) ) ^ 3 ) )
+e1:ciX,z3,e0:syl2anc  |- ( ph -> ( exp ` ( 3 x. ( _i x. ( 2 x. X ) ) ) ) = ( ( exp ` ( _i x. ( 2 x. X ) ) ) ^ 3 ) )
+e2:e1:eqcomd  |- ( ph -> ( ( exp ` ( _i x. ( 2 x. X ) ) ) ^ 3 ) = ( exp ` ( 3 x. ( _i x. ( 2 x. X ) ) ) ) )
+e3:m7:fveq2d  |- ( ph -> ( exp ` ( 3 x. ( _i x. ( 2 x. X ) ) ) ) = ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) ) )
+qed:e2,e3:eqtrd  |- ( ph -> ( ( exp ` ( _i x. ( 2 x. X ) ) ) ^ 3 ) = ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) ) )
+
+$)

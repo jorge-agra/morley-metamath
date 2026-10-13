@@ -1,0 +1,176 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemlin  LOC_AFTER=?
+
+$d A x
+$d A y
+$d B x
+$d B y
+$d C x
+$d C y
+$d P x
+$d P y
+$d Q x
+$d Q y
+$d R x
+$d R y
+$d x y
+
+h1::morlemlin.f  |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` ( log ` ( y / x ) ) ) )
+h2::morlemlin.x  |- X = ( ( ( B - A ) F ( C - A ) ) / 3 )
+h3::morlemlin.y  |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 )
+h4::morlemlin.z  |- Z = ( ( ( A - C ) F ( B - C ) ) / 3 )
+h5::morlemlin.a  |- ( ph -> A e. CC )
+h6::morlemlin.b  |- ( ph -> B e. CC )
+h7::morlemlin.c  |- ( ph -> C e. CC )
+h8::morlemlin.p  |- ( ph -> P e. CC )
+h9::morlemlin.q  |- ( ph -> Q e. CC )
+h10::morlemlin.r  |- ( ph -> R e. CC )
+h11::morlemlin.ab  |- ( ph -> A =/= B )
+h12::morlemlin.bc  |- ( ph -> B =/= C )
+h13::morlemlin.ca  |- ( ph -> C =/= A )
+h14::morlemlin.ra  |- ( ph -> R =/= A )
+h15::morlemlin.rb  |- ( ph -> R =/= B )
+h16::morlemlin.pb  |- ( ph -> P =/= B )
+h17::morlemlin.pc  |- ( ph -> P =/= C )
+h18::morlemlin.qc  |- ( ph -> Q =/= C )
+h19::morlemlin.qa  |- ( ph -> Q =/= A )
+h20::morlemlin.o  |- ( ph -> ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) )
+h21::morlemlin.1  |- ( ph -> ( ( B - A ) F ( R - A ) ) = X )
+h22::morlemlin.2  |- ( ph -> ( ( Q - A ) F ( C - A ) ) = X )
+h23::morlemlin.3  |- ( ph -> ( ( C - B ) F ( P - B ) ) = Y )
+h24::morlemlin.4  |- ( ph -> ( ( R - B ) F ( A - B ) ) = Y )
+h25::morlemlin.5  |- ( ph -> ( ( A - C ) F ( Q - C ) ) = Z )
+h26::morlemlin.6  |- ( ph -> ( ( P - C ) F ( B - C ) ) = Z )
+h27::morlemlin.j  |- J = ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) )
+
+
+$( THE ANGLE SUM AND ITS SIGN, from `ang180pos` and not re-derived. $)
+p1:1,5,6,7,11,12,13,20:ang180pos  |- ( ph -> ( ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) /\ ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) /\ ( ( ( ( C - B ) F ( A - B ) ) + ( ( A - C ) F ( B - C ) ) ) + ( ( B - A ) F ( C - A ) ) ) = _pi ) )
+pB:p1:simp1d  |- ( ph -> ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) )
+pC:p1:simp2d  |- ( ph -> ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) )
+pS:p1:simp3d  |- ( ph -> ( ( ( ( C - B ) F ( A - B ) ) + ( ( A - C ) F ( B - C ) ) ) + ( ( B - A ) F ( C - A ) ) ) = _pi )
+
+$( the three vertex angles are real, and positive $)
+eA0::elioore  |- ( ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) -> ( ( B - A ) F ( C - A ) ) e. RR )
+rA:20,eA0:syl  |- ( ph -> ( ( B - A ) F ( C - A ) ) e. RR )
+cA:rA:recnd  |- ( ph -> ( ( B - A ) F ( C - A ) ) e. CC )
+oA0::eliooord  |- ( ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) -> ( 0 < ( ( B - A ) F ( C - A ) ) /\ ( ( B - A ) F ( C - A ) ) < _pi ) )
+oA:20,oA0:syl  |- ( ph -> ( 0 < ( ( B - A ) F ( C - A ) ) /\ ( ( B - A ) F ( C - A ) ) < _pi ) )
+gA:oA:simpld  |- ( ph -> 0 < ( ( B - A ) F ( C - A ) ) )
+eB0::elioore  |- ( ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) -> ( ( C - B ) F ( A - B ) ) e. RR )
+rB:pB,eB0:syl  |- ( ph -> ( ( C - B ) F ( A - B ) ) e. RR )
+cB:rB:recnd  |- ( ph -> ( ( C - B ) F ( A - B ) ) e. CC )
+oB0::eliooord  |- ( ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) -> ( 0 < ( ( C - B ) F ( A - B ) ) /\ ( ( C - B ) F ( A - B ) ) < _pi ) )
+oB:pB,oB0:syl  |- ( ph -> ( 0 < ( ( C - B ) F ( A - B ) ) /\ ( ( C - B ) F ( A - B ) ) < _pi ) )
+gB:oB:simpld  |- ( ph -> 0 < ( ( C - B ) F ( A - B ) ) )
+eC0::elioore  |- ( ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) -> ( ( A - C ) F ( B - C ) ) e. RR )
+rC:pC,eC0:syl  |- ( ph -> ( ( A - C ) F ( B - C ) ) e. RR )
+cC:rC:recnd  |- ( ph -> ( ( A - C ) F ( B - C ) ) e. CC )
+oC0::eliooord  |- ( ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) -> ( 0 < ( ( A - C ) F ( B - C ) ) /\ ( ( A - C ) F ( B - C ) ) < _pi ) )
+oC:pC,oC0:syl  |- ( ph -> ( 0 < ( ( A - C ) F ( B - C ) ) /\ ( ( A - C ) F ( B - C ) ) < _pi ) )
+gC:oC:simpld  |- ( ph -> 0 < ( ( A - C ) F ( B - C ) ) )
+
+$( 3 , in the four forms this needs $)
+c3a::3cn  |- 3 e. CC
+c3:c3a:a1i  |- ( ph -> 3 e. CC )
+n3a::3ne0  |- 3 =/= 0
+n3:n3a:a1i  |- ( ph -> 3 =/= 0 )
+r3a::3re  |- 3 e. RR
+r3:r3a:a1i  |- ( ph -> 3 e. RR )
+p3a::3pos  |- 0 < 3
+p3:p3a:a1i  |- ( ph -> 0 < 3 )
+
+$( hence the three trisected angles are real and positive $)
+dX:2:a1i  |- ( ph -> X = ( ( ( B - A ) F ( C - A ) ) / 3 ) )
+qX:cA,c3,n3:divcld  |- ( ph -> ( ( ( B - A ) F ( C - A ) ) / 3 ) e. CC )
+cX:dX,qX:eqeltrd  |- ( ph -> X e. CC )
+yX:rA,r3,n3:redivcld  |- ( ph -> ( ( ( B - A ) F ( C - A ) ) / 3 ) e. RR )
+wX:dX,yX:eqeltrd  |- ( ph -> X e. RR )
+tX:rA,r3,gA,p3:divgt0d  |- ( ph -> 0 < ( ( ( B - A ) F ( C - A ) ) / 3 ) )
+vX:tX,dX:breqtrrd  |- ( ph -> 0 < X )
+dY:3:a1i  |- ( ph -> Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) )
+qY:cB,c3,n3:divcld  |- ( ph -> ( ( ( C - B ) F ( A - B ) ) / 3 ) e. CC )
+cY:dY,qY:eqeltrd  |- ( ph -> Y e. CC )
+yY:rB,r3,n3:redivcld  |- ( ph -> ( ( ( C - B ) F ( A - B ) ) / 3 ) e. RR )
+wY:dY,yY:eqeltrd  |- ( ph -> Y e. RR )
+tY:rB,r3,gB,p3:divgt0d  |- ( ph -> 0 < ( ( ( C - B ) F ( A - B ) ) / 3 ) )
+vY:tY,dY:breqtrrd  |- ( ph -> 0 < Y )
+dZ:4:a1i  |- ( ph -> Z = ( ( ( A - C ) F ( B - C ) ) / 3 ) )
+qZ:cC,c3,n3:divcld  |- ( ph -> ( ( ( A - C ) F ( B - C ) ) / 3 ) e. CC )
+cZ:dZ,qZ:eqeltrd  |- ( ph -> Z e. CC )
+yZ:rC,r3,n3:redivcld  |- ( ph -> ( ( ( A - C ) F ( B - C ) ) / 3 ) e. RR )
+wZ:dZ,yZ:eqeltrd  |- ( ph -> Z e. RR )
+tZ:rC,r3,gC,p3:divgt0d  |- ( ph -> 0 < ( ( ( A - C ) F ( B - C ) ) / 3 ) )
+vZ:tZ,dZ:breqtrrd  |- ( ph -> 0 < Z )
+
+$( ` X + Y + Z = _pi / 3 ` , the same derivation `morlemj` makes privately $)
+s1:cA,cB,cC:addassd  |- ( ph -> ( ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) + ( ( A - C ) F ( B - C ) ) ) = ( ( ( B - A ) F ( C - A ) ) + ( ( ( C - B ) F ( A - B ) ) + ( ( A - C ) F ( B - C ) ) ) ) )
+sAd:cB,cC:addcld  |- ( ph -> ( ( ( C - B ) F ( A - B ) ) + ( ( A - C ) F ( B - C ) ) ) e. CC )
+s2:cA,sAd:addcomd  |- ( ph -> ( ( ( B - A ) F ( C - A ) ) + ( ( ( C - B ) F ( A - B ) ) + ( ( A - C ) F ( B - C ) ) ) ) = ( ( ( ( C - B ) F ( A - B ) ) + ( ( A - C ) F ( B - C ) ) ) + ( ( B - A ) F ( C - A ) ) ) )
+s3:s1,s2,pS:3eqtrd  |- ( ph -> ( ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) + ( ( A - C ) F ( B - C ) ) ) = _pi )
+s4:s3:oveq1d  |- ( ph -> ( ( ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) + ( ( A - C ) F ( B - C ) ) ) / 3 ) = ( _pi / 3 ) )
+s5:cA,cB,c3,n3:divdird  |- ( ph -> ( ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) / 3 ) = ( ( ( ( B - A ) F ( C - A ) ) / 3 ) + ( ( ( C - B ) F ( A - B ) ) / 3 ) ) )
+cAB2:cA,cB:addcld  |- ( ph -> ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) e. CC )
+s6:cAB2,cC,c3,n3:divdird  |- ( ph -> ( ( ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) + ( ( A - C ) F ( B - C ) ) ) / 3 ) = ( ( ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) / 3 ) + ( ( ( A - C ) F ( B - C ) ) / 3 ) ) )
+s7:s5:oveq1d  |- ( ph -> ( ( ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) / 3 ) + ( ( ( A - C ) F ( B - C ) ) / 3 ) ) = ( ( ( ( ( B - A ) F ( C - A ) ) / 3 ) + ( ( ( C - B ) F ( A - B ) ) / 3 ) ) + ( ( ( A - C ) F ( B - C ) ) / 3 ) ) )
+s8:dX,dY:oveq12d  |- ( ph -> ( X + Y ) = ( ( ( ( B - A ) F ( C - A ) ) / 3 ) + ( ( ( C - B ) F ( A - B ) ) / 3 ) ) )
+s9:s8,dZ:oveq12d  |- ( ph -> ( ( X + Y ) + Z ) = ( ( ( ( ( B - A ) F ( C - A ) ) / 3 ) + ( ( ( C - B ) F ( A - B ) ) / 3 ) ) + ( ( ( A - C ) F ( B - C ) ) / 3 ) ) )
+s10:s6,s7:eqtrd  |- ( ph -> ( ( ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) + ( ( A - C ) F ( B - C ) ) ) / 3 ) = ( ( ( ( ( B - A ) F ( C - A ) ) / 3 ) + ( ( ( C - B ) F ( A - B ) ) / 3 ) ) + ( ( ( A - C ) F ( B - C ) ) / 3 ) ) )
+s11:s10:eqcomd  |- ( ph -> ( ( ( ( ( B - A ) F ( C - A ) ) / 3 ) + ( ( ( C - B ) F ( A - B ) ) / 3 ) ) + ( ( ( A - C ) F ( B - C ) ) / 3 ) ) = ( ( ( ( ( B - A ) F ( C - A ) ) + ( ( C - B ) F ( A - B ) ) ) + ( ( A - C ) F ( B - C ) ) ) / 3 ) )
+sum:s9,s11,s4:3eqtrd  |- ( ph -> ( ( X + Y ) + Z ) = ( _pi / 3 ) )
+
+$( the two cyclic rotations of that sum, which `morlemdne0` needs $)
+k1:cX,cY,cZ:addassd  |- ( ph -> ( ( X + Y ) + Z ) = ( X + ( Y + Z ) ) )
+cYZ:cY,cZ:addcld  |- ( ph -> ( Y + Z ) e. CC )
+k2:cX,cYZ:addcomd  |- ( ph -> ( X + ( Y + Z ) ) = ( ( Y + Z ) + X ) )
+k3:k1,k2:eqtrd  |- ( ph -> ( ( X + Y ) + Z ) = ( ( Y + Z ) + X ) )
+k4:k3:eqcomd  |- ( ph -> ( ( Y + Z ) + X ) = ( ( X + Y ) + Z ) )
+sumB:k4,sum:eqtrd  |- ( ph -> ( ( Y + Z ) + X ) = ( _pi / 3 ) )
+k5:cZ,cX,cY:addassd  |- ( ph -> ( ( Z + X ) + Y ) = ( Z + ( X + Y ) ) )
+cXY:cX,cY:addcld  |- ( ph -> ( X + Y ) e. CC )
+k6:cZ,cXY:addcomd  |- ( ph -> ( Z + ( X + Y ) ) = ( ( X + Y ) + Z ) )
+k7:k5,k6:eqtrd  |- ( ph -> ( ( Z + X ) + Y ) = ( ( X + Y ) + Z ) )
+sumC:k7,sum:eqtrd  |- ( ph -> ( ( Z + X ) + Y ) = ( _pi / 3 ) )
+
+$( the three double-trisection coefficients are complex and non-zero - free, since all three are exponentials $)
+ci0::ax-icn  |- _i e. CC
+ci:ci0:a1i  |- ( ph -> _i e. CC )
+c2a::2cn  |- 2 e. CC
+c2:c2a:a1i  |- ( ph -> 2 e. CC )
+mX:c2,cX:mulcld  |- ( ph -> ( 2 x. X ) e. CC )
+iX:ci,mX:mulcld  |- ( ph -> ( _i x. ( 2 x. X ) ) e. CC )
+cEX:iX:efcld  |- ( ph -> ( exp ` ( _i x. ( 2 x. X ) ) ) e. CC )
+nEX:iX:efne0d  |- ( ph -> ( exp ` ( _i x. ( 2 x. X ) ) ) =/= 0 )
+mY:c2,cY:mulcld  |- ( ph -> ( 2 x. Y ) e. CC )
+iY:ci,mY:mulcld  |- ( ph -> ( _i x. ( 2 x. Y ) ) e. CC )
+cEY:iY:efcld  |- ( ph -> ( exp ` ( _i x. ( 2 x. Y ) ) ) e. CC )
+nEY:iY:efne0d  |- ( ph -> ( exp ` ( _i x. ( 2 x. Y ) ) ) =/= 0 )
+mZ:c2,cZ:mulcld  |- ( ph -> ( 2 x. Z ) e. CC )
+iZ:ci,mZ:mulcld  |- ( ph -> ( _i x. ( 2 x. Z ) ) e. CC )
+cEZ:iZ:efcld  |- ( ph -> ( exp ` ( _i x. ( 2 x. Z ) ) ) e. CC )
+nEZ:iZ:efne0d  |- ( ph -> ( exp ` ( _i x. ( 2 x. Z ) ) ) =/= 0 )
+
+$( the composite coefficient is a primitive cube root of unity, from `morlemj` $)
+dJ:27:a1i  |- ( ph -> J = ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) )
+mj:1,2,3,4,5,6,7,11,12,13,20,27:morlemj  |- ( ph -> ( J = ( exp ` ( _i x. ( 2 x. ( _pi / 3 ) ) ) ) /\ ( J ^ 3 ) = 1 /\ J =/= 1 ) )
+jc:mj:simp2d  |- ( ph -> ( J ^ 3 ) = 1 )
+jn:mj:simp3d  |- ( ph -> J =/= 1 )
+
+$( THE SIDE CONDITIONS, DISCHARGED : all three denominators are non-zero, by `morlemdne0` at each vertex.  Nothing here is assumed. $)
+dn3:wX,wY,wZ,vX,vY,vZ,sum:morlemdne0  |- ( ph -> ( 1 - ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) ) =/= 0 )
+dn1:wY,wZ,wX,vY,vZ,vX,sumB:morlemdne0  |- ( ph -> ( 1 - ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) ) =/= 0 )
+dn2:wZ,wX,wY,vZ,vX,vY,sumC:morlemdne0  |- ( ph -> ( 1 - ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( exp ` ( _i x. ( 2 x. X ) ) ) ) ) =/= 0 )
+
+$( THE THREE FIXED-POINT EQUATIONS, as equations, from `morlemfix3`. $)
+fx:1,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,22,23,24,25,26:morlemfix3  |- ( ph -> ( ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) ) = R /\ ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( P - C ) ) ) - B ) ) ) = P /\ ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( Q - A ) ) ) - C ) ) ) = Q ) )
+fx1:fx:simp1d  |- ( ph -> ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) ) = R )
+fx2:fx:simp2d  |- ( ph -> ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( P - C ) ) ) - B ) ) ) = P )
+fx3:fx:simp3d  |- ( ph -> ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( Q - A ) ) ) - C ) ) ) = Q )
+
+$( THE OFFSET : the ` W = 0 ` instance of the pointwise `morlemid` .  This is a SUBSTITUTION - the telescoping argument is not repeated. $)
+c0::0cnd  |- ( ph -> 0 e. CC )
+mid:1,2,3,4,5,6,7,c0,11,12,13:morlemid  |- ( ph -> ( A + ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) ^ 3 ) x. ( ( B + ( ( ( exp ` ( _i x. ( 2 x. Y ) ) ) ^ 3 ) x. ( ( C + ( ( ( exp ` ( _i x. ( 2 x. Z ) ) ) ^ 3 ) x. ( 0 - C ) ) ) - B ) ) ) - A ) ) ) = 0 )
+
+$( and the assembly does the rest $)
+qed:5,6,7,8,9,10,cEX,cEY,cEZ,nEX,nEY,nEZ,dJ,jc,jn,dn1,dn2,dn3,fx1,fx2,fx3,mid:morlemlinalg  |- ( ph -> ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) ) = 0 )
+
+$)

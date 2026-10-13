@@ -1,0 +1,78 @@
+$( <MM> <PROOF_ASST> THEOREM=efi11d  LOC_AFTER=?
+
+h1::efi11d.s  |- ( ph -> S e. RR )
+h2::efi11d.t  |- ( ph -> T e. RR )
+h3::efi11d.1  |- ( ph -> S e. ( -u _pi (,] _pi ) )
+h4::efi11d.2  |- ( ph -> T e. ( -u _pi (,] _pi ) )
+h5::efi11d.3  |- ( ph -> ( exp ` ( _i x. S ) ) = ( exp ` ( _i x. T ) ) )
+
+$( closures $)
+ci:ac1:a1i  |- ( ph -> _i e. CC )
+ac1::ax-icn  |- _i e. CC
+cs:1:recnd  |- ( ph -> S e. CC )
+ct:2:recnd  |- ( ph -> T e. CC )
+ms:ci,cs:mulcld  |- ( ph -> ( _i x. S ) e. CC )
+mt:ci,ct:mulcld  |- ( ph -> ( _i x. T ) e. CC )
+
+$( the imaginary part of _i x. S is S $)
+isa:ci,cs:mulcomd  |- ( ph -> ( _i x. S ) = ( S x. _i ) )
+isb:isa:fveq2d  |- ( ph -> ( Im ` ( _i x. S ) ) = ( Im ` ( S x. _i ) ) )
+isc:1,ci,isd:syl2anc  |- ( ph -> ( Im ` ( S x. _i ) ) = ( S x. ( Im ` _i ) ) )
+isd::immul2  |- ( ( S e. RR /\ _i e. CC ) -> ( Im ` ( S x. _i ) ) = ( S x. ( Im ` _i ) ) )
+ise::imi  |- ( Im ` _i ) = 1
+isf:ise:a1i  |- ( ph -> ( Im ` _i ) = 1 )
+isg:isf:oveq2d  |- ( ph -> ( S x. ( Im ` _i ) ) = ( S x. 1 ) )
+ish:cs:mulridd  |- ( ph -> ( S x. 1 ) = S )
+isi:isb,isc:eqtrd  |- ( ph -> ( Im ` ( _i x. S ) ) = ( S x. ( Im ` _i ) ) )
+is:isi,isg,ish:3eqtrd  |- ( ph -> ( Im ` ( _i x. S ) ) = S )
+ita:ci,ct:mulcomd  |- ( ph -> ( _i x. T ) = ( T x. _i ) )
+itb:ita:fveq2d  |- ( ph -> ( Im ` ( _i x. T ) ) = ( Im ` ( T x. _i ) ) )
+itc:2,ci,itd:syl2anc  |- ( ph -> ( Im ` ( T x. _i ) ) = ( T x. ( Im ` _i ) ) )
+itd::immul2  |- ( ( T e. RR /\ _i e. CC ) -> ( Im ` ( T x. _i ) ) = ( T x. ( Im ` _i ) ) )
+itg:isf:oveq2d  |- ( ph -> ( T x. ( Im ` _i ) ) = ( T x. 1 ) )
+ith:ct:mulridd  |- ( ph -> ( T x. 1 ) = T )
+iti:itb,itc:eqtrd  |- ( ph -> ( Im ` ( _i x. T ) ) = ( T x. ( Im ` _i ) ) )
+it:iti,itg,ith:3eqtrd  |- ( ph -> ( Im ` ( _i x. T ) ) = T )
+
+$( so both are in the range of log $)
+xr1a:ac4:rexri  |- -u _pi e. RR*
+ac4:ac3:renegcli  |- -u _pi e. RR
+xr1:xr1a:a1i  |- ( ph -> -u _pi e. RR* )
+xr2a:ac3,ac6:ax-mp  |- _pi e. RR*
+ac3::pire  |- _pi e. RR
+ac6::rexr  |- ( _pi e. RR -> _pi e. RR* )
+xr2:xr2a:a1i  |- ( ph -> _pi e. RR* )
+bs1a::iocgtlb  |- ( ( -u _pi e. RR* /\ _pi e. RR* /\ S e. ( -u _pi (,] _pi ) ) -> -u _pi < S )
+bs1:xr1,xr2,3,bs1a:syl3anc  |- ( ph -> -u _pi < S )
+bs2a::iocleub  |- ( ( -u _pi e. RR* /\ _pi e. RR* /\ S e. ( -u _pi (,] _pi ) ) -> S <_ _pi )
+bs2:xr1,xr2,3,bs2a:syl3anc  |- ( ph -> S <_ _pi )
+bt1a::iocgtlb  |- ( ( -u _pi e. RR* /\ _pi e. RR* /\ T e. ( -u _pi (,] _pi ) ) -> -u _pi < T )
+bt1:xr1,xr2,4,bt1a:syl3anc  |- ( ph -> -u _pi < T )
+bt2a::iocleub  |- ( ( -u _pi e. RR* /\ _pi e. RR* /\ T e. ( -u _pi (,] _pi ) ) -> T <_ _pi )
+bt2:xr1,xr2,4,bt2a:syl3anc  |- ( ph -> T <_ _pi )
+gs1:bs1,is:breqtrrd  |- ( ph -> -u _pi < ( Im ` ( _i x. S ) ) )
+gs2:is,bs2:eqbrtrd  |- ( ph -> ( Im ` ( _i x. S ) ) <_ _pi )
+gt1:bt1,it:breqtrrd  |- ( ph -> -u _pi < ( Im ` ( _i x. T ) ) )
+gt2:it,bt2:eqbrtrd  |- ( ph -> ( Im ` ( _i x. T ) ) <_ _pi )
+rs0:ms,gs1,gs2:3jca  |- ( ph -> ( ( _i x. S ) e. CC /\ -u _pi < ( Im ` ( _i x. S ) ) /\ ( Im ` ( _i x. S ) ) <_ _pi ) )
+rsa::ellogrn  |- ( ( _i x. S ) e. ran log <-> ( ( _i x. S ) e. CC /\ -u _pi < ( Im ` ( _i x. S ) ) /\ ( Im ` ( _i x. S ) ) <_ _pi ) )
+rs:rs0,rsa:sylibr  |- ( ph -> ( _i x. S ) e. ran log )
+rt0:mt,gt1,gt2:3jca  |- ( ph -> ( ( _i x. T ) e. CC /\ -u _pi < ( Im ` ( _i x. T ) ) /\ ( Im ` ( _i x. T ) ) <_ _pi ) )
+rta::ellogrn  |- ( ( _i x. T ) e. ran log <-> ( ( _i x. T ) e. CC /\ -u _pi < ( Im ` ( _i x. T ) ) /\ ( Im ` ( _i x. T ) ) <_ _pi ) )
+rt:rt0,rta:sylibr  |- ( ph -> ( _i x. T ) e. ran log )
+
+$( log undoes exp on the strip $)
+lsa::logef  |- ( ( _i x. S ) e. ran log -> ( log ` ( exp ` ( _i x. S ) ) ) = ( _i x. S ) )
+ls:rs,lsa:syl  |- ( ph -> ( log ` ( exp ` ( _i x. S ) ) ) = ( _i x. S ) )
+lta::logef  |- ( ( _i x. T ) e. ran log -> ( log ` ( exp ` ( _i x. T ) ) ) = ( _i x. T ) )
+lt:rt,lta:syl  |- ( ph -> ( log ` ( exp ` ( _i x. T ) ) ) = ( _i x. T ) )
+e1:5:fveq2d  |- ( ph -> ( log ` ( exp ` ( _i x. S ) ) ) = ( log ` ( exp ` ( _i x. T ) ) ) )
+e1b:e1,lt:eqtrd  |- ( ph -> ( log ` ( exp ` ( _i x. S ) ) ) = ( _i x. T ) )
+e2:ls,e1b:eqtr3d  |- ( ph -> ( _i x. S ) = ( _i x. T ) )
+
+$( cancel _i $)
+in0:ac2:a1i  |- ( ph -> _i =/= 0 )
+ac2::ine0  |- _i =/= 0
+qed:cs,ct,ci,in0,e2:mulcanad  |- ( ph -> S = T )
+
+$)

@@ -1,0 +1,112 @@
+$( <MM> <PROOF_ASST> THEOREM=morleyR2  LOC_AFTER=?
+
+$d A x
+$d A y
+$d B x
+$d B y
+$d C x
+$d C y
+$d P x
+$d P y
+$d Q x
+$d Q y
+$d R x
+$d R y
+$d x y
+
+h1::morleyR2.f  |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` ( log ` ( y / x ) ) ) )
+h2::morleyR2.x  |- X = ( ( ( B - A ) F ( C - A ) ) / 3 )
+h3::morleyR2.y  |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 )
+h4::morleyR2.z  |- Z = ( ( ( A - C ) F ( B - C ) ) / 3 )
+h5::morleyR2.a  |- ( ph -> A e. CC )
+h6::morleyR2.b  |- ( ph -> B e. CC )
+h7::morleyR2.c  |- ( ph -> C e. CC )
+h8::morleyR2.p  |- ( ph -> P e. CC )
+h9::morleyR2.q  |- ( ph -> Q e. CC )
+h10::morleyR2.r  |- ( ph -> R e. CC )
+h11::morleyR2.ab  |- ( ph -> A =/= B )
+h12::morleyR2.bc  |- ( ph -> B =/= C )
+h13::morleyR2.ca  |- ( ph -> C =/= A )
+h14::morleyR2.ra  |- ( ph -> R =/= A )
+h15::morleyR2.rb  |- ( ph -> R =/= B )
+h16::morleyR2.pb  |- ( ph -> P =/= B )
+h17::morleyR2.pc  |- ( ph -> P =/= C )
+h18::morleyR2.qc  |- ( ph -> Q =/= C )
+h19::morleyR2.qa  |- ( ph -> Q =/= A )
+h20::morleyR2.o  |- ( ph -> ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) )
+h21::morleyR2.1  |- ( ph -> ( ( B - A ) F ( R - A ) ) = X )
+h22::morleyR2.2  |- ( ph -> ( ( Q - A ) F ( C - A ) ) = X )
+h23::morleyR2.3  |- ( ph -> ( ( C - B ) F ( P - B ) ) = Y )
+h24::morleyR2.4  |- ( ph -> ( ( R - B ) F ( A - B ) ) = Y )
+h25::morleyR2.5  |- ( ph -> ( ( A - C ) F ( Q - C ) ) = Z )
+h26::morleyR2.6  |- ( ph -> ( ( P - C ) F ( B - C ) ) = Z )
+
+$( ------------------------------------------------------------------------
+   ` J ` IS NOT IN THIS FRAME.  The two lemmas that speak about it, `morlemj`
+   and `morlemlin`, take it through a class hypothesis ` J = ... ` , so the
+   assembly instantiates ` J ` at the composite coefficient itself and
+   discharges that hypothesis with `eqid`.  Everything before `jd` exists only
+   to hand `morlemeqi` its ` J e. CC ` .
+   ------------------------------------------------------------------------ $)
+
+$( the three vertex angles are complex; the other two come from `ang180pos` $)
+p1:1,5,6,7,11,12,13,20:ang180pos  |- ( ph -> ( ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) /\ ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) /\ ( ( ( ( C - B ) F ( A - B ) ) + ( ( A - C ) F ( B - C ) ) ) + ( ( B - A ) F ( C - A ) ) ) = _pi ) )
+pB:p1:simp1d  |- ( ph -> ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) )
+pC:p1:simp2d  |- ( ph -> ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) )
+eA0::elioore  |- ( ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) -> ( ( B - A ) F ( C - A ) ) e. RR )
+rA:20,eA0:syl  |- ( ph -> ( ( B - A ) F ( C - A ) ) e. RR )
+cA:rA:recnd  |- ( ph -> ( ( B - A ) F ( C - A ) ) e. CC )
+eB0::elioore  |- ( ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) -> ( ( C - B ) F ( A - B ) ) e. RR )
+rB:pB,eB0:syl  |- ( ph -> ( ( C - B ) F ( A - B ) ) e. RR )
+cB:rB:recnd  |- ( ph -> ( ( C - B ) F ( A - B ) ) e. CC )
+eC0::elioore  |- ( ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) -> ( ( A - C ) F ( B - C ) ) e. RR )
+rC:pC,eC0:syl  |- ( ph -> ( ( A - C ) F ( B - C ) ) e. RR )
+cC:rC:recnd  |- ( ph -> ( ( A - C ) F ( B - C ) ) e. CC )
+
+$( 3 , and hence the three trisected angles $)
+c3a::3cn  |- 3 e. CC
+c3:c3a:a1i  |- ( ph -> 3 e. CC )
+n3a::3ne0  |- 3 =/= 0
+n3:n3a:a1i  |- ( ph -> 3 =/= 0 )
+dX:2:a1i  |- ( ph -> X = ( ( ( B - A ) F ( C - A ) ) / 3 ) )
+qX:cA,c3,n3:divcld  |- ( ph -> ( ( ( B - A ) F ( C - A ) ) / 3 ) e. CC )
+cX:dX,qX:eqeltrd  |- ( ph -> X e. CC )
+dY:3:a1i  |- ( ph -> Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) )
+qY:cB,c3,n3:divcld  |- ( ph -> ( ( ( C - B ) F ( A - B ) ) / 3 ) e. CC )
+cY:dY,qY:eqeltrd  |- ( ph -> Y e. CC )
+dZ:4:a1i  |- ( ph -> Z = ( ( ( A - C ) F ( B - C ) ) / 3 ) )
+qZ:cC,c3,n3:divcld  |- ( ph -> ( ( ( A - C ) F ( B - C ) ) / 3 ) e. CC )
+cZ:dZ,qZ:eqeltrd  |- ( ph -> Z e. CC )
+
+$( the composite coefficient is a complex number $)
+cia::ax-icn  |- _i e. CC
+ci:cia:a1i  |- ( ph -> _i e. CC )
+c2a::2cn  |- 2 e. CC
+c2:c2a:a1i  |- ( ph -> 2 e. CC )
+tX:c2,cX:mulcld  |- ( ph -> ( 2 x. X ) e. CC )
+iX:ci,tX:mulcld  |- ( ph -> ( _i x. ( 2 x. X ) ) e. CC )
+fX:iX:efcld  |- ( ph -> ( exp ` ( _i x. ( 2 x. X ) ) ) e. CC )
+tY:c2,cY:mulcld  |- ( ph -> ( 2 x. Y ) e. CC )
+iY:ci,tY:mulcld  |- ( ph -> ( _i x. ( 2 x. Y ) ) e. CC )
+fY:iY:efcld  |- ( ph -> ( exp ` ( _i x. ( 2 x. Y ) ) ) e. CC )
+tZ:c2,cZ:mulcld  |- ( ph -> ( 2 x. Z ) e. CC )
+iZ:ci,tZ:mulcld  |- ( ph -> ( _i x. ( 2 x. Z ) ) e. CC )
+fZ:iZ:efcld  |- ( ph -> ( exp ` ( _i x. ( 2 x. Z ) ) ) e. CC )
+jXY:fX,fY:mulcld  |- ( ph -> ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) e. CC )
+jc:jXY,fZ:mulcld  |- ( ph -> ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) e. CC )
+
+$( the ` J = ... ` hypothesis of `morlemj` and `morlemlin`, at ` J ` itself $)
+jd::eqid  |- ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) = ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) )
+
+$( it is a primitive cube root of unity $)
+mj:1,2,3,4,5,6,7,11,12,13,20,jd:morlemj  |- ( ph -> ( ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) = ( exp ` ( _i x. ( 2 x. ( _pi / 3 ) ) ) ) /\ ( ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) ^ 3 ) = 1 /\ ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) =/= 1 ) )
+j3:mj:simp2d  |- ( ph -> ( ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) ^ 3 ) = 1 )
+j1:mj:simp3d  |- ( ph -> ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) =/= 1 )
+
+$( the linear relation between the three trisector points $)
+ml:1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,jd:morlemlin  |- ( ph -> ( ( P + ( ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) x. Q ) ) + ( ( ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. ( 2 x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) ^ 2 ) x. R ) ) = 0 )
+
+$( that relation is equal pairwise distances $)
+qed:8,9,10,jc,j3,j1,ml:morlemeqi  |- ( ph -> ( ( abs ` ( R - P ) ) = ( abs ` ( P - Q ) ) /\ ( abs ` ( Q - R ) ) = ( abs ` ( P - Q ) ) ) )
+
+$)

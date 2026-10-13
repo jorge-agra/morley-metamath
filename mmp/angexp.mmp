@@ -1,0 +1,24 @@
+$( <MM> <PROOF_ASST> THEOREM=angexp  LOC_AFTER=?
+
+$d A x
+$d A y
+$d B x
+$d B y
+$d x y
+
+h1::angexp.1  |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` ( log ` ( y / x ) ) ) )
+h2::angexp.a  |- ( ph -> A e. CC )
+h3::angexp.an  |- ( ph -> A =/= 0 )
+h4::angexp.b  |- ( ph -> B e. CC )
+h5::angexp.bn  |- ( ph -> B =/= 0 )
+
+d1:4,2,3:divcld  |- ( ph -> ( B / A ) e. CC )
+d2:4,2,5,3:divne0d  |- ( ph -> ( B / A ) =/= 0 )
+a1:1,2,3,4,5:angvald  |- ( ph -> ( A F B ) = ( Im ` ( log ` ( B / A ) ) ) )
+a2:a1:oveq2d  |- ( ph -> ( _i x. ( A F B ) ) = ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) )
+a3:a2:fveq2d  |- ( ph -> ( exp ` ( _i x. ( A F B ) ) ) = ( exp ` ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) )
+a4:d1,d2:efiargd  |- ( ph -> ( exp ` ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) = ( ( B / A ) / ( abs ` ( B / A ) ) ) )
+
+qed:a3,a4:eqtrd  |- ( ph -> ( exp ` ( _i x. ( A F B ) ) ) = ( ( B / A ) / ( abs ` ( B / A ) ) ) )
+
+$)

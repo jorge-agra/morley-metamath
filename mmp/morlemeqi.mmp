@@ -1,0 +1,47 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemeqi  LOC_AFTER=?
+
+h1::morlemeqi.u  |- ( ph -> U e. CC )
+h2::morlemeqi.v  |- ( ph -> V e. CC )
+h3::morlemeqi.w  |- ( ph -> W e. CC )
+h4::morlemeqi.j  |- ( ph -> J e. CC )
+h5::morlemeqi.1  |- ( ph -> ( J ^ 3 ) = 1 )
+h6::morlemeqi.2  |- ( ph -> J =/= 1 )
+h7::morlemeqi.3  |- ( ph -> ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) ) = 0 )
+
+$( J is primitive, and has modulus one $)
+z1:4,5,6:morlemeqz  |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) = 0 )
+z2:4,5:morlemabs1  |- ( ph -> ( abs ` J ) = 1 )
+
+$( two sides, each J times the next, from the one identity and its rotation $)
+p1:1,2,3,4,5,z1,7:morlemeqd  |- ( ph -> ( V - W ) = ( J x. ( U - V ) ) )
+p2:1,2,3,4,5,7:morlemeqrot  |- ( ph -> ( ( W + ( J x. U ) ) + ( ( J ^ 2 ) x. V ) ) = 0 )
+p3:3,1,2,4,5,z1,p2:morlemeqd  |- ( ph -> ( U - V ) = ( J x. ( W - U ) ) )
+
+$( closures $)
+s1:1,2:subcld  |- ( ph -> ( U - V ) e. CC )
+s3:3,1:subcld  |- ( ph -> ( W - U ) e. CC )
+n1:s1:abscld  |- ( ph -> ( abs ` ( U - V ) ) e. RR )
+n2:n1:recnd  |- ( ph -> ( abs ` ( U - V ) ) e. CC )
+n3:s3:abscld  |- ( ph -> ( abs ` ( W - U ) ) e. RR )
+n4:n3:recnd  |- ( ph -> ( abs ` ( W - U ) ) e. CC )
+
+$( | V - W | = | U - V | $)
+g1:p1:fveq2d  |- ( ph -> ( abs ` ( V - W ) ) = ( abs ` ( J x. ( U - V ) ) ) )
+g2:4,s1:absmuld  |- ( ph -> ( abs ` ( J x. ( U - V ) ) ) = ( ( abs ` J ) x. ( abs ` ( U - V ) ) ) )
+g3:z2:oveq1d  |- ( ph -> ( ( abs ` J ) x. ( abs ` ( U - V ) ) ) = ( 1 x. ( abs ` ( U - V ) ) ) )
+g4:n2:mullidd  |- ( ph -> ( 1 x. ( abs ` ( U - V ) ) ) = ( abs ` ( U - V ) ) )
+g5:g1,g2,g3:3eqtrd  |- ( ph -> ( abs ` ( V - W ) ) = ( 1 x. ( abs ` ( U - V ) ) ) )
+g6:g5,g4:eqtrd  |- ( ph -> ( abs ` ( V - W ) ) = ( abs ` ( U - V ) ) )
+
+$( | W - U | = | U - V | , by the same step one rotation on $)
+m1:p3:fveq2d  |- ( ph -> ( abs ` ( U - V ) ) = ( abs ` ( J x. ( W - U ) ) ) )
+m2:4,s3:absmuld  |- ( ph -> ( abs ` ( J x. ( W - U ) ) ) = ( ( abs ` J ) x. ( abs ` ( W - U ) ) ) )
+m3:z2:oveq1d  |- ( ph -> ( ( abs ` J ) x. ( abs ` ( W - U ) ) ) = ( 1 x. ( abs ` ( W - U ) ) ) )
+m4:n4:mullidd  |- ( ph -> ( 1 x. ( abs ` ( W - U ) ) ) = ( abs ` ( W - U ) ) )
+m5:m1,m2,m3:3eqtrd  |- ( ph -> ( abs ` ( U - V ) ) = ( 1 x. ( abs ` ( W - U ) ) ) )
+m6:m5,m4:eqtrd  |- ( ph -> ( abs ` ( U - V ) ) = ( abs ` ( W - U ) ) )
+m7:m6:eqcomd  |- ( ph -> ( abs ` ( W - U ) ) = ( abs ` ( U - V ) ) )
+
+qed:m7,g6:jca  |- ( ph -> ( ( abs ` ( W - U ) ) = ( abs ` ( U - V ) ) /\ ( abs ` ( V - W ) ) = ( abs ` ( U - V ) ) ) )
+
+$)

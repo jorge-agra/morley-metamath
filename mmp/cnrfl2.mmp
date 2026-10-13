@@ -1,0 +1,78 @@
+$( <MM> <PROOF_ASST> THEOREM=cnrfl2  LOC_AFTER=?
+
+$d A x
+$d A y
+$d B x
+$d B y
+$d C x
+$d C y
+$d x y
+
+h1::cnrfl2.1  |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` ( log ` ( y / x ) ) ) )
+h2::cnrfl2.a  |- ( ph -> A e. CC )
+h3::cnrfl2.b  |- ( ph -> B e. CC )
+h4::cnrfl2.c  |- ( ph -> C e. CC )
+h5::cnrfl2.z  |- ( ph -> Z e. CC )
+h6::cnrfl2.bn  |- ( ph -> B =/= A )
+h7::cnrfl2.cn  |- ( ph -> C =/= A )
+h8::cnrfl2.d  |- D = ( ( B - A ) / ( * ` ( B - A ) ) )
+h9::cnrfl2.e  |- E = ( ( C - A ) / ( * ` ( C - A ) ) )
+
+cU:3,2:subcld  |- ( ph -> ( B - A ) e. CC )
+nU:3,2,6:subne0d  |- ( ph -> ( B - A ) =/= 0 )
+cCU:cU:cjcld  |- ( ph -> ( * ` ( B - A ) ) e. CC )
+nCU:cU,nU:cjne0d  |- ( ph -> ( * ` ( B - A ) ) =/= 0 )
+cV:4,2:subcld  |- ( ph -> ( C - A ) e. CC )
+nV:4,2,7:subne0d  |- ( ph -> ( C - A ) =/= 0 )
+cCV:cV:cjcld  |- ( ph -> ( * ` ( C - A ) ) e. CC )
+nCV:cV,nV:cjne0d  |- ( ph -> ( * ` ( C - A ) ) =/= 0 )
+dD0:8:a1i  |- ( ph -> D = ( ( B - A ) / ( * ` ( B - A ) ) ) )
+dE0:9:a1i  |- ( ph -> E = ( ( C - A ) / ( * ` ( C - A ) ) ) )
+cQD:cU,cCU,nCU:divcld  |- ( ph -> ( ( B - A ) / ( * ` ( B - A ) ) ) e. CC )
+cQE:cV,cCV,nCV:divcld  |- ( ph -> ( ( C - A ) / ( * ` ( C - A ) ) ) e. CC )
+cD:dD0,cQD:eqeltrd  |- ( ph -> D e. CC )
+cE:dE0,cQE:eqeltrd  |- ( ph -> E e. CC )
+cCD:cD:cjcld  |- ( ph -> ( * ` D ) e. CC )
+cZA:5,2:subcld  |- ( ph -> ( Z - A ) e. CC )
+cCZA:cZA:cjcld  |- ( ph -> ( * ` ( Z - A ) ) e. CC )
+cX:cD,cCZA:mulcld  |- ( ph -> ( D x. ( * ` ( Z - A ) ) ) e. CC )
+
+$( unwinding the two reflections into one coefficient $)
+i1:2,cX:pncan2d  |- ( ph -> ( ( A + ( D x. ( * ` ( Z - A ) ) ) ) - A ) = ( D x. ( * ` ( Z - A ) ) ) )
+i2:i1:fveq2d  |- ( ph -> ( * ` ( ( A + ( D x. ( * ` ( Z - A ) ) ) ) - A ) ) = ( * ` ( D x. ( * ` ( Z - A ) ) ) ) )
+i3:cD,cCZA:cjmuld  |- ( ph -> ( * ` ( D x. ( * ` ( Z - A ) ) ) ) = ( ( * ` D ) x. ( * ` ( * ` ( Z - A ) ) ) ) )
+i4:cZA:cjcjd  |- ( ph -> ( * ` ( * ` ( Z - A ) ) ) = ( Z - A ) )
+i5:i4:oveq2d  |- ( ph -> ( ( * ` D ) x. ( * ` ( * ` ( Z - A ) ) ) ) = ( ( * ` D ) x. ( Z - A ) ) )
+i6:i2,i3,i5:3eqtrd  |- ( ph -> ( * ` ( ( A + ( D x. ( * ` ( Z - A ) ) ) ) - A ) ) = ( ( * ` D ) x. ( Z - A ) ) )
+i7:i6:oveq2d  |- ( ph -> ( E x. ( * ` ( ( A + ( D x. ( * ` ( Z - A ) ) ) ) - A ) ) ) = ( E x. ( ( * ` D ) x. ( Z - A ) ) ) )
+i8:cE,cCD,cZA:mulassd  |- ( ph -> ( ( E x. ( * ` D ) ) x. ( Z - A ) ) = ( E x. ( ( * ` D ) x. ( Z - A ) ) ) )
+i9:i8:eqcomd  |- ( ph -> ( E x. ( ( * ` D ) x. ( Z - A ) ) ) = ( ( E x. ( * ` D ) ) x. ( Z - A ) ) )
+i10:i7,i9:eqtrd  |- ( ph -> ( E x. ( * ` ( ( A + ( D x. ( * ` ( Z - A ) ) ) ) - A ) ) ) = ( ( E x. ( * ` D ) ) x. ( Z - A ) ) )
+
+$( the conjugate of the first coefficient $)
+e1:cU,cCU,nCU:cjdivd  |- ( ph -> ( * ` ( ( B - A ) / ( * ` ( B - A ) ) ) ) = ( ( * ` ( B - A ) ) / ( * ` ( * ` ( B - A ) ) ) ) )
+e2:cU:cjcjd  |- ( ph -> ( * ` ( * ` ( B - A ) ) ) = ( B - A ) )
+e3:e2:oveq2d  |- ( ph -> ( ( * ` ( B - A ) ) / ( * ` ( * ` ( B - A ) ) ) ) = ( ( * ` ( B - A ) ) / ( B - A ) ) )
+e4:dD0:fveq2d  |- ( ph -> ( * ` D ) = ( * ` ( ( B - A ) / ( * ` ( B - A ) ) ) ) )
+e5:e4,e1,e3:3eqtrd  |- ( ph -> ( * ` D ) = ( ( * ` ( B - A ) ) / ( B - A ) ) )
+
+$( the composite coefficient is the doubled-angle rotation $)
+f1:dE0,e5:oveq12d  |- ( ph -> ( E x. ( * ` D ) ) = ( ( ( C - A ) / ( * ` ( C - A ) ) ) x. ( ( * ` ( B - A ) ) / ( B - A ) ) ) )
+f2:cV,cCV,cCU,cU,nCV,nU:divmuldivd  |- ( ph -> ( ( ( C - A ) / ( * ` ( C - A ) ) ) x. ( ( * ` ( B - A ) ) / ( B - A ) ) ) = ( ( ( C - A ) x. ( * ` ( B - A ) ) ) / ( ( * ` ( C - A ) ) x. ( B - A ) ) ) )
+f3:cCV,cU:mulcomd  |- ( ph -> ( ( * ` ( C - A ) ) x. ( B - A ) ) = ( ( B - A ) x. ( * ` ( C - A ) ) ) )
+f4:f3:oveq2d  |- ( ph -> ( ( ( C - A ) x. ( * ` ( B - A ) ) ) / ( ( * ` ( C - A ) ) x. ( B - A ) ) ) = ( ( ( C - A ) x. ( * ` ( B - A ) ) ) / ( ( B - A ) x. ( * ` ( C - A ) ) ) ) )
+f5:f1,f2,f4:3eqtrd  |- ( ph -> ( E x. ( * ` D ) ) = ( ( ( C - A ) x. ( * ` ( B - A ) ) ) / ( ( B - A ) x. ( * ` ( C - A ) ) ) ) )
+
+g1:1,cU,nU,cV,nV:ang2exp  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( C - A ) ) ) ) ) = ( ( ( C - A ) / ( B - A ) ) / ( * ` ( ( C - A ) / ( B - A ) ) ) ) )
+g2:cV,cU,nU:cjdivd  |- ( ph -> ( * ` ( ( C - A ) / ( B - A ) ) ) = ( ( * ` ( C - A ) ) / ( * ` ( B - A ) ) ) )
+g3:g2:oveq2d  |- ( ph -> ( ( ( C - A ) / ( B - A ) ) / ( * ` ( ( C - A ) / ( B - A ) ) ) ) = ( ( ( C - A ) / ( B - A ) ) / ( ( * ` ( C - A ) ) / ( * ` ( B - A ) ) ) ) )
+g4:cV,cU,cCV,cCU,nU,nCU,nCV:divdivdivd  |- ( ph -> ( ( ( C - A ) / ( B - A ) ) / ( ( * ` ( C - A ) ) / ( * ` ( B - A ) ) ) ) = ( ( ( C - A ) x. ( * ` ( B - A ) ) ) / ( ( B - A ) x. ( * ` ( C - A ) ) ) ) )
+g5:g1,g3,g4:3eqtrd  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( C - A ) ) ) ) ) = ( ( ( C - A ) x. ( * ` ( B - A ) ) ) / ( ( B - A ) x. ( * ` ( C - A ) ) ) ) )
+g6:g5:eqcomd  |- ( ph -> ( ( ( C - A ) x. ( * ` ( B - A ) ) ) / ( ( B - A ) x. ( * ` ( C - A ) ) ) ) = ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( C - A ) ) ) ) ) )
+g7:f5,g6:eqtrd  |- ( ph -> ( E x. ( * ` D ) ) = ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( C - A ) ) ) ) ) )
+g8:g7:oveq1d  |- ( ph -> ( ( E x. ( * ` D ) ) x. ( Z - A ) ) = ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( C - A ) ) ) ) ) x. ( Z - A ) ) )
+
+k10:i10,g8:eqtrd  |- ( ph -> ( E x. ( * ` ( ( A + ( D x. ( * ` ( Z - A ) ) ) ) - A ) ) ) = ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( C - A ) ) ) ) ) x. ( Z - A ) ) )
+qed:k10:oveq2d  |- ( ph -> ( A + ( E x. ( * ` ( ( A + ( D x. ( * ` ( Z - A ) ) ) ) - A ) ) ) ) = ( A + ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( C - A ) ) ) ) ) x. ( Z - A ) ) ) )
+
+$)

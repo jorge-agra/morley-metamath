@@ -1,0 +1,112 @@
+$( <MM> <PROOF_ASST> THEOREM=sin3tprod  LOC_AFTER=?
+
+$( closures $)
+i1::id  |- ( A e. CC -> A e. CC )
+cpa:ac1,ac2,ac3:divcli  |- ( _pi / 3 ) e. CC
+ac1::picn  |- _pi e. CC
+ac2::3cn  |- 3 e. CC
+ac3::3ne0  |- 3 =/= 0
+cp:cpa:a1i  |- ( A e. CC -> ( _pi / 3 ) e. CC )
+s1:i1:sincld  |- ( A e. CC -> ( sin ` A ) e. CC )
+s2a:cp,i1:addcld  |- ( A e. CC -> ( ( _pi / 3 ) + A ) e. CC )
+s2:s2a:sincld  |- ( A e. CC -> ( sin ` ( ( _pi / 3 ) + A ) ) e. CC )
+s3a:cp,i1:subcld  |- ( A e. CC -> ( ( _pi / 3 ) - A ) e. CC )
+s3:s3a:sincld  |- ( A e. CC -> ( sin ` ( ( _pi / 3 ) - A ) ) e. CC )
+n1:s1:sqcld  |- ( A e. CC -> ( ( sin ` A ) ^ 2 ) e. CC )
+n3:ac4,ac6:expcld  |- ( A e. CC -> ( ( sin ` A ) ^ 3 ) e. CC )
+ac4::sincl  |- ( A e. CC -> ( sin ` A ) e. CC )
+ac6:ac5:a1i  |- ( A e. CC -> 3 e. NN0 )
+ac5::3nn0  |- 3 e. NN0
+c4:ac7,ac8:mp1i  |- ( A e. CC -> 4 e. CC )
+ac7::4nn0  |- 4 e. NN0
+ac8::nn0cn  |- ( 4 e. NN0 -> 4 e. CC )
+c3:ac2:a1i  |- ( A e. CC -> 3 e. CC )
+cqa:ac2,ac10,ac14:divcli  |- ( 3 / 4 ) e. CC
+ac10::4cn  |- 4 e. CC
+ac14::4ne0  |- 4 =/= 0
+cq:cqa:a1i  |- ( A e. CC -> ( 3 / 4 ) e. CC )
+c4n0:ac14:a1i  |- ( A e. CC -> 4 =/= 0 )
+
+$( the product of the two shifted sines $)
+e1a::sinaddsub  |- ( ( ( _pi / 3 ) e. CC /\ A e. CC ) -> ( ( sin ` ( ( _pi / 3 ) + A ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) = ( ( ( sin ` ( _pi / 3 ) ) ^ 2 ) - ( ( sin ` A ) ^ 2 ) ) )
+e1:cp,i1,e1a:syl2anc  |- ( A e. CC -> ( ( sin ` ( ( _pi / 3 ) + A ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) = ( ( ( sin ` ( _pi / 3 ) ) ^ 2 ) - ( ( sin ` A ) ^ 2 ) ) )
+e2:ac29,ac32,ac34:3eqtr3i  |- ( sin ` ( _pi / 3 ) ) = ( ( sqrt ` 3 ) / 2 )
+ac29:ac28:fveq2i  |- ( cos ` ( ( _pi / 2 ) - ( _pi / 3 ) ) ) = ( cos ` ( _pi / 6 ) )
+ac28:ac20,ac23,ac27:3eqtr4i  |- ( ( _pi / 2 ) - ( _pi / 3 ) ) = ( _pi / 6 )
+ac20:ac17,ac19:eqtr3i  |- ( ( _pi x. ( 1 / 2 ) ) - ( _pi x. ( 1 / 3 ) ) ) = ( _pi x. ( 1 / 6 ) )
+ac17:ac1,ac13,ac16:subdii  |- ( _pi x. ( ( 1 / 2 ) - ( 1 / 3 ) ) ) = ( ( _pi x. ( 1 / 2 ) ) - ( _pi x. ( 1 / 3 ) ) )
+ac13:ac11,ac12:reccli  |- ( 1 / 2 ) e. CC
+ac11::2cn  |- 2 e. CC
+ac12::2ne0  |- 2 =/= 0
+ac16:ac2,ac3:reccli  |- ( 1 / 3 ) e. CC
+ac19:ac18:oveq2i  |- ( _pi x. ( ( 1 / 2 ) - ( 1 / 3 ) ) ) = ( _pi x. ( 1 / 6 ) )
+ac18::halfthird  |- ( ( 1 / 2 ) - ( 1 / 3 ) ) = ( 1 / 6 )
+ac23:ac21,ac22:oveq12i  |- ( ( _pi / 2 ) - ( _pi / 3 ) ) = ( ( _pi x. ( 1 / 2 ) ) - ( _pi x. ( 1 / 3 ) ) )
+ac21:ac1,ac11,ac12:divreci  |- ( _pi / 2 ) = ( _pi x. ( 1 / 2 ) )
+ac22:ac1,ac2,ac3:divreci  |- ( _pi / 3 ) = ( _pi x. ( 1 / 3 ) )
+ac27:ac1,ac24,ac26:divreci  |- ( _pi / 6 ) = ( _pi x. ( 1 / 6 ) )
+ac24::6cn  |- 6 e. CC
+ac26:ac25:nnne0i  |- 6 =/= 0
+ac25::6nn  |- 6 e. NN
+ac32:cpa,ac31:ax-mp  |- ( cos ` ( ( _pi / 2 ) - ( _pi / 3 ) ) ) = ( sin ` ( _pi / 3 ) )
+ac31::coshalfpim  |- ( ( _pi / 3 ) e. CC -> ( cos ` ( ( _pi / 2 ) - ( _pi / 3 ) ) ) = ( sin ` ( _pi / 3 ) ) )
+ac34:ac33:simpri  |- ( cos ` ( _pi / 6 ) ) = ( ( sqrt ` 3 ) / 2 )
+ac33::sincos6thpi  |- ( ( sin ` ( _pi / 6 ) ) = ( 1 / 2 ) /\ ( cos ` ( _pi / 6 ) ) = ( ( sqrt ` 3 ) / 2 ) )
+e3:ac38,ac39:ax-mp  |- ( ( sqrt ` 3 ) ^ 2 ) = 3
+ac38:ac35,ac36,ac37:ltleii  |- 0 <_ 3
+ac35::0re  |- 0 e. RR
+ac36::3re  |- 3 e. RR
+ac37::3pos  |- 0 < 3
+ac39:ac36:sqsqrti  |- ( 0 <_ 3 -> ( ( sqrt ` 3 ) ^ 2 ) = 3 )
+e4a:e2:oveq1i  |- ( ( sin ` ( _pi / 3 ) ) ^ 2 ) = ( ( ( sqrt ` 3 ) / 2 ) ^ 2 )
+e4b:ac50,ac11,ac12:sqdivi  |- ( ( ( sqrt ` 3 ) / 2 ) ^ 2 ) = ( ( ( sqrt ` 3 ) ^ 2 ) / ( 2 ^ 2 ) )
+ac50:ac49:recni  |- ( sqrt ` 3 ) e. CC
+ac49:ac36,ac37:sqrtpclii  |- ( sqrt ` 3 ) e. RR
+e4c:e3:oveq1i  |- ( ( ( sqrt ` 3 ) ^ 2 ) / ( 2 ^ 2 ) ) = ( 3 / ( 2 ^ 2 ) )
+e4d::sq2  |- ( 2 ^ 2 ) = 4
+e4e:e4d:oveq2i  |- ( 3 / ( 2 ^ 2 ) ) = ( 3 / 4 )
+e4f:e4a,e4b:eqtri  |- ( ( sin ` ( _pi / 3 ) ) ^ 2 ) = ( ( ( sqrt ` 3 ) ^ 2 ) / ( 2 ^ 2 ) )
+e4:e4f,e4c,e4e:3eqtri  |- ( ( sin ` ( _pi / 3 ) ) ^ 2 ) = ( 3 / 4 )
+e5:e4:a1i  |- ( A e. CC -> ( ( sin ` ( _pi / 3 ) ) ^ 2 ) = ( 3 / 4 ) )
+e6:e5:oveq1d  |- ( A e. CC -> ( ( ( sin ` ( _pi / 3 ) ) ^ 2 ) - ( ( sin ` A ) ^ 2 ) ) = ( ( 3 / 4 ) - ( ( sin ` A ) ^ 2 ) ) )
+e7:e1,e6:eqtrd  |- ( A e. CC -> ( ( sin ` ( ( _pi / 3 ) + A ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) = ( ( 3 / 4 ) - ( ( sin ` A ) ^ 2 ) ) )
+
+$( reassociate the triple product and substitute $)
+f1:s1,s2,s3:mulassd  |- ( A e. CC -> ( ( ( sin ` A ) x. ( sin ` ( ( _pi / 3 ) + A ) ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) = ( ( sin ` A ) x. ( ( sin ` ( ( _pi / 3 ) + A ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) ) )
+f2:e7:oveq2d  |- ( A e. CC -> ( ( sin ` A ) x. ( ( sin ` ( ( _pi / 3 ) + A ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) ) = ( ( sin ` A ) x. ( ( 3 / 4 ) - ( ( sin ` A ) ^ 2 ) ) ) )
+f3:f1,f2:eqtrd  |- ( A e. CC -> ( ( ( sin ` A ) x. ( sin ` ( ( _pi / 3 ) + A ) ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) = ( ( sin ` A ) x. ( ( 3 / 4 ) - ( ( sin ` A ) ^ 2 ) ) ) )
+f4:f3:oveq2d  |- ( A e. CC -> ( 4 x. ( ( ( sin ` A ) x. ( sin ` ( ( _pi / 3 ) + A ) ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) ) = ( 4 x. ( ( sin ` A ) x. ( ( 3 / 4 ) - ( ( sin ` A ) ^ 2 ) ) ) ) )
+
+$( the polynomial form $)
+g1:s1,cq,n1:subdid  |- ( A e. CC -> ( ( sin ` A ) x. ( ( 3 / 4 ) - ( ( sin ` A ) ^ 2 ) ) ) = ( ( ( sin ` A ) x. ( 3 / 4 ) ) - ( ( sin ` A ) x. ( ( sin ` A ) ^ 2 ) ) ) )
+g2:g1:oveq2d  |- ( A e. CC -> ( 4 x. ( ( sin ` A ) x. ( ( 3 / 4 ) - ( ( sin ` A ) ^ 2 ) ) ) ) = ( 4 x. ( ( ( sin ` A ) x. ( 3 / 4 ) ) - ( ( sin ` A ) x. ( ( sin ` A ) ^ 2 ) ) ) ) )
+g3a:s1,cq:mulcld  |- ( A e. CC -> ( ( sin ` A ) x. ( 3 / 4 ) ) e. CC )
+g3b:s1,n1:mulcld  |- ( A e. CC -> ( ( sin ` A ) x. ( ( sin ` A ) ^ 2 ) ) e. CC )
+g3:c4,g3a,g3b:subdid  |- ( A e. CC -> ( 4 x. ( ( ( sin ` A ) x. ( 3 / 4 ) ) - ( ( sin ` A ) x. ( ( sin ` A ) ^ 2 ) ) ) ) = ( ( 4 x. ( ( sin ` A ) x. ( 3 / 4 ) ) ) - ( 4 x. ( ( sin ` A ) x. ( ( sin ` A ) ^ 2 ) ) ) ) )
+w1a:s1,c3,c4,c4n0:divassd  |- ( A e. CC -> ( ( ( sin ` A ) x. 3 ) / 4 ) = ( ( sin ` A ) x. ( 3 / 4 ) ) )
+w1b:s1,c3:mulcld  |- ( A e. CC -> ( ( sin ` A ) x. 3 ) e. CC )
+w1c:w1b,c4,c4n0:divcan2d  |- ( A e. CC -> ( 4 x. ( ( ( sin ` A ) x. 3 ) / 4 ) ) = ( ( sin ` A ) x. 3 ) )
+w1d:w1a:oveq2d  |- ( A e. CC -> ( 4 x. ( ( ( sin ` A ) x. 3 ) / 4 ) ) = ( 4 x. ( ( sin ` A ) x. ( 3 / 4 ) ) ) )
+w1e:s1,c3:mulcomd  |- ( A e. CC -> ( ( sin ` A ) x. 3 ) = ( 3 x. ( sin ` A ) ) )
+w1f:w1d,w1c:eqtr3d  |- ( A e. CC -> ( 4 x. ( ( sin ` A ) x. ( 3 / 4 ) ) ) = ( ( sin ` A ) x. 3 ) )
+w1:w1f,w1e:eqtrd  |- ( A e. CC -> ( 4 x. ( ( sin ` A ) x. ( 3 / 4 ) ) ) = ( 3 x. ( sin ` A ) ) )
+w2:ac42,ac46,ac48:3eqtrrd  |- ( A e. CC -> ( ( sin ` A ) x. ( ( sin ` A ) ^ 2 ) ) = ( ( sin ` A ) ^ 3 ) )
+ac42:ac41:oveq2d  |- ( A e. CC -> ( ( sin ` A ) ^ 3 ) = ( ( sin ` A ) ^ ( 2 + 1 ) ) )
+ac41:ac40:a1i  |- ( A e. CC -> 3 = ( 2 + 1 ) )
+ac40::df-3  |- 3 = ( 2 + 1 )
+ac46:ac4,ac45:expp1d  |- ( A e. CC -> ( ( sin ` A ) ^ ( 2 + 1 ) ) = ( ( ( sin ` A ) ^ 2 ) x. ( sin ` A ) ) )
+ac45:ac44:a1i  |- ( A e. CC -> 2 e. NN0 )
+ac44::2nn0  |- 2 e. NN0
+ac48:ac47,ac4:mulcomd  |- ( A e. CC -> ( ( ( sin ` A ) ^ 2 ) x. ( sin ` A ) ) = ( ( sin ` A ) x. ( ( sin ` A ) ^ 2 ) ) )
+ac47:ac4:sqcld  |- ( A e. CC -> ( ( sin ` A ) ^ 2 ) e. CC )
+w3:w2:oveq2d  |- ( A e. CC -> ( 4 x. ( ( sin ` A ) x. ( ( sin ` A ) ^ 2 ) ) ) = ( 4 x. ( ( sin ` A ) ^ 3 ) ) )
+w4:w1,w3:oveq12d  |- ( A e. CC -> ( ( 4 x. ( ( sin ` A ) x. ( 3 / 4 ) ) ) - ( 4 x. ( ( sin ` A ) x. ( ( sin ` A ) ^ 2 ) ) ) ) = ( ( 3 x. ( sin ` A ) ) - ( 4 x. ( ( sin ` A ) ^ 3 ) ) ) )
+
+$( set.mm's sin3t closes it $)
+k1::sin3t  |- ( A e. CC -> ( sin ` ( 3 x. A ) ) = ( ( 3 x. ( sin ` A ) ) - ( 4 x. ( ( sin ` A ) ^ 3 ) ) ) )
+k2:g2,g3,w4:3eqtrd  |- ( A e. CC -> ( 4 x. ( ( sin ` A ) x. ( ( 3 / 4 ) - ( ( sin ` A ) ^ 2 ) ) ) ) = ( ( 3 x. ( sin ` A ) ) - ( 4 x. ( ( sin ` A ) ^ 3 ) ) ) )
+k3:f4,k2:eqtrd  |- ( A e. CC -> ( 4 x. ( ( ( sin ` A ) x. ( sin ` ( ( _pi / 3 ) + A ) ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) ) = ( ( 3 x. ( sin ` A ) ) - ( 4 x. ( ( sin ` A ) ^ 3 ) ) ) )
+
+qed:k1,k3:eqtr4d  |- ( A e. CC -> ( sin ` ( 3 x. A ) ) = ( 4 x. ( ( ( sin ` A ) x. ( sin ` ( ( _pi / 3 ) + A ) ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) ) )
+
+$)

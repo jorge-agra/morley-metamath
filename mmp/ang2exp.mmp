@@ -1,0 +1,58 @@
+$( <MM> <PROOF_ASST> THEOREM=ang2exp  LOC_AFTER=?
+
+$d A x
+$d A y
+$d B x
+$d B y
+$d x y
+
+h1::ang2exp.1  |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` ( log ` ( y / x ) ) ) )
+h2::ang2exp.a  |- ( ph -> A e. CC )
+h3::ang2exp.an  |- ( ph -> A =/= 0 )
+h4::ang2exp.b  |- ( ph -> B e. CC )
+h5::ang2exp.bn  |- ( ph -> B =/= 0 )
+
+cW:4,2,3:divcld  |- ( ph -> ( B / A ) e. CC )
+nW:4,2,5,3:divne0d  |- ( ph -> ( B / A ) =/= 0 )
+cCW:cW:cjcld  |- ( ph -> ( * ` ( B / A ) ) e. CC )
+nCW:cW,nW:cjne0d  |- ( ph -> ( * ` ( B / A ) ) =/= 0 )
+cAW:cW:abscld  |- ( ph -> ( abs ` ( B / A ) ) e. RR )
+cAWc:cAW:recnd  |- ( ph -> ( abs ` ( B / A ) ) e. CC )
+nAW:cW,nW:absne0d  |- ( ph -> ( abs ` ( B / A ) ) =/= 0 )
+cL:cW,nW:logcld  |- ( ph -> ( log ` ( B / A ) ) e. CC )
+cT:cL:imcld  |- ( ph -> ( Im ` ( log ` ( B / A ) ) ) e. RR )
+cTc:cT:recnd  |- ( ph -> ( Im ` ( log ` ( B / A ) ) ) e. CC )
+cI0::ax-icn  |- _i e. CC
+cI:cI0:a1i  |- ( ph -> _i e. CC )
+c20::2cn  |- 2 e. CC
+c2:c20:a1i  |- ( ph -> 2 e. CC )
+
+a1:1,2,3,4,5:angvald  |- ( ph -> ( A F B ) = ( Im ` ( log ` ( B / A ) ) ) )
+a2:a1:oveq2d  |- ( ph -> ( 2 x. ( A F B ) ) = ( 2 x. ( Im ` ( log ` ( B / A ) ) ) ) )
+a3:a2:oveq2d  |- ( ph -> ( _i x. ( 2 x. ( A F B ) ) ) = ( _i x. ( 2 x. ( Im ` ( log ` ( B / A ) ) ) ) ) )
+a4:a3:fveq2d  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) ) = ( exp ` ( _i x. ( 2 x. ( Im ` ( log ` ( B / A ) ) ) ) ) ) )
+
+b1:cI,c2,cTc:mul12d  |- ( ph -> ( _i x. ( 2 x. ( Im ` ( log ` ( B / A ) ) ) ) ) = ( 2 x. ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) )
+b2:b1:fveq2d  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( Im ` ( log ` ( B / A ) ) ) ) ) ) = ( exp ` ( 2 x. ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) ) )
+cIT:cI,cTc:mulcld  |- ( ph -> ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) e. CC )
+b30::2z  |- 2 e. ZZ
+b31:b30:a1i  |- ( ph -> 2 e. ZZ )
+b3::efexp  |- ( ( ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) e. CC /\ 2 e. ZZ ) -> ( exp ` ( 2 x. ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) ) = ( ( exp ` ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) ^ 2 ) )
+b4:cIT,b31,b3:syl2anc  |- ( ph -> ( exp ` ( 2 x. ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) ) = ( ( exp ` ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) ^ 2 ) )
+
+c1::efiarg  |- ( ( ( B / A ) e. CC /\ ( B / A ) =/= 0 ) -> ( exp ` ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) = ( ( B / A ) / ( abs ` ( B / A ) ) ) )
+c2a:cW,nW,c1:syl2anc  |- ( ph -> ( exp ` ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) = ( ( B / A ) / ( abs ` ( B / A ) ) ) )
+c3:c2a:oveq1d  |- ( ph -> ( ( exp ` ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) ^ 2 ) = ( ( ( B / A ) / ( abs ` ( B / A ) ) ) ^ 2 ) )
+c4:cW,cAWc,nAW:sqdivd  |- ( ph -> ( ( ( B / A ) / ( abs ` ( B / A ) ) ) ^ 2 ) = ( ( ( B / A ) ^ 2 ) / ( ( abs ` ( B / A ) ) ^ 2 ) ) )
+c5:cW:sqvald  |- ( ph -> ( ( B / A ) ^ 2 ) = ( ( B / A ) x. ( B / A ) ) )
+c6:c5:oveq1d  |- ( ph -> ( ( ( B / A ) ^ 2 ) / ( ( abs ` ( B / A ) ) ^ 2 ) ) = ( ( ( B / A ) x. ( B / A ) ) / ( ( abs ` ( B / A ) ) ^ 2 ) ) )
+c7:cW:absvalsqd  |- ( ph -> ( ( abs ` ( B / A ) ) ^ 2 ) = ( ( B / A ) x. ( * ` ( B / A ) ) ) )
+c8:c7:oveq2d  |- ( ph -> ( ( ( B / A ) x. ( B / A ) ) / ( ( abs ` ( B / A ) ) ^ 2 ) ) = ( ( ( B / A ) x. ( B / A ) ) / ( ( B / A ) x. ( * ` ( B / A ) ) ) ) )
+c9:cW,cCW,cW,nCW,nW:divcan5d  |- ( ph -> ( ( ( B / A ) x. ( B / A ) ) / ( ( B / A ) x. ( * ` ( B / A ) ) ) ) = ( ( B / A ) / ( * ` ( B / A ) ) ) )
+
+z1:a4,b2,b4:3eqtrd  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) ) = ( ( exp ` ( _i x. ( Im ` ( log ` ( B / A ) ) ) ) ) ^ 2 ) )
+z2:z1,c3,c4:3eqtrd  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) ) = ( ( ( B / A ) ^ 2 ) / ( ( abs ` ( B / A ) ) ^ 2 ) ) )
+z3:z2,c6,c8:3eqtrd  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) ) = ( ( ( B / A ) x. ( B / A ) ) / ( ( B / A ) x. ( * ` ( B / A ) ) ) ) )
+qed:z3,c9:eqtrd  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) ) = ( ( B / A ) / ( * ` ( B / A ) ) ) )
+
+$)

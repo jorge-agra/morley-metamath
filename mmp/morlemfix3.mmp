@@ -1,0 +1,55 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemfix3  LOC_AFTER=?
+
+$d A x
+$d A y
+$d B x
+$d B y
+$d C x
+$d C y
+$d P x
+$d P y
+$d Q x
+$d Q y
+$d R x
+$d R y
+$d x y
+
+h1::morlemfix3.f  |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` ( log ` ( y / x ) ) ) )
+h2::morlemfix3.a  |- ( ph -> A e. CC )
+h3::morlemfix3.b  |- ( ph -> B e. CC )
+h4::morlemfix3.c  |- ( ph -> C e. CC )
+h5::morlemfix3.p  |- ( ph -> P e. CC )
+h6::morlemfix3.q  |- ( ph -> Q e. CC )
+h7::morlemfix3.r  |- ( ph -> R e. CC )
+h8::morlemfix3.ab  |- ( ph -> A =/= B )
+h9::morlemfix3.bc  |- ( ph -> B =/= C )
+h10::morlemfix3.ca  |- ( ph -> C =/= A )
+h11::morlemfix3.ra  |- ( ph -> R =/= A )
+h12::morlemfix3.rb  |- ( ph -> R =/= B )
+h13::morlemfix3.pb  |- ( ph -> P =/= B )
+h14::morlemfix3.pc  |- ( ph -> P =/= C )
+h15::morlemfix3.qc  |- ( ph -> Q =/= C )
+h16::morlemfix3.qa  |- ( ph -> Q =/= A )
+h17::morlemfix3.1  |- ( ph -> ( ( B - A ) F ( R - A ) ) = X )
+h18::morlemfix3.2  |- ( ph -> ( ( Q - A ) F ( C - A ) ) = X )
+h19::morlemfix3.3  |- ( ph -> ( ( C - B ) F ( P - B ) ) = Y )
+h20::morlemfix3.4  |- ( ph -> ( ( R - B ) F ( A - B ) ) = Y )
+h21::morlemfix3.5  |- ( ph -> ( ( A - C ) F ( Q - C ) ) = Z )
+h22::morlemfix3.6  |- ( ph -> ( ( P - C ) F ( B - C ) ) = Z )
+
+nBA:8:necomd  |- ( ph -> B =/= A )
+nCB:9:necomd  |- ( ph -> C =/= B )
+nAC:10:necomd  |- ( ph -> A =/= C )
+
+$( the rotation about B by 2 Y followed by the rotation about A by 2 X fixes R $)
+i1:1,2,3,7,nBA,11,12,17,20:morlemfix  |- ( ph -> ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) ) = R )
+
+$( cyclically, about C by 2 Z then about B by 2 Y fixes P $)
+i2:1,3,4,5,nCB,13,14,19,22:morlemfix  |- ( ph -> ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( P - C ) ) ) - B ) ) ) = P )
+
+$( and about A by 2 X then about C by 2 Z fixes Q $)
+i3:1,4,2,6,nAC,15,16,21,18:morlemfix  |- ( ph -> ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( Q - A ) ) ) - C ) ) ) = Q )
+
+qed:i1,i2,i3:3jca  |- ( ph -> ( ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) ) = R /\ ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( P - C ) ) ) - B ) ) ) = P /\ ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( Q - A ) ) ) - C ) ) ) = Q ) )
+
+$)

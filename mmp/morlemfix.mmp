@@ -1,0 +1,90 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemfix  LOC_AFTER=?
+
+$d A x
+$d A y
+$d B x
+$d B y
+$d R x
+$d R y
+$d x y
+
+h1::morlemfix.f  |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` ( log ` ( y / x ) ) ) )
+h2::morlemfix.a  |- ( ph -> A e. CC )
+h3::morlemfix.b  |- ( ph -> B e. CC )
+h4::morlemfix.r  |- ( ph -> R e. CC )
+h5::morlemfix.ba  |- ( ph -> B =/= A )
+h6::morlemfix.ra  |- ( ph -> R =/= A )
+h7::morlemfix.rb  |- ( ph -> R =/= B )
+h8::morlemfix.1  |- ( ph -> ( ( B - A ) F ( R - A ) ) = X )
+h9::morlemfix.2  |- ( ph -> ( ( R - B ) F ( A - B ) ) = Y )
+
+nAB:5:necomd  |- ( ph -> A =/= B )
+
+$( the four reflection coefficients, as identities $)
+dU1::eqid  |- ( ( B - A ) / ( * ` ( B - A ) ) ) = ( ( B - A ) / ( * ` ( B - A ) ) )
+dV1::eqid  |- ( ( R - A ) / ( * ` ( R - A ) ) ) = ( ( R - A ) / ( * ` ( R - A ) ) )
+dU2::eqid  |- ( ( R - B ) / ( * ` ( R - B ) ) ) = ( ( R - B ) / ( * ` ( R - B ) ) )
+dV2::eqid  |- ( ( A - B ) / ( * ` ( A - B ) ) ) = ( ( A - B ) / ( * ` ( A - B ) ) )
+
+$( closures $)
+cRB:4,3:subcld  |- ( ph -> ( R - B ) e. CC )
+cCRB:cRB:cjcld  |- ( ph -> ( * ` ( R - B ) ) e. CC )
+cAB:2,3:subcld  |- ( ph -> ( A - B ) e. CC )
+nAB0:2,3,nAB:subne0d  |- ( ph -> ( A - B ) =/= 0 )
+cCAB:cAB:cjcld  |- ( ph -> ( * ` ( A - B ) ) e. CC )
+nCAB:cAB,nAB0:cjne0d  |- ( ph -> ( * ` ( A - B ) ) =/= 0 )
+cV2:cAB,cCAB,nCAB:divcld  |- ( ph -> ( ( A - B ) / ( * ` ( A - B ) ) ) e. CC )
+cM2:cV2,cCRB:mulcld  |- ( ph -> ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) e. CC )
+cW:3,cM2:addcld  |- ( ph -> ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) e. CC )
+
+$( PART A: the reflection of R across A B , written from B , is the image of R
+   under the rotation about B by 2 Y $)
+a1:3,4,7,dU2:cnrflfix  |- ( ph -> ( ( B + ( ( ( R - B ) / ( * ` ( R - B ) ) ) x. ( * ` ( B - B ) ) ) ) = B /\ ( B + ( ( ( R - B ) / ( * ` ( R - B ) ) ) x. ( * ` ( R - B ) ) ) ) = R ) )
+a2:a1:simprd  |- ( ph -> ( B + ( ( ( R - B ) / ( * ` ( R - B ) ) ) x. ( * ` ( R - B ) ) ) ) = R )
+a3:1,3,4,2,4,7,nAB,dU2,dV2:cnrfl2  |- ( ph -> ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( ( B + ( ( ( R - B ) / ( * ` ( R - B ) ) ) x. ( * ` ( R - B ) ) ) ) - B ) ) ) ) = ( B + ( ( exp ` ( _i x. ( 2 x. ( ( R - B ) F ( A - B ) ) ) ) ) x. ( R - B ) ) ) )
+a4:a2:oveq1d  |- ( ph -> ( ( B + ( ( ( R - B ) / ( * ` ( R - B ) ) ) x. ( * ` ( R - B ) ) ) ) - B ) = ( R - B ) )
+a5:a4:fveq2d  |- ( ph -> ( * ` ( ( B + ( ( ( R - B ) / ( * ` ( R - B ) ) ) x. ( * ` ( R - B ) ) ) ) - B ) ) = ( * ` ( R - B ) ) )
+a6:a5:oveq2d  |- ( ph -> ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( ( B + ( ( ( R - B ) / ( * ` ( R - B ) ) ) x. ( * ` ( R - B ) ) ) ) - B ) ) ) = ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) )
+a7:a6:oveq2d  |- ( ph -> ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( ( B + ( ( ( R - B ) / ( * ` ( R - B ) ) ) x. ( * ` ( R - B ) ) ) ) - B ) ) ) ) = ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) )
+a8:a7:eqcomd  |- ( ph -> ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) = ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( ( B + ( ( ( R - B ) / ( * ` ( R - B ) ) ) x. ( * ` ( R - B ) ) ) ) - B ) ) ) ) )
+a9:a8,a3:eqtrd  |- ( ph -> ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) = ( B + ( ( exp ` ( _i x. ( 2 x. ( ( R - B ) F ( A - B ) ) ) ) ) x. ( R - B ) ) ) )
+a10:9:oveq2d  |- ( ph -> ( 2 x. ( ( R - B ) F ( A - B ) ) ) = ( 2 x. Y ) )
+a11:a10:oveq2d  |- ( ph -> ( _i x. ( 2 x. ( ( R - B ) F ( A - B ) ) ) ) = ( _i x. ( 2 x. Y ) ) )
+a12:a11:fveq2d  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( ( R - B ) F ( A - B ) ) ) ) ) = ( exp ` ( _i x. ( 2 x. Y ) ) ) )
+a13:a12:oveq1d  |- ( ph -> ( ( exp ` ( _i x. ( 2 x. ( ( R - B ) F ( A - B ) ) ) ) ) x. ( R - B ) ) = ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) )
+a14:a13:oveq2d  |- ( ph -> ( B + ( ( exp ` ( _i x. ( 2 x. ( ( R - B ) F ( A - B ) ) ) ) ) x. ( R - B ) ) ) = ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) )
+uEq:a9,a14:eqtrd  |- ( ph -> ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) = ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) )
+
+$( PART B: that point is also the reflection of R across A B written from A ,
+   so reflecting it across A B again returns R $)
+b1:2,3,4,5,dU1,dV2:cnrflsw  |- ( ph -> ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) = ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( R - A ) ) ) ) )
+b2:2,3,4,5,dU1:cnrflinv  |- ( ph -> ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( R - A ) ) ) ) - A ) ) ) ) = R )
+b3:b1:oveq1d  |- ( ph -> ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) = ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( R - A ) ) ) ) - A ) )
+b4:b3:fveq2d  |- ( ph -> ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) = ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( R - A ) ) ) ) - A ) ) )
+b5:b4:oveq2d  |- ( ph -> ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) = ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( R - A ) ) ) ) - A ) ) ) )
+b6:b5:oveq2d  |- ( ph -> ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) ) = ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( R - A ) ) ) ) - A ) ) ) ) )
+b7:b6,b2:eqtrd  |- ( ph -> ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) ) = R )
+
+$( PART C: the outer rotation about A by 2 X , as two reflections $)
+c1:2,4,6,dV1:cnrflfix  |- ( ph -> ( ( A + ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( A - A ) ) ) ) = A /\ ( A + ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( R - A ) ) ) ) = R ) )
+c2:c1:simprd  |- ( ph -> ( A + ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( R - A ) ) ) ) = R )
+c3:1,2,3,4,cW,5,6,dU1,dV1:cnrfl2  |- ( ph -> ( A + ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) ) - A ) ) ) ) = ( A + ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( R - A ) ) ) ) ) x. ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) )
+c4:b7:oveq1d  |- ( ph -> ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) ) - A ) = ( R - A ) )
+c5:c4:fveq2d  |- ( ph -> ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) ) - A ) ) = ( * ` ( R - A ) ) )
+c6:c5:oveq2d  |- ( ph -> ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) ) - A ) ) ) = ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( R - A ) ) ) )
+c7:c6:oveq2d  |- ( ph -> ( A + ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) ) - A ) ) ) ) = ( A + ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( R - A ) ) ) ) )
+c8:c7,c2:eqtrd  |- ( ph -> ( A + ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) ) - A ) ) ) ) = R )
+c9:c3:eqcomd  |- ( ph -> ( A + ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( R - A ) ) ) ) ) x. ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) = ( A + ( ( ( R - A ) / ( * ` ( R - A ) ) ) x. ( * ` ( ( A + ( ( ( B - A ) / ( * ` ( B - A ) ) ) x. ( * ` ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) ) - A ) ) ) ) )
+c10:c9,c8:eqtrd  |- ( ph -> ( A + ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( R - A ) ) ) ) ) x. ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) = R )
+
+$( PART D: name the two rotations by their trisected angles $)
+d1:8:oveq2d  |- ( ph -> ( 2 x. ( ( B - A ) F ( R - A ) ) ) = ( 2 x. X ) )
+d2:d1:oveq2d  |- ( ph -> ( _i x. ( 2 x. ( ( B - A ) F ( R - A ) ) ) ) = ( _i x. ( 2 x. X ) ) )
+d3:d2:fveq2d  |- ( ph -> ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( R - A ) ) ) ) ) = ( exp ` ( _i x. ( 2 x. X ) ) ) )
+d4:uEq:oveq1d  |- ( ph -> ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) = ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) )
+d5:d3,d4:oveq12d  |- ( ph -> ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( R - A ) ) ) ) ) x. ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) = ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) )
+d6:d5:oveq2d  |- ( ph -> ( A + ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( R - A ) ) ) ) ) x. ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) = ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) ) )
+d7:d6:eqcomd  |- ( ph -> ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) ) = ( A + ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( R - A ) ) ) ) ) x. ( ( B + ( ( ( A - B ) / ( * ` ( A - B ) ) ) x. ( * ` ( R - B ) ) ) ) - A ) ) ) )
+qed:d7,c10:eqtrd  |- ( ph -> ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) ) = R )
+
+$)

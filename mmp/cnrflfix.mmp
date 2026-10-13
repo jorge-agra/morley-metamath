@@ -1,0 +1,37 @@
+$( <MM> <PROOF_ASST> THEOREM=cnrflfix  LOC_AFTER=?
+
+h1::cnrflfix.a  |- ( ph -> A e. CC )
+h2::cnrflfix.w  |- ( ph -> W e. CC )
+h3::cnrflfix.n  |- ( ph -> W =/= A )
+h4::cnrflfix.e  |- E = ( ( W - A ) / ( * ` ( W - A ) ) )
+
+cU:2,1:subcld  |- ( ph -> ( W - A ) e. CC )
+nU:2,1,3:subne0d  |- ( ph -> ( W - A ) =/= 0 )
+cCU:cU:cjcld  |- ( ph -> ( * ` ( W - A ) ) e. CC )
+nCU:cU,nU:cjne0d  |- ( ph -> ( * ` ( W - A ) ) =/= 0 )
+dE0:4:a1i  |- ( ph -> E = ( ( W - A ) / ( * ` ( W - A ) ) ) )
+cQ:cU,cCU,nCU:divcld  |- ( ph -> ( ( W - A ) / ( * ` ( W - A ) ) ) e. CC )
+cE:dE0,cQ:eqeltrd  |- ( ph -> E e. CC )
+
+p1a:1:subidd  |- ( ph -> ( A - A ) = 0 )
+p1b:p1a:fveq2d  |- ( ph -> ( * ` ( A - A ) ) = ( * ` 0 ) )
+p1c0::cj0  |- ( * ` 0 ) = 0
+p1c:p1c0:a1i  |- ( ph -> ( * ` 0 ) = 0 )
+p1d:p1b,p1c:eqtrd  |- ( ph -> ( * ` ( A - A ) ) = 0 )
+p1e:p1d:oveq2d  |- ( ph -> ( E x. ( * ` ( A - A ) ) ) = ( E x. 0 ) )
+p1f:cE:mul01d  |- ( ph -> ( E x. 0 ) = 0 )
+p1g:p1e,p1f:eqtrd  |- ( ph -> ( E x. ( * ` ( A - A ) ) ) = 0 )
+p1h:p1g:oveq2d  |- ( ph -> ( A + ( E x. ( * ` ( A - A ) ) ) ) = ( A + 0 ) )
+p1i:1:addridd  |- ( ph -> ( A + 0 ) = A )
+p1:p1h,p1i:eqtrd  |- ( ph -> ( A + ( E x. ( * ` ( A - A ) ) ) ) = A )
+
+q1a:cU,cCU,nCU:divcan1d  |- ( ph -> ( ( ( W - A ) / ( * ` ( W - A ) ) ) x. ( * ` ( W - A ) ) ) = ( W - A ) )
+q1b:dE0:oveq1d  |- ( ph -> ( E x. ( * ` ( W - A ) ) ) = ( ( ( W - A ) / ( * ` ( W - A ) ) ) x. ( * ` ( W - A ) ) ) )
+q1:q1b,q1a:eqtrd  |- ( ph -> ( E x. ( * ` ( W - A ) ) ) = ( W - A ) )
+q2:q1:oveq2d  |- ( ph -> ( A + ( E x. ( * ` ( W - A ) ) ) ) = ( A + ( W - A ) ) )
+q3:1,2:pncan3d  |- ( ph -> ( A + ( W - A ) ) = W )
+q:q2,q3:eqtrd  |- ( ph -> ( A + ( E x. ( * ` ( W - A ) ) ) ) = W )
+
+qed:p1,q:jca  |- ( ph -> ( ( A + ( E x. ( * ` ( A - A ) ) ) ) = A /\ ( A + ( E x. ( * ` ( W - A ) ) ) ) = W ) )
+
+$)

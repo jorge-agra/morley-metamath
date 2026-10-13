@@ -1,0 +1,23 @@
+$( <MM> <PROOF_ASST> THEOREM=morlemeqz  LOC_AFTER=?
+
+h1::morlemeqz.j  |- ( ph -> J e. CC )
+h2::morlemeqz.1  |- ( ph -> ( J ^ 3 ) = 1 )
+h3::morlemeqz.2  |- ( ph -> J =/= 1 )
+
+$( closures $)
+c1:1:1cnd  |- ( ph -> 1 e. CC )
+k2:1:sqcld  |- ( ph -> ( J ^ 2 ) e. CC )
+k3:k2,1:addcld  |- ( ph -> ( ( J ^ 2 ) + J ) e. CC )
+k4:k3,c1:addcld  |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) e. CC )
+s1:1,c1:subcld  |- ( ph -> ( J - 1 ) e. CC )
+
+$( J is a cube root, so the product vanishes; J =/= 1 kills the first factor $)
+m1:1,2:morlemfac1  |- ( ph -> ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) = 0 )
+n1:1,c1,3:subne0d  |- ( ph -> ( J - 1 ) =/= 0 )
+d1:k4,s1,n1:divcan3d  |- ( ph -> ( ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) / ( J - 1 ) ) = ( ( ( J ^ 2 ) + J ) + 1 ) )
+d2:m1:oveq1d  |- ( ph -> ( ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) / ( J - 1 ) ) = ( 0 / ( J - 1 ) ) )
+d3:s1,n1:div0d  |- ( ph -> ( 0 / ( J - 1 ) ) = 0 )
+d4:d2,d3:eqtrd  |- ( ph -> ( ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) / ( J - 1 ) ) = 0 )
+qed:d1,d4:eqtr3d  |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) = 0 )
+
+$)
