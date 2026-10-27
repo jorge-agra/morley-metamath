@@ -5,8 +5,9 @@ complex points `A`, `B`, and `C`, and supplied trisector intersections `P`,
 `Q`, and `R`. The conclusion is
 
 ```text
-|- ( ph -> ( ( abs ` ( R - P ) ) = ( abs ` ( P - Q ) )
-                       /\ ( abs ` ( Q - R ) ) = ( abs ` ( P - Q ) ) ) )
+|- ( ph
+        -> ( ( abs ` ( R - P ) ) = ( abs ` ( P - Q ) ) /\ ( abs ` ( Q - R ) )
+        = ( abs ` ( P - Q ) ) ) )
 ```
 
 ## Exact hypotheses
@@ -16,10 +17,11 @@ conditions from `morley.mm`. The conclusion above is proved under this frame.
 
 ```metamath
 ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d P x $.
-    $d P y $.  $d Q x $.  $d Q y $.  $d R x $.  $d R y $.  $d x y $.
-    morleyR2.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |->
-                      ( Im ` ( log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.  $d C x y $.  $d P x y $.  $d Q x y $.
+    $d R x y $.
+    morleyR2.f $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     morleyR2.x $e |- X = ( ( ( B - A ) F ( C - A ) ) / 3 ) $.
     morleyR2.y $e |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) $.
     morleyR2.z $e |- Z = ( ( ( A - C ) F ( B - C ) ) / 3 ) $.

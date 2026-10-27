@@ -1,4 +1,9 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemkb  LOC_AFTER=?
+$( An identity used by ~ morlemlinalg to collect the terms in ` B ` . Let ` E `
+   , ` D ` , ` G ` be complex numbers whose product ` J ` is a cube root of
+   unity other than ` 1 ` . Then a polynomial in ` E ` , ` D ` , ` G ` and ` J
+   ` with the factor ` ( 1 - D ) ` equals ` ( ( E ^ 3 ) x. ( ( D ^ 3 ) - 1 ) )
+   ` . $)
 
 h1::morlemkb.e  |- ( ph -> E e. CC )
 h2::morlemkb.d  |- ( ph -> D e. CC )
@@ -53,7 +58,7 @@ pJ2E:f1,f2,e5:3eqtrd  |- ( ph -> ( ( ( J ^ 2 ) x. E ) x. ( D x. G ) ) = 1 )
 
 $( THE COLLECTION IDENTITY for the B coefficient $)
 l1:cd1,cJ2E:mulcomd  |- ( ph -> ( ( 1 - ( D x. G ) ) x. ( ( J ^ 2 ) x. E ) ) = ( ( ( J ^ 2 ) x. E ) x. ( 1 - ( D x. G ) ) ) )
-l2:cJ2E,cDG,pJ2E:morlemone  |- ( ph -> ( ( ( J ^ 2 ) x. E ) x. ( 1 - ( D x. G ) ) ) = ( ( ( J ^ 2 ) x. E ) - 1 ) )
+l2:cJ2E,cDG,pJ2E:mul1subeqd  |- ( ph -> ( ( ( J ^ 2 ) x. E ) x. ( 1 - ( D x. G ) ) ) = ( ( ( J ^ 2 ) x. E ) - 1 ) )
 l3:l1,l2:eqtrd  |- ( ph -> ( ( 1 - ( D x. G ) ) x. ( ( J ^ 2 ) x. E ) ) = ( ( ( J ^ 2 ) x. E ) - 1 ) )
 l4:l3:oveq2d  |- ( ph -> ( ( 1 - ( E x. D ) ) + ( ( 1 - ( D x. G ) ) x. ( ( J ^ 2 ) x. E ) ) ) = ( ( 1 - ( E x. D ) ) + ( ( ( J ^ 2 ) x. E ) - 1 ) ) )
 cA1:c1,cED:subcld  |- ( ph -> ( 1 - ( E x. D ) ) e. CC )
@@ -77,7 +82,7 @@ q5a:e2a:oveq2i  |- ( E ^ ( 2 + 1 ) ) = ( E ^ 3 )
 q5:q5a:a1i  |- ( ph -> ( E ^ ( 2 + 1 ) ) = ( E ^ 3 ) )
 q6:q5,q4:eqtr3d  |- ( ph -> ( E ^ 3 ) = ( ( E ^ 2 ) x. E ) )
 q7:q6:eqcomd  |- ( ph -> ( ( E ^ 2 ) x. E ) = ( E ^ 3 ) )
-q8:2,cGE,pD:morlemone  |- ( ph -> ( D x. ( 1 - ( G x. E ) ) ) = ( D - J ) )
+q8:2,cGE,pD:mul1subeqd  |- ( ph -> ( D x. ( 1 - ( G x. E ) ) ) = ( D - J ) )
 q9:q7,q8:oveq12d  |- ( ph -> ( ( ( E ^ 2 ) x. E ) x. ( D x. ( 1 - ( G x. E ) ) ) ) = ( ( E ^ 3 ) x. ( D - J ) ) )
 q10:q2,q3,q9:3eqtrd  |- ( ph -> ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( G x. E ) ) ) x. E ) = ( ( E ^ 3 ) x. ( D - J ) ) )
 

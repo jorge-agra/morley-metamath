@@ -1,6 +1,8 @@
-$( <MM> <PROOF_ASST> THEOREM=morlemfac3  LOC_AFTER=?
+$( <MM> <PROOF_ASST> THEOREM=cubm1d  LOC_AFTER=?
+$( The factorization of ` ( ( S ^ 3 ) - 1 ) ` over its root ` 1 ` . (Deduction
+   form.) $)
 
-h1::morlemfac3.s  |- ( ph -> S e. CC )
+h1::cubm1d.s  |- ( ph -> S e. CC )
 
 $( closures $)
 c1:1:1cnd  |- ( ph -> 1 e. CC )

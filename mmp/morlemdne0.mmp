@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemdne0  LOC_AFTER=?
+$( If ` S ` , ` T ` and ` U ` are positive reals summing to ` ( _pi / 3 ) ` ,
+   then ` ( 1 - ( ( exp `` ( _i x. ( 2 x. S ) ) ) x. ( exp `` ( _i x. ( 2 x. T
+   ) ) ) ) ) ` is nonzero: the rotation by ` ( 2 x. ( S + T ) ) ` is not the
+   identity. $)
 
 h1::morlemdne0.s  |- ( ph -> S e. RR )
 h2::morlemdne0.t  |- ( ph -> T e. RR )
@@ -63,7 +67,10 @@ m9:r2,rST,p2,q1:mulgt0d  |- ( ph -> 0 < ( 2 x. ( S + T ) ) )
 x0a::0xr  |- 0 e. RR*
 x0:x0a:a1i  |- ( ph -> 0 e. RR* )
 xpi:rpi:rexrd  |- ( ph -> _pi e. RR* )
-m10:x0,xpi,r2ST,m9,m8:eliood  |- ( ph -> ( 2 x. ( S + T ) ) e. ( 0 (,) _pi ) )
+m10a::elioo2  |- ( ( 0 e. RR* /\ _pi e. RR* ) -> ( ( 2 x. ( S + T ) ) e. ( 0 (,) _pi ) <-> ( ( 2 x. ( S + T ) ) e. RR /\ 0 < ( 2 x. ( S + T ) ) /\ ( 2 x. ( S + T ) ) < _pi ) ) )
+m10b:x0,xpi,m10a:syl2anc  |- ( ph -> ( ( 2 x. ( S + T ) ) e. ( 0 (,) _pi ) <-> ( ( 2 x. ( S + T ) ) e. RR /\ 0 < ( 2 x. ( S + T ) ) /\ ( 2 x. ( S + T ) ) < _pi ) ) )
+m10c:r2ST,m9,m8:3jca  |- ( ph -> ( ( 2 x. ( S + T ) ) e. RR /\ 0 < ( 2 x. ( S + T ) ) /\ ( 2 x. ( S + T ) ) < _pi ) )
+m10:m10c,m10b:mpbird  |- ( ph -> ( 2 x. ( S + T ) ) e. ( 0 (,) _pi ) )
 
 $( the product of the two exponentials is exp ( _i x. 2 ( S + T ) ) $)
 c2S:c2,cS:mulcld  |- ( ph -> ( 2 x. S ) e. CC )

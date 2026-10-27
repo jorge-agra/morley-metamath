@@ -1,4 +1,10 @@
 $( <MM> <PROOF_ASST> THEOREM=ang2exp  LOC_AFTER=?
+$( The rotation by twice the signed angle from a nonzero complex number ` A `
+   to a nonzero ` B ` has coefficient ` ( ( B / A ) / ( * `` ( B / A ) ) ) ` ,
+   a rational expression in ` A ` and ` B ` . Here ` F ` is the signed angle
+   function ` ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im `` ( log ``
+   ( y / x ) ) ) ) ` , so that ` ( A F B ) ` is the angle from ` A ` to ` B ` .
+   $)
 
 $d A x
 $d A y

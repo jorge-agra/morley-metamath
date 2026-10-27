@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemj  LOC_AFTER=?
+$( Let ` X ` , ` Y ` , ` Z ` be one third of the angles of a positively
+   oriented triangle with vertices ` A ` , ` B ` , ` C ` . The product ` J ` of
+   the rotation coefficients for twice these angles is the rotation by ` ( 2 x.
+   ( _pi / 3 ) ) ` , so it is a cube root of unity other than ` 1 ` . $)
 
 $d A x
 $d A y

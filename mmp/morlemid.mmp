@@ -1,4 +1,9 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemid  LOC_AFTER=?
+$( Let ` X ` , ` Y ` , ` Z ` be one third of the angles of the triangle with
+   vertices ` A ` , ` B ` , ` C ` . The rotations about ` C ` , ` B ` and ` A `
+   by six times these angles, applied in that order, compose to the identity:
+   by ~ cnrfl2 each is the composite of two reflections in sides of the
+   triangle, and the reflections cancel in pairs. $)
 
 $d A x
 $d A y

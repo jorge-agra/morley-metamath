@@ -1,4 +1,6 @@
 $( <MM> <PROOF_ASST> THEOREM=divcjabs2  LOC_AFTER=?
+$( Division by a nonzero complex number ` A ` is multiplication by its
+   conjugate followed by division by the square of its absolute value. $)
 
 d1::simpll  |- ( ( ( A e. CC /\ A =/= 0 ) /\ B e. CC ) -> A e. CC )
 d2a::simpl  |- ( ( ( A e. CC /\ A =/= 0 ) /\ B e. CC ) -> ( A e. CC /\ A =/= 0 ) )

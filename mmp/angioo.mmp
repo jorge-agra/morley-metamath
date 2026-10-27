@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=angioo  LOC_AFTER=?
+$( The signed angle from a nonzero complex number ` A ` to a nonzero ` B ` lies
+   in the open interval ` ( 0 (,) _pi ) ` exactly when the imaginary part of `
+   ( B / A ) ` is positive. ` F ` is the signed angle function, as in ~ ang2exp
+   . $)
 
 $d A x
 $d A y

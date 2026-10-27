@@ -1,4 +1,9 @@
 $( <MM> <PROOF_ASST> THEOREM=ang180pos  LOC_AFTER=?
+$( If the angle at ` A ` of the triangle with vertices ` A ` , ` B ` , ` C ` ,
+   measured from ` ( B - A ) ` to ` ( C - A ) ` , lies in ` ( 0 (,) _pi ) ` ,
+   so that the triangle is positively oriented, then so do its angles at ` B `
+   and at ` C ` taken in the same cyclic order, and the three angles sum to `
+   _pi ` . ` F ` is the signed angle function, as in ~ ang2exp . $)
 
 $d A x
 $d A y
@@ -96,22 +101,20 @@ w2a:z5,g2:mpbid  |- ( ph -> 0 < ( ( Im ` ( ( * ` ( A - C ) ) x. ( B - C ) ) ) / 
 w2b:w2a,q2:breqtrrd  |- ( ph -> 0 < ( Im ` ( ( B - C ) / ( A - C ) ) ) )
 w2:w2b,aio2:mpbird  |- ( ph -> ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) )
 
-x0::0xr  |- 0 e. RR*
-x0d:x0:a1i  |- ( ph -> 0 e. RR* )
 xp0::pire  |- _pi e. RR
-xp1a::rexr  |- ( _pi e. RR -> _pi e. RR* )
-xp1:xp0,xp1a:ax-mp  |- _pi e. RR*
-xp1d:xp1:a1i  |- ( ph -> _pi e. RR* )
-gt00::ioogtlb  |- ( ( 0 e. RR* /\ _pi e. RR* /\ ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) ) -> 0 < ( ( B - A ) F ( C - A ) ) )
-gt0:x0d,xp1d,8,gt00:syl3anc  |- ( ph -> 0 < ( ( B - A ) F ( C - A ) ) )
+gt00::eliooord  |- ( ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) -> ( 0 < ( ( B - A ) F ( C - A ) ) /\ ( ( B - A ) F ( C - A ) ) < _pi ) )
+gt0b:8,gt00:syl  |- ( ph -> ( 0 < ( ( B - A ) F ( C - A ) ) /\ ( ( B - A ) F ( C - A ) ) < _pi ) )
+gt0:gt0b:simpld  |- ( ph -> 0 < ( ( B - A ) F ( C - A ) ) )
 re00::elioore  |- ( ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) -> ( ( B - A ) F ( C - A ) ) e. RR )
 re0:8,re00:syl  |- ( ph -> ( ( B - A ) F ( C - A ) ) e. RR )
-gt10::ioogtlb  |- ( ( 0 e. RR* /\ _pi e. RR* /\ ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) ) -> 0 < ( ( C - B ) F ( A - B ) ) )
-gt1:x0d,xp1d,w1,gt10:syl3anc  |- ( ph -> 0 < ( ( C - B ) F ( A - B ) ) )
+gt10::eliooord  |- ( ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) -> ( 0 < ( ( C - B ) F ( A - B ) ) /\ ( ( C - B ) F ( A - B ) ) < _pi ) )
+gt1b:w1,gt10:syl  |- ( ph -> ( 0 < ( ( C - B ) F ( A - B ) ) /\ ( ( C - B ) F ( A - B ) ) < _pi ) )
+gt1:gt1b:simpld  |- ( ph -> 0 < ( ( C - B ) F ( A - B ) ) )
 re10::elioore  |- ( ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) -> ( ( C - B ) F ( A - B ) ) e. RR )
 re1:w1,re10:syl  |- ( ph -> ( ( C - B ) F ( A - B ) ) e. RR )
-gt20::ioogtlb  |- ( ( 0 e. RR* /\ _pi e. RR* /\ ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) ) -> 0 < ( ( A - C ) F ( B - C ) ) )
-gt2:x0d,xp1d,w2,gt20:syl3anc  |- ( ph -> 0 < ( ( A - C ) F ( B - C ) ) )
+gt20::eliooord  |- ( ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) -> ( 0 < ( ( A - C ) F ( B - C ) ) /\ ( ( A - C ) F ( B - C ) ) < _pi ) )
+gt2b:w2,gt20:syl  |- ( ph -> ( 0 < ( ( A - C ) F ( B - C ) ) /\ ( ( A - C ) F ( B - C ) ) < _pi ) )
+gt2:gt2b:simpld  |- ( ph -> 0 < ( ( A - C ) F ( B - C ) ) )
 re20::elioore  |- ( ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi ) -> ( ( A - C ) F ( B - C ) ) e. RR )
 re2:w2,re20:syl  |- ( ph -> ( ( A - C ) F ( B - C ) ) e. RR )
 

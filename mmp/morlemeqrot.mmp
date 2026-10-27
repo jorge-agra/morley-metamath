@@ -1,4 +1,7 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemeqrot  LOC_AFTER=?
+$( For a cube root of unity ` J ` , the relation ` ( ( U + ( J x. V ) ) + ( ( J
+   ^ 2 ) x. W ) ) = 0 ` is preserved when ` U ` , ` V ` , ` W ` are replaced by
+   ` W ` , ` U ` , ` V ` . $)
 
 h1::morlemeqrot.u  |- ( ph -> U e. CC )
 h2::morlemeqrot.v  |- ( ph -> V e. CC )

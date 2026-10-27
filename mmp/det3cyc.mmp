@@ -1,4 +1,9 @@
 $( <MM> <PROOF_ASST> THEOREM=det3cyc  LOC_AFTER=?
+$( Twice the signed area of a triangle given by coordinates is the same
+   whether it is computed from the first vertex or from the second. The
+   vertices have coordinates ` A ` , ` B ` , then ` C ` , ` D ` , then ` E ` ,
+   ` F ` ; each side of the equation is a determinant of coordinate
+   differences. $)
 
 d1::simpl1  |- ( ( ( A e. CC /\ B e. CC /\ C e. CC ) /\ ( D e. CC /\ E e. CC /\ F e. CC ) ) -> A e. CC )
 d2::simpl2  |- ( ( ( A e. CC /\ B e. CC /\ C e. CC ) /\ ( D e. CC /\ E e. CC /\ F e. CC ) ) -> B e. CC )

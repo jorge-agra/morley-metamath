@@ -132,7 +132,7 @@ Q - R = J(P - Q)
 P - Q = J(R - P).
 ```
 
-`morlemabs1` proves `abs(J) = 1`. Taking absolute values in these equations
+`cubeq1absd` proves `abs(J) = 1`. Taking absolute values in these equations
 gives the equalities of distances required by the theorem. `morleyR2` is the
 final assembly of the closure facts, `morlemj`, `morlemlin`, and `morlemeqi`.
 
@@ -141,13 +141,3 @@ For the detailed derivations, read [morleyR2.mmp](../mmp/morleyR2.mmp), then
 [morlemlinalg.mmp](../mmp/morlemlinalg.mmp), and
 [morlemeqi.mmp](../mmp/morlemeqi.mmp). The complete proof bodies and their
 frames are in [morley.mm](../morley.mm).
-
-## Other completed results
-
-`morley.mm` also proves a multiplicative law of sines (`lawsin`) through
-the imaginary part of a conjugate product and its cyclic signed-area identity.
-Further results include the sine triple-angle product (`sin3tprod`),
-angle/exponential transport (`angexp`, `angexpadd`, `angeqd`), and the
-trigonometric segment formulas (`morlemside`, `morlemsym`). These results are
-included with their proofs, but this release does not claim a second complete
-proof of Morley's theorem.

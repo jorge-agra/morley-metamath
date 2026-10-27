@@ -1,8 +1,10 @@
-$( <MM> <PROOF_ASST> THEOREM=morlemone  LOC_AFTER=?
+$( <MM> <PROOF_ASST> THEOREM=mul1subeqd  LOC_AFTER=?
+$( If ` ( S x. T ) = U ` , then ` ( S x. ( 1 - T ) ) = ( S - U ) ` . (Deduction
+   form.) $)
 
-h1::morlemone.s  |- ( ph -> S e. CC )
-h2::morlemone.t  |- ( ph -> T e. CC )
-h3::morlemone.1  |- ( ph -> ( S x. T ) = U )
+h1::mul1subeqd.s  |- ( ph -> S e. CC )
+h2::mul1subeqd.t  |- ( ph -> T e. CC )
+h3::mul1subeqd.1  |- ( ph -> ( S x. T ) = U )
 
 c1:1:1cnd  |- ( ph -> 1 e. CC )
 d1:1,c1,2:subdid  |- ( ph -> ( S x. ( 1 - T ) ) = ( ( S x. 1 ) - ( S x. T ) ) )

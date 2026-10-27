@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemcub  LOC_AFTER=?
+$( If ` X ` is one third of the signed angle ` ( A F B ) ` , the cube of the
+   rotation coefficient ` ( exp `` ( _i x. ( 2 x. X ) ) ) ` is the rotation
+   coefficient for twice the whole angle. ` F ` is the signed angle function,
+   as in ~ ang2exp . $)
 
 $d A x
 $d A y

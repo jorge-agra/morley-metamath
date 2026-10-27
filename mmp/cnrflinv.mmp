@@ -1,4 +1,9 @@
 $( <MM> <PROOF_ASST> THEOREM=cnrflinv  LOC_AFTER=?
+$( The reflection of the complex plane across the line through distinct points
+   ` A ` and ` W ` maps ` Z ` to ` ( A + ( E x. ( * `` ( Z - A ) ) ) ) ` ,
+   where ` E ` is the number ` ( ( W - A ) / ( * `` ( W - A ) ) ) ` of absolute
+   value ` 1 ` . This theorem shows that the reflection is an involution:
+   applying it twice returns ` Z ` . $)
 
 h1::cnrflinv.a  |- ( ph -> A e. CC )
 h2::cnrflinv.w  |- ( ph -> W e. CC )

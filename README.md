@@ -6,10 +6,10 @@ following Alain Connes' rotation argument. The theorem is `morleyR2` in
 interior trisector intersections, the three pairwise distances between those
 intersections are equal.
 
-The extension also contains a law of sines and supporting complex algebra,
-reflection, and signed-angle lemmas. Every theorem in this release has a proof;
-the extension adds no axioms. Verification checks both the extension and the
-base database it reads through `$[ set.mm $]`.
+The extension also contains the supporting complex algebra, reflection, and
+signed-angle lemmas that this proof uses. Every theorem in this release has a
+proof; the extension adds no axioms. Verification checks both the extension and
+the base database it reads through `$[ set.mm $]`.
 
 ## Read the result
 
@@ -25,8 +25,7 @@ This is a theorem about supplied complex points satisfying signed trisection
 equations. It does not construct trisectors or their intersections, and it does
 not formalize Morley for arbitrary Tarski geometry structures. Its formal
 conclusion is equal distances; a separate existence or noncollapse conclusion
-is not asserted. Completed helpers for a trigonometric argument are included,
-but a second full proof is not part of this release.
+is not asserted. A second full proof is not part of this release.
 
 The pinned `set.mm` already contains an unfinished Morley development for
 Tarski geometry, in Thierry Arnoux's mathbox (`morleylemrneab` and its

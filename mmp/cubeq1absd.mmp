@@ -1,7 +1,8 @@
-$( <MM> <PROOF_ASST> THEOREM=morlemabs1  LOC_AFTER=?
+$( <MM> <PROOF_ASST> THEOREM=cubeq1absd  LOC_AFTER=?
+$( A complex cube root of unity has absolute value ` 1 ` . (Deduction form.) $)
 
-h1::morlemabs1.j  |- ( ph -> J e. CC )
-h2::morlemabs1.1  |- ( ph -> ( J ^ 3 ) = 1 )
+h1::cubeq1absd.j  |- ( ph -> J e. CC )
+h2::cubeq1absd.1  |- ( ph -> ( J ^ 3 ) = 1 )
 
 $( closures $)
 c1:1:abscld  |- ( ph -> ( abs ` J ) e. RR )
@@ -21,7 +22,7 @@ e4:e2,e3:eqtrd  |- ( ph -> ( abs ` ( J ^ 3 ) ) = 1 )
 e5:e1,e4:eqtr3d  |- ( ph -> ( ( abs ` J ) ^ 3 ) = 1 )
 
 $( the same factorization as at J, now over RR $)
-m1:c2,e5:morlemfac1  |- ( ph -> ( ( ( abs ` J ) - 1 ) x. ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) = 0 )
+m1:c2,e5:cubeq1facd  |- ( ph -> ( ( ( abs ` J ) - 1 ) x. ( ( ( ( abs ` J ) ^ 2 ) + ( abs ` J ) ) + 1 ) ) = 0 )
 
 $( the second factor is at least 1, so it does not vanish $)
 p1:c1:resqcld  |- ( ph -> ( ( abs ` J ) ^ 2 ) e. RR )

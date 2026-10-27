@@ -1,4 +1,9 @@
 $( <MM> <PROOF_ASST> THEOREM=lawsinarea  LOC_AFTER=?
+$( The signed area of a triangle with complex vertices ` A ` , ` B ` , ` C `
+   does not depend on the vertex it is computed from: the imaginary part of ` (
+   ( * `` ( B - A ) ) x. ( C - A ) ) ` is invariant under the cyclic shift of
+   the vertices. The products themselves differ in general; only their
+   imaginary parts agree. $)
 
 dA::simp1  |- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> A e. CC )
 dB::simp2  |- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> B e. CC )

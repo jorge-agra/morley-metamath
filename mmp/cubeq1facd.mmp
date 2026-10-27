@@ -1,0 +1,14 @@
+$( <MM> <PROOF_ASST> THEOREM=cubeq1facd  LOC_AFTER=?
+$( If ` ( S ^ 3 ) = 1 ` , then ` ( S - 1 ) ` times ` ( ( ( S ^ 2 ) + S ) + 1 )
+   ` is zero. (Deduction form.) $)
+
+h1::cubeq1facd.s  |- ( ph -> S e. CC )
+h2::cubeq1facd.1  |- ( ph -> ( S ^ 3 ) = 1 )
+
+a1:1:cubm1d  |- ( ph -> ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) = ( ( S ^ 3 ) - 1 ) )
+a2:2:oveq1d  |- ( ph -> ( ( S ^ 3 ) - 1 ) = ( 1 - 1 ) )
+a3a::1m1e0  |- ( 1 - 1 ) = 0
+a3:a3a:a1i  |- ( ph -> ( 1 - 1 ) = 0 )
+qed:a1,a2,a3:3eqtrd  |- ( ph -> ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) = 0 )
+
+$)

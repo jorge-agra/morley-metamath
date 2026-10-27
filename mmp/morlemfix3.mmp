@@ -1,4 +1,10 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemfix3  LOC_AFTER=?
+$( The fixed-point equations of ~ morlemfix at all three sides of the triangle
+   with vertices ` A ` , ` B ` , ` C ` . The lines from ` A ` to ` R ` and to `
+   Q ` make the equal angles ` X ` with the sides at ` A ` ; likewise ` Y ` at
+   ` B ` for ` P ` and ` R ` , and ` Z ` at ` C ` for ` Q ` and ` P ` . The
+   rotations about consecutive vertices by twice these angles compose to maps
+   fixing ` R ` , ` P ` and ` Q ` respectively. $)
 
 $d A x
 $d A y

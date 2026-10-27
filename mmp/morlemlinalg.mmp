@@ -1,4 +1,13 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemlinalg  LOC_AFTER=?
+$( The algebraic step of the rotation proof of Morley's theorem, using field
+   operations only. Let ` E ` , ` D ` , ` G ` be nonzero complex numbers whose
+   product ` J ` is a cube root of unity other than ` 1 ` , and no product of
+   two of them equal to ` 1 ` . Let ` R ` , ` P ` , ` Q ` be fixed by the
+   composite similarities about ` A ` and ` B ` , about ` B ` and ` C ` , and
+   about ` C ` and ` A ` , with factors ` E ` , ` D ` and ` G ` about ` A ` , `
+   B ` and ` C ` . If the similarities about ` C ` , ` B ` and ` A ` with the
+   cubes of these factors compose to a map fixing ` 0 ` , then ` ( ( P + ( J x.
+   Q ) ) + ( ( J ^ 2 ) x. R ) ) = 0 ` . $)
 
 h1::morlemlinalg.a  |- ( ph -> A e. CC )
 h2::morlemlinalg.b  |- ( ph -> B e. CC )
@@ -220,7 +229,7 @@ u4:u2,u3:eqtrd  |- ( ph -> ( ( ( ( E ^ 2 ) x. D ) x. ( ( ( 1 - ( D x. G ) ) x. (
 u5:u4,TT:oveq12d  |- ( ph -> ( ( ( ( ( E ^ 2 ) x. D ) x. ( ( ( 1 - ( D x. G ) ) x. ( 1 - ( G x. E ) ) ) x. ( 1 - ( E x. D ) ) ) ) x. ( P + ( J x. Q ) ) ) + ( ( ( ( E ^ 2 ) x. D ) x. ( ( ( 1 - ( D x. G ) ) x. ( 1 - ( G x. E ) ) ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( J ^ 2 ) x. R ) ) ) = ( ( ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( G x. E ) ) ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - D ) x. B ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( G x. E ) ) x. D ) ) x. ( ( 1 - G ) x. C ) ) ) + ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( D x. G ) ) x. J ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( 1 - E ) x. A ) ) ) ) + ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) x. ( ( 1 - E ) x. A ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( G x. E ) ) ) x. ( ( 1 - ( D x. G ) ) x. ( ( J ^ 2 ) x. E ) ) ) x. ( ( 1 - D ) x. B ) ) ) ) )
 u6:u1,u5:eqtrd  |- ( ph -> ( ( ( ( E ^ 2 ) x. D ) x. ( ( ( 1 - ( D x. G ) ) x. ( 1 - ( G x. E ) ) ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) ) ) = ( ( ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( G x. E ) ) ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - D ) x. B ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( G x. E ) ) x. D ) ) x. ( ( 1 - G ) x. C ) ) ) + ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( D x. G ) ) x. J ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( 1 - E ) x. A ) ) ) ) + ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) x. ( ( 1 - E ) x. A ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( G x. E ) ) ) x. ( ( 1 - ( D x. G ) ) x. ( ( J ^ 2 ) x. E ) ) ) x. ( ( 1 - D ) x. B ) ) ) ) )
 
-$( REGROUPING THE SIX TERMS BY VERTEX : ` { b , c } ` at ` C ` , ` { d , e } ` at ` A ` , ` { a , f } ` at ` B ` .  This is a fixed re-association; it uses nothing but `addassd`, `addcomd` and `add4d`. $)
+$( REGROUPING THE SIX TERMS BY VERTEX : ` { b , c } ` at ` C ` , ` { d , e } ` at ` A ` , ` { a , f } ` at ` B ` .  This is the fixed re-association the certificate note fixes; it uses nothing but `addassd`, `addcomd` and `add4d`. $)
 z1:ctb,ctc,ctd:addassd  |- ( ph -> ( ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( G x. E ) ) x. D ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( D x. G ) ) x. J ) ) x. ( ( 1 - G ) x. C ) ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( 1 - E ) x. A ) ) ) = ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( G x. E ) ) x. D ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( D x. G ) ) x. J ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( 1 - E ) x. A ) ) ) ) )
 z2:z1:eqcomd  |- ( ph -> ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( G x. E ) ) x. D ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( D x. G ) ) x. J ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( 1 - E ) x. A ) ) ) ) = ( ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( G x. E ) ) x. D ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( D x. G ) ) x. J ) ) x. ( ( 1 - G ) x. C ) ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( 1 - E ) x. A ) ) ) )
 z3:ctc,ctd:addcld  |- ( ph -> ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( D x. G ) ) x. J ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( 1 - E ) x. A ) ) ) e. CC )
@@ -280,8 +289,13 @@ KT1:GC,GA:oveq12d  |- ( ph -> ( ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) )
 KT2:KT1,GB:oveq12d  |- ( ph -> ( ( ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( G x. E ) ) x. D ) ) x. ( ( 1 - G ) x. C ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - ( D x. G ) ) x. J ) ) x. ( ( 1 - G ) x. C ) ) ) + ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( 1 - E ) x. A ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) x. ( ( 1 - E ) x. A ) ) ) ) + ( ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( G x. E ) ) ) x. ( 1 - ( E x. D ) ) ) x. ( ( 1 - D ) x. B ) ) + ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( G x. E ) ) ) x. ( ( 1 - ( D x. G ) ) x. ( ( J ^ 2 ) x. E ) ) ) x. ( ( 1 - D ) x. B ) ) ) ) = ( ( ( ( 1 - ( ( E ^ 3 ) x. ( D ^ 3 ) ) ) x. C ) + ( ( ( E ^ 3 ) - 1 ) x. A ) ) + ( ( ( E ^ 3 ) x. ( ( D ^ 3 ) - 1 ) ) x. B ) ) )
 KT:ZZ,KT2:eqtrd  |- ( ph -> ( ( ( ( E ^ 2 ) x. D ) x. ( ( ( 1 - ( D x. G ) ) x. ( 1 - ( G x. E ) ) ) x. ( 1 - ( E x. D ) ) ) ) x. ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) ) ) = ( ( ( ( 1 - ( ( E ^ 3 ) x. ( D ^ 3 ) ) ) x. C ) + ( ( ( E ^ 3 ) - 1 ) x. A ) ) + ( ( ( E ^ 3 ) x. ( ( D ^ 3 ) - 1 ) ) x. B ) ) )
 
-$( THE OFFSET.  `morlemid` at ` W = 0 ` is a HYPOTHESIS here : it is instantiated, never re-derived.  `morlemaff` normalises its three nested levels. $)
-o1:3,cG3,c0:morlemaff  |- ( ph -> ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) = ( ( ( 1 - ( G ^ 3 ) ) x. C ) + ( ( G ^ 3 ) x. 0 ) ) )
+$( THE OFFSET.  `morlemid` at ` W = 0 ` is a HYPOTHESIS here : it is instantiated, never re-derived.  `affineequiv4` normalises its three nested levels. $)
+o1d:c0,3:subcld  |- ( ph -> ( 0 - C ) e. CC )
+o1m:cG3,o1d:mulcld  |- ( ph -> ( ( G ^ 3 ) x. ( 0 - C ) ) e. CC )
+o1a:3,o1m:addcld  |- ( ph -> ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) e. CC )
+o1c:3,o1m:addcomd  |- ( ph -> ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) = ( ( ( G ^ 3 ) x. ( 0 - C ) ) + C ) )
+o1e:o1a,3,c0,cG3:affineequiv4  |- ( ph -> ( ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) = ( ( ( 1 - ( G ^ 3 ) ) x. C ) + ( ( G ^ 3 ) x. 0 ) ) <-> ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) = ( ( ( G ^ 3 ) x. ( 0 - C ) ) + C ) ) )
+o1:o1c,o1e:mpbird  |- ( ph -> ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) = ( ( ( 1 - ( G ^ 3 ) ) x. C ) + ( ( G ^ 3 ) x. 0 ) ) )
 o2:cG3:mul01d  |- ( ph -> ( ( G ^ 3 ) x. 0 ) = 0 )
 o3:o2:oveq2d  |- ( ph -> ( ( ( 1 - ( G ^ 3 ) ) x. C ) + ( ( G ^ 3 ) x. 0 ) ) = ( ( ( 1 - ( G ^ 3 ) ) x. C ) + 0 ) )
 o4:clin1:addridd  |- ( ph -> ( ( ( 1 - ( G ^ 3 ) ) x. C ) + 0 ) = ( ( 1 - ( G ^ 3 ) ) x. C ) )
@@ -289,13 +303,23 @@ o5:o1,o3,o4:3eqtrd  |- ( ph -> ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) = ( ( 1 - ( G 
 o6:o5:oveq1d  |- ( ph -> ( ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) - B ) = ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) )
 o7:o6:oveq2d  |- ( ph -> ( ( D ^ 3 ) x. ( ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) - B ) ) = ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) )
 o8:o7:oveq2d  |- ( ph -> ( B + ( ( D ^ 3 ) x. ( ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) - B ) ) ) = ( B + ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) ) )
-o9:2,cD3,clin1:morlemaff  |- ( ph -> ( B + ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) ) = ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) )
+o9d:clin1,2:subcld  |- ( ph -> ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) e. CC )
+o9m:cD3,o9d:mulcld  |- ( ph -> ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) e. CC )
+o9a:2,o9m:addcld  |- ( ph -> ( B + ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) ) e. CC )
+o9c:2,o9m:addcomd  |- ( ph -> ( B + ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) ) = ( ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) + B ) )
+o9e:o9a,2,clin1,cD3:affineequiv4  |- ( ph -> ( ( B + ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) ) = ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) <-> ( B + ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) ) = ( ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) + B ) ) )
+o9:o9c,o9e:mpbird  |- ( ph -> ( B + ( ( D ^ 3 ) x. ( ( ( 1 - ( G ^ 3 ) ) x. C ) - B ) ) ) = ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) )
 o10:o8,o9:eqtrd  |- ( ph -> ( B + ( ( D ^ 3 ) x. ( ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) - B ) ) ) = ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) )
 o11:o10:oveq1d  |- ( ph -> ( ( B + ( ( D ^ 3 ) x. ( ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) - B ) ) ) - A ) = ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) )
 o12:o11:oveq2d  |- ( ph -> ( ( E ^ 3 ) x. ( ( B + ( ( D ^ 3 ) x. ( ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) - B ) ) ) - A ) ) = ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) )
 o13:o12:oveq2d  |- ( ph -> ( A + ( ( E ^ 3 ) x. ( ( B + ( ( D ^ 3 ) x. ( ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) - B ) ) ) - A ) ) ) = ( A + ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) ) )
 o14:o13,22:eqtr3d  |- ( ph -> ( A + ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) ) = 0 )
-o15:1,cE3,clin2:morlemaff  |- ( ph -> ( A + ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) ) = ( ( ( 1 - ( E ^ 3 ) ) x. A ) + ( ( E ^ 3 ) x. ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) ) ) )
+o15d:clin2,1:subcld  |- ( ph -> ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) e. CC )
+o15m:cE3,o15d:mulcld  |- ( ph -> ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) e. CC )
+o15a:1,o15m:addcld  |- ( ph -> ( A + ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) ) e. CC )
+o15c:1,o15m:addcomd  |- ( ph -> ( A + ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) ) = ( ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) + A ) )
+o15e:o15a,1,clin2,cE3:affineequiv4  |- ( ph -> ( ( A + ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) ) = ( ( ( 1 - ( E ^ 3 ) ) x. A ) + ( ( E ^ 3 ) x. ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) ) ) <-> ( A + ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) ) = ( ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) + A ) ) )
+o15:o15c,o15e:mpbird  |- ( ph -> ( A + ( ( E ^ 3 ) x. ( ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) - A ) ) ) = ( ( ( 1 - ( E ^ 3 ) ) x. A ) + ( ( E ^ 3 ) x. ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) ) ) )
 o16:o15,o14:eqtr3d  |- ( ph -> ( ( ( 1 - ( E ^ 3 ) ) x. A ) + ( ( E ^ 3 ) x. ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) ) ) = 0 )
 o17:cE3,cl2a,cl2b:adddid  |- ( ph -> ( ( E ^ 3 ) x. ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) ) = ( ( ( E ^ 3 ) x. ( ( 1 - ( D ^ 3 ) ) x. B ) ) + ( ( E ^ 3 ) x. ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) ) )
 o18:cE3,c1D3,2:mulassd  |- ( ph -> ( ( ( E ^ 3 ) x. ( 1 - ( D ^ 3 ) ) ) x. B ) = ( ( E ^ 3 ) x. ( ( 1 - ( D ^ 3 ) ) x. B ) ) )
@@ -316,7 +340,7 @@ w5:13:oveq1d  |- ( ph -> ( J ^ 3 ) = ( ( ( E x. D ) x. G ) ^ 3 ) )
 w6:w5,w4:eqtrd  |- ( ph -> ( J ^ 3 ) = ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) x. ( G ^ 3 ) ) )
 w7:w6:eqcomd  |- ( ph -> ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) x. ( G ^ 3 ) ) = ( J ^ 3 ) )
 w8:w7,14:eqtrd  |- ( ph -> ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) x. ( G ^ 3 ) ) = 1 )
-w9:cE3D3,cG3,w8:morlemone  |- ( ph -> ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) x. ( 1 - ( G ^ 3 ) ) ) = ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) - 1 ) )
+w9:cE3D3,cG3,w8:mul1subeqd  |- ( ph -> ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) x. ( 1 - ( G ^ 3 ) ) ) = ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) - 1 ) )
 o26:w9:oveq1d  |- ( ph -> ( ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) x. ( 1 - ( G ^ 3 ) ) ) x. C ) = ( ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) - 1 ) x. C ) )
 o27:o26:oveq2d  |- ( ph -> ( ( ( ( E ^ 3 ) x. ( 1 - ( D ^ 3 ) ) ) x. B ) + ( ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) x. ( 1 - ( G ^ 3 ) ) ) x. C ) ) = ( ( ( ( E ^ 3 ) x. ( 1 - ( D ^ 3 ) ) ) x. B ) + ( ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) - 1 ) x. C ) ) )
 o28:o25,o27:eqtrd  |- ( ph -> ( ( E ^ 3 ) x. ( ( ( 1 - ( D ^ 3 ) ) x. B ) + ( ( D ^ 3 ) x. ( ( 1 - ( G ^ 3 ) ) x. C ) ) ) ) = ( ( ( ( E ^ 3 ) x. ( 1 - ( D ^ 3 ) ) ) x. B ) + ( ( ( ( E ^ 3 ) x. ( D ^ 3 ) ) - 1 ) x. C ) ) )

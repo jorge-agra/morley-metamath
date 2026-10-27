@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemclr  LOC_AFTER=?
+$( Clearing the denominator of a fixed-point equation. If the similarity about
+   ` B ` with factor ` D ` , followed by the similarity about ` A ` with factor
+   ` E ` , fixes ` R ` , then ` ( R x. ( 1 - ( E x. D ) ) ) ` is a combination
+   of ` A ` and ` B ` . No division is needed. $)
 
 h1::morlemclr.a  |- ( ph -> A e. CC )
 h2::morlemclr.b  |- ( ph -> B e. CC )
@@ -20,14 +24,24 @@ cEDR:cED,3:mulcld  |- ( ph -> ( ( E x. D ) x. R ) e. CC )
 cS:cEA,cEB:addcld  |- ( ph -> ( ( ( 1 - E ) x. A ) + ( E x. ( ( 1 - D ) x. B ) ) ) e. CC )
 
 $( normalise the inner affine map $)
-i1:2,5,3:morlemaff  |- ( ph -> ( B + ( D x. ( R - B ) ) ) = ( ( ( 1 - D ) x. B ) + ( D x. R ) ) )
+i1d:3,2:subcld  |- ( ph -> ( R - B ) e. CC )
+i1m:5,i1d:mulcld  |- ( ph -> ( D x. ( R - B ) ) e. CC )
+i1a:2,i1m:addcld  |- ( ph -> ( B + ( D x. ( R - B ) ) ) e. CC )
+i1c:2,i1m:addcomd  |- ( ph -> ( B + ( D x. ( R - B ) ) ) = ( ( D x. ( R - B ) ) + B ) )
+i1e:i1a,2,3,5:affineequiv4  |- ( ph -> ( ( B + ( D x. ( R - B ) ) ) = ( ( ( 1 - D ) x. B ) + ( D x. R ) ) <-> ( B + ( D x. ( R - B ) ) ) = ( ( D x. ( R - B ) ) + B ) ) )
+i1:i1c,i1e:mpbird  |- ( ph -> ( B + ( D x. ( R - B ) ) ) = ( ( ( 1 - D ) x. B ) + ( D x. R ) ) )
 i2:i1:oveq1d  |- ( ph -> ( ( B + ( D x. ( R - B ) ) ) - A ) = ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) )
 i3:i2:oveq2d  |- ( ph -> ( E x. ( ( B + ( D x. ( R - B ) ) ) - A ) ) = ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) )
 i4:i3:oveq2d  |- ( ph -> ( A + ( E x. ( ( B + ( D x. ( R - B ) ) ) - A ) ) ) = ( A + ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) ) )
 i5:i4,6:eqtr3d  |- ( ph -> ( A + ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) ) = R )
 
 $( and the outer one $)
-j1:1,4,cV:morlemaff  |- ( ph -> ( A + ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) ) = ( ( ( 1 - E ) x. A ) + ( E x. ( ( ( 1 - D ) x. B ) + ( D x. R ) ) ) ) )
+j1d:cV,1:subcld  |- ( ph -> ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) e. CC )
+j1m:4,j1d:mulcld  |- ( ph -> ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) e. CC )
+j1a:1,j1m:addcld  |- ( ph -> ( A + ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) ) e. CC )
+j1c:1,j1m:addcomd  |- ( ph -> ( A + ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) ) = ( ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) + A ) )
+j1e:j1a,1,cV,4:affineequiv4  |- ( ph -> ( ( A + ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) ) = ( ( ( 1 - E ) x. A ) + ( E x. ( ( ( 1 - D ) x. B ) + ( D x. R ) ) ) ) <-> ( A + ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) ) = ( ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) + A ) ) )
+j1:j1c,j1e:mpbird  |- ( ph -> ( A + ( E x. ( ( ( ( 1 - D ) x. B ) + ( D x. R ) ) - A ) ) ) = ( ( ( 1 - E ) x. A ) + ( E x. ( ( ( 1 - D ) x. B ) + ( D x. R ) ) ) ) )
 j2:4,cDB,cDR:adddid  |- ( ph -> ( E x. ( ( ( 1 - D ) x. B ) + ( D x. R ) ) ) = ( ( E x. ( ( 1 - D ) x. B ) ) + ( E x. ( D x. R ) ) ) )
 j3:4,5,3:mulassd  |- ( ph -> ( ( E x. D ) x. R ) = ( E x. ( D x. R ) ) )
 j4:j3:eqcomd  |- ( ph -> ( E x. ( D x. R ) ) = ( ( E x. D ) x. R ) )

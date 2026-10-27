@@ -1,8 +1,10 @@
-$( <MM> <PROOF_ASST> THEOREM=morlemeqz  LOC_AFTER=?
+$( <MM> <PROOF_ASST> THEOREM=cubeq1sumd  LOC_AFTER=?
+$( A cube root of unity ` J ` other than ` 1 ` satisfies ` ( ( ( J ^ 2 ) + J )
+   + 1 ) = 0 ` . (Deduction form.) $)
 
-h1::morlemeqz.j  |- ( ph -> J e. CC )
-h2::morlemeqz.1  |- ( ph -> ( J ^ 3 ) = 1 )
-h3::morlemeqz.2  |- ( ph -> J =/= 1 )
+h1::cubeq1sumd.j  |- ( ph -> J e. CC )
+h2::cubeq1sumd.1  |- ( ph -> ( J ^ 3 ) = 1 )
+h3::cubeq1sumd.2  |- ( ph -> J =/= 1 )
 
 $( closures $)
 c1:1:1cnd  |- ( ph -> 1 e. CC )
@@ -12,7 +14,7 @@ k4:k3,c1:addcld  |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) e. CC )
 s1:1,c1:subcld  |- ( ph -> ( J - 1 ) e. CC )
 
 $( J is a cube root, so the product vanishes; J =/= 1 kills the first factor $)
-m1:1,2:morlemfac1  |- ( ph -> ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) = 0 )
+m1:1,2:cubeq1facd  |- ( ph -> ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) = 0 )
 n1:1,c1,3:subne0d  |- ( ph -> ( J - 1 ) =/= 0 )
 d1:k4,s1,n1:divcan3d  |- ( ph -> ( ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) / ( J - 1 ) ) = ( ( ( J ^ 2 ) + J ) + 1 ) )
 d2:m1:oveq1d  |- ( ph -> ( ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) / ( J - 1 ) ) = ( 0 / ( J - 1 ) ) )

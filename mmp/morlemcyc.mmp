@@ -1,4 +1,7 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemcyc  LOC_AFTER=?
+$( For a cube root of unity ` J ` other than ` 1 ` , ` ( ( S ^ 3 ) - 1 ) `
+   factors into the linear factors ` ( 1 - S ) ` , ` ( S - J ) ` and ` ( ( J ^
+   2 ) - S ) ` , whose roots are the three cube roots of unity. $)
 
 h1::morlemcyc.j  |- ( ph -> J e. CC )
 h2::morlemcyc.c  |- ( ph -> ( J ^ 3 ) = 1 )
@@ -23,7 +26,7 @@ w2:w1,c1:addcld  |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) e. CC )
 jm:1,c1:subcld  |- ( ph -> ( J - 1 ) e. CC )
 
 $( STEP 1 - J is primitive, so ( J ^ 2 ) + J is -u 1 $)
-f1:1:morlemfac3  |- ( ph -> ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) = ( ( J ^ 3 ) - 1 ) )
+f1:1:cubm1d  |- ( ph -> ( ( J - 1 ) x. ( ( ( J ^ 2 ) + J ) + 1 ) ) = ( ( J ^ 3 ) - 1 ) )
 f2a:2:oveq1d  |- ( ph -> ( ( J ^ 3 ) - 1 ) = ( 1 - 1 ) )
 f2b::1m1e0  |- ( 1 - 1 ) = 0
 f2c:f2b:a1i  |- ( ph -> ( 1 - 1 ) = 0 )
@@ -73,7 +76,7 @@ v11:v10,v1:negsubd  |- ( ph -> ( -u S + -u ( ( S ^ 2 ) + 1 ) ) = ( -u S - ( ( S 
 v12:v8,v9,v11:3eqtrd  |- ( ph -> -u ( ( ( S ^ 2 ) + S ) + 1 ) = ( -u S - ( ( S ^ 2 ) + 1 ) ) )
 v13:g16,v12:eqtr4d  |- ( ph -> ( ( S - J ) x. ( ( J ^ 2 ) - S ) ) = -u ( ( ( S ^ 2 ) + S ) + 1 ) )
 
-$( STEP 4 - the two sign flips cancel and morlemfac3 finishes $)
+$( STEP 4 - the two sign flips cancel and cubm1d finishes $)
 u1:v13:oveq2d  |- ( ph -> ( ( 1 - S ) x. ( ( S - J ) x. ( ( J ^ 2 ) - S ) ) ) = ( ( 1 - S ) x. -u ( ( ( S ^ 2 ) + S ) + 1 ) ) )
 u2:c1,4:subcld  |- ( ph -> ( 1 - S ) e. CC )
 u3:u2,v3:mulneg2d  |- ( ph -> ( ( 1 - S ) x. -u ( ( ( S ^ 2 ) + S ) + 1 ) ) = -u ( ( 1 - S ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) )
@@ -86,7 +89,7 @@ u9:u8:negeqd  |- ( ph -> -u ( ( 1 - S ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) = -u -u (
 u10:u6,v3:mulcld  |- ( ph -> ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) e. CC )
 u11:u10:negnegd  |- ( ph -> -u -u ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) = ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) )
 u12:u9,u11:eqtrd  |- ( ph -> -u ( ( 1 - S ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) = ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) )
-u13:4:morlemfac3  |- ( ph -> ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) = ( ( S ^ 3 ) - 1 ) )
+u13:4:cubm1d  |- ( ph -> ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) = ( ( S ^ 3 ) - 1 ) )
 
 t1:u1,u3,u12:3eqtrd  |- ( ph -> ( ( 1 - S ) x. ( ( S - J ) x. ( ( J ^ 2 ) - S ) ) ) = ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) )
 qed:t1,u13:eqtrd  |- ( ph -> ( ( 1 - S ) x. ( ( S - J ) x. ( ( J ^ 2 ) - S ) ) ) = ( ( S ^ 3 ) - 1 ) )

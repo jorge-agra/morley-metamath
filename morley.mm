@@ -1,70 +1,28 @@
 $( Morley's trisector theorem in the complex plane, by Connes' rotations.
-   The theorem is morleyR2. Supporting analytic and algebraic results are
-   included below. See docs/statement.md for its frame and docs/proof.md
-   for the argument. All original material is dedicated under CC0 1.0.
-   No new axioms are introduced by this extension. $)
+   The theorem is morleyR2. See docs/statement.md and docs/proof.md.
+   Original publication material is dedicated under CC0 1.0.
+   This extension introduces no new axioms. $)
 
 $[ set.mm $]
 
-  $( Sine of the imaginary logarithm argument.  (Contributed by JAG,
-     13-Oct-2026.) $)
-  sinarg $p |- ( ( A e. CC /\ A =/= 0 ) ->
-    ( sin ` ( Im ` ( log ` A ) ) ) =
-    ( Im ` ( A / ( abs ` A ) ) ) ) $=
+
+  $( The sine of the argument of a nonzero complex number ` A ` is the
+     imaginary part of the unit vector ` ( A / ( abs `` A ) ) ` .  The argument
+     is written ` ( Im `` ( log `` A ) ) ` , as in ~ efiarg .  (Contributed by
+     JAG, 13-Oct-2026.) $)
+  sinarg $p |- ( ( A e. CC /\ A =/= 0 ) -> ( sin ` ( Im ` ( log ` A ) ) )
+      = ( Im ` ( A / ( abs ` A ) ) ) ) $=
     ( cc wcel cc0 wne wa clog cfv csin ci cmul co ce cabs cdiv wceq logcl imcld
     cim cr resinval syl efiarg fveq2d eqtrd ) ABCADEFAGHSHIHJAGHSHKLMHSHAANHOLS
     HABCADEFAGHSHTCAGHSHIHJAGHSHKLMHSHPABCADEFAGHAQRAGHSHUAUBABCADEFJAGHSHKLMHA
     ANHOLSAUCUDUE $.
 
-  ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d x y $.
-    sinang.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |->
-                      ( Im ` ( log ` ( y / x ) ) ) ) $.
-    $( Sine of an angle as imaginary part of a normalized ratio.  (Contributed
-       by JAG, 13-Oct-2026.) $)
-    sinang $p |- ( ( ( A e. CC /\ A =/= 0 )
-                 /\ ( B e. CC /\ B =/= 0 ) )
-      -> ( sin ` ( A F B ) ) =
-         ( Im ` ( ( B / A ) / ( abs ` ( B / A ) ) ) ) ) $=
-      ( cc wcel cc0 wne wa co csin cfv cdiv clog cim simpll simplr simprl eqtrd
-      cabs simprr angvald fveq2d wceq divcld divne0d sinarg syl2anc ) CGHCIJKDG
-      HDIJKKCDELMNDCOLPNQNMNDCOLDCOLUBNOLQNCGHCIJKDGHDIJKKCDELDCOLPNQNMCGHCIJKD
-      GHDIJKKABECDFCGHCIJDGHDIJKRCGHCIJDGHDIJKSCGHCIJKDGHDIJTCGHCIJKDGHDIJUCUDU
-      ECGHCIJKDGHDIJKKDCOLGHDCOLIJDCOLPNQNMNDCOLDCOLUBNOLQNUFCGHCIJKDGHDIJKKDCC
-      GHCIJKDGHDIJTCGHCIJDGHDIJKRCGHCIJDGHDIJKSUGCGHCIJKDGHDIJKKDCCGHCIJKDGHDIJ
-      TCGHCIJDGHDIJKRCGHCIJKDGHDIJUCCGHCIJDGHDIJKSUHDCOLUIUJUA $.
 
-    $( Sine of an angle with real denominator outside imaginary part.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    sinangdiv $p |- ( ( ( A e. CC /\ A =/= 0 )
-                    /\ ( B e. CC /\ B =/= 0 ) )
-      -> ( sin ` ( A F B ) ) =
-         ( ( Im ` ( B / A ) ) / ( abs ` ( B / A ) ) ) ) $=
-      ( cc wcel cc0 wne wa co cfv cdiv cabs cim simprl simpll simplr divcld
-      csin sinang abscld simprr divne0d absne0d imdivd eqtrd ) CGHCIJKDGHDIJKKC
-      DELUAMDCNLDCNLOMNLPMDCNLPMDCNLOMNLABCDEFUBCGHCIJKDGHDIJKKDCNLOMDCNLCGHCIJ
-      KDGHDIJKKDCNLCGHCIJKDGHDIJKKDCCGHCIJKDGHDIJQCGHCIJDGHDIJKRCGHCIJDGHDIJKST
-      UCCGHCIJKDGHDIJKKDCCGHCIJKDGHDIJQCGHCIJDGHDIJKRCGHCIJDGHDIJKSTCGHCIJKDGHD
-      IJKKDCNLCGHCIJKDGHDIJKKDCCGHCIJKDGHDIJQCGHCIJDGHDIJKRCGHCIJDGHDIJKSTCGHCI
-      JKDGHDIJKKDCCGHCIJKDGHDIJQCGHCIJDGHDIJKRCGHCIJKDGHDIJUDCGHCIJDGHDIJKSUEUF
-      UGUH $.
-
-    $( Sine of an angle with quotient absolute value expanded.  (Contributed by
-       JAG, 13-Oct-2026.) $)
-    sinangabsdiv $p |- ( ( ( A e. CC /\ A =/= 0 )
-                       /\ ( B e. CC /\ B =/= 0 ) )
-      -> ( sin ` ( A F B ) ) =
-         ( ( Im ` ( B / A ) ) / ( ( abs ` B ) / ( abs ` A ) ) ) ) $=
-      ( cc wcel cc0 wne wa co csin cfv cdiv cim cabs sinangdiv simprl simpll
-      simplr absdivd oveq2d eqtrd ) CGHCIJKDGHDIJKKCDELMNDCOLPNDCOLQNOLDCOLPNDQ
-      NCQNOLOLABCDEFRCGHCIJKDGHDIJKKDCOLQNDQNCQNOLDCOLPNOCGHCIJKDGHDIJKKDCCGHCI
-      JKDGHDIJSCGHCIJDGHDIJKTCGHCIJDGHDIJKUAUBUCUD $.
-  $}
-
-  $( Divide by a complex number via conjugate over absolute-square.
+  $( Division by a nonzero complex number ` A ` is multiplication by its
+     conjugate followed by division by the square of its absolute value.
      (Contributed by JAG, 13-Oct-2026.) $)
-  divcjabs2 $p |- ( ( ( A e. CC /\ A =/= 0 ) /\ B e. CC ) ->
-    ( B / A ) = ( ( ( * ` A ) x. B ) / ( ( abs ` A ) ^ 2 ) ) ) $=
+  divcjabs2 $p |- ( ( ( A e. CC /\ A =/= 0 ) /\ B e. CC ) -> ( B / A )
+      = ( ( ( * ` A ) x. B ) / ( ( abs ` A ) ^ 2 ) ) ) $=
     ( cc wcel cc0 wne wa ccj cmul co cdiv cabs c2 cexp simpr simpll cjcld simpl
     cfv simprd cjne0d divcan5d absvalsqd mulcomd eqtrd eqcomd oveq2d eqtr3d ) A
     CDAEFGBCDGAHSBIJAHSAIJKJBAKJAHSBIJALSMNJKJACDAEFGBCDGBAAHSACDAEFGBCDOACDAEF
@@ -73,11 +31,14 @@ $[ set.mm $]
     DGALSMNJAHSAIJACDAEFGBCDGALSMNJAAHSIJAHSAIJACDAEFGBCDGAACDAEFBCDPUCACDAEFGB
     CDGAAHSACDAEFBCDPACDAEFGBCDGAACDAEFBCDPQUDUEUFUGUH $.
 
-  $( Imaginary part after conjugate-over-absolute-square division rewrite.
-     (Contributed by JAG, 13-Oct-2026.) $)
-  imdivcjabs2 $p |- ( ( ( A e. CC /\ A =/= 0 ) /\ B e. CC ) ->
-    ( Im ` ( B / A ) ) =
-    ( ( Im ` ( ( * ` A ) x. B ) ) / ( ( abs ` A ) ^ 2 ) ) ) $=
+
+  $( The imaginary part of a quotient ` ( B / A ) ` of complex numbers is the
+     imaginary part of ` ( ( * `` A ) x. B ) ` divided by the square of the
+     absolute value of ` A ` .  See ~ divcjabs2 .  (Contributed by JAG,
+     13-Oct-2026.) $)
+  imdivcjabs2 $p |- ( ( ( A e. CC /\ A =/= 0 ) /\ B e. CC )
+      -> ( Im ` ( B / A ) )
+      = ( ( Im ` ( ( * ` A ) x. B ) ) / ( ( abs ` A ) ^ 2 ) ) ) $=
     ( cc wcel cc0 wne wa cdiv co cim cfv ccj cmul cabs c2 cexp divcjabs2 fveq2d
     simpll abscld resqcld cjcld simpr mulcld simpl simprd wb recnd sqne0 mpbird
     absne0d syl imdivd eqtrd ) ACDAEFGBCDGBAHIJKALKBMIANKOPIHIJKALKBMIJKANKOPIH
@@ -87,61 +48,13 @@ $[ set.mm $]
     UFUKACDAEFGBCDGANKCDANKOPIEFANKEFUGACDAEFGBCDGANKACDAEFGBCDGAACDAEFBCDSTUHA
     NKUIULUJUMUN $.
 
-  $( Imaginary part of a quotient as signed-area numerator over abs-square.
-     (Contributed by JAG, 13-Oct-2026.) $)
-  sinangimdiv $p |- ( ( ( A e. CC /\ A =/= 0 )
-                    /\ ( B e. CC /\ B =/= 0 ) )
-    -> ( Im ` ( B / A ) ) =
-       ( ( Im ` ( ( * ` A ) x. B ) ) / ( ( abs ` A ) ^ 2 ) ) ) $=
-    ( cc wcel cc0 wne wa cdiv co cim cfv ccj cmul cabs c2 cexp simpl simprl jca
-    wceq imdivcjabs2 syl ) ACDAEFGBCDBEFGGACDAEFGBCDGBAHIJKALKBMIJKANKOPIHITACD
-    AEFGBCDBEFGGACDAEFGBCDACDAEFGBCDBEFGQACDAEFGBCDBEFRSABUAUB $.
 
-  $( Quotient simplification for sine signed-area form.  (Contributed by JAG,
-     13-Oct-2026.) $)
-  sinangareaalg $p |- ( ( ( A e. CC /\ A =/= 0 )
-                      /\ ( B e. CC /\ B =/= 0 ) )
-    -> ( ( ( Im ` ( ( * ` A ) x. B ) ) / ( ( abs ` A ) ^ 2 ) )
-       / ( ( abs ` B ) / ( abs ` A ) ) )
-     = ( ( Im ` ( ( * ` A ) x. B ) ) /
-         ( ( abs ` A ) x. ( abs ` B ) ) ) ) $=
-    ( cc wcel cc0 wne wa ccj cfv cmul co cim cabs cexp cdiv simpll simprl recnd
-    c2 abscld cjcld mulcld imcld sqcld simpl simprd absne0d divcld wb sqne0 syl
-    mpbird simprr divne0d divdiv3d sqvald oveq2d mulassd eqcomd divcan1d oveq1d
-    eqtrd mulcomd 3eqtrd ) ACDAEFGBCDBEFGGAHIBJKLIAMISNKOKBMIAMIOKOKAHIBJKLIBMI
-    AMIOKAMISNKJKOKAHIBJKLIAMIBMIJKOKACDAEFGBCDBEFGGAHIBJKLIAMISNKBMIAMIOKACDAE
-    FGBCDBEFGGAHIBJKLIACDAEFGBCDBEFGGAHIBJKACDAEFGBCDBEFGGAHIBACDAEFGBCDBEFGGAA
-    CDAEFBCDBEFGPUAACDAEFGBCDBEFQUBUCRACDAEFGBCDBEFGGAMIACDAEFGBCDBEFGGAMIACDAE
-    FGBCDBEFGGAACDAEFBCDBEFGPTRUDACDAEFGBCDBEFGGBMIAMIACDAEFGBCDBEFGGBMIACDAEFG
-    BCDBEFGGBACDAEFGBCDBEFQTRACDAEFGBCDBEFGGAMIACDAEFGBCDBEFGGAACDAEFBCDBEFGPTR
-    ACDAEFGBCDBEFGGAACDAEFBCDBEFGPACDAEFGBCDBEFGGACDAEFACDAEFGBCDBEFGUEUFUGUHAC
-    DAEFGBCDBEFGGAMISNKEFAMIEFACDAEFGBCDBEFGGAACDAEFBCDBEFGPACDAEFGBCDBEFGGACDA
-    EFACDAEFGBCDBEFGUEUFUGACDAEFGBCDBEFGGAMICDAMISNKEFAMIEFUIACDAEFGBCDBEFGGAMI
-    ACDAEFGBCDBEFGGAACDAEFBCDBEFGPTRAMIUJUKULACDAEFGBCDBEFGGBMIAMIACDAEFGBCDBEF
-    GGBMIACDAEFGBCDBEFGGBACDAEFGBCDBEFQTRACDAEFGBCDBEFGGAMIACDAEFGBCDBEFGGAACDA
-    EFBCDBEFGPTRACDAEFGBCDBEFGGBACDAEFGBCDBEFQACDAEFGBCDBEFUMUGACDAEFGBCDBEFGGA
-    ACDAEFBCDBEFGPACDAEFGBCDBEFGGACDAEFACDAEFGBCDBEFGUEUFUGUNUOACDAEFGBCDBEFGGB
-    MIAMIOKAMISNKJKAMIBMIJKAHIBJKLIOACDAEFGBCDBEFGGBMIAMIOKAMISNKJKBMIAMIOKAMIJ
-    KAMIJKBMIAMIJKAMIBMIJKACDAEFGBCDBEFGGBMIAMIOKAMISNKJKBMIAMIOKAMIAMIJKJKBMIA
-    MIOKAMIJKAMIJKACDAEFGBCDBEFGGAMISNKAMIAMIJKBMIAMIOKJACDAEFGBCDBEFGGAMIACDAE
-    FGBCDBEFGGAMIACDAEFGBCDBEFGGAACDAEFBCDBEFGPTRUPUQACDAEFGBCDBEFGGBMIAMIOKAMI
-    JKAMIJKBMIAMIOKAMIAMIJKJKACDAEFGBCDBEFGGBMIAMIOKAMIAMIACDAEFGBCDBEFGGBMIAMI
-    ACDAEFGBCDBEFGGBMIACDAEFGBCDBEFGGBACDAEFGBCDBEFQTRACDAEFGBCDBEFGGAMIACDAEFG
-    BCDBEFGGAACDAEFBCDBEFGPTRACDAEFGBCDBEFGGAACDAEFBCDBEFGPACDAEFGBCDBEFGGACDAE
-    FACDAEFGBCDBEFGUEUFUGUHACDAEFGBCDBEFGGAMIACDAEFGBCDBEFGGAACDAEFBCDBEFGPTRAC
-    DAEFGBCDBEFGGAMIACDAEFGBCDBEFGGAACDAEFBCDBEFGPTRURUSVBACDAEFGBCDBEFGGBMIAMI
-    OKAMIJKBMIAMIJACDAEFGBCDBEFGGBMIAMIACDAEFGBCDBEFGGBMIACDAEFGBCDBEFGGBACDAEF
-    GBCDBEFQTRACDAEFGBCDBEFGGAMIACDAEFGBCDBEFGGAACDAEFBCDBEFGPTRACDAEFGBCDBEFGG
-    AACDAEFBCDBEFGPACDAEFGBCDBEFGGACDAEFACDAEFGBCDBEFGUEUFUGUTVAACDAEFGBCDBEFGG
-    BMIAMIACDAEFGBCDBEFGGBMIACDAEFGBCDBEFGGBACDAEFGBCDBEFQTRACDAEFGBCDBEFGGAMIA
-    CDAEFGBCDBEFGGAACDAEFBCDBEFGPTRVCVDUQVB $.
-
-  $( Imaginary part of a conjugate product as a determinant.  (Contributed by
-     JAG, 13-Oct-2026.) $)
-  imcjmul $p |- ( ( A e. CC /\ B e. CC ) ->
-    ( Im ` ( ( * ` A ) x. B ) ) =
-    ( ( ( Re ` A ) x. ( Im ` B ) ) -
-      ( ( Im ` A ) x. ( Re ` B ) ) ) ) $=
+  $( The imaginary part of ` ( ( * `` A ) x. B ) ` is the determinant of the
+     real and imaginary parts of ` A ` and ` B ` , that is, twice the signed
+     area of the triangle with vertices ` 0 ` , ` A ` and ` B ` .  (Contributed
+     by JAG, 13-Oct-2026.) $)
+  imcjmul $p |- ( ( A e. CC /\ B e. CC ) -> ( Im ` ( ( * ` A ) x. B ) )
+      = ( ( ( Re ` A ) x. ( Im ` B ) ) - ( ( Im ` A ) x. ( Re ` B ) ) ) ) $=
     ( cc wcel wa ccj cfv cmul co cim cre caddc wceq simpl simpr syl imcld recnd
     cneg recld cmin cjcld immul recj oveq1d imcj mulneg1d eqtrd oveq12d negsubd
     jca mulcld ) ACDBCDEAFGBHIJGAFGKGBJGHIAFGJGBKGHILIAKGBJGHIAJGBKGHIUAIACDBCD
@@ -154,11 +67,15 @@ $[ set.mm $]
     CDBCDEAKGACDBCDEAACDBCDNTRACDBCDEBJGACDBCDEBACDBCDOQRULACDBCDEAJGBKGACDBCDE
     AJGACDBCDEAACDBCDNQRACDBCDEBKGACDBCDEBACDBCDOTRULUJUHUH $.
 
-  $( Two-product determinant cancellation.  (Contributed by JAG,
+
+  $( Adding the first row of a two-by-two determinant to its second row leaves
+     the determinant unchanged: with rows ` A ` , ` B ` and ` C ` , ` D ` , the
+     determinant ` ( ( A x. D ) - ( B x. C ) ) ` equals the one with rows
+     ` A ` , ` B ` and ` ( A + C ) ` , ` ( B + D ) ` .  (Contributed by JAG,
      13-Oct-2026.) $)
-  detaddsub $p |- ( ( ( A e. CC /\ B e. CC ) /\ ( C e. CC /\ D e. CC ) ) -> ( (
-    A
-  x. ( B + D ) ) - ( B x. ( A + C ) ) ) = ( ( A x. D ) - ( B x. C ) ) ) $=
+  detaddsub $p |- ( ( ( A e. CC /\ B e. CC ) /\ ( C e. CC /\ D e. CC ) )
+      -> ( ( A x. ( B + D ) ) - ( B x. ( A + C ) ) )
+      = ( ( A x. D ) - ( B x. C ) ) ) $=
     ( cc wcel wa caddc co cmul cmin cc0 simpll adddid mulcl mulcld oveq1d eqtrd
     jca syl simplr simprr simprl oveq12d addsub4d mulcomd eqcomd subidd addlidd
     3eqtrd subcld ) AEFZBEFZGZCEFZDEFZGZGZABDHIJIZBACHIJIZKIZLADJIZBCJIZKIZHIZV
@@ -167,12 +84,16 @@ $[ set.mm $]
     MULGVHEFURUMULVLVKSBAOTZURBCVLVNPZUEURVJLVDHURVJVHVHKILURVFVHVHKURVHVFURBAV
     LVKUFUGQURVHVPUHRQUJURVDURVBVCVOVQUKUIR $.
 
-  $( Cyclic determinant identity for three coordinate pairs.  (Contributed by
-     JAG, 13-Oct-2026.) $)
-  det3cyc $p |- ( ( ( A e. CC /\ B e. CC /\ C e. CC ) /\ ( D e. CC /\ E e. CC
-    /\
-  F e. CC ) ) -> ( ( ( C - A ) x. ( F - B ) ) - ( ( D - B ) x. ( E - A ) ) ) =
-  ( ( ( E - C ) x. ( B - D ) ) - ( ( F - D ) x. ( A - C ) ) ) ) $=
+
+  $( Twice the signed area of a triangle given by coordinates is the same
+     whether it is computed from the first vertex or from the second.  The
+     vertices have coordinates ` A ` , ` B ` , then ` C ` , ` D ` , then
+     ` E ` , ` F ` ; each side of the equation is a determinant of coordinate
+     differences.  (Contributed by JAG, 13-Oct-2026.) $)
+  det3cyc $p |- ( ( ( A e. CC /\ B e. CC /\ C e. CC )
+      /\ ( D e. CC /\ E e. CC /\ F e. CC ) )
+      -> ( ( ( C - A ) x. ( F - B ) ) - ( ( D - B ) x. ( E - A ) ) )
+      = ( ( ( E - C ) x. ( B - D ) ) - ( ( F - D ) x. ( A - C ) ) ) ) $=
     ( cc wcel wa cmin co cmul cneg caddc subcld 3eqtrd eqcomd oveq12d eqtrd jca
     simpl3 simpl1 negcld simpr2 addcomd negsubd simpr1 simpl2 negsubdi2d addcld
     w3a nnncan2d mulcomd simpr3 wceq detaddsub syl mulneg1d mulcld neg2subd ) A
@@ -186,29 +107,15 @@ $[ set.mm $]
     VIWDGHZWFGHZIZVRGHZWAGHZIZIWOWHUOVIXJXMVIXHXIXEWSTVIXKXLXGXATTWDWFVRWAUPUQS
     VIWEWIWGWJJVIVTWAXDXAURVIVQVRWRXGURRVIWBVSVIVTWAXDXAUSVIVQVRWRXGUSUTPQ $.
 
-  ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d x y $.
-    sinangarea.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |->
-                          ( Im ` ( log ` ( y / x ) ) ) ) $.
-    $( Sine of an angle as signed area over side products.  (Contributed by
-       JAG, 13-Oct-2026.) $)
-    sinangarea $p |- ( ( ( A e. CC /\ A =/= 0 )
-                     /\ ( B e. CC /\ B =/= 0 ) )
-      -> ( sin ` ( A F B ) ) =
-         ( ( Im ` ( ( * ` A ) x. B ) ) /
-           ( ( abs ` A ) x. ( abs ` B ) ) ) ) $=
-      ( cc wcel cc0 wne wa co cfv ccj cmul cim cabs c2 cexp cdiv sinangareaalg
-      csin sinangabsdiv sinangimdiv oveq1d eqtrd ) CGHCIJKDGHDIJKKCDELUBMCNMDOL
-      PMCQMRSLTLDQMCQMTLTLCNMDOLPMCQMDQMOLTLCGHCIJKDGHDIJKKCDELUBMDCTLPMDQMCQMT
-      LTLCNMDOLPMCQMRSLTLDQMCQMTLTLABCDEFUCCGHCIJKDGHDIJKKDCTLPMCNMDOLPMCQMRSLT
-      LDQMCQMTLTCDUDUEUFCDUAUF $.
-  $}
 
-  $( Cyclic invariance of signed complex triangle area.  (Contributed by JAG,
-     13-Oct-2026.) $)
-  lawsinarea $p |- ( ( A e. CC /\ B e. CC /\ C e. CC ) ->
-    ( Im ` ( ( * ` ( B - A ) ) x. ( C - A ) ) ) =
-    ( Im ` ( ( * ` ( C - B ) ) x. ( A - B ) ) ) ) $=
+  $( The signed area of a triangle with complex vertices ` A ` , ` B ` , ` C `
+     does not depend on the vertex it is computed from: the imaginary part of
+     ` ( ( * `` ( B - A ) ) x. ( C - A ) ) ` is invariant under the cyclic
+     shift of the vertices.  The products themselves differ in general; only
+     their imaginary parts agree.  (Contributed by JAG, 13-Oct-2026.) $)
+  lawsinarea $p |- ( ( A e. CC /\ B e. CC /\ C e. CC )
+      -> ( Im ` ( ( * ` ( B - A ) ) x. ( C - A ) ) )
+      = ( Im ` ( ( * ` ( C - B ) ) x. ( A - B ) ) ) ) $=
     ( cc wcel w3a cmin co ccj cfv cmul cim cre simp2 simp1 subcld simp3 oveq12d
     resubd recnd wa wceq jca imcjmul syl imsubd eqtrd recld 3jca det3cyc eqcomd
     imcld ) ADEBDECDEFBAGHIJCAGHKHLJCBGHMJABGHLJKHCBGHLJABGHMJKHGHCBGHIJABGHKHL
@@ -238,119 +145,6 @@ $[ set.mm $]
     DEABGHDEADEBDECDEFCBADEBDECDEQADEBDECDENPADEBDECDEFABADEBDECDEOADEBDECDENPU
     CCBGHABGHUDUEUKUG $.
 
-  $( Triangle side vector closure and nonzero facts.  (Contributed by JAG,
-     13-Oct-2026.) $)
-  lawsinside $p |- ( ( ( A e. CC /\ B e. CC /\ C e. CC ) /\ ( A =/= B /\ A =/=
-    C
-  /\ B =/= C ) ) -> ( ( ( ( B - A ) e. CC /\ ( B - A ) =/= 0 ) /\ ( ( C - A )
-  e. CC /\ ( C - A ) =/= 0 ) ) /\ ( ( ( C - B ) e. CC /\ ( C - B ) =/= 0 ) /\ (
-  ( A - B ) e. CC /\ ( A - B ) =/= 0 ) ) ) ) $=
-    ( cc wcel w3a wne wa co cc0 simpl simp2d simp1d subcld simpr necomd subne0d
-    cmin jca simp3d ) ADEBDECDEFABGACGBCGFHBARIDEBARIJGHCARIDECARIJGHHCBRIDECBR
-    IJGHABRIDEABRIJGHHADEBDECDEFABGACGBCGFHBARIDEBARIJGHCARIDECARIJGHADEBDECDEF
-    ABGACGBCGFHBARIDEBARIJGADEBDECDEFABGACGBCGFHBAADEBDECDEFABGACGBCGFHADEBDECD
-    EADEBDECDEFABGACGBCGFKLADEBDECDEFABGACGBCGFHADEBDECDEADEBDECDEFABGACGBCGFKM
-    NADEBDECDEFABGACGBCGFHBAADEBDECDEFABGACGBCGFHADEBDECDEADEBDECDEFABGACGBCGFK
-    LADEBDECDEFABGACGBCGFHADEBDECDEADEBDECDEFABGACGBCGFKMADEBDECDEFABGACGBCGFHA
-    BADEBDECDEFABGACGBCGFHABGACGBCGADEBDECDEFABGACGBCGFOMPQSADEBDECDEFABGACGBCG
-    FHCARIDECARIJGADEBDECDEFABGACGBCGFHCAADEBDECDEFABGACGBCGFHADEBDECDEADEBDECD
-    EFABGACGBCGFKTADEBDECDEFABGACGBCGFHADEBDECDEADEBDECDEFABGACGBCGFKMNADEBDECD
-    EFABGACGBCGFHCAADEBDECDEFABGACGBCGFHADEBDECDEADEBDECDEFABGACGBCGFKTADEBDECD
-    EFABGACGBCGFHADEBDECDEADEBDECDEFABGACGBCGFKMADEBDECDEFABGACGBCGFHACADEBDECD
-    EFABGACGBCGFHABGACGBCGADEBDECDEFABGACGBCGFOLPQSSADEBDECDEFABGACGBCGFHCBRIDE
-    CBRIJGHABRIDEABRIJGHADEBDECDEFABGACGBCGFHCBRIDECBRIJGADEBDECDEFABGACGBCGFHC
-    BADEBDECDEFABGACGBCGFHADEBDECDEADEBDECDEFABGACGBCGFKTADEBDECDEFABGACGBCGFHA
-    DEBDECDEADEBDECDEFABGACGBCGFKLNADEBDECDEFABGACGBCGFHCBADEBDECDEFABGACGBCGFH
-    ADEBDECDEADEBDECDEFABGACGBCGFKTADEBDECDEFABGACGBCGFHADEBDECDEADEBDECDEFABGA
-    CGBCGFKLADEBDECDEFABGACGBCGFHBCADEBDECDEFABGACGBCGFHABGACGBCGADEBDECDEFABGA
-    CGBCGFOTPQSADEBDECDEFABGACGBCGFHABRIDEABRIJGADEBDECDEFABGACGBCGFHABADEBDECD
-    EFABGACGBCGFHADEBDECDEADEBDECDEFABGACGBCGFKMADEBDECDEFABGACGBCGFHADEBDECDEA
-    DEBDECDEFABGACGBCGFKLNADEBDECDEFABGACGBCGFHABADEBDECDEFABGACGBCGFHADEBDECDE
-    ADEBDECDEFABGACGBCGFKMADEBDECDEFABGACGBCGFHADEBDECDEADEBDECDEFABGACGBCGFKLA
-    DEBDECDEFABGACGBCGFHABGACGBCGADEBDECDEFABGACGBCGFOMQSSS $.
-
-  $( Cancel a shared denominator factor against an outside multiplier.
-     (Contributed by JAG, 13-Oct-2026.) $)
-  lawsinalg $p |- ( ( A e. CC /\ ( B e. CC /\ B =/= 0 ) /\ ( C e. CC /\ C =/= 0
-    )
-  ) -> ( B x. ( A / ( B x. C ) ) ) = ( A / C ) ) $=
-    ( cc wcel cc0 wne wa w3a cmul cdiv simp1 simp2 simpld simp3 simprd divdiv1d
-    co eqcomd oveq2d divcld divassd divcan2d oveq1d 3eqtrd ) ADEZBDEZBFGZHZCDEZ
-    CFGZHZIZBABCJRKRZJRBABKRZCKRZJRZBUOJRZCKRZACKRUMUNUPBJUMUPUNUMABCUFUIULLZUM
-    UGUHUFUIULMZNZUMUJUKUFUIULOZNZUMUGUHVAPZUMUJUKVCPZQSTUMUSUQUMBUOCVBUMABUTVB
-    VEUAVDVFUBSUMURACKUMABUTVBVEUCUDUE $.
-
-  ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d x y $.
-    lawsin.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |->
-                      ( Im ` ( log ` ( y / x ) ) ) ) $.
-    lawsin.2 $e |- X = ( abs ` ( B - C ) ) $.
-    lawsin.3 $e |- Y = ( abs ` ( A - C ) ) $.
-    lawsin.4 $e |- O = ( ( B - A ) F ( C - A ) ) $.
-    lawsin.5 $e |- P = ( ( C - B ) F ( A - B ) ) $.
-    $( The law of sines, in lawcos's frame idiom.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    lawsin $p |- ( ( ( A e. CC /\ B e. CC /\ C e. CC ) /\ ( A =/= B /\ A =/= C
-      /\ B
-  =/= C ) ) -> ( X x. ( sin ` P ) ) = ( Y x. ( sin ` O ) ) ) $=
-      ( cc wcel cfv cmul co w3a wne csin cmin ccj cim cabs cdiv wceq a1i simp2d
-      wa simpl simp3d abssubd eqtrd fveq2i cc0 lawsinside simprd sinangarea syl
-      eqtrid oveq12d simpld cjcld mulcld imcld recnd absne0d jca 3jca lawsinalg
-      abscld lawsinarea eqcomd simp1d mulcomd oveq2d 3eqtrd ) CPQZDPQZEPQZUAZCD
-      UBCEUBDEUBUAZULZIFUCRZSTZEDUDTZUERZCDUDTZSTZUFRZWKUGRZUHTZDCUDTZUERZECUDT
-      ZSTZUFRZWPUGRZUHTZJHUCRZSTZWFWHWIUGRZWMXEWNSTUHTZSTZWOWFIXEWGXFSWFIDEUDTU
-      GRZXEIXHUIWFLUJWFDEWFWAWBWCWDWEUMZUKZWFWAWBWCXIUNZUOUPWFWGWIWKGTZUCRZXFFX
-      LUCOUQWFWIPQZWIURUBZULZWKPQZWKURUBZULZULZXMXFUIWFWPPQZWPURUBZULZWRPQZWRUR
-      UBZULZULZXTCDEUSZUTZABWIWKGKVAVBVCVDWFWMPQZXEPQZXEURUBZULZWNPQZWNURUBZULZ
-      UAXGWOUIWFYJYMYPWFWMWFWLWFWJWKWFWIWFXNXOWFXPXSYIVEZVEZVFWFXQXRWFXPXSYIUTZ
-      VEZVGVHVIWFYKYLWFXEWFWIYRVNVIWFWIYRWFXNXOYQUTVJVKWFYNYOWFWNWFWKYTVNVIWFWK
-      YTWFXQXRYSUTVJVKVLWMXEWNVMVBUPWFWMWTWNXAUHWFWTWMWFWDWTWMUIXICDEVOVBVPWFCD
-      WFWAWBWCXIVQZXJUOVDWFXDXBWFXDWRUGRZWTXAUUBSTZUHTZSTUUBWTUUBXASTZUHTZSTZXB
-      WFJUUBXCUUDSWFJCEUDTUGRZUUBJUUHUIWFMUJWFCEUUAXKUOUPWFXCWPWRGTZUCRZUUDHUUI
-      UCNUQWFYGUUJUUDUIWFYGXTYHVEZABWPWRGKVAVBVCVDWFUUDUUFUUBSWFUUCUUEWTUHWFXAU
-      UBWFXAWFWPWFYAYBWFYCYFUUKVEZVEZVNVIZWFUUBWFWRWFYDYEWFYCYFUUKUTZVEZVNVIZVR
-      VSVSWFWTPQZUUBPQZUUBURUBZULZXAPQZXAURUBZULZUAUUGXBUIWFUURUVAUVDWFWTWFWSWF
-      WQWRWFWPUUMVFUUPVGVHVIWFUUSUUTUUQWFWRUUPWFYDYEUUOUTVJVKWFUVBUVCUUNWFWPUUM
-      WFYAYBUULUTVJVKVLWTUUBXAVMVBVTVPVT $.
-  $}
-
-  ${
-    cnaffco.a $e |- ( ph -> A e. CC ) $.
-    cnaffco.b $e |- ( ph -> B e. CC ) $.
-    cnaffco.c $e |- ( ph -> C e. CC ) $.
-    cnaffco.d $e |- ( ph -> D e. CC ) $.
-    cnaffco.z $e |- ( ph -> Z e. CC ) $.
-    $( Composition of two affine maps of the plane.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    cnaffco $p |- ( ph -> ( ( A x. ( ( B x. Z ) + C ) ) + D ) = ( ( ( A x. B )
-      x. Z
-  ) + ( ( A x. C ) + D ) ) ) $=
-      ( cmul co caddc mulcld adddid mulassd eqcomd oveq1d eqtrd addassd ) ABCFL
-      MZDNMLMZENMBCLMZFLMZBDLMZNMZENMUEUFENMNMAUCUGENAUCBUBLMZUFNMUGABUBDGACFHK
-      OIPAUHUEUFNAUEUHABCFGHKQRSTSAUEUFEAUDFABCGHOKOABDGIOJUAT $.
-  $}
-
-  ${
-    cnaff3.a $e |- ( ph -> A e. CC ) $.
-    cnaff3.b $e |- ( ph -> B e. CC ) $.
-    cnaff3.z $e |- ( ph -> Z e. CC ) $.
-    $( The third iterate of an affine map.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    cnaff3 $p |- ( ph -> ( ( A x. ( ( A x. ( ( A x. Z ) + B ) ) + B ) ) + B ) =
-      ( (
-  ( A ^ 3 ) x. Z ) + ( B x. ( ( 1 + A ) + ( A ^ 2 ) ) ) ) ) $=
-      ( cmul co caddc c3 cexp c1 c2 oveq2d oveq1d mulcld eqtrd 3eqtrd adddid
-      cnaffco addcld wceq oveq2i eqcomi a1i cn0 wcel 2nn0 expp1d sqvald mulassd
-      2p1e3 eqcomd add32d addcomd 1cnd sqcld mulridd mulcomd oveq12d ) ABBBDHIC
-      JIHICJIZHIZCJIZBBBHIZHIZDHIZBBCHIZCJIZHIZCJIZJIZBKLIZDHIZCMBJIZBNLIZJIHIZ
-      JIAVDBVEDHIVIJIZHIZCJIVLAVCVSCJAVBVRBHABBCCDEEFFGUAOPABVEVICDEABBEEQZAVHC
-      ABCEFQZFUBFGUARAVGVNVKVQJAVFVMDHAVMVFAVMVEBHIZVFAVMBNMJIZLIZVPBHIWBVMWDUC
-      AWDVMWCKBLUMUDUEUFABNENUGUHAUIUFUJAVPVEBHABEUKZPSABBBEEEULRUNPAVKBVHHIZVH
-      JIZCJIZCVHJIZWFJIZVQAVJWGCJABVHCEWAFTPAWHWFCJIZVHJICWFJIZVHJIWJAWFVHCABVH
-      EWAQZWAFUOAWKWLVHJAWFCWMFUPPACWFVHFWMWAUOSAVQWJAVQCVOHIZCVPHIZJIWJACVOVPF
-      AMBAUQZEUBABEURTAWNWIWOWFJAWNCMHIZCBHIZJICWRJIWIACMBFWPETAWQCWRJACFUSPAWR
-      VHCJACBFEUTOSAWOCVEHIVECHIWFAVPVECHWEOACVEFVTUTABBCEEFULSVARUNSVAR $.
-  $}
 
   ${
     cnrflinv.a $e |- ( ph -> A e. CC ) $.
@@ -358,11 +152,15 @@ $[ set.mm $]
     cnrflinv.z $e |- ( ph -> Z e. CC ) $.
     cnrflinv.n $e |- ( ph -> W =/= A ) $.
     cnrflinv.e $e |- E = ( ( W - A ) / ( * ` ( W - A ) ) ) $.
-    $( Reflection across a line through two points is an involution.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    cnrflinv $p |- ( ph -> ( A + ( E x. ( * ` ( ( A + ( E x. ( * ` ( Z - A ) )
-      ) )
-  - A ) ) ) ) = Z ) $=
+    $( The reflection of the complex plane across the line through distinct
+       points ` A ` and ` W ` maps ` Z ` to
+       ` ( A + ( E x. ( * `` ( Z - A ) ) ) ) ` , where ` E ` is the number
+       ` ( ( W - A ) / ( * `` ( W - A ) ) ) ` of absolute value ` 1 ` .  This
+       theorem shows that the reflection is an involution: applying it twice
+       returns ` Z ` .  (Contributed by JAG, 13-Oct-2026.) $)
+    cnrflinv $p |- ( ph
+        -> ( A + ( E x. ( * ` ( ( A + ( E x. ( * ` ( Z - A ) ) ) ) - A ) ) ) )
+        = Z ) $=
       ( cmin co ccj cfv cmul caddc c1 cdiv oveq2d eqtrd wceq a1i subcld subne0d
       cc cjcld cjne0d divcld eqeltrd mulcld pncan2d fveq2d cjmuld cjcjd mulassd
       3eqtrd eqcomd cjdivd oveq12d divmuldivd mulcomd mulne0d mullidd pncan3d
@@ -375,16 +173,18 @@ $[ set.mm $]
       WKRAWAVTWEWDVASUPAWKAVTWAWDWEUJAVTWAWDWEWFWGVBVETVFUPAVGWIVCTSABEFHVDT $.
   $}
 
+
   ${
     cnrflfix.a $e |- ( ph -> A e. CC ) $.
     cnrflfix.w $e |- ( ph -> W e. CC ) $.
     cnrflfix.n $e |- ( ph -> W =/= A ) $.
     cnrflfix.e $e |- E = ( ( W - A ) / ( * ` ( W - A ) ) ) $.
-    $( A reflection fixes both points that define its line.  (Contributed by
-       JAG, 13-Oct-2026.) $)
-    cnrflfix $p |- ( ph -> ( ( A + ( E x. ( * ` ( A - A ) ) ) ) = A /\ ( A + (
-      E x.
-  ( * ` ( W - A ) ) ) ) = W ) ) $=
+    $( The reflection across the line through distinct points ` A ` and ` W `
+       (see ~ cnrflinv ) fixes both ` A ` and ` W ` .  (Contributed by JAG,
+       13-Oct-2026.) $)
+    cnrflfix $p |- ( ph
+        -> ( ( A + ( E x. ( * ` ( A - A ) ) ) ) = A
+        /\ ( A + ( E x. ( * ` ( W - A ) ) ) ) = W ) ) $=
       ( cmin co ccj cfv cmul caddc wceq cc0 subidd a1i eqtrd oveq2d fveq2d cdiv
       cj0 cc subcld cjcld subne0d cjne0d divcld eqeltrd mul01d addridd divcan1d
       oveq1d pncan3d jca ) ABCBBIJZKLZMJZNJZBOBCDBIJZKLZMJZNJZDOAUTBPNJBAUSPBNA
@@ -393,6 +193,7 @@ $[ set.mm $]
       VBMVGUNAVAVBVHVIVJUMSTABDEFUOSUP $.
   $}
 
+
   ${
     cnrflsw.a $e |- ( ph -> A e. CC ) $.
     cnrflsw.b $e |- ( ph -> B e. CC ) $.
@@ -400,11 +201,12 @@ $[ set.mm $]
     cnrflsw.n $e |- ( ph -> B =/= A ) $.
     cnrflsw.d $e |- D = ( ( B - A ) / ( * ` ( B - A ) ) ) $.
     cnrflsw.e $e |- E = ( ( A - B ) / ( * ` ( A - B ) ) ) $.
-    $( The same reflection, written from either point that names its line.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    cnrflsw $p |- ( ph -> ( B + ( E x. ( * ` ( Z - B ) ) ) ) = ( A + ( D x. ( *
-      ` (
-  Z - A ) ) ) ) ) $=
+    $( The reflection across the line through distinct points ` A ` and ` B `
+       (see ~ cnrflinv ) takes the same value at every point ` Z ` whether it
+       is written from ` A ` or from ` B ` .  (Contributed by JAG,
+       13-Oct-2026.) $)
+    cnrflsw $p |- ( ph -> ( B + ( E x. ( * ` ( Z - B ) ) ) )
+        = ( A + ( D x. ( * ` ( Z - A ) ) ) ) ) $=
       ( cmin co ccj cfv cmul caddc eqcomd eqtrd cdiv cneg a1i negsubdi2d fveq2d
       subcld cjnegd oveq12d cjcld subne0d cjne0d div2negd 3eqtrd oveq1d npncand
       wceq oveq2d cjaddd cc divcld eqeltrd adddid mulcld addassd add32d pncan3d
@@ -418,20 +220,27 @@ $[ set.mm $]
       FVEUMAWJCVKRABCGHVFUNTST $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d x y $.
-    ang2exp.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im `
-      (
-  log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.
+    ang2exp.1 $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     ang2exp.a $e |- ( ph -> A e. CC ) $.
     ang2exp.an $e |- ( ph -> A =/= 0 ) $.
     ang2exp.b $e |- ( ph -> B e. CC ) $.
     ang2exp.bn $e |- ( ph -> B =/= 0 ) $.
-    $( The doubled-angle rotation coefficient is rational in the data.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    ang2exp $p |- ( ph -> ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) ) = ( ( B / A )
-      / (
-  * ` ( B / A ) ) ) ) $=
+    $( The rotation by twice the signed angle from a nonzero complex number
+       ` A ` to a nonzero ` B ` has coefficient
+       ` ( ( B / A ) / ( * `` ( B / A ) ) ) ` , a rational expression in ` A `
+       and ` B ` .  Here ` F ` is the signed angle function
+` ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im `` ( log `` ( y / x ) )
+) ) ` ,
+       so that ` ( A F B ) ` is the angle from ` A ` to ` B ` .  (Contributed
+       by JAG,
+       13-Oct-2026.) $)
+    ang2exp $p |- ( ph -> ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) )
+        = ( ( B / A ) / ( * ` ( B / A ) ) ) ) $=
       ( ci c2 co cmul ce cfv cdiv cexp wcel ccj cabs clog angvald oveq2d fveq2d
       cim cc ax-icn a1i divcld divne0d logcld imcld recnd mul12d cz wceq mulcld
       2cn 2z efexp syl2anc 3eqtrd cc0 wne efiarg oveq1d abscld sqdivd absvalsqd
@@ -444,11 +253,12 @@ $[ set.mm $]
       VDAWBWDWBXBAWBXBVNXBAWBXBXCVOXCVPVQ $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d x y $.
-    cnrfl2.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` (
-      log
-  ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.  $d C x y $.
+    cnrfl2.1 $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     cnrfl2.a $e |- ( ph -> A e. CC ) $.
     cnrfl2.b $e |- ( ph -> B e. CC ) $.
     cnrfl2.c $e |- ( ph -> C e. CC ) $.
@@ -457,12 +267,16 @@ $[ set.mm $]
     cnrfl2.cn $e |- ( ph -> C =/= A ) $.
     cnrfl2.d $e |- D = ( ( B - A ) / ( * ` ( B - A ) ) ) $.
     cnrfl2.e $e |- E = ( ( C - A ) / ( * ` ( C - A ) ) ) $.
-    $( Two reflections through a common point compose to a rotation.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    cnrfl2 $p |- ( ph -> ( A + ( E x. ( * ` ( ( A + ( D x. ( * ` ( Z - A ) ) )
-      ) -
-  A ) ) ) ) = ( A + ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( C - A ) ) ) ) ) x.
-  ( Z - A ) ) ) ) $=
+    $( The reflection across the line through ` A ` and ` B ` followed by the
+       reflection across the line through ` A ` and ` C ` is the rotation about
+       ` A ` by twice the signed angle from ` ( B - A ) ` to ` ( C - A ) ` .
+       ` F ` is the signed angle function, as in ~ ang2exp .  (Contributed by
+       JAG, 13-Oct-2026.) $)
+    cnrfl2 $p |- ( ph
+        -> ( A + ( E x. ( * ` ( ( A + ( D x. ( * ` ( Z - A ) ) ) ) - A ) ) ) )
+        = ( A
+        + ( ( exp ` ( _i x. ( 2 x. ( ( B - A ) F ( C - A ) ) ) ) )
+        x. ( Z - A ) ) ) ) $=
       ( co cmin ccj cfv cmul caddc ci c2 ce cdiv wceq a1i subcld subne0d cjne0d
       cc cjcld divcld eqeltrd mulcld pncan2d fveq2d cjmuld cjcjd oveq2d mulassd
       3eqtrd eqcomd cjdivd oveq12d divmuldivd mulcomd ang2exp divdivdivd oveq1d
@@ -478,20 +292,22 @@ $[ set.mm $]
       VHVDAWCWBXBWLXEWOXFWPWQWRXHVMVFVGVOVNVOVD $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d x y $.
-    angioo.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` (
-      log
-  ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.
+    angioo.1 $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     angioo.a $e |- ( ph -> A e. CC ) $.
     angioo.an $e |- ( ph -> A =/= 0 ) $.
     angioo.b $e |- ( ph -> B e. CC ) $.
     angioo.bn $e |- ( ph -> B =/= 0 ) $.
-    $( Signed angle in (0, pi) iff the imaginary part of the ratio is positive.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    angioo $p |- ( ph -> ( ( A F B ) e. ( 0 (,) _pi ) <-> 0 < ( Im ` ( B / A )
-      ) )
-  ) $=
+    $( The signed angle from a nonzero complex number ` A ` to a nonzero ` B `
+       lies in the open interval ` ( 0 (,) _pi ) ` exactly when the imaginary
+       part of ` ( B / A ) ` is positive. ` F ` is the signed angle function,
+       as in ~ ang2exp .  (Contributed by JAG, 13-Oct-2026.) $)
+    angioo $p |- ( ph
+        -> ( ( A F B ) e. ( 0 (,) _pi ) <-> 0 < ( Im ` ( B / A ) ) ) ) $=
       ( co cc0 wcel cdiv cfv cim clt wbr adantr cpi cioo clog angvald eleq1d wa
       cabs csin simpr sinq12gt0 syl cc wne divcld divne0d sinarg syl2anc abscld
       wceq cr absne0d imdivd eqtrd breqtrd wb crp absrpcl rpgt0d gt0div syl3anc
@@ -503,11 +319,12 @@ $[ set.mm $]
       VJVLVMAWKWDWBVNWMWKWDWBVTVOVMUKVPVQ $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d x y $.
-    ang180pos.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.  $d C x y $.
+    ang180pos.1 $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     ang180pos.a $e |- ( ph -> A e. CC ) $.
     ang180pos.b $e |- ( ph -> B e. CC ) $.
     ang180pos.c $e |- ( ph -> C e. CC ) $.
@@ -515,45 +332,51 @@ $[ set.mm $]
     ang180pos.bc $e |- ( ph -> B =/= C ) $.
     ang180pos.ca $e |- ( ph -> C =/= A ) $.
     ang180pos.o $e |- ( ph -> ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) ) $.
-    $( The three cyclic angles are positive and sum to pi.  (Contributed by
-       JAG, 13-Oct-2026.) $)
-    ang180pos $p |- ( ph -> ( ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi ) /\ ( (
-      A -
-  C ) F ( B - C ) ) e. ( 0 (,) _pi ) /\ ( ( ( ( C - B ) F ( A - B ) ) + ( ( A -
-  C ) F ( B - C ) ) ) + ( ( B - A ) F ( C - A ) ) ) = _pi ) ) $=
-      ( co cc0 cpi wcel clt cmin cioo caddc wceq cdiv cim cfv wbr ccj cmul cabs
+    $( If the angle at ` A ` of the triangle with vertices ` A ` , ` B ` ,
+       ` C ` , measured from ` ( B - A ) ` to ` ( C - A ) ` , lies in
+       ` ( 0 (,) _pi ) ` , so that the triangle is positively oriented, then so
+       do its angles at ` B ` and at ` C ` taken in the same cyclic order, and
+       the three angles sum to ` _pi ` . ` F ` is the signed angle function, as
+       in ~ ang2exp .  (Contributed by JAG, 13-Oct-2026.) $)
+    ang180pos $p |- ( ph
+        -> ( ( ( C - B ) F ( A - B ) ) e. ( 0 (,) _pi )
+        /\ ( ( A - C ) F ( B - C ) ) e. ( 0 (,) _pi )
+        /\ ( ( ( ( C - B ) F ( A - B ) ) + ( ( A - C ) F ( B - C ) ) )
+        + ( ( B - A ) F ( C - A ) ) ) = _pi ) ) $=
+      ( co cc0 wcel clt wbr cmin cpi cioo caddc wceq cdiv cim cfv ccj cmul cabs
       c2 cexp subcld necomd subne0d angioo mpbid cc wne jca imdivcjabs2 syl2anc
       wa breqtrd cr wb cjcld mulcld imcld abscld resqcld absne0d sqgt0d syl3anc
       gt0div mpbird lawsinarea breqtrrd cneg wo cpr w3a 3jca ang180 elpri wn wi
-      syl pire renegcl ax-mp a1i 0re elioore readdcld lt0neg2 mpbi cxr 0xr rexr
-      pipos ioogtlb addgt0d lttrd ltned neneqd orel1 mpd ) AFEUAPZDEUAPZGPZQRUB
-      PZSZDFUAPZEFUAPZGPZXMSZXLXQUCPZEDUAPZFDUAPZGPZUCPZRUDZAXNQXKXJUEPUFUGZTUH
-      AQXJUIUGZXKUJPZUFUGZXJUKUGZULUMPZUEPZYETAQYHTUHZQYKTUHZAQXTUIUGZYAUJPZUFU
-      GZYHTAQYPTUHZQYPXTUKUGZULUMPZUEPZTUHZAQYAXTUEPUFUGZYTTAYBXMSZQUUBTUHOABCX
-      TYAGHAEDJIUNZAEDJIADELUOUPZAFDKIUNZAFDKINUPUQURAXTUSSZXTQUTZVDYAUSSUUBYTU
-      DAUUGUUHUUDUUEVAUUFXTYAVBVCVEAYPVFSYSVFSQYSTUHYQUUAVGAYOAYNYAAXTUUDVHUUFV
-      IVJAYRAXTUUDVKZVLAYRUUIAXTUUDUUEVMVNYPYSVPVOVQADUSSZEUSSZFUSSZYPYHUDIJKDE
-      FVRVOVEZAYHVFSYJVFSQYJTUHYLYMVGAYGAYFXKAXJAFEKJUNZVHADEIJUNZVIVJAYIAXJUUN
-      VKZVLAYIUUPAXJUUNAFEKJAEFMUOUPZVMVNYHYJVPVOURAXJUSSZXJQUTZVDXKUSSYEYKUDAU
-      URUUSUUNUUQVAUUOXJXKVBVCVSABCXJXKGHUUNUUQUUOADEIJLUPUQVQZAXRQXPXOUEPUFUGZ
-      TUHAQXOUIUGZXPUJPZUFUGZXOUKUGZULUMPZUEPZUVATAQUVDTUHZQUVGTUHZAQYHUVDTUUMA
-      UUKUULUUJYHUVDUDJKIEFDVRVOVEAUVDVFSUVFVFSQUVFTUHUVHUVIVGAUVCAUVBXPAXOADFI
-      KUNZVHAEFJKUNZVIVJAUVEAXOUVJVKZVLAUVEUVLAXOUVJADFIKAFDNUOZUPZVMVNUVDUVFVP
-      VOURAXOUSSZXOQUTZVDXPUSSUVAUVGUDAUVOUVPUVJUVNVAUVKXOXPVBVCVSABCXOXPGHUVJU
-      VNUVKAEFJKMUPUQVQZAYCRVTZUDZYDWAZYDAYCUVRRWBSZUVTAUUJUUKUULWCDEUTZEFUTZDF
-      UTZWCUWAAUUJUUKUULIJKWDAUWBUWCUWDLMUVMWDBCDEFGHWEVCYCUVRRWFWIAUVSWGUVTYDW
-      HAYCUVRAUVRYCAUVRYCUVRVFSZARVFSZUWEWJRWKWLWMZAUVRQYCUWGQVFSAWNWMAXSYBAXLX
-      QAXNXLVFSUUTXLQRWOWIZAXRXQVFSUVQXQQRWOWIZWPZAUUCYBVFSOYBQRWOWIZWPUVRQTUHZ
-      AQRTUHZUWLXBUWFUWMUWLVGWJRWQWLWRWMAXSYBUWJUWKAXLXQUWHUWIAQWSSZRWSSZXNQXLT
-      UHUWNAWTWMZUWOAUWFUWOWJRXAWLWMZUUTQRXLXCVOAUWNUWOXRQXQTUHUWPUWQUVQQRXQXCV
-      OXDAUWNUWOUUCQYBTUHUWPUWQOQRYBXCVOXDXEXFUOXGUVSYDXHWIXIWD $.
+      syl pire renegcl ax-mp a1i 0re elioore readdcld pipos lt0neg2 mpbi simpld
+      eliooord addgt0d lttrd ltned neneqd orel1 mpd ) AFEUAPZDEUAPZGPZQUBUCPZRZ
+      DFUAPZEFUAPZGPZXKRZXJXOUDPZEDUAPZFDUAPZGPZUDPZUBUEZAXLQXIXHUFPUGUHZSTAQXH
+      UIUHZXIUJPZUGUHZXHUKUHZULUMPZUFPZYCSAQYFSTZQYISTZAQXRUIUHZXSUJPZUGUHZYFSA
+      QYNSTZQYNXRUKUHZULUMPZUFPZSTZAQXSXRUFPUGUHZYRSAXTXKRZQYTSTOABCXRXSGHAEDJI
+      UNZAEDJIADELUOUPZAFDKIUNZAFDKINUPUQURAXRUSRZXRQUTZVDXSUSRYTYRUEAUUEUUFUUB
+      UUCVAUUDXRXSVBVCVEAYNVFRYQVFRQYQSTYOYSVGAYMAYLXSAXRUUBVHUUDVIVJAYPAXRUUBV
+      KZVLAYPUUGAXRUUBUUCVMVNYNYQVPVOVQADUSRZEUSRZFUSRZYNYFUEIJKDEFVRVOVEZAYFVF
+      RYHVFRQYHSTYJYKVGAYEAYDXIAXHAFEKJUNZVHADEIJUNZVIVJAYGAXHUULVKZVLAYGUUNAXH
+      UULAFEKJAEFMUOUPZVMVNYFYHVPVOURAXHUSRZXHQUTZVDXIUSRYCYIUEAUUPUUQUULUUOVAU
+      UMXHXIVBVCVSABCXHXIGHUULUUOUUMADEIJLUPUQVQZAXPQXNXMUFPUGUHZSTAQXMUIUHZXNU
+      JPZUGUHZXMUKUHZULUMPZUFPZUUSSAQUVBSTZQUVESTZAQYFUVBSUUKAUUIUUJUUHYFUVBUEJ
+      KIEFDVRVOVEAUVBVFRUVDVFRQUVDSTUVFUVGVGAUVAAUUTXNAXMADFIKUNZVHAEFJKUNZVIVJ
+      AUVCAXMUVHVKZVLAUVCUVJAXMUVHADFIKAFDNUOZUPZVMVNUVBUVDVPVOURAXMUSRZXMQUTZV
+      DXNUSRUUSUVEUEAUVMUVNUVHUVLVAUVIXMXNVBVCVSABCXMXNGHUVHUVLUVIAEFJKMUPUQVQZ
+      AYAUBVTZUEZYBWAZYBAYAUVPUBWBRZUVRAUUHUUIUUJWCDEUTZEFUTZDFUTZWCUVSAUUHUUIU
+      UJIJKWDAUVTUWAUWBLMUVKWDBCDEFGHWEVCYAUVPUBWFWIAUVQWGUVRYBWHAYAUVPAUVPYAAU
+      VPYAUVPVFRZAUBVFRZUWCWJUBWKWLWMZAUVPQYAUWEQVFRAWNWMAXQXTAXJXOAXLXJVFRUURX
+      JQUBWOWIZAXPXOVFRUVOXOQUBWOWIZWPZAUUAXTVFROXTQUBWOWIZWPUVPQSTZAQUBSTZUWJW
+      QUWDUWKUWJVGWJUBWRWLWSWMAXQXTUWHUWIAXJXOUWFUWGAQXJSTZXJUBSTZAXLUWLUWMVDUU
+      RXJQUBXAWIWTAQXOSTZXOUBSTZAXPUWNUWOVDUVOXOQUBXAWIWTXBAQXTSTZXTUBSTZAUUAUW
+      PUWQVDOXTQUBXAWIWTXBXCXDUOXEUVQYBXFWIXGWD $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d R x $.  $d R y $.  $d x y $.
-    morlemfix.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.  $d R x y $.
+    morlemfix.f $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     morlemfix.a $e |- ( ph -> A e. CC ) $.
     morlemfix.b $e |- ( ph -> B e. CC ) $.
     morlemfix.r $e |- ( ph -> R e. CC ) $.
@@ -562,11 +385,18 @@ $[ set.mm $]
     morlemfix.rb $e |- ( ph -> R =/= B ) $.
     morlemfix.1 $e |- ( ph -> ( ( B - A ) F ( R - A ) ) = X ) $.
     morlemfix.2 $e |- ( ph -> ( ( R - B ) F ( A - B ) ) = Y ) $.
-    $( The composite of two double-trisection rotations fixes the Morley point.
+    $( Let ` X ` be the signed angle at ` A ` from ` ( B - A ) ` to
+       ` ( R - A ) ` , and ` Y ` the signed angle at ` B ` from ` ( R - B ) `
+       to ` ( A - B ) ` .  Then the rotation about ` B ` by ` ( 2 x. Y ) `
+       followed by the rotation about ` A ` by ` ( 2 x. X ) ` fixes ` R ` :
+       each rotation is the composite of two reflections ( ~ cnrfl2 ), and the
+       reflections across the line through ` A ` and ` B ` cancel.
        (Contributed by JAG, 13-Oct-2026.) $)
-    morlemfix $p |- ( ph -> ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B + (
-      (
-  exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) ) = R ) $=
+    morlemfix $p |- ( ph
+        -> ( A
+        + ( ( exp ` ( _i x. ( 2 x. X ) ) )
+        x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) )
+        = R ) $=
       ( cmul co ci c2 ce cfv cmin caddc ccj cdiv oveq2d fveq2d wceq eqid simprd
       cnrflfix oveq1d eqcomd necomd cnrfl2 oveq12d subcld subne0d cjne0d divcld
       eqtrd cjcld mulcld addcld cnrflsw cnrflinv ) ADUAUBHSTZSTZUCUDZEUAUBISTZS
@@ -584,12 +414,13 @@ $[ set.mm $]
       $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d P x $.
-    $d P y $.  $d Q x $.  $d Q y $.  $d R x $.  $d R y $.  $d x y $.
-    morlemfix3.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.  $d C x y $.  $d P x y $.  $d Q x y $.
+    $d R x y $.
+    morlemfix3.f $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     morlemfix3.a $e |- ( ph -> A e. CC ) $.
     morlemfix3.b $e |- ( ph -> B e. CC ) $.
     morlemfix3.c $e |- ( ph -> C e. CC ) $.
@@ -611,14 +442,26 @@ $[ set.mm $]
     morlemfix3.4 $e |- ( ph -> ( ( R - B ) F ( A - B ) ) = Y ) $.
     morlemfix3.5 $e |- ( ph -> ( ( A - C ) F ( Q - C ) ) = Z ) $.
     morlemfix3.6 $e |- ( ph -> ( ( P - C ) F ( B - C ) ) = Z ) $.
-    $( The three cyclic fixed-point equations in the Morley frame.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    morlemfix3 $p |- ( ph -> ( ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( ( B
-      + (
-  ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) ) = R /\ ( B + ( (
-  exp ` ( _i x. ( 2 x. Y ) ) ) x. ( ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. (
-  P - C ) ) ) - B ) ) ) = P /\ ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( ( A
-  + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( Q - A ) ) ) - C ) ) ) = Q ) ) $=
+    $( The fixed-point equations of ~ morlemfix at all three sides of the
+       triangle with vertices ` A ` , ` B ` , ` C ` .  The lines from ` A ` to
+       ` R ` and to ` Q ` make the equal angles ` X ` with the sides at ` A ` ;
+       likewise ` Y ` at ` B ` for ` P ` and ` R ` , and ` Z ` at ` C ` for
+       ` Q ` and ` P ` .  The rotations about consecutive vertices by twice
+       these angles compose to maps fixing ` R ` , ` P ` and ` Q `
+       respectively.  (Contributed by JAG, 13-Oct-2026.) $)
+    morlemfix3 $p |- ( ph
+        -> ( ( A
+        + ( ( exp ` ( _i x. ( 2 x. X ) ) )
+        x. ( ( B + ( ( exp ` ( _i x. ( 2 x. Y ) ) ) x. ( R - B ) ) ) - A ) ) )
+        = R
+        /\ ( B
+        + ( ( exp ` ( _i x. ( 2 x. Y ) ) )
+        x. ( ( C + ( ( exp ` ( _i x. ( 2 x. Z ) ) ) x. ( P - C ) ) ) - B ) ) )
+        = P
+        /\ ( C
+        + ( ( exp ` ( _i x. ( 2 x. Z ) ) )
+        x. ( ( A + ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( Q - A ) ) ) - C ) ) )
+        = Q ) ) $=
       ( ci c2 cmul co ce cfv cmin caddc wceq necomd morlemfix 3jca ) ADUPUQKURU
       SURUSUTVAZEUPUQLURUSURUSUTVAZIEVBUSURUSVCUSDVBUSURUSVCUSIVDEVIFUPUQMURUSU
       RUSUTVAZGFVBUSURUSVCUSEVBUSURUSVCUSGVDFVJDVHHDVBUSURUSVCUSFVBUSURUSVCUSHV
@@ -626,21 +469,23 @@ $[ set.mm $]
       SAFDUCVEUHUIUNUKVFVG $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d x y $.
-    morlemcub.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.
+    morlemcub.f $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     morlemcub.a $e |- ( ph -> A e. CC ) $.
     morlemcub.an $e |- ( ph -> A =/= 0 ) $.
     morlemcub.b $e |- ( ph -> B e. CC ) $.
     morlemcub.bn $e |- ( ph -> B =/= 0 ) $.
     morlemcub.x $e |- X = ( ( A F B ) / 3 ) $.
-    $( The cube of a trisected-angle rotation coefficient is the whole-angle
-       one.  (Contributed by JAG, 13-Oct-2026.) $)
-    morlemcub $p |- ( ph -> ( ( exp ` ( _i x. ( 2 x. X ) ) ) ^ 3 ) = ( exp ` (
-      _i
-  x. ( 2 x. ( A F B ) ) ) ) ) $=
+    $( If ` X ` is one third of the signed angle ` ( A F B ) ` , the cube of
+       the rotation coefficient ` ( exp `` ( _i x. ( 2 x. X ) ) ) ` is the
+       rotation coefficient for twice the whole angle. ` F ` is the signed
+       angle function, as in ~ ang2exp .  (Contributed by JAG, 13-Oct-2026.) $)
+    morlemcub $p |- ( ph -> ( ( exp ` ( _i x. ( 2 x. X ) ) ) ^ 3 )
+        = ( exp ` ( _i x. ( 2 x. ( A F B ) ) ) ) ) $=
       ( ci c2 cmul co c3 cc a1i cfv cexp wcel wceq ax-icn 2cn cdiv clog angvald
       ce cz cim divcld divne0d logcld imcld recnd eqeltrd 3cn cc0 wne mulcld 3z
       3ne0 efexp syl2anc eqcomd mul12d oveq2d divcan2d eqtrd fveq2d ) ANOGPQZPQ
@@ -651,11 +496,12 @@ $[ set.mm $]
       OPAWORWDPQVRAGWDRPWEVIAVRRWIWJWKVJVKVIVKVIVKVLVK $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d x y $.
-    morlemid.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im `
-      (
-  log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.  $d C x y $.
+    morlemid.f $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     morlemid.x $e |- X = ( ( ( B - A ) F ( C - A ) ) / 3 ) $.
     morlemid.y $e |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) $.
     morlemid.z $e |- Z = ( ( ( A - C ) F ( B - C ) ) / 3 ) $.
@@ -666,12 +512,19 @@ $[ set.mm $]
     morlemid.ab $e |- ( ph -> A =/= B ) $.
     morlemid.bc $e |- ( ph -> B =/= C ) $.
     morlemid.ca $e |- ( ph -> C =/= A ) $.
-    $( The three cubed rotations telescope to the identity.  (Contributed by
-       JAG, 13-Oct-2026.) $)
-    morlemid $p |- ( ph -> ( A + ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) ^ 3 ) x. (
-      ( B
-  + ( ( ( exp ` ( _i x. ( 2 x. Y ) ) ) ^ 3 ) x. ( ( C + ( ( ( exp ` ( _i x. ( 2
-  x. Z ) ) ) ^ 3 ) x. ( W - C ) ) ) - B ) ) ) - A ) ) ) = W ) $=
+    $( Let ` X ` , ` Y ` , ` Z ` be one third of the angles of the triangle
+       with vertices ` A ` , ` B ` , ` C ` .  The rotations about ` C ` , ` B `
+       and ` A ` by six times these angles, applied in that order, compose to
+       the identity: by ~ cnrfl2 each is the composite of two reflections in
+       sides of the triangle, and the reflections cancel in pairs.
+       (Contributed by JAG, 13-Oct-2026.) $)
+    morlemid $p |- ( ph
+        -> ( A
+        + ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) ^ 3 )
+        x. ( ( B
+        + ( ( ( exp ` ( _i x. ( 2 x. Y ) ) ) ^ 3 )
+        x. ( ( C + ( ( ( exp ` ( _i x. ( 2 x. Z ) ) ) ^ 3 ) x. ( W - C ) ) )
+        - B ) ) ) - A ) ) ) = W ) $=
       ( ci c2 cmul co ce cfv c3 cexp cmin caddc subcld necomd subne0d morlemcub
       oveq1d oveq2d oveq12d ccj cdiv cc cjcld cjne0d divcld mulcld eqid cnrflsw
       addcld cnrfl2 eqtrd eqcomd fveq2d cnrflinv eqeltrrd ) ADUCUDIUEUFUEUFUGUH
@@ -699,11 +552,12 @@ $[ set.mm $]
       UVJUTAYHUVIDUKADFXMYEHPRSUBUUSUUNVHUQVMURURADXMFHPRSUBUUSVNVKVKVKVK $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d x y $.
-    morlemj.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im `
-      (
-  log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.  $d C x y $.
+    morlemj.f $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     morlemj.x $e |- X = ( ( ( B - A ) F ( C - A ) ) / 3 ) $.
     morlemj.y $e |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) $.
     morlemj.z $e |- Z = ( ( ( A - C ) F ( B - C ) ) / 3 ) $.
@@ -714,14 +568,18 @@ $[ set.mm $]
     morlemj.bc $e |- ( ph -> B =/= C ) $.
     morlemj.ca $e |- ( ph -> C =/= A ) $.
     morlemj.o $e |- ( ph -> ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) ) $.
-    morlemj.j $e |- J = ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x. (
-      2
-  x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) $.
-    $( The composite coefficient is a primitive cube root of unity.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    morlemj $p |- ( ph -> ( J = ( exp ` ( _i x. ( 2 x. ( _pi / 3 ) ) ) ) /\ ( J
-      ^ 3
-  ) = 1 /\ J =/= 1 ) ) $=
+    morlemj.j $e |- J
+        = ( ( ( exp ` ( _i x. ( 2 x. X ) ) )
+        x. ( exp ` ( _i x. ( 2 x. Y ) ) ) )
+        x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) $.
+    $( Let ` X ` , ` Y ` , ` Z ` be one third of the angles of a positively
+       oriented triangle with vertices ` A ` , ` B ` , ` C ` .  The product
+       ` J ` of the rotation coefficients for twice these angles is the
+       rotation by ` ( 2 x. ( _pi / 3 ) ) ` , so it is a cube root of unity
+       other than ` 1 ` .  (Contributed by JAG, 13-Oct-2026.) $)
+    morlemj $p |- ( ph
+        -> ( J = ( exp ` ( _i x. ( 2 x. ( _pi / 3 ) ) ) ) /\ ( J ^ 3 ) = 1 /\ J
+        =/= 1 ) ) $=
       ( ci c2 cpi c3 cdiv co cmul ce cfv wceq cexp c1 wne a1i caddc oveq12d cc0
       cmin cioo wcel cr elioore syl recnd ang180pos simp1d addcld simp2d cc 3cn
       3ne0 divdird oveq1d eqtrd eqcomd addassd addcomd simp3d 3eqtrd oveq2d 2cn
@@ -768,24 +626,25 @@ $[ set.mm $]
       UQYOYPYQUOUYGUMAUYGUOYRYSUQYTUUAUYEUYHUUBAHUOWTUUCUQUUDUUEUUF $.
   $}
 
+
   ${
-    morlemone.s $e |- ( ph -> S e. CC ) $.
-    morlemone.t $e |- ( ph -> T e. CC ) $.
-    morlemone.1 $e |- ( ph -> ( S x. T ) = U ) $.
-    $( One coefficient times a complementary denominator.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemone $p |- ( ph -> ( S x. ( 1 - T ) ) = ( S - U ) ) $=
+    mul1subeqd.s $e |- ( ph -> S e. CC ) $.
+    mul1subeqd.t $e |- ( ph -> T e. CC ) $.
+    mul1subeqd.1 $e |- ( ph -> ( S x. T ) = U ) $.
+    $( If ` ( S x. T ) = U ` , then ` ( S x. ( 1 - T ) ) = ( S - U ) ` .
+       (Deduction form.)  (Contributed by JAG, 13-Oct-2026.) $)
+    mul1subeqd $p |- ( ph -> ( S x. ( 1 - T ) ) = ( S - U ) ) $=
       ( c1 cmin co cmul 1cnd subdid mulridd oveq12d eqtrd ) ABHCIJKJBHKJZBCKJZI
       JBDIJABHCEALFMAQBRDIABENGOP $.
   $}
 
+
   ${
-    morlemfac3.s $e |- ( ph -> S e. CC ) $.
-    $( The factorization of S cubed minus one.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemfac3 $p |- ( ph -> ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) = ( ( S
-      ^ 3
-  ) - 1 ) ) $=
+    cubm1d.s $e |- ( ph -> S e. CC ) $.
+    $( The factorization of ` ( ( S ^ 3 ) - 1 ) ` over its root ` 1 ` .
+       (Deduction form.)  (Contributed by JAG, 13-Oct-2026.) $)
+    cubm1d $p |- ( ph -> ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) )
+        = ( ( S ^ 3 ) - 1 ) ) $=
       ( c1 cmin co c2 cexp caddc cmul c3 1cnd addcld subdird adddid a1i oveq12d
       sqcld eqtrd cc0 mulcomd wceq 2p1e3 oveq2i cn0 expp1d eqtr3d eqtr4d sqvald
       wcel 2nn0 eqcomd mulridd mullidd cc mulcld eqeltrd addassd addcomd subidd
@@ -798,38 +657,42 @@ $[ set.mm $]
       TVNIAVGVSUTVBVCAVNAVJDWMVQVDVESS $.
   $}
 
+
   ${
     morlemcyc.j $e |- ( ph -> J e. CC ) $.
     morlemcyc.c $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
     morlemcyc.n $e |- ( ph -> J =/= 1 ) $.
     morlemcyc.s $e |- ( ph -> S e. CC ) $.
-    $( The cyclotomic identity, in the sign convention of the cofactor
-       argument.  (Contributed by JAG, 13-Oct-2026.) $)
+    $( For a cube root of unity ` J ` other than ` 1 ` , ` ( ( S ^ 3 ) - 1 ) `
+       factors into the linear factors ` ( 1 - S ) ` , ` ( S - J ) ` and
+       ` ( ( J ^ 2 ) - S ) ` , whose roots are the three cube roots of unity.
+       (Contributed by JAG, 13-Oct-2026.) $)
     morlemcyc $p |- ( ph -> ( ( 1 - S ) x. ( ( S - J ) x. ( ( J ^ 2 ) - S ) ) )
-      = (
-  ( S ^ 3 ) - 1 ) ) $=
+        = ( ( S ^ 3 ) - 1 ) ) $=
       ( c1 cmin co c2 cexp cmul caddc cneg cc wcel wceq cc0 eqtrd mulsub adddid
-      c3 sqcld syl22anc wn subne0d neneqd wo morlemfac3 oveq1d 1m1e0 a1i subcld
-      1cnd addcld mul0ord mpbid ord mpd wb addeq0 syl2anc oveq2d mulridd negeqd
-      mulneg2d eqtr3d sqvald eqcomd 2p1e3 oveq2i expp1d oveq12d addcomd addassd
-      cn0 2nn0 negdid negcld negsubd 3eqtrd eqtr4d negsubdi2d mulneg1d negnegd
-      mulcld ) AHBIJZBCIJCKLJZBIJMJZMJZBHIJZBKLJZBNJZHNJZMJZBUCLJHIJAWKWHWOOZMJ
-      WHWOMJZOZWPAWJWQWHMAWJBOZWMHNJZIJZWQAWJBWIMJBCMJNJZBBMJZWICMJZNJZIJZXBABP
-      QZCPQWIPQXHWJXGRGDACDUDZGBCWIBUAUEAXCWTXFXAIABWICNJZMJZXCWTABWICGXIDUBAXK
-      BHOZMJZWTAXJXLBMAXJHNJZSRZXJXLRZACHIJZSRZUFXOAXQSACHDAUOZFUGUHAXRXOAXQXNM
-      JZSRXRXOUIAXTCUCLJZHIJZSACDUJAYBHHIJZSAYAHHIEUKYCSRAULUMTTAXQXNACHDXSUNAX
-      JHAWICXIDUPZXSUPUQURUSUTAXJPQHPQXOXPVAYDXSXJHVBVCURVDAXMBHMJZOWTABHGXSVGA
-      YEBABGVEVFTTVHAXDWMXEHNAWMXDABGVIVJAXEYAHAYAXEACKHNJZLJZYAXEYGYARAYFUCCLV
-      KVLUMACKDKVQQAVRUMVMVHVJETVNVNTAWQBXANJZOWTXAONJXBAWOYHABWMNJZHNJWOYHAYIW
-      NHNABWMGABGUDZVOUKABWMHGYJXSVPVHVFABXAGAWMHYJXSUPZVSAWTXAABGVTYKWAWBWCVDA
-      WHWOAHBXSGUNAWNHAWMBYJGUPXSUPZVGAWSWPOZOWPAWRYMAWLOZWOMJWRYMAYNWHWOMABHGX
-      SWDUKAWLWOABHGXSUNZYLWEVHVFAWPAWLWOYOYLWGWFTWBABGUJT $.
+      c3 sqcld syl22anc wn subne0d neneqd cubm1d oveq1d 1m1e0 a1i subcld addcld
+      wo mul0ord mpbid ord mpd wb addeq0 syl2anc oveq2d mulneg2d mulridd negeqd
+      1cnd eqtr3d sqvald eqcomd 2p1e3 oveq2i cn0 expp1d oveq12d addcomd addassd
+      negdid negcld negsubd 3eqtrd eqtr4d negsubdi2d mulneg1d mulcld negnegd
+      2nn0 ) AHBIJZBCIJCKLJZBIJMJZMJZBHIJZBKLJZBNJZHNJZMJZBUCLJHIJAWKWHWOOZMJWH
+      WOMJZOZWPAWJWQWHMAWJBOZWMHNJZIJZWQAWJBWIMJBCMJNJZBBMJZWICMJZNJZIJZXBABPQZ
+      CPQWIPQXHWJXGRGDACDUDZGBCWIBUAUEAXCWTXFXAIABWICNJZMJZXCWTABWICGXIDUBAXKBH
+      OZMJZWTAXJXLBMAXJHNJZSRZXJXLRZACHIJZSRZUFXOAXQSACHDAVGZFUGUHAXRXOAXQXNMJZ
+      SRXRXOUOAXTCUCLJZHIJZSACDUIAYBHHIJZSAYAHHIEUJYCSRAUKULTTAXQXNACHDXSUMAXJH
+      AWICXIDUNZXSUNUPUQURUSAXJPQHPQXOXPUTYDXSXJHVAVBUQVCAXMBHMJZOWTABHGXSVDAYE
+      BABGVEVFTTVHAXDWMXEHNAWMXDABGVIVJAXEYAHAYAXEACKHNJZLJZYAXEYGYARAYFUCCLVKV
+      LULACKDKVMQAWGULVNVHVJETVOVOTAWQBXANJZOWTXAONJXBAWOYHABWMNJZHNJWOYHAYIWNH
+      NABWMGABGUDZVPUJABWMHGYJXSVQVHVFABXAGAWMHYJXSUNZVRAWTXAABGVSYKVTWAWBVCAWH
+      WOAHBXSGUMAWNHAWMBYJGUNXSUNZVDAWSWPOZOWPAWRYMAWLOZWOMJWRYMAYNWHWOMABHGXSW
+      CUJAWLWOABHGXSUMZYLWDVHVFAWPAWLWOYOYLWEWFTWAABGUIT $.
   $}
+
 
   ${
     morlemne1.s $e |- ( ph -> S e. ( 0 (,) _pi ) ) $.
-    $( A rotation by an angle in the open half-turn is not the identity.
-       (Contributed by JAG, 13-Oct-2026.) $)
+    $( A rotation by an angle ` S ` in the open interval ` ( 0 (,) _pi ) ` is
+       not the identity: its coefficient ` ( exp `` ( _i x. S ) ) ` is not
+       ` 1 ` .  (Contributed by JAG, 13-Oct-2026.) $)
     morlemne1 $p |- ( ph -> ( exp ` ( _i x. S ) ) =/= 1 ) $=
       ( ci cmul co ce cfv c1 wceq cim cc0 csin ccos caddc wcel cpi cr syl a1i
       cioo elioore recnd efival fveq2d recoscld resincld crim syl2anc eqtrd clt
@@ -839,6 +702,7 @@ $[ set.mm $]
       KVJUHUIUJAVJAVNLVJUKUMCBUNSUOUPLVHJAVHLUQURTUSUTVFVIVAAVEIKVDTVBVC $.
   $}
 
+
   ${
     morlemdne0.s $e |- ( ph -> S e. RR ) $.
     morlemdne0.t $e |- ( ph -> T e. RR ) $.
@@ -847,41 +711,32 @@ $[ set.mm $]
     morlemdne0.pt $e |- ( ph -> 0 < T ) $.
     morlemdne0.pu $e |- ( ph -> 0 < U ) $.
     morlemdne0.1 $e |- ( ph -> ( ( S + T ) + U ) = ( _pi / 3 ) ) $.
-    $( None of the three denominators vanishes.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemdne0 $p |- ( ph -> ( 1 - ( ( exp ` ( _i x. ( 2 x. S ) ) ) x. ( exp `
-      ( _i
-  x. ( 2 x. T ) ) ) ) ) =/= 0 ) $=
-      ( ci c2 cmul co wcel a1i cpi clt c3 c1 ce cfv 1cnd cc ax-icn recnd mulcld
-      2cn efcld caddc adddid oveq2d eqtrd fveq2d wceq efadd syl2anc cc0 cxr 0xr
-      eqcomd pire rexrd 2re readdcld remulcld wbr 2pos addgt0d mulgt0d cdiv 3re
-      cr wne 3ne0 redivcld wb ltaddpos mpbid breqtrd crp 2rp ltmul2d 2lt3 pipos
-      3pos divgt0d elrpd ltmul1d divcan2d lttrd eliood morlemne1 eqnetrd necomd
-      3cn subne0d ) AUALMBNOZNOZUBUCZLMCNOZNOZUBUCZNOZAUDAXAXDAWTALWSLUEPAUFQZA
-      MBMUEPAUIQZABEUGZUHZUHZUJAXCALXBXFAMCXGACFUGZUHZUHZUJUHAXEUAAXELMBCUKOZNO
-      ZNOZUBUCZUAAXQXEAXQWTXCUKOZUBUCZXEAXPXRUBAXPLWSXBUKOZNOXRAXOXTLNAMBCXGXHX
-      KULUMALWSXBXFXIXLULUNUOAWTUEPXCUEPXSXEUPXJXMWTXCUQURUNVBAXOAUSRXOUSUTPAVA
-      QARRVNPAVCQZVDAMXNMVNPAVEQZABCEFVFZVGZAMXNYBYCUSMSVHAVIQABCEFHIVJVKAXOMRT
-      VLOZNOZRYDAMYEYBARTYATVNPAVMQZTUSVOAVPQZVQZVGYAAXNYESVHXOYFSVHAXNXNDUKOZY
-      ESAUSDSVHZXNYJSVHZJADVNPXNVNPYKYLVRGYCDXNVSURVTKWAAXNYEMYCYIMWBPAWCQWDVTA
-      YFTYENOZRSAMTSVHZYFYMSVHYNAWEQAMTYEYBYGAYEYIARTYAYGUSRSVHAWFQUSTSVHAWGQWH
-      WIWJVTARTARYAUGTUEPAWQQYHWKWAWLWMWNWOWPWR $.
+    $( If ` S ` , ` T ` and ` U ` are positive reals summing to
+       ` ( _pi / 3 ) ` , then
+` ( 1 - ( ( exp `` ( _i x. ( 2 x. S ) ) ) x. ( exp `` ( _i x. ( 2 x. T ) ) ) )
+) `
+       is nonzero: the rotation by ` ( 2 x. ( S + T ) ) ` is not the identity.
+       (Contributed by JAG, 13-Oct-2026.) $)
+    morlemdne0 $p |- ( ph
+        -> ( 1 - ( ( exp ` ( _i x. ( 2 x. S ) ) )
+        x. ( exp ` ( _i x. ( 2 x. T ) ) ) ) ) =/= 0 ) $=
+      ( c2 cmul co wcel a1i cpi clt wbr c3 c1 ci ce 1cnd cc ax-icn recnd mulcld
+      cfv efcld caddc adddid oveq2d eqtrd fveq2d wceq efadd syl2anc eqcomd cioo
+      2cn cc0 w3a 2re readdcld remulcld 2pos addgt0d mulgt0d cdiv pire 3re 3ne0
+      cr wne redivcld wb ltaddpos mpbid breqtrd crp 2rp ltmul2d 2lt3 pipos 3pos
+      divgt0d elrpd ltmul1d 3cn divcan2d lttrd 3jca cxr 0xr rexrd elioo2 mpbird
+      morlemne1 eqnetrd necomd subne0d ) AUAUBLBMNZMNZUCUIZUBLCMNZMNZUCUIZMNZAU
+      DAXEXHAXDAUBXCUBUEOAUFPZALBLUEOAVAPZABEUGZUHZUHZUJAXGAUBXFXJALCXKACFUGZUH
+      ZUHZUJUHAXIUAAXIUBLBCUKNZMNZMNZUCUIZUAAYAXIAYAXDXGUKNZUCUIZXIAXTYBUCAXTUB
+      XCXFUKNZMNYBAXSYDUBMALBCXKXLXOULUMAUBXCXFXJXMXPULUNUOAXDUEOXGUEOYCXIUPXNX
+      QXDXGUQURUNUSAXSAXSVBQUTNOZXSVNOZVBXSRSZXSQRSZVCZAYFYGYHALXRLVNOAVDPZABCE
+      FVEZVFZALXRYJYKVBLRSAVGPABCEFHIVHVIAXSLQTVJNZMNZQYLALYMYJAQTQVNOAVKPZTVNO
+      AVLPZTVBVOAVMPZVPZVFYOAXRYMRSXSYNRSAXRXRDUKNZYMRAVBDRSZXRYSRSZJADVNOXRVNO
+      YTUUAVQGYKDXRVRURVSKVTAXRYMLYKYRLWAOAWBPWCVSAYNTYMMNZQRALTRSZYNUUBRSUUCAW
+      DPALTYMYJYPAYMYRAQTYOYPVBQRSAWEPVBTRSAWFPWGWHWIVSAQTAQYOUGTUEOAWJPYQWKVTW
+      LWMAVBWNOZQWNOYEYIVQUUDAWOPAQYOWPVBQXSWQURWRWSWTXAXB $.
   $}
 
-  ${
-    morlemaff.x $e |- ( ph -> X e. CC ) $.
-    morlemaff.u $e |- ( ph -> U e. CC ) $.
-    morlemaff.y $e |- ( ph -> Y e. CC ) $.
-    $( The affine normal form of one rotation.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemaff $p |- ( ph -> ( X + ( U x. ( Y - X ) ) ) = ( ( ( 1 - U ) x. X ) +
-      ( U
-  x. Y ) ) ) $=
-      ( cmin co cmul caddc subdid oveq2d mulcld addsubassd addsubd eqtr3d eqtrd
-      c1 oveq1d 1cnd subdird mullidd eqtr4d ) ACBDCHIJIZKICBDJIZBCJIZHIZKIZSBHI
-      CJIZUFKIZAUEUHCKABDCFGELMAUICUGHIZUFKIZUKACUFKIUGHIUIUMACUFUGEABDFGNZABCF
-      ENZOACUFUGEUNUOPQAUJULUFKAUJSCJIZUGHIULASBCAUAFEUBAUPCUGHACEUCTRTUDR $.
-  $}
 
   ${
     morlemclr.a $e |- ( ph -> A e. CC ) $.
@@ -889,24 +744,28 @@ $[ set.mm $]
     morlemclr.r $e |- ( ph -> R e. CC ) $.
     morlemclr.e $e |- ( ph -> E e. CC ) $.
     morlemclr.d $e |- ( ph -> D e. CC ) $.
-    morlemclr.1 $e |- ( ph -> ( A + ( E x. ( ( B + ( D x. ( R - B ) ) ) - A ) )
-      ) =
-  R ) $.
-    $( A fixed-point equation with its denominator cleared.  (Contributed by
-       JAG, 13-Oct-2026.) $)
-    morlemclr $p |- ( ph -> ( R x. ( 1 - ( E x. D ) ) ) = ( ( ( 1 - E ) x. A )
-      + (
-  E x. ( ( 1 - D ) x. B ) ) ) ) $=
-      ( c1 cmul co cmin caddc mulcld eqtrd oveq2d 1cnd subdid mulridd morlemaff
-      mulcomd oveq12d oveq1d eqtr3d subcld addcld adddid mulassd eqcomd addassd
-      wceq eqtr4d addcomd subaddd mpbird ) AEMFDNOZPONOZEUTENOZPOZMFPOZBNOZFMDP
-      OZCNOZNOZQOZAVAEMNOZEUTNOZPOVCAEMUTIAUAZAFDJKRZUBAVJEVKVBPAEIUCAEUTIVMUEU
-      FSAVCVIUOVBVIQOZEUOAEVNAEVIVBQOZVNABFVGDENOZQOZBPOZNOZQOZEVOABFCDECPONOQO
-      ZBPOZNOZQOVTEAWCVSBQAWBVRFNAWAVQBPADCEHKIUDUGTTLUHAVTVEFVQNOZQOZVOAFBVQGJ
-      AVGVPAVFCAMDVLKUIHRZADEKIRZUJUDAWEVEVHVBQOZQOVOAWDWHVEQAWDVHFVPNOZQOWHAFV
-      GVPJWFWGUKAWIVBVHQAVBWIAFDEJKIULUMTSTAVEVHVBAVDBAMFVLJUIGRZAFVGJWFRZAUTEV
-      MIRZUNUPSUHAVIVBAVEVHWJWKUJZWLUQSUMAEVBVIIWLWMURUSS $.
+    morlemclr.1 $e |- ( ph
+        -> ( A + ( E x. ( ( B + ( D x. ( R - B ) ) ) - A ) ) ) = R ) $.
+    $( Clearing the denominator of a fixed-point equation.  If the similarity
+       about ` B ` with factor ` D ` , followed by the similarity about ` A `
+       with factor ` E ` , fixes ` R ` , then ` ( R x. ( 1 - ( E x. D ) ) ) `
+       is a combination of ` A ` and ` B ` .  No division is needed.
+       (Contributed by JAG, 13-Oct-2026.) $)
+    morlemclr $p |- ( ph -> ( R x. ( 1 - ( E x. D ) ) )
+        = ( ( ( 1 - E ) x. A ) + ( E x. ( ( 1 - D ) x. B ) ) ) ) $=
+      ( c1 cmul co cmin caddc mulcld eqtrd wceq mulridd mulcomd oveq12d addcomd
+      1cnd subdid subcld addcld affineequiv4 mpbird oveq1d oveq2d eqtr3d adddid
+      mulassd eqcomd addassd eqtr4d subaddd ) AEMFDNOZPONOZEUTENOZPOZMFPOZBNOZF
+      MDPOZCNOZNOZQOZAVAEMNOZEUTNOZPOVCAEMUTIAUEZAFDJKRZUFAVJEVKVBPAEIUAAEUTIVM
+      UBUCSAVCVITVBVIQOZETAEVNAEVIVBQOZVNABFVGDENOZQOZBPOZNOZQOZEVOABFCDECPOZNO
+      ZQOZBPOZNOZQOVTEAWEVSBQAWDVRFNAWCVQBPAWCVQTWCWBCQOTACWBHADWAKAECIHUGRZUDA
+      WCCEDACWBHWFUHHIKUIUJUKULULLUMAVTVEFVQNOZQOZVOAVTWHTVTVSBQOTABVSGAFVRJAVQ
+      BAVGVPAVFCAMDVLKUGHRZADEKIRZUHZGUGRZUDAVTBVQFABVSGWLUHGWKJUIUJAWHVEVHVBQO
+      ZQOVOAWGWMVEQAWGVHFVPNOZQOWMAFVGVPJWIWJUNAWNVBVHQAVBWNAFDEJKIUOUPULSULAVE
+      VHVBAVDBAMFVLJUGGRZAFVGJWIRZAUTEVMIRZUQURSUMAVIVBAVEVHWOWPUHZWQUDSUPAEVBV
+      IIWQWRUSUJS $.
   $}
+
 
   ${
     morlemka.e $e |- ( ph -> E e. CC ) $.
@@ -915,30 +774,35 @@ $[ set.mm $]
     morlemka.j $e |- ( ph -> J = ( ( E x. D ) x. G ) ) $.
     morlemka.c $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
     morlemka.n $e |- ( ph -> J =/= 1 ) $.
-    $( The A coefficient of the cleared linear relation.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemka $p |- ( ph -> ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x.
-      ( (
-  ( J x. G ) x. ( 1 - ( E x. D ) ) ) + ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) )
-  x. ( 1 - E ) ) = ( ( E ^ 3 ) - 1 ) ) $=
+    $( An identity used by ~ morlemlinalg to collect the terms in ` A ` .  Let
+       ` E ` , ` D ` , ` G ` be complex numbers whose product ` J ` is a cube
+       root of unity other than ` 1 ` .  Then a polynomial in ` E ` , ` D ` ,
+       ` G ` and ` J ` with the factor ` ( 1 - E ) ` equals
+       ` ( ( E ^ 3 ) - 1 ) ` .  (Contributed by JAG, 13-Oct-2026.) $)
+    morlemka $p |- ( ph
+        -> ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) )
+        x. ( ( ( J x. G ) x. ( 1 - ( E x. D ) ) )
+        + ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) ) x. ( 1 - E ) )
+        = ( ( E ^ 3 ) - 1 ) ) $=
       ( cexp co cmul c1 cmin mulcld eqtrd oveq2d 3eqtrd eqeltrd mulassd mulcomd
-      c2 caddc c3 cc eqcomd sqvald morlemone sqcld eqidd oveq12d npncand oveq1d
-      mul4d eqtr4d 1cnd subcld mul12d wceq 2p1e3 oveq2i wcel 2nn0 expp1d eqtr3d
-      a1i cn0 mulridd morlemcyc ) ACUDLMZBNMZOBDNMZPMZNMZEDNMZOCBNMZPMNMZEUDLMZ
-      ODCNMZPMNMZUEMZNMZOCPMZNMCEPMZVTCPMZNMZWENMWEWHNMCUFLMOPMAWDWHWENAWDCVTNM
-      ZVOOCENMZPMZNMZNMZCVONMZVTWKNMZNMWHAWDVPVQWKNMZNMVMVQNMZWLNMWMAWCWPVPNAWC
-      VQVQWJNMZPMZWPAWCVQVTWANMZPMZWSAWCVQVTPMZVTWTPMZUEMXAAVSXBWBXCUEAVQVRVTAE
-      DAEVRDNMZUGIAVRDACBFGQZHQUAZHQZXEAVQVRNMEDVRNMZNMEENMZVTAEDVRXFHXEUBAXHEE
-      NAXHXDEADVRHXEUCAEXDIUHZRSAVTXIAEXFUIZUHZTUJAVTWAWTAEXFUKZADCHFQZAWTULUJU
-      MAVQVTWTXGXMAVTWAXMXNQUNRAWTWRVQPAWTXIWANMVQECNMZNMWRAVTXIWANXKUOAEEDCXFX
-      FHFUPAXOWJVQNAECXFFUCSTSRAVQWJWRXGACEFXFQZAWRULUJUQSAVMVOVQWKAVLBACFUKGQA
-      OVNAURZABDGHQZUSZXGAOWJXQXPUSZUPAWQWIWLNAWQCVRNMZVQNMCVRVQNMZNMWIAVMYAVQN
-      AVMCCNMZBNMYAAVLYCBNACFUIUOACCBFFGUBRUOACVRVQFXEXGUBAYBVTCNAYBEXDNMXIVTAV
-      REDXEXFHUTAXDEENXJSXLTSTUOTACVTVOWKFXMXSXTUPAWNWFWOWGNACVNEFXRACVNNMZXDEA
-      XDYDACBDFGHUBUHXJRUJAVTWJCXMXPAVTWJNMCVTENMZNMCONMCAVTCEXMFXFUTAYEOCNAYEE
-      UFLMZOAYFYEAEUDOUEMZLMZYFYEYHYFVAAYGUFELVBVCVHAEUDXFUDVIVDAVEVHVFVGUHJRSA
-      CFVJTUJUMTUOAWHWEAWFWGACEFXFUSAVTCXMFUSQAOCXQFUSUCACEXFJKFVKT $.
+      c2 caddc c3 cc eqcomd sqvald mul1subeqd sqcld eqidd oveq12d npncand mul4d
+      oveq1d eqtr4d 1cnd subcld mul12d wceq 2p1e3 oveq2i a1i wcel expp1d eqtr3d
+      cn0 2nn0 mulridd morlemcyc ) ACUDLMZBNMZOBDNMZPMZNMZEDNMZOCBNMZPMNMZEUDLM
+      ZODCNMZPMNMZUEMZNMZOCPMZNMCEPMZVTCPMZNMZWENMWEWHNMCUFLMOPMAWDWHWENAWDCVTN
+      MZVOOCENMZPMZNMZNMZCVONMZVTWKNMZNMWHAWDVPVQWKNMZNMVMVQNMZWLNMWMAWCWPVPNAW
+      CVQVQWJNMZPMZWPAWCVQVTWANMZPMZWSAWCVQVTPMZVTWTPMZUEMXAAVSXBWBXCUEAVQVRVTA
+      EDAEVRDNMZUGIAVRDACBFGQZHQUAZHQZXEAVQVRNMEDVRNMZNMEENMZVTAEDVRXFHXEUBAXHE
+      ENAXHXDEADVRHXEUCAEXDIUHZRSAVTXIAEXFUIZUHZTUJAVTWAWTAEXFUKZADCHFQZAWTULUJ
+      UMAVQVTWTXGXMAVTWAXMXNQUNRAWTWRVQPAWTXIWANMVQECNMZNMWRAVTXIWANXKUPAEEDCXF
+      XFHFUOAXOWJVQNAECXFFUCSTSRAVQWJWRXGACEFXFQZAWRULUJUQSAVMVOVQWKAVLBACFUKGQ
+      AOVNAURZABDGHQZUSZXGAOWJXQXPUSZUOAWQWIWLNAWQCVRNMZVQNMCVRVQNMZNMWIAVMYAVQ
+      NAVMCCNMZBNMYAAVLYCBNACFUIUPACCBFFGUBRUPACVRVQFXEXGUBAYBVTCNAYBEXDNMXIVTA
+      VREDXEXFHUTAXDEENXJSXLTSTUPTACVTVOWKFXMXSXTUOAWNWFWOWGNACVNEFXRACVNNMZXDE
+      AXDYDACBDFGHUBUHXJRUJAVTWJCXMXPAVTWJNMCVTENMZNMCONMCAVTCEXMFXFUTAYEOCNAYE
+      EUFLMZOAYFYEAEUDOUEMZLMZYFYEYHYFVAAYGUFELVBVCVDAEUDXFUDVHVEAVIVDVFVGUHJRS
+      ACFVJTUJUMTUPAWHWEAWFWGACEFXFUSAVTCXMFUSQAOCXQFUSUCACEXFJKFVKT $.
   $}
+
 
   ${
     morlemkb.e $e |- ( ph -> E e. CC ) $.
@@ -947,29 +811,35 @@ $[ set.mm $]
     morlemkb.j $e |- ( ph -> J = ( ( E x. D ) x. G ) ) $.
     morlemkb.c $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
     morlemkb.n $e |- ( ph -> J =/= 1 ) $.
-    $( The B coefficient of the cleared linear relation.  (Contributed by JAG,
+    $( An identity used by ~ morlemlinalg to collect the terms in ` B ` .  Let
+       ` E ` , ` D ` , ` G ` be complex numbers whose product ` J ` is a cube
+       root of unity other than ` 1 ` .  Then a polynomial in ` E ` , ` D ` ,
+       ` G ` and ` J ` with the factor ` ( 1 - D ) ` equals
+       ` ( ( E ^ 3 ) x. ( ( D ^ 3 ) - 1 ) ) ` .  (Contributed by JAG,
        13-Oct-2026.) $)
-    morlemkb $p |- ( ph -> ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( G x. E ) ) ) x.
-      ( (
-  1 - ( E x. D ) ) + ( ( 1 - ( D x. G ) ) x. ( ( J ^ 2 ) x. E ) ) ) ) x. ( 1 -
-  D ) ) = ( ( E ^ 3 ) x. ( ( D ^ 3 ) - 1 ) ) ) $=
+    morlemkb $p |- ( ph
+        -> ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( G x. E ) ) )
+        x. ( ( 1 - ( E x. D ) )
+        + ( ( 1 - ( D x. G ) ) x. ( ( J ^ 2 ) x. E ) ) ) ) x. ( 1 - D ) )
+        = ( ( E ^ 3 ) x. ( ( D ^ 3 ) - 1 ) ) ) $=
       ( cexp co cmul c1 cmin c3 mulcld subcld mulassd c2 caddc cc eqeltrd sqcld
       1cnd mulcomd eqcomd eqtrd oveq2d wceq 2p1e3 oveq2i a1i wcel expp1d eqtr3d
-      2nn0 3eqtrd morlemone addcomd npncand oveq1d subdid eqtr4d mul32d oveq12d
-      cn0 3nn0 expcld morlemcyc ) ACUALMZBNMZODCNMZPMZNMZOCBNMZPMZOBDNMZPMZEUAL
-      MZCNMZNMZUBMZNMZOBPMZNMCQLMZBEPMZWABPMZNMZNMZWFNMWGWJWFNMZNMWGBQLMOPMZNMA
-      WEWKWFNAWEVPCWINMZNMZWGWHNMZWINMZWKAWDWNVPNAWDCWANMZVQPMZWNAWDWBVQPMZWSAW
-      DVRWBOPMZUBMXAVRUBMWTAWCXAVRUBAWCWBVTNMXAAVTWBAOVSAUFZABDGHRZSAWACAEAEVQD
-      NMZUCIAVQDACBFGRZHRUDZUEZFRZUGAWBVSOXHXCAWBVSNMWACVSNMZNMWAENMZOAWACVSXGF
-      XCTAXIEWANAXIXDEAXDXIACBDFGHTUHAEXDIUHUIZUJAXJEQLMZOAXLXJAEUAOUBMZLMZXLXJ
-      XNXLUKAXMQELULUMUNAEUAXFUAVHUOAURUNZUPUQUHJUIUSUTUIUJAVRXAAOVQXBXESAWBOXH
-      XBSVAAWBOVQXHXBXEVBUSAWBWRVQPAWACXGFUGVCUIACWABFXGGVDVEUJAVPCNMZWINMWOWQA
-      VPCWIAVMVOAVLBACFUEZGRAOVNXBADCHFRZSZRFAWABXGGSZTAXPWPWINAXPVLBVONMZNMZCN
-      MVLCNMZYANMWPAVPYBCNAVLBVOXQGXSTVCAVLYACXQABVOGXSRFVFAYCWGYAWHNAWGYCACXML
-      MZWGYCYDWGUKAXMQCLULUMUNACUAFXOUPUQUHABVNEGXRABVNNMZXIEAVSCNMYEXIABDCGHFT
-      AVSCXCFUGUQXKUIUTVGUSVCUQAWGWHWIACQFQVHUOAVIUNVJZABEGXFSZXTTUSVCAWGWJWFYF
-      AWHWIYGXTRZAOBXBGSZTAWLWMWGNAWLWFWJNMWMAWJWFYHYIUGABEXFJKGVKUIUJUS $.
+      cn0 3eqtrd mul1subeqd addcomd npncand oveq1d subdid eqtr4d mul32d oveq12d
+      2nn0 3nn0 expcld morlemcyc ) ACUALMZBNMZODCNMZPMZNMZOCBNMZPMZOBDNMZPMZEUA
+      LMZCNMZNMZUBMZNMZOBPMZNMCQLMZBEPMZWABPMZNMZNMZWFNMWGWJWFNMZNMWGBQLMOPMZNM
+      AWEWKWFNAWEVPCWINMZNMZWGWHNMZWINMZWKAWDWNVPNAWDCWANMZVQPMZWNAWDWBVQPMZWSA
+      WDVRWBOPMZUBMXAVRUBMWTAWCXAVRUBAWCWBVTNMXAAVTWBAOVSAUFZABDGHRZSAWACAEAEVQ
+      DNMZUCIAVQDACBFGRZHRUDZUEZFRZUGAWBVSOXHXCAWBVSNMWACVSNMZNMWAENMZOAWACVSXG
+      FXCTAXIEWANAXIXDEAXDXIACBDFGHTUHAEXDIUHUIZUJAXJEQLMZOAXLXJAEUAOUBMZLMZXLX
+      JXNXLUKAXMQELULUMUNAEUAXFUAURUOAVHUNZUPUQUHJUIUSUTUIUJAVRXAAOVQXBXESAWBOX
+      HXBSVAAWBOVQXHXBXEVBUSAWBWRVQPAWACXGFUGVCUIACWABFXGGVDVEUJAVPCNMZWINMWOWQ
+      AVPCWIAVMVOAVLBACFUEZGRAOVNXBADCHFRZSZRFAWABXGGSZTAXPWPWINAXPVLBVONMZNMZC
+      NMVLCNMZYANMWPAVPYBCNAVLBVOXQGXSTVCAVLYACXQABVOGXSRFVFAYCWGYAWHNAWGYCACXM
+      LMZWGYCYDWGUKAXMQCLULUMUNACUAFXOUPUQUHABVNEGXRABVNNMZXIEAVSCNMYEXIABDCGHF
+      TAVSCXCFUGUQXKUIUTVGUSVCUQAWGWHWIACQFQURUOAVIUNVJZABEGXFSZXTTUSVCAWGWJWFY
+      FAWHWIYGXTRZAOBXBGSZTAWLWMWGNAWLWFWJNMWMAWJWFYHYIUGABEXFJKGVKUIUJUS $.
   $}
+
 
   ${
     morlemkc.e $e |- ( ph -> E e. CC ) $.
@@ -979,40 +849,45 @@ $[ set.mm $]
     morlemkc.j $e |- ( ph -> J = ( ( E x. D ) x. G ) ) $.
     morlemkc.c $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
     morlemkc.n $e |- ( ph -> J =/= 1 ) $.
-    $( The C coefficient of the cleared linear relation.  (Contributed by JAG,
+    $( An identity used by ~ morlemlinalg to collect the terms in ` C ` .  Let
+       ` E ` , ` D ` , ` G ` be complex numbers, ` G ` nonzero, whose product
+       ` J ` is a cube root of unity other than ` 1 ` .  Then a polynomial in
+       ` E ` , ` D ` , ` G ` and ` J ` with the factor ` ( 1 - G ) ` equals
+       ` ( 1 - ( ( E ^ 3 ) x. ( D ^ 3 ) ) ) ` .  (Contributed by JAG,
        13-Oct-2026.) $)
-    morlemkc $p |- ( ph -> ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) ) x.
-      ( (
-  ( 1 - ( G x. E ) ) x. D ) + ( ( 1 - ( D x. G ) ) x. J ) ) ) x. ( 1 - G ) ) =
-  ( 1 - ( ( E ^ 3 ) x. ( D ^ 3 ) ) ) ) $=
+    morlemkc $p |- ( ph
+        -> ( ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( E x. D ) ) )
+        x. ( ( ( 1 - ( G x. E ) ) x. D ) + ( ( 1 - ( D x. G ) ) x. J ) ) )
+        x. ( 1 - G ) ) = ( 1 - ( ( E ^ 3 ) x. ( D ^ 3 ) ) ) ) $=
       ( cexp co cmul c1 cmin c3 mulcld eqtrd c2 caddc sqcld 1cnd subcld eqeltrd
       cc addcld cn0 wcel a1i expcld cz 3z expne0d mulcomd mulassd eqtr3d eqcomd
-      morlemone eqidd oveq12d npncand mul12d oveq2d 3eqtrd eqtr4d oveq1d sqvald
-      3nn0 mul4d sqmuld wceq 2p1e3 oveq2i 2nn0 expp1d mullidd morlemcyc mulridd
-      subdid mulexpd mulcanad ) ACUAMNZBONZPCBONZQNZONZPDCONZQNZBONZPBDONZQNZEO
-      NZUBNZONZPDQNZONZPCRMNZBRMNZONZQNZDRMNZAWPWQAWHWOAWEWGAWDBACFUCZGSZAPWFAU
-      DZACBFGSZUEZSAWKWNAWJBAPWIXFADCHFSZUEZGSAWMEAPWLXFABDGHSZUEZAEWFDONZUGJAW
-      FDXGHSUFZSUHSAPDXFHUEZSAPXAXFAWSWTACRFRUIUJAVJUKZULABRGXPULSZUEADRHXPULZA
-      DRHIRUMUJAUNUKUOAXCWRONZXCPQNZXCXBONZAXSXCWEBONZWGPEDONZQNZONZONZWQONZONZ
-      XTAWRYGXCOAWPYFWQOAWPWHBYDONZONYFAWOYIWHOAWOBBYCONZQNZYIAWOBEQNZEEWLONZQN
-      ZUBNBYMQNYKAWKYLWNYNUBAWKBWJONYLAWJBXJGUPABWIEGXIABWIONZCWLONZEAWLCONYOYP
-      ABDCGHFUQAWLCXKFUPURAYPXMEAXMYPACBDFGHUQUSAEXMJUSZTTUTTAWNEWMONYNAWMEXLXN
-      UPAEWLYMXNXKAYMVAUTTVBABEYMGXNAEWLXNXKSVCAYMYJBQAEBDXNGHVDVEVFABYCYJGAEDX
-      NHSZAYJVAUTVGVEAWEWGBYDXEXHGAPYCXFYRUEZVKTVHVEAXCYFONZWQONZYHXTAXCYFWQXRA
-      YBYEAWEBXEGSZAWGYDXHYSSZSXOUQAUUADEQNZEUAMNZDQNZONZWQONWQUUGONXTAYTUUGWQO
-      AXCYBONZYEONZYTUUGAXCYBYEXRUUBUUCUQAUUIDUUEONZYEONDWGONZUUEYDONZONUUGAUUH
-      UUJYEOAUUHXCWDBUAMNZONZONZUUJAYBUUNXCOAYBWDBBONZONUUNAWDBBXDGGUQAUUMUUPWD
-      OABGVIVEVGVEAUUJUUNXCONZUUOAUUJDUUNDUAMNZONZONUUNDUURONZONUUQAUUEUUSDOAUU
-      EXMUAMNWFUAMNZUURONUUSAEXMUAMJVHAWFDXGHVLAUVAUUNUUROACBFGVLVHVFVEADUUNUUR
-      HAWDUUMXDABGUCSZADHUCZVDAUUTXCUUNOAUUTUURDONZXCADUURHUVCUPADUAPUBNZMNZXCU
-      VDUVFXCVMAUVERDMVNVOUKADUAHUAUIUJAVPUKZVQURVGVEVFAUUNXCUVBXRUPTVGVHADUUEW
-      GYDHAEXNUCZXHYSVKAUUKUUDUULUUFOADWFEHXGADWFONXMEADWFHXGUPYQTUTAUUEYCDUVHY
-      RAUUEEONZDONZUUEYCONDAUUEEDUVHXNHUQAUVJPDONDAUVIPDOAUVIERMNZPAUVKUVIAEUVE
-      MNZUVKUVIUVLUVKVMAUVEREMVNVOUKAEUAXNUVGVQURUSKTVHADHVRTURUTVBVFURVHAUUGWQ
-      AUUDUUFADEHXNUEAUUEDUVHHUESXOUPADEXNKLHVSVFURTAYAXCPONZXCXAONZQNXTAXCPXAX
-      RXFXQWAAUVMXCUVNPQAXCXRVTAUVNXAXCONZPAXCXAXRXQUPAUVKUVOPAUVKXMRMNWFRMNZXC
-      ONUVOAEXMRMJVHAWFDRXGHXPWBAUVPXAXCOACBRFGXPWBVHVFKURTVBTVGWC $.
+      mul1subeqd eqidd oveq12d npncand mul12d oveq2d 3eqtrd eqtr4d mul4d oveq1d
+      3nn0 sqvald sqmuld wceq 2p1e3 oveq2i 2nn0 expp1d mullidd morlemcyc subdid
+      mulridd mulexpd mulcanad ) ACUAMNZBONZPCBONZQNZONZPDCONZQNZBONZPBDONZQNZE
+      ONZUBNZONZPDQNZONZPCRMNZBRMNZONZQNZDRMNZAWPWQAWHWOAWEWGAWDBACFUCZGSZAPWFA
+      UDZACBFGSZUEZSAWKWNAWJBAPWIXFADCHFSZUEZGSAWMEAPWLXFABDGHSZUEZAEWFDONZUGJA
+      WFDXGHSUFZSUHSAPDXFHUEZSAPXAXFAWSWTACRFRUIUJAVJUKZULABRGXPULSZUEADRHXPULZ
+      ADRHIRUMUJAUNUKUOAXCWRONZXCPQNZXCXBONZAXSXCWEBONZWGPEDONZQNZONZONZWQONZON
+      ZXTAWRYGXCOAWPYFWQOAWPWHBYDONZONYFAWOYIWHOAWOBBYCONZQNZYIAWOBEQNZEEWLONZQ
+      NZUBNBYMQNYKAWKYLWNYNUBAWKBWJONYLAWJBXJGUPABWIEGXIABWIONZCWLONZEAWLCONYOY
+      PABDCGHFUQAWLCXKFUPURAYPXMEAXMYPACBDFGHUQUSAEXMJUSZTTUTTAWNEWMONYNAWMEXLX
+      NUPAEWLYMXNXKAYMVAUTTVBABEYMGXNAEWLXNXKSVCAYMYJBQAEBDXNGHVDVEVFABYCYJGAED
+      XNHSZAYJVAUTVGVEAWEWGBYDXEXHGAPYCXFYRUEZVHTVIVEAXCYFONZWQONZYHXTAXCYFWQXR
+      AYBYEAWEBXEGSZAWGYDXHYSSZSXOUQAUUADEQNZEUAMNZDQNZONZWQONWQUUGONXTAYTUUGWQ
+      OAXCYBONZYEONZYTUUGAXCYBYEXRUUBUUCUQAUUIDUUEONZYEONDWGONZUUEYDONZONUUGAUU
+      HUUJYEOAUUHXCWDBUAMNZONZONZUUJAYBUUNXCOAYBWDBBONZONUUNAWDBBXDGGUQAUUMUUPW
+      DOABGVKVEVGVEAUUJUUNXCONZUUOAUUJDUUNDUAMNZONZONUUNDUURONZONUUQAUUEUUSDOAU
+      UEXMUAMNWFUAMNZUURONUUSAEXMUAMJVIAWFDXGHVLAUVAUUNUUROACBFGVLVIVFVEADUUNUU
+      RHAWDUUMXDABGUCSZADHUCZVDAUUTXCUUNOAUUTUURDONZXCADUURHUVCUPADUAPUBNZMNZXC
+      UVDUVFXCVMAUVERDMVNVOUKADUAHUAUIUJAVPUKZVQURVGVEVFAUUNXCUVBXRUPTVGVIADUUE
+      WGYDHAEXNUCZXHYSVHAUUKUUDUULUUFOADWFEHXGADWFONXMEADWFHXGUPYQTUTAUUEYCDUVH
+      YRAUUEEONZDONZUUEYCONDAUUEEDUVHXNHUQAUVJPDONDAUVIPDOAUVIERMNZPAUVKUVIAEUV
+      EMNZUVKUVIUVLUVKVMAUVEREMVNVOUKAEUAXNUVGVQURUSKTVIADHVRTURUTVBVFURVIAUUGW
+      QAUUDUUFADEHXNUEAUUEDUVHHUESXOUPADEXNKLHVSVFURTAYAXCPONZXCXAONZQNXTAXCPXA
+      XRXFXQVTAUVMXCUVNPQAXCXRWAAUVNXAXCONZPAXCXAXRXQUPAUVKUVOPAUVKXMRMNWFRMNZX
+      CONUVOAEXMRMJVIAWFDRXGHXPWBAUVPXAXCOACBRFGXPWBVIVFKURTVBTVGWC $.
   $}
+
 
   ${
     morlemlinalg.a $e |- ( ph -> A e. CC ) $.
@@ -1033,114 +908,128 @@ $[ set.mm $]
     morlemlinalg.n1 $e |- ( ph -> ( 1 - ( D x. G ) ) =/= 0 ) $.
     morlemlinalg.n2 $e |- ( ph -> ( 1 - ( G x. E ) ) =/= 0 ) $.
     morlemlinalg.n3 $e |- ( ph -> ( 1 - ( E x. D ) ) =/= 0 ) $.
-    morlemlinalg.1 $e |- ( ph -> ( A + ( E x. ( ( B + ( D x. ( R - B ) ) ) - A
-      ) )
-  ) = R ) $.
-    morlemlinalg.2 $e |- ( ph -> ( B + ( D x. ( ( C + ( G x. ( P - C ) ) ) - B
-      ) )
-  ) = P ) $.
-    morlemlinalg.3 $e |- ( ph -> ( C + ( G x. ( ( A + ( E x. ( Q - A ) ) ) - C
-      ) )
-  ) = Q ) $.
-    morlemlinalg.4 $e |- ( ph -> ( A + ( ( E ^ 3 ) x. ( ( B + ( ( D ^ 3 ) x. (
-      ( C
-  + ( ( G ^ 3 ) x. ( 0 - C ) ) ) - B ) ) ) - A ) ) ) = 0 ) $.
-    $( The linear relation as a pure identity in CC. (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemlinalg $p |- ( ph -> ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) ) = 0
-      ) $=
+    morlemlinalg.1 $e |- ( ph
+        -> ( A + ( E x. ( ( B + ( D x. ( R - B ) ) ) - A ) ) ) = R ) $.
+    morlemlinalg.2 $e |- ( ph
+        -> ( B + ( D x. ( ( C + ( G x. ( P - C ) ) ) - B ) ) ) = P ) $.
+    morlemlinalg.3 $e |- ( ph
+        -> ( C + ( G x. ( ( A + ( E x. ( Q - A ) ) ) - C ) ) ) = Q ) $.
+    morlemlinalg.4 $e |- ( ph
+        -> ( A
+        + ( ( E ^ 3 )
+        x. ( ( B
+        + ( ( D ^ 3 ) x. ( ( C + ( ( G ^ 3 ) x. ( 0 - C ) ) ) - B ) ) )
+        - A ) ) ) = 0 ) $.
+    $( The algebraic step of the rotation proof of Morley's theorem, using
+       field operations only.  Let ` E ` , ` D ` , ` G ` be nonzero complex
+       numbers whose product ` J ` is a cube root of unity other than ` 1 ` ,
+       and no product of two of them equal to ` 1 ` .  Let ` R ` , ` P ` ,
+       ` Q ` be fixed by the composite similarities about ` A ` and ` B ` ,
+       about ` B ` and ` C ` , and about ` C ` and ` A ` , with factors ` E ` ,
+       ` D ` and ` G ` about ` A ` , ` B ` and ` C ` .  If the similarities
+       about ` C ` , ` B ` and ` A ` with the cubes of these factors compose to
+       a map fixing ` 0 ` , then
+       ` ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) ) = 0 ` .  (Contributed by
+       JAG, 13-Oct-2026.) $)
+    morlemlinalg $p |- ( ph -> ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) )
+        = 0 ) $=
       ( c2 cexp co cmul c1 cmin caddc cc0 wceq c3 cneg sqcld mulcld 1cnd subcld
       cc eqeltrd addcld adddid mulassd oveq2d mul4d eqtr3d eqtr4d 3eqtrd oveq1d
       mulcomd morlemclr eqcomd mul32d oveq12d addassd addcomd morlemkc morlemka
       eqtrd add4d adddird morlemkb cn0 wcel 3nn0 a1i expcld negsubdi2d mulneg1d
-      mulneg2d negdid mulexpd morlemone morlemaff 0cnd mul01d addridd negeqd cz
-      neg0 2z expne0d mulne0d mulcand mpbid ) AIUNUOUPZEUQUPZUREJUQUPZUSUPZURJI
-      UQUPZUSUPZUQUPZURIEUQUPZUSUPZUQUPZUQUPZFKGUQUPZUTUPZKUNUOUPZHUQUPZUTUPZUQ
-      UPZYFVAUQUPZVBYKVAVBAYLVAYMAYLIVCUOUPZEVCUOUPZUQUPZURUSUPZDUQUPZVDZURYNUS
-      UPZBUQUPZVDZUTUPZYNURYOUSUPZUQUPZCUQUPZVDZUTUPZVAAYLURYPUSUPZDUQUPZYNURUS
-      UPZBUQUPZUTUPZYNYOURUSUPZUQUPZCUQUPZUTUPZUUHAYLXQYDUQUPZYAEUQUPZUQUPZURJU
-      SUPZDUQUPZUQUPZUURXSKUQUPZUQUPZUVBUQUPZUTUPZXQXSUQUPZKJUQUPZYDUQUPZUQUPZU
-      RIUSUPZBUQUPZUQUPZUVHYIYAUQUPZUQUPZUVMUQUPZUTUPZUTUPZXQYAUQUPZYDUQUPZUREU
-      SUPZCUQUPZUQUPZUVTXSYIIUQUPZUQUPZUQUPZUWCUQUPZUTUPZUTUPZUUQAYLUWDUVCUTUPZ
-      UVFUVNUTUPZUTUPZUVQUWHUTUPZUTUPZUWJAYLYFYHUQUPZYFYJUQUPZUTUPUWOAYFYHYJAXQ
-      YEAXPEAIRVEZSVFZAYBYDAXSYAAURXRAVGZAEJSTVFVHZAURXTUWTAJITRVFVHZVFZAURYCUW
-      TAIERSVFZVHZVFZVFZAFYGOAKGAKYCJUQUPZVIUDAYCJUXDTVFVJZPVFZVKZAYIHAKUXIVEZQ
-      VFZVLAUWPUWMUWQUWNUTAUWPYFFUQUPZYFYGUQUPZUTUPUWMAYFFYGUXGOUXJVLAUXNUWKUXO
-      UWLUTAUXNUWAUWCEUVBUQUPZUTUPZUQUPZUWDUWAUXPUQUPZUTUPUWKAUXNUWAXSUQUPZFUQU
-      PUWAXSFUQUPZUQUPUXRAYFUXTFUQAYFXQXSYAYDUQUPZUQUPZUQUPZUVTXSYDUQUPZUQUPZUX
-      TAYEUYCXQUQAXSYAYDUXAUXBUXEVMVNAUVHUYBUQUPUYDUYFAXQXSUYBUWSUXAAYAYDUXBUXE
-      VFVMAXQXSYAYDUWSUXAUXBUXEVOVPAUYFUVTYDXSUQUPZUQUPUXTAUYEUYGUVTUQAXSYDUXAU
-      XEVTVNAUVTYDXSAXQYAUWSUXBVFZUXEUXAVMVQVRVSAUWAXSFAUVTYDUYHUXEVFZUXAOVMAUY
-      AUXQUWAUQAUYAFXSUQUPUXQAXSFUXAOVTACDJFEMNOSTUKWAWIVNVRAUWAUWCUXPUYIAUWBCA
-      UREUWTSVHZMVFZAEUVBSAUVADAURJUWTTVHZNVFZVFVLAUXSUVCUWDUTAUWAEUQUPZUVBUQUP
-      UXSUVCAUWAEUVBUYISUYMVMAUYNUUTUVBUQAUYNUVTYDEUQUPUQUPUUTAUVTYDEUYHUXESVMA
-      XQYAYDEUWSUXBUXESVOWIVSVPVNVRAUXOUVEUVBJUVMUQUPZUTUPZUQUPZUVFUVEUYOUQUPZU
-      TUPUWLAUXOUVEYAGUQUPZUQUPZUYQAUXOYFKUQUPZGUQUPZUVEYAUQUPZGUQUPUYTAVUBUXOA
-      YFKGUXGUXIPVMWBAVUAVUCGUQAVUAUURXSUQUPZYAUQUPZKUQUPVUDKUQUPZYAUQUPVUCAYFV
-      UEKUQAYFUURYBUQUPZVUEAYFXQYDYBUQUPZUQUPVUGAYEVUHXQUQAYBYDUXCUXEVTVNAXQYDY
-      BUWSUXEUXCVMVQAUURXSYAAXQYDUWSUXEVFZUXAUXBVMVQVSAVUDYAKAUURXSVUIUXAVFUXBU
-      XIWCAVUFUVEYAUQAUURXSKVUIUXAUXIVMVSVRVSAUVEYAGAUURUVDVUIAXSKUXAUXIVFZVFZU
-      XBPVMVRAUYSUYPUVEUQAUYSGYAUQUPUYPAYAGUXBPVTADBIGJNLPTRULWAWIVNWIAUVEUVBUY
-      OVUKUYMAJUVMTAUVLBAURIUWTRVHZLVFZVFVLAUYRUVNUVFUTAUVEJUQUPZUVMUQUPUYRUVNA
-      UVEJUVMVUKTVUMVMAVUNUVKUVMUQAVUNUVHYDKUQUPZUQUPZJUQUPUVHVUOJUQUPZUQUPUVKA
-      UVEVUPJUQAXQYDXSKUWSUXEUXAUXIVOVSAUVHVUOJAXQXSUWSUXAVFZAYDKUXEUXIVFTVMAVU
-      QUVJUVHUQAVUQYDUVIUQUPUVJAYDKJUXEUXITVMAYDUVIUXEAKJUXITVFZVTWIVNVRVSVPVNV
-      RWDWIAUWQUVPUVMIUWCUQUPZUTUPZUQUPZUVQUVPVUTUQUPZUTUPUWNAUWQUVPYDHUQUPZUQU
-      PZVVBAUWQYFYIUQUPZHUQUPZUVPYDUQUPZHUQUPVVEAVVGUWQAYFYIHUXGUXLQVMWBAVVFVVH
-      HUQAVVFUVHYAUQUPZYDUQUPZYIUQUPVVIYIUQUPZYDUQUPVVHAYFVVJYIUQAYFXQYBUQUPZYD
-      UQUPZVVJAVVMYFAXQYBYDUWSUXCUXEVMWBAVVIVVLYDUQAXQXSYAUWSUXAUXBVMVSVQVSAVVI
-      YDYIAUVHYAVURUXBVFUXEUXLWCAVVKUVPYDUQAVVKUVHYAYIUQUPZUQUPUVPAUVHYAYIVURUX
-      BUXLVMAVVNUVOUVHUQAYAYIUXBUXLVTVNWIVSVRVSAUVPYDHAUVHUVOVURAYIYAUXLUXBVFZV
-      FZUXEQVMVRAVVDVVAUVPUQAVVDHYDUQUPVVAAYDHUXEQVTABCEHILMQRSUJWAWIVNWIAUVPUV
-      MVUTVVPVUMAIUWCRUYKVFVLAVVCUWHUVQUTAUVPIUQUPZUWCUQUPVVCUWHAUVPIUWCVVPRUYK
-      VMAVVQUWGUWCUQAVVQUVHUVOIUQUPZUQUPUVHYAUWEUQUPZUQUPUWGAUVHUVOIVURVVORVMAV
-      VRVVSUVHUQAVVRUWEYAUQUPVVSAYIYAIUXLUXBRWCAUWEYAAYIIUXLRVFZUXBVTWIVNAXQXSY
-      AUWEUWSUXAUXBVVTVOVRVSVPVNVRWDWIAUWOUVGUVNUTUPZUWDUTUPZUWNUTUPVWAUVQUTUPZ
-      UWIUTUPUWJAUWMVWBUWNUTAUWMUWDVWAUTUPZVWBAUWMUWDUVCUWLUTUPZUTUPVWDAUWDUVCU
-      WLAUWAUWCUYIUYKVFZAUUTUVBAUURUUSVUIAYAEUXBSVFZVFZUYMVFZAUVFUVNAUVEUVBVUKU
-      YMVFZAUVKUVMAUVHUVJVURAUVIYDVUSUXEVFZVFZVUMVFZVKWEAVWEVWAUWDUTAVWAVWEAUVC
-      UVFUVNVWIVWJVWMWEWBVNWIAUWDVWAVWFAUVGUVNAUVCUVFVWIVWJVKZVWMVKZWFWIVSAVWAU
-      WDUVQUWHVWOVWFAUVPUVMVVPVUMVFZAUWGUWCAUVTUWFUYHAXSUWEUXAVVTVFZVFZUYKVFWJA
-      VWCUVSUWIUTAUVGUVNUVQVWNVWMVWPWEVSVRWIAUVSUUMUWIUUPUTAUVGUUJUVRUULUTAUURU
-      USUVDUTUPZUQUPZUVBUQUPZUVGUUJAVXAUUTUVEUTUPZUVBUQUPUVGAVWTVXBUVBUQAUURUUS
-      UVDVUIVWGVUJVLVSAUUTUVEUVBVWHVUKUYMWKWIAVWTUVAUQUPZDUQUPVXAUUJAVWTUVADAUU
-      RVWSVUIAUUSUVDVWGVUJVKVFUYLNVMAVXCUUIDUQAEIJKRSTUCUDUEUFWGVSVPVPAUVHUVJUV
-      OUTUPZUQUPZUVMUQUPZUVRUULAVXFUVKUVPUTUPZUVMUQUPUVRAVXEVXGUVMUQAUVHUVJUVOV
-      URVWKVVOVLVSAUVKUVPUVMVWLVVPVUMWKWIAVXEUVLUQUPZBUQUPVXFUULAVXEUVLBAUVHVXD
-      VURAUVJUVOVWKVVOVKVFVULLVMAVXHUUKBUQAEIJKRSTUDUEUFWHVSVPVPWDAUVTYDUWFUTUP
-      ZUQUPZUWCUQUPZUWIUUPAVXKUWAUWGUTUPZUWCUQUPUWIAVXJVXLUWCUQAUVTYDUWFUYHUXEV
-      WQVLVSAUWAUWGUWCUYIVWRUYKWKWIAVXJUWBUQUPZCUQUPVXKUUPAVXJUWBCAUVTVXIUYHAYD
-      UWFUXEVWQVKVFUYJMVMAVXMUUOCUQAEIJKRSTUDUEUFWLVSVPVPWDWIAUUMUUCUUPUUGUTAUU
-      JYSUULUUBUTAUUJYQVDZDUQUPYSAUUIVXNDUQAVXNUUIAYPURAYNYOAIVCRVCWMWNAWOWPZWQ
-      ZAEVCSVXOWQZVFZUWTWRWBVSAYQDAYPURVXRUWTVHZNWSWIAUULYTVDZBUQUPUUBAUUKVXTBU
-      QAVXTUUKAURYNUWTVXPWRWBVSAYTBAURYNUWTVXPVHZLWSWIWDAUUPUUEVDZCUQUPUUGAUUOV
-      YBCUQAUUOYNUUDVDZUQUPVYBAUUNVYCYNUQAVYCUUNAURYOUWTVXQWRWBVNAYNUUDVXPAURYO
-      UWTVXQVHZWTWIVSAUUECAYNUUDVXPVYDVFZMWSWIWDWIAUUHYRUUAUTUPZUUFUTUPZVDZVAAU
-      UHVYFVDZUUGUTUPVYHAUUCVYIUUGUTAVYIUUCAYRUUAAYQDVXSNVFZAYTBVYALVFZXAWBVSAV
-      YFUUFAYRUUAVYJVYKVKAUUECVYEMVFZXAVQAVYHVAVDZVAAVYGVAAVYGUUAUUFYRUTUPZUTUP
-      ZVAAVYGUUAYRUTUPZUUFUTUPUUAYRUUFUTUPZUTUPVYOAVYFVYPUUFUTAYRUUAVYJVYKWFVSA
-      UUAYRUUFVYKVYJVYLWEAVYQVYNUUAUTAYRUUFVYJVYLWFVNVRAUUAYNUUDCUQUPZYOURJVCUO
-      UPZUSUPZDUQUPZUQUPZUTUPZUQUPZUTUPZVYOVAAWUDVYNUUAUTAWUDUUFYPVYTUQUPZDUQUP
-      ZUTUPZVYNAWUDYNVYRUQUPZYNWUBUQUPZUTUPWUHAYNVYRWUBVXPAUUDCVYDMVFZAYOWUAVXQ
-      AVYTDAURVYSUWTAJVCTVXOWQZVHZNVFZVFZVLAWUIUUFWUJWUGUTAUUFWUIAYNUUDCVXPVYDM
-      VMWBAWUGWUJAWUGYPWUAUQUPWUJAYPVYTDVXRWUMNVMAYNYOWUAVXPVXQWUNVMWIWBWDWIAWU
-      GYRUUFUTAWUFYQDUQAYPVYSURVXRWULAYPVYSUQUPZKVCUOUPZURAWUQWUPAWUQUXHVCUOUPZ
-      WUPAKUXHVCUOUDVSAWURYCVCUOUPZVYSUQUPWUPAYCJVCUXDTVXOXBAWUSYPVYSUQAIEVCRSV
-      XOXBVSWIWIWBUEWIXCVSVNWIVNABYNWUCBUSUPZUQUPZUTUPZWUEVAAYNBWUCLVXPAVYRWUBW
-      UKWUOVKXDABYNCYODVYSVADUSUPUQUPUTUPZCUSUPZUQUPZUTUPZBUSUPZUQUPZUTUPWVBVAA
-      WVHWVABUTAWVGWUTYNUQAWVFWUCBUSAWVFCYOWUACUSUPZUQUPZUTUPWUCAWVEWVJCUTAWVDW
-      VIYOUQAWVCWUACUSAWVCWUAVYSVAUQUPZUTUPWUAVAUTUPWUAAVYSDVANWULAXEZXDAWVKVAW
-      UAUTAVYSWULXFVNAWUAWUNXGVRVSVNVNAYOCWUAMVXQWUNXDWIVSVNVNUMVPVPVPWIXHVYMVA
-      VBAXJWPWIWIWIAYMVAAYFUXGXFWBWIAYKVAYFAYHYJUXKUXMVKWVLUXGAXQYEUWSUXFAXPEUW
-      RSAIUNRUAUNXIWNAXKWPXLUBXMAYBYDUXCUXEAXSYAUXAUXBUGUHXMUIXMXMXNXO $.
+      mulneg2d negdid mulexpd mul1subeqd affineequiv4 mpbird 0cnd mul01d negeqd
+      addridd neg0 cz 2z expne0d mulne0d mulcand mpbid ) AIUNUOUPZEUQUPZUREJUQU
+      PZUSUPZURJIUQUPZUSUPZUQUPZURIEUQUPZUSUPZUQUPZUQUPZFKGUQUPZUTUPZKUNUOUPZHU
+      QUPZUTUPZUQUPZYGVAUQUPZVBYLVAVBAYMVAYNAYMIVCUOUPZEVCUOUPZUQUPZURUSUPZDUQU
+      PZVDZURYOUSUPZBUQUPZVDZUTUPZYOURYPUSUPZUQUPZCUQUPZVDZUTUPZVAAYMURYQUSUPZD
+      UQUPZYOURUSUPZBUQUPZUTUPZYOYPURUSUPZUQUPZCUQUPZUTUPZUUIAYMXRYEUQUPZYBEUQU
+      PZUQUPZURJUSUPZDUQUPZUQUPZUUSXTKUQUPZUQUPZUVCUQUPZUTUPZXRXTUQUPZKJUQUPZYE
+      UQUPZUQUPZURIUSUPZBUQUPZUQUPZUVIYJYBUQUPZUQUPZUVNUQUPZUTUPZUTUPZXRYBUQUPZ
+      YEUQUPZUREUSUPZCUQUPZUQUPZUWAXTYJIUQUPZUQUPZUQUPZUWDUQUPZUTUPZUTUPZUURAYM
+      UWEUVDUTUPZUVGUVOUTUPZUTUPZUVRUWIUTUPZUTUPZUWKAYMYGYIUQUPZYGYKUQUPZUTUPUW
+      PAYGYIYKAXRYFAXQEAIRVEZSVFZAYCYEAXTYBAURXSAVGZAEJSTVFVHZAURYAUXAAJITRVFVH
+      ZVFZAURYDUXAAIERSVFZVHZVFZVFZAFYHOAKGAKYDJUQUPZVIUDAYDJUXETVFVJZPVFZVKZAY
+      JHAKUXJVEZQVFZVLAUWQUWNUWRUWOUTAUWQYGFUQUPZYGYHUQUPZUTUPUWNAYGFYHUXHOUXKV
+      LAUXOUWLUXPUWMUTAUXOUWBUWDEUVCUQUPZUTUPZUQUPZUWEUWBUXQUQUPZUTUPUWLAUXOUWB
+      XTUQUPZFUQUPUWBXTFUQUPZUQUPUXSAYGUYAFUQAYGXRXTYBYEUQUPZUQUPZUQUPZUWAXTYEU
+      QUPZUQUPZUYAAYFUYDXRUQAXTYBYEUXBUXCUXFVMVNAUVIUYCUQUPUYEUYGAXRXTUYCUWTUXB
+      AYBYEUXCUXFVFVMAXRXTYBYEUWTUXBUXCUXFVOVPAUYGUWAYEXTUQUPZUQUPUYAAUYFUYHUWA
+      UQAXTYEUXBUXFVTVNAUWAYEXTAXRYBUWTUXCVFZUXFUXBVMVQVRVSAUWBXTFAUWAYEUYIUXFV
+      FZUXBOVMAUYBUXRUWBUQAUYBFXTUQUPUXRAXTFUXBOVTACDJFEMNOSTUKWAWIVNVRAUWBUWDU
+      XQUYJAUWCCAUREUXASVHZMVFZAEUVCSAUVBDAURJUXATVHZNVFZVFVLAUXTUVDUWEUTAUWBEU
+      QUPZUVCUQUPUXTUVDAUWBEUVCUYJSUYNVMAUYOUVAUVCUQAUYOUWAYEEUQUPUQUPUVAAUWAYE
+      EUYIUXFSVMAXRYBYEEUWTUXCUXFSVOWIVSVPVNVRAUXPUVFUVCJUVNUQUPZUTUPZUQUPZUVGU
+      VFUYPUQUPZUTUPUWMAUXPUVFYBGUQUPZUQUPZUYRAUXPYGKUQUPZGUQUPZUVFYBUQUPZGUQUP
+      VUAAVUCUXPAYGKGUXHUXJPVMWBAVUBVUDGUQAVUBUUSXTUQUPZYBUQUPZKUQUPVUEKUQUPZYB
+      UQUPVUDAYGVUFKUQAYGUUSYCUQUPZVUFAYGXRYEYCUQUPZUQUPVUHAYFVUIXRUQAYCYEUXDUX
+      FVTVNAXRYEYCUWTUXFUXDVMVQAUUSXTYBAXRYEUWTUXFVFZUXBUXCVMVQVSAVUEYBKAUUSXTV
+      UJUXBVFUXCUXJWCAVUGUVFYBUQAUUSXTKVUJUXBUXJVMVSVRVSAUVFYBGAUUSUVEVUJAXTKUX
+      BUXJVFZVFZUXCPVMVRAUYTUYQUVFUQAUYTGYBUQUPUYQAYBGUXCPVTADBIGJNLPTRULWAWIVN
+      WIAUVFUVCUYPVULUYNAJUVNTAUVMBAURIUXARVHZLVFZVFVLAUYSUVOUVGUTAUVFJUQUPZUVN
+      UQUPUYSUVOAUVFJUVNVULTVUNVMAVUOUVLUVNUQAVUOUVIYEKUQUPZUQUPZJUQUPUVIVUPJUQ
+      UPZUQUPUVLAUVFVUQJUQAXRYEXTKUWTUXFUXBUXJVOVSAUVIVUPJAXRXTUWTUXBVFZAYEKUXF
+      UXJVFTVMAVURUVKUVIUQAVURYEUVJUQUPUVKAYEKJUXFUXJTVMAYEUVJUXFAKJUXJTVFZVTWI
+      VNVRVSVPVNVRWDWIAUWRUVQUVNIUWDUQUPZUTUPZUQUPZUVRUVQVVAUQUPZUTUPUWOAUWRUVQ
+      YEHUQUPZUQUPZVVCAUWRYGYJUQUPZHUQUPZUVQYEUQUPZHUQUPVVFAVVHUWRAYGYJHUXHUXMQ
+      VMWBAVVGVVIHUQAVVGUVIYBUQUPZYEUQUPZYJUQUPVVJYJUQUPZYEUQUPVVIAYGVVKYJUQAYG
+      XRYCUQUPZYEUQUPZVVKAVVNYGAXRYCYEUWTUXDUXFVMWBAVVJVVMYEUQAXRXTYBUWTUXBUXCV
+      MVSVQVSAVVJYEYJAUVIYBVUSUXCVFUXFUXMWCAVVLUVQYEUQAVVLUVIYBYJUQUPZUQUPUVQAU
+      VIYBYJVUSUXCUXMVMAVVOUVPUVIUQAYBYJUXCUXMVTVNWIVSVRVSAUVQYEHAUVIUVPVUSAYJY
+      BUXMUXCVFZVFZUXFQVMVRAVVEVVBUVQUQAVVEHYEUQUPVVBAYEHUXFQVTABCEHILMQRSUJWAW
+      IVNWIAUVQUVNVVAVVQVUNAIUWDRUYLVFVLAVVDUWIUVRUTAUVQIUQUPZUWDUQUPVVDUWIAUVQ
+      IUWDVVQRUYLVMAVVRUWHUWDUQAVVRUVIUVPIUQUPZUQUPUVIYBUWFUQUPZUQUPUWHAUVIUVPI
+      VUSVVPRVMAVVSVVTUVIUQAVVSUWFYBUQUPVVTAYJYBIUXMUXCRWCAUWFYBAYJIUXMRVFZUXCV
+      TWIVNAXRXTYBUWFUWTUXBUXCVWAVOVRVSVPVNVRWDWIAUWPUVHUVOUTUPZUWEUTUPZUWOUTUP
+      VWBUVRUTUPZUWJUTUPUWKAUWNVWCUWOUTAUWNUWEVWBUTUPZVWCAUWNUWEUVDUWMUTUPZUTUP
+      VWEAUWEUVDUWMAUWBUWDUYJUYLVFZAUVAUVCAUUSUUTVUJAYBEUXCSVFZVFZUYNVFZAUVGUVO
+      AUVFUVCVULUYNVFZAUVLUVNAUVIUVKVUSAUVJYEVUTUXFVFZVFZVUNVFZVKWEAVWFVWBUWEUT
+      AVWBVWFAUVDUVGUVOVWJVWKVWNWEWBVNWIAUWEVWBVWGAUVHUVOAUVDUVGVWJVWKVKZVWNVKZ
+      WFWIVSAVWBUWEUVRUWIVWPVWGAUVQUVNVVQVUNVFZAUWHUWDAUWAUWGUYIAXTUWFUXBVWAVFZ
+      VFZUYLVFWJAVWDUVTUWJUTAUVHUVOUVRVWOVWNVWQWEVSVRWIAUVTUUNUWJUUQUTAUVHUUKUV
+      SUUMUTAUUSUUTUVEUTUPZUQUPZUVCUQUPZUVHUUKAVXBUVAUVFUTUPZUVCUQUPUVHAVXAVXCU
+      VCUQAUUSUUTUVEVUJVWHVUKVLVSAUVAUVFUVCVWIVULUYNWKWIAVXAUVBUQUPZDUQUPVXBUUK
+      AVXAUVBDAUUSVWTVUJAUUTUVEVWHVUKVKVFUYMNVMAVXDUUJDUQAEIJKRSTUCUDUEUFWGVSVP
+      VPAUVIUVKUVPUTUPZUQUPZUVNUQUPZUVSUUMAVXGUVLUVQUTUPZUVNUQUPUVSAVXFVXHUVNUQ
+      AUVIUVKUVPVUSVWLVVPVLVSAUVLUVQUVNVWMVVQVUNWKWIAVXFUVMUQUPZBUQUPVXGUUMAVXF
+      UVMBAUVIVXEVUSAUVKUVPVWLVVPVKVFVUMLVMAVXIUULBUQAEIJKRSTUDUEUFWHVSVPVPWDAU
+      WAYEUWGUTUPZUQUPZUWDUQUPZUWJUUQAVXLUWBUWHUTUPZUWDUQUPUWJAVXKVXMUWDUQAUWAY
+      EUWGUYIUXFVWRVLVSAUWBUWHUWDUYJVWSUYLWKWIAVXKUWCUQUPZCUQUPVXLUUQAVXKUWCCAU
+      WAVXJUYIAYEUWGUXFVWRVKVFUYKMVMAVXNUUPCUQAEIJKRSTUDUEUFWLVSVPVPWDWIAUUNUUD
+      UUQUUHUTAUUKYTUUMUUCUTAUUKYRVDZDUQUPYTAUUJVXODUQAVXOUUJAYQURAYOYPAIVCRVCW
+      MWNAWOWPZWQZAEVCSVXPWQZVFZUXAWRWBVSAYRDAYQURVXSUXAVHZNWSWIAUUMUUAVDZBUQUP
+      UUCAUULVYABUQAVYAUULAURYOUXAVXQWRWBVSAUUABAURYOUXAVXQVHZLWSWIWDAUUQUUFVDZ
+      CUQUPUUHAUUPVYCCUQAUUPYOUUEVDZUQUPVYCAUUOVYDYOUQAVYDUUOAURYPUXAVXRWRWBVNA
+      YOUUEVXQAURYPUXAVXRVHZWTWIVSAUUFCAYOUUEVXQVYEVFZMWSWIWDWIAUUIYSUUBUTUPZUU
+      GUTUPZVDZVAAUUIVYGVDZUUHUTUPVYIAUUDVYJUUHUTAVYJUUDAYSUUBAYRDVXTNVFZAUUABV
+      YBLVFZXAWBVSAVYGUUGAYSUUBVYKVYLVKAUUFCVYFMVFZXAVQAVYIVAVDZVAAVYHVAAVYHUUB
+      UUGYSUTUPZUTUPZVAAVYHUUBYSUTUPZUUGUTUPUUBYSUUGUTUPZUTUPVYPAVYGVYQUUGUTAYS
+      UUBVYKVYLWFVSAUUBYSUUGVYLVYKVYMWEAVYRVYOUUBUTAYSUUGVYKVYMWFVNVRAUUBYOUUEC
+      UQUPZYPURJVCUOUPZUSUPZDUQUPZUQUPZUTUPZUQUPZUTUPZVYPVAAWUEVYOUUBUTAWUEUUGY
+      QWUAUQUPZDUQUPZUTUPZVYOAWUEYOVYSUQUPZYOWUCUQUPZUTUPWUIAYOVYSWUCVXQAUUECVY
+      EMVFZAYPWUBVXRAWUADAURVYTUXAAJVCTVXPWQZVHZNVFZVFZVLAWUJUUGWUKWUHUTAUUGWUJ
+      AYOUUECVXQVYEMVMWBAWUHWUKAWUHYQWUBUQUPWUKAYQWUADVXSWUNNVMAYOYPWUBVXQVXRWU
+      OVMWIWBWDWIAWUHYSUUGUTAWUGYRDUQAYQVYTURVXSWUMAYQVYTUQUPZKVCUOUPZURAWURWUQ
+      AWURUXIVCUOUPZWUQAKUXIVCUOUDVSAWUSYDVCUOUPZVYTUQUPWUQAYDJVCUXETVXPXBAWUTY
+      QVYTUQAIEVCRSVXPXBVSWIWIWBUEWIXCVSVNWIVNABYOWUDBUSUPZUQUPZUTUPZWUFVAAWVCW
+      UFVBWVCWVBBUTUPVBABWVBLAYOWVAVXQAWUDBAVYSWUCWULWUPVKZLVHVFZWFAWVCBWUDYOAB
+      WVBLWVEVKLWVDVXQXDXEABYOCYPDVYTVADUSUPZUQUPZUTUPZCUSUPZUQUPZUTUPZBUSUPZUQ
+      UPZUTUPWVCVAAWVMWVBBUTAWVLWVAYOUQAWVKWUDBUSAWVKCYPWUBCUSUPZUQUPZUTUPZWUDA
+      WVJWVOCUTAWVIWVNYPUQAWVHWUBCUSAWVHWUBVYTVAUQUPZUTUPZWUBVAUTUPWUBAWVHWVRVB
+      WVHWVGDUTUPVBADWVGNAVYTWVFWUMAVADAXFZNVHVFZWFAWVHDVAVYTADWVGNWVTVKNWVSWUM
+      XDXEAWVQVAWUBUTAVYTWUMXGVNAWUBWUOXIVRVSVNVNAWVPWUDVBWVPWVOCUTUPVBACWVOMAY
+      PWVNVXRAWUBCWUOMVHVFZWFAWVPCWUBYPACWVOMWWAVKMWUOVXRXDXEWIVSVNVNUMVPVPVPWI
+      XHVYNVAVBAXJWPWIWIWIAYNVAAYGUXHXGWBWIAYLVAYGAYIYKUXLUXNVKWVSUXHAXRYFUWTUX
+      GAXQEUWSSAIUNRUAUNXKWNAXLWPXMUBXNAYCYEUXDUXFAXTYBUXBUXCUGUHXNUIXNXNXOXP
+      $.
   $}
 
+
   ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d P x $.
-    $d P y $.  $d Q x $.  $d Q y $.  $d R x $.  $d R y $.  $d x y $.
-    morlemlin.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.  $d C x y $.  $d P x y $.  $d Q x y $.
+    $d R x y $.
+    morlemlin.f $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     morlemlin.x $e |- X = ( ( ( B - A ) F ( C - A ) ) / 3 ) $.
     morlemlin.y $e |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) $.
     morlemlin.z $e |- Z = ( ( ( A - C ) F ( B - C ) ) / 3 ) $.
@@ -1166,13 +1055,19 @@ $[ set.mm $]
     morlemlin.4 $e |- ( ph -> ( ( R - B ) F ( A - B ) ) = Y ) $.
     morlemlin.5 $e |- ( ph -> ( ( A - C ) F ( Q - C ) ) = Z ) $.
     morlemlin.6 $e |- ( ph -> ( ( P - C ) F ( B - C ) ) = Z ) $.
-    morlemlin.j $e |- J = ( ( ( exp ` ( _i x. ( 2 x. X ) ) ) x. ( exp ` ( _i x.
-      ( 2
-  x. Y ) ) ) ) x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) $.
-    $( The linear relation between the three Morley points.  (Contributed by
-       JAG, 13-Oct-2026.) $)
-    morlemlin $p |- ( ph -> ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) ) = 0 )
-      $=
+    morlemlin.j $e |- J
+        = ( ( ( exp ` ( _i x. ( 2 x. X ) ) )
+        x. ( exp ` ( _i x. ( 2 x. Y ) ) ) )
+        x. ( exp ` ( _i x. ( 2 x. Z ) ) ) ) $.
+    $( The vertices ` P ` , ` Q ` , ` R ` of the Morley triangle satisfy the
+       linear relation ` ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) ) = 0 ` ,
+       where ` J ` is the product of the rotation coefficients for twice the
+       trisected angles.  The hypotheses are those of ~ morleyR2 .  The
+       relation follows from ~ morlemlinalg , applied to the rotations of
+       ~ morlemfix3 and ~ morlemid , with ` J ` given by ~ morlemj .
+       (Contributed by JAG, 13-Oct-2026.) $)
+    morlemlin $p |- ( ph -> ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) )
+        = 0 ) $=
       ( ci c2 cmul co ce cfv cc wcel ax-icn a1i 2cn cmin cdiv wceq cc0 cpi cioo
       c3 cr elioore syl recnd 3cn wne 3ne0 divcld eqeltrd efcld caddc ang180pos
       mulcld simp1d simp2d efne0d cexp morlemj simp3d 3re redivcld clt eliooord
@@ -1205,26 +1100,29 @@ $[ set.mm $]
       STUAAXTUEUFUGYAYB $.
   $}
 
-  ${
-    morlemfac1.s $e |- ( ph -> S e. CC ) $.
-    morlemfac1.1 $e |- ( ph -> ( S ^ 3 ) = 1 ) $.
-    $( The cube-root factorization, with its right side collapsed to zero.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    morlemfac1 $p |- ( ph -> ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) ) = 0 )
-      $=
-      ( c1 cmin co c2 cexp caddc cmul c3 cc0 morlemfac3 oveq1d 1m1e0 a1i 3eqtrd
-      wceq ) ABEFGBHIGBJGEJGKGBLIGZEFGEEFGZMABCNATEEFDOUAMSAPQR $.
-  $}
 
   ${
-    morlemabs1.j $e |- ( ph -> J e. CC ) $.
-    morlemabs1.1 $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
-    $( A cube root of unity has modulus one.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemabs1 $p |- ( ph -> ( abs ` J ) = 1 ) $=
+    cubeq1facd.s $e |- ( ph -> S e. CC ) $.
+    cubeq1facd.1 $e |- ( ph -> ( S ^ 3 ) = 1 ) $.
+    $( If ` ( S ^ 3 ) = 1 ` , then ` ( S - 1 ) ` times
+       ` ( ( ( S ^ 2 ) + S ) + 1 ) ` is zero.  (Deduction form.)  (Contributed
+       by JAG, 13-Oct-2026.) $)
+    cubeq1facd $p |- ( ph -> ( ( S - 1 ) x. ( ( ( S ^ 2 ) + S ) + 1 ) )
+        = 0 ) $=
+      ( c1 cmin co c2 cexp caddc cmul cc0 cubm1d oveq1d wceq 1m1e0 a1i 3eqtrd
+      c3 ) ABEFGBHIGBJGEJGKGBSIGZEFGEEFGZLABCMATEEFDNUALOAPQR $.
+  $}
+
+
+  ${
+    cubeq1absd.j $e |- ( ph -> J e. CC ) $.
+    cubeq1absd.1 $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
+    $( A complex cube root of unity has absolute value ` 1 ` .  (Deduction
+       form.)  (Contributed by JAG, 13-Oct-2026.) $)
+    cubeq1absd $p |- ( ph -> ( abs ` J ) = 1 ) $=
       ( cabs cfv c1 cmin co cc0 wceq cexp caddc recnd readdcld a1i eqtrd eqtr3d
       cdiv c3 c2 cmul abscld 1cnd subcld resqcld sqge0d absge0d addge0d clt wbr
-      1red 0lt1 addgegt0d gt0ne0d divcan4d cn0 wcel 3nn0 fveq2d abs1 morlemfac1
+      1red 0lt1 addgegt0d gt0ne0d divcan4d cn0 wcel 3nn0 fveq2d abs1 cubeq1facd
       absexpd oveq1d div0d subeq0ad mpbid ) ABEFZGHIZJKVHGKAVIVHUALIZVHMIZGMIZU
       BIZVLSIZVIJAVIVLAVHGAVHABCUCZNZAUDZUEAVLAVKGAVJVHAVHVOUFZVOOZAULZONZAVLAV
       KGVSVTAVJVHVRVOAVHVOUGABCUHUIJGUJUKAUMPUNUOZUPAVNJVLSIJAVMJVLSAVHVPABTLIZ
@@ -1232,18 +1130,21 @@ $[ set.mm $]
       VFVG $.
   $}
 
+
   ${
-    morlemeqz.j $e |- ( ph -> J e. CC ) $.
-    morlemeqz.1 $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
-    morlemeqz.2 $e |- ( ph -> J =/= 1 ) $.
-    $( A primitive cube root of unity kills one plus J plus J squared.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    morlemeqz $p |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) = 0 ) $=
+    cubeq1sumd.j $e |- ( ph -> J e. CC ) $.
+    cubeq1sumd.1 $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
+    cubeq1sumd.2 $e |- ( ph -> J =/= 1 ) $.
+    $( A cube root of unity ` J ` other than ` 1 ` satisfies
+       ` ( ( ( J ^ 2 ) + J ) + 1 ) = 0 ` .  (Deduction form.)  (Contributed by
+       JAG, 13-Oct-2026.) $)
+    cubeq1sumd $p |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) = 0 ) $=
       ( c1 cmin co c2 cexp caddc cmul cdiv cc0 sqcld addcld 1cnd subcld subne0d
-      divcan3d morlemfac1 oveq1d div0d eqtrd eqtr3d ) ABFGHZBIJHZBKHZFKHZLHZUFM
+      divcan3d cubeq1facd oveq1d div0d eqtrd eqtr3d ) ABFGHZBIJHZBKHZFKHZLHZUFM
       HZUINAUIUFAUHFAUGBABCOCPAQZPABFCULRZABFCULESZTAUKNUFMHNAUJNUFMABCDUAUBAUF
       UMUNUCUDUE $.
   $}
+
 
   ${
     morlemeqrot.u $e |- ( ph -> U e. CC ) $.
@@ -1251,13 +1152,14 @@ $[ set.mm $]
     morlemeqrot.w $e |- ( ph -> W e. CC ) $.
     morlemeqrot.j $e |- ( ph -> J e. CC ) $.
     morlemeqrot.1 $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
-    morlemeqrot.2 $e |- ( ph -> ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) ) = 0
-      )
-  $.
-    $( The linear relation is invariant under the cyclic shift of its points.
+    morlemeqrot.2 $e |- ( ph -> ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) )
+        = 0 ) $.
+    $( For a cube root of unity ` J ` , the relation
+       ` ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) ) = 0 ` is preserved when
+       ` U ` , ` V ` , ` W ` are replaced by ` W ` , ` U ` , ` V ` .
        (Contributed by JAG, 13-Oct-2026.) $)
-    morlemeqrot $p |- ( ph -> ( ( W + ( J x. U ) ) + ( ( J ^ 2 ) x. V ) ) = 0 )
-      $=
+    morlemeqrot $p |- ( ph -> ( ( W + ( J x. U ) ) + ( ( J ^ 2 ) x. V ) )
+        = 0 ) $=
       ( cmul co c2 cexp caddc cc0 mulcld eqtrd c1 add32d addcomd oveq1d mulassd
       sqcld addcld adddid sqvald eqcomd oveq2d c3 mulcomd wceq 2p1e3 oveq2i a1i
       cn0 wcel 2nn0 expp1d eqtr3d eqtr4d mullidd oveq12d mul01d ) ACBLMZCNOMZDL
@@ -1269,6 +1171,7 @@ $[ set.mm $]
       PUTVAVBJSUCAEHVCSVAVDSAVTCQLMQAVSQCLKUJACIVESVAVA $.
   $}
 
+
   ${
     morlemeqd.u $e |- ( ph -> U e. CC ) $.
     morlemeqd.v $e |- ( ph -> V e. CC ) $.
@@ -1276,9 +1179,13 @@ $[ set.mm $]
     morlemeqd.j $e |- ( ph -> J e. CC ) $.
     morlemeqd.1 $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
     morlemeqd.2 $e |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) = 0 ) $.
-    morlemeqd.3 $e |- ( ph -> ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) ) = 0 )
-      $.
-    $( One side is J times another.  (Contributed by JAG, 13-Oct-2026.) $)
+    morlemeqd.3 $e |- ( ph -> ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) )
+        = 0 ) $.
+    $( If ` ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) ) = 0 ` , where ` J ` is
+       a cube root of unity and a root of ` ( ( ( J ^ 2 ) + J ) + 1 ) ` , then
+       the side ` ( V - W ) ` of the triangle with vertices ` U ` , ` V ` ,
+       ` W ` is ` J ` times its side ` ( U - V ) ` .  (Contributed by JAG,
+       13-Oct-2026.) $)
     morlemeqd $p |- ( ph -> ( V - W ) = ( J x. ( U - V ) ) ) $=
       ( cmin co cmul wceq caddc mulcld cc0 eqtrd subdid oveq2d addsubassd sqcld
       c2 cexp addcld addcomd morlemeqrot eqtr3d c1 1cnd adddird mullidd oveq12d
@@ -1291,6 +1198,7 @@ $[ set.mm $]
       QWDWBAVJDVPGUGUTVAUQAVJDVPGVBTUJTADEVGGHACVFIABDFGVCRVDVE $.
   $}
 
+
   ${
     morlemeqi.u $e |- ( ph -> U e. CC ) $.
     morlemeqi.v $e |- ( ph -> V e. CC ) $.
@@ -1298,502 +1206,31 @@ $[ set.mm $]
     morlemeqi.j $e |- ( ph -> J e. CC ) $.
     morlemeqi.1 $e |- ( ph -> ( J ^ 3 ) = 1 ) $.
     morlemeqi.2 $e |- ( ph -> J =/= 1 ) $.
-    morlemeqi.3 $e |- ( ph -> ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) ) = 0 )
-      $.
-    $( The linear relation characterizes an equilateral triangle.  (Contributed
-       by JAG, 13-Oct-2026.) $)
-    morlemeqi $p |- ( ph -> ( ( abs ` ( W - U ) ) = ( abs ` ( U - V ) ) /\ (
-      abs `
-  ( V - W ) ) = ( abs ` ( U - V ) ) ) ) $=
-      ( cmin co cabs cfv wceq c1 cmul morlemeqd morlemeqz fveq2d subcld absmuld
-      morlemeqrot morlemabs1 oveq1d 3eqtrd abscld recnd mullidd eqtrd eqcomd
+    morlemeqi.3 $e |- ( ph -> ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) )
+        = 0 ) $.
+    $( Three complex numbers ` U ` , ` V ` , ` W ` with
+       ` ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) ) = 0 ` , for a cube root of
+       unity ` J ` other than ` 1 ` , form an equilateral triangle: all three
+       sides have the length of ` ( U - V ) ` .  (Contributed by JAG,
+       13-Oct-2026.) $)
+    morlemeqi $p |- ( ph
+        -> ( ( abs ` ( W - U ) ) = ( abs ` ( U - V ) ) /\ ( abs ` ( V - W ) )
+        = ( abs ` ( U - V ) ) ) ) $=
+      ( cmin co cabs cfv wceq c1 cmul morlemeqd cubeq1sumd fveq2d subcld oveq1d
+      morlemeqrot absmuld cubeq1absd 3eqtrd abscld recnd mullidd eqtrd eqcomd
       jca ) AEBMNZOPZBDMNZOPZQDEMNZOPZURQAURUPAURRUPSNZUPAURCUOSNZOPCOPZUPSNVAA
-      UQVBOAECBDHFGIJACIJKUAZABCDEFGHIJLUETUBACUOIAEBHFUCZUDAVCRUPSACIJUFZUGUHA
+      UQVBOAECBDHFGIJACIJKUAZABCDEFGHIJLUETUBACUOIAEBHFUCZUFAVCRUPSACIJUGZUDUHA
       UPAUPAUOVEUIUJUKULUMAUTRURSNZURAUTCUQSNZOPVCURSNVGAUSVHOABCDEFGHIJVDLTUBA
-      CUQIABDFGUCZUDAVCRURSVFUGUHAURAURAUQVIUIUJUKULUN $.
+      CUQIABDFGUCZUFAVCRURSVFUDUHAURAURAUQVIUIUJUKULUN $.
   $}
 
-  $( The product of a sine sum and a sine difference, as a difference of
-     squares.  (Contributed by JAG, 13-Oct-2026.) $)
-  sinaddsub $p |- ( ( A e. CC /\ B e. CC ) -> ( ( sin ` ( A + B ) ) x. ( sin `
-    (
-  A - B ) ) ) = ( ( ( sin ` A ) ^ 2 ) - ( ( sin ` B ) ^ 2 ) ) ) $=
-    ( cc wcel caddc co csin cmin cmul ccos c2 cexp oveq12d wceq sincl mulcld c1
-    cfv sqcld eqtrd sinadd sinsub adantr coscl adantl subsq eqtr4d sqmuld simpr
-    wa syl2anc sincossq syl mvlladdd oveq2d eqidd morlemone 3eqtrd simpl oveq1d
-    1cnd subcld mulcomd nnncan2 syl3anc ) ACDZBCDZUJZABEFGRZABHFGRZIFZAGRZBJRZI
-    FZKLFZAJRZBGRZIFZKLFZHFZVLKLFZVQKLFZHFZVHVKVNVREFZVNVRHFZIFZVTVHVIWDVJWEIAB
-    UAABUBMVHVNCDVRCDVTWFNVHVLVMVFVLCDVGAOUCZVGVMCDVFBUDUEZPVHVPVQVFVPCDVGAUDUC
-    ZVGVQCDVFBOUEZPVNVRUFUKUGVHVTWAWAWBIFZHFZWBWKHFZHFZWCVHVOWLVSWMHVHVOWAVMKLF
-    ZIFWAQWBHFZIFWLVHVLVMWGWHUHVHWOWPWAIVHWBWOQVHVQWJSZVHVMWHSVHVGWBWOEFQNVFVGU
-    IBULUMUNUOVHWAWBWKVHVLWGSZWQVHWKUPUQURVHVSVPKLFZWBIFQWAHFZWBIFZWMVHVPVQWIWJ
-    UHVHWSWTWBIVHWAWSQWRVHVPWISVHVFWAWSEFQNVFVGUSAULUMUNUTVHXAWBWTIFWMVHWTWBVHQ
-    WAVHVAWRVBWQVCVHWBWAWKWQWRVHWBWAWQWRVCUQTURMVHWACDWBCDWKCDWNWCNWRWQVHWAWBWR
-    WQPWAWBWKVDVETT $.
-
-  $( The triple-angle identity for sine, in product form.  (Contributed by JAG,
-     13-Oct-2026.) $)
-  sin3tprod $p |- ( A e. CC -> ( sin ` ( 3 x. A ) ) = ( 4 x. ( ( ( sin ` A ) x.
-    (
-  sin ` ( ( _pi / 3 ) + A ) ) ) x. ( sin ` ( ( _pi / 3 ) - A ) ) ) ) ) $=
-    ( cc wcel c3 cmul co csin cfv c4 cexp cmin cpi cdiv c2 picn 3cn a1i wceq c6
-    oveq2d caddc sin3t id sincld divcli addcld subcld mulassd sinaddsub syl2anc
-    3ne0 ccos c1 2cn 2ne0 reccli subdii halfthird oveq2i eqtr3i divreci oveq12i
-    csqrt 6cn nnne0i 3eqtr4i fveq2i coshalfpim ax-mp sincos6thpi simpri 3eqtr3i
-    6nn oveq1i 3re 3pos sqrtpclii recni sqdivi eqtri cc0 cle wbr ltleii sqsqrti
-    0re sq2 3eqtri oveq1d eqtrd 4cn 4ne0 sqcld subdid cn0 4nn0 nn0cn mulcld wne
-    mp1i divassd divcan2d eqtr3d mulcomd df-3 sincl 2nn0 expp1d 3eqtrrd oveq12d
-    3eqtrd eqtr4d ) ABCZDAEFGHDAGHZEFZIXNDJFZEFZKFZIXNLDMFZAUAFZGHZEFXSAKFZGHZE
-    FZEFZAUBXMYEIXNDIMFZXNNJFZKFZEFZEFZXRXMYDYIIEXMYDXNYAYCEFZEFYIXMXNYAYCXMAXM
-    UCZUDZXMXTXMXSAXSBCZXMLDOPUKUEZQZYLUFUDXMYBXMXSAYPYLUGUDUHXMYKYHXNEXMYKXSGH
-    ZNJFZYGKFZYHXMYNXMYKYSRYPYLXSAUIUJXMYRYFYGKYRYFRXMYRDVCHZNJFZNNJFZMFZDUUBMF
-    YFYRYTNMFZNJFUUCYQUUDNJLNMFZXSKFZULHZLSMFZULHZYQUUDUUFUUHULLUMNMFZEFZLUMDMF
-    ZEFZKFZLUMSMFZEFZUUFUUHLUUJUULKFZEFUUNUUPLUUJUULONUNUOUPDPUKUPUQUUQUUOLEURU
-    SUTUUEUUKXSUUMKLNOUNUOVALDOPUKVAVBLSOVDSVMVEVAVFVGYNUUGYQRYOXSVHVIUUHGHUUJR
-    UUIUUDRVJVKVLVNYTNYTDVOVPVQVRUNUOVSVTUUADUUBMWADWBWCUUADRWADWFVOVPWDDVOWEVI
-    VNUUBIDMWGUSWHQWIWJTWJTXMYJIXNYFEFZXNYGEFZKFZEFIUUREFZIUUSEFZKFXRXMYIUUTIEX
-    MXNYFYGYMYFBCXMDIPWKWLUEQZXMXNYMWMZWNTXMIUURUUSIWOCIBCXMWPIWQWTZXMXNYFYMUVC
-    WRXMXNYGYMUVDWRWNXMUVAXOUVBXQKXMUVAXNDEFZXOXMIUVFIMFZEFUVAUVFXMUVGUURIEXMXN
-    DIYMDBCXMPQZUVEIWAWSXMWLQZXATXMUVFIXMXNDYMUVHWRUVEUVIXBXCXMXNDYMUVHXDWJXMUU
-    SXPIEXMXPXNNUMUAFZJFYGXNEFUUSXMDUVJXNJDUVJRXMXEQTXMXNNAXFZNWOCXMXGQXHXMYGXN
-    XMXNUVKWMUVKXDXITXJXKWJXL $.
 
   ${
-    efi11d.s $e |- ( ph -> S e. RR ) $.
-    efi11d.t $e |- ( ph -> T e. RR ) $.
-    efi11d.1 $e |- ( ph -> S e. ( -u _pi (,] _pi ) ) $.
-    efi11d.2 $e |- ( ph -> T e. ( -u _pi (,] _pi ) ) $.
-    efi11d.3 $e |- ( ph -> ( exp ` ( _i x. S ) ) = ( exp ` ( _i x. T ) ) ) $.
-    $( The complex exponential is one-to-one on the angle strip.  (Contributed
-       by JAG, 13-Oct-2026.) $)
-    efi11d $p |- ( ph -> S = T ) $=
-      ( ci wcel a1i cmul co cfv wceq cpi cim clt wbr cle cc ax-icn cc0 wne ine0
-      recnd ce clog crn cneg w3a mulcld cxr cioc pire renegcli rexri rexr ax-mp
-      cr iocgtlb syl3anc mulcomd fveq2d immul2 syl2anc eqtrd imi oveq2d mulridd
-      c1 3eqtrd breqtrrd iocleub eqbrtrd 3jca ellogrn sylibr logef syl mulcanad
-      eqtr3d ) ABCIABDUFZACEUFZIUAJZAUBKZIUCUDAUEKAIBLMZUGNZUHNZWGICLMZAWGUHUIZ
-      JZWIWGOAWGUAJZPUJZWGQNZRSZWOPTSZUKWLAWMWPWQAIBWFWCULAWNBWORAWNUMJZPUMJZBW
-      NPUNMZJZWNBRSWRAWNPUOUPUQKZWSAPUTJWSUOPURUSKZFWNPBVAVBAWOBIQNZLMZBVKLMBAW
-      OBILMZQNZXEAWGXFQAIBWFWCVCVDABUTJWEXGXEODWFBIVEVFVGAXDVKBLXDVKOAVHKZVIABW
-      CVJVLZVMAWOBPTXIAWRWSXABPTSXBXCFWNPBVNVBVOVPWGVQVRWGVSVTAWIWJUGNZUHNZWJAW
-      HXJUHHVDAWJWKJZXKWJOAWJUAJZWNWJQNZRSZXNPTSZUKXLAXMXOXPAICWFWDULAWNCXNRAWR
-      WSCWTJZWNCRSXBXCGWNPCVAVBAXNCXDLMZCVKLMCAXNCILMZQNZXRAWJXSQAICWFWDVCVDACU
-      TJWEXTXROEWFCIVEVFVGAXDVKCLXHVIACWDVJVLZVMAXNCPTYAAWRWSXQCPTSXBXCGWNPCVNV
-      BVOVPWJVQVRWJVSVTVGWBWA $.
-  $}
-
-  ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d x y $.
-    angexp.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` (
-      log
-  ` ( y / x ) ) ) ) $.
-    angexp.a $e |- ( ph -> A e. CC ) $.
-    angexp.an $e |- ( ph -> A =/= 0 ) $.
-    angexp.b $e |- ( ph -> B e. CC ) $.
-    angexp.bn $e |- ( ph -> B =/= 0 ) $.
-    $( The unit complex number an ang value names.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    angexp $p |- ( ph -> ( exp ` ( _i x. ( A F B ) ) ) = ( ( B / A ) / ( abs `
-      ( B
-  / A ) ) ) ) $=
-      ( ci co cmul ce cfv cdiv clog cim cabs angvald oveq2d fveq2d divcld eqtrd
-      divne0d efiargd ) ALDEFMZNMZOPLEDQMZRPSPZNMZOPUJUJTPQMAUIULOAUHUKLNABCFDE
-      GHIJKUAUBUCAUJAEDJHIUDAEDJHKIUFUGUE $.
-  $}
-
-  ${
-    $d U x $.  $d U y $.  $d V x $.  $d V y $.  $d W x $.  $d W y $.  $d x y $.
-    angexpadd.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
-    angexpadd.u $e |- ( ph -> U e. CC ) $.
-    angexpadd.un $e |- ( ph -> U =/= 0 ) $.
-    angexpadd.v $e |- ( ph -> V e. CC ) $.
-    angexpadd.vn $e |- ( ph -> V =/= 0 ) $.
-    angexpadd.w $e |- ( ph -> W e. CC ) $.
-    angexpadd.wn $e |- ( ph -> W =/= 0 ) $.
-    $( Angles at a common vertex add, as unit complex numbers.  (Contributed by
-       JAG, 13-Oct-2026.) $)
-    angexpadd $p |- ( ph -> ( ( exp ` ( _i x. ( U F V ) ) ) x. ( exp ` ( _i x.
-      ( V
-  F W ) ) ) ) = ( exp ` ( _i x. ( U F W ) ) ) ) $=
-      ( ci co cmul cfv cdiv cabs ce angexp oveq12d divcld recnd divne0d absne0d
-      abscld mulcomd oveq2d divcan5d 3eqtrd absmuld fveq2d eqtr3d eqtrd eqtr4d
-      divmuldivd ) AODFEPQPUARZOFGEPQPUARZQPZGDSPZVBTRZSPZODGEPQPUARAVAFDSPZVET
-      RZSPZGFSPZVHTRZSPZQPZVDAUSVGUTVJQABCDFEHIJKLUBABCFGEHKLMNUBUCAVKVEVHQPZVF
-      VIQPZSPVDAVEVFVHVIAFDKIJUDZAVFAVEVNUHUEAGFMKLUDZAVIAVHVOUHUEAVEVNAFDKILJU
-      FUGAVHVOAGFMKNLUFUGURAVLVBVMVCSAVLFGQPZDFQPZSPVPFDQPZSPVBAFDGFKIMKJLURAVQ
-      VRVPSADFIKUIUJAGDFMIKJLUKULZAVLTRVMVCAVEVHVNVOUMAVLVBTVSUNUOUCUPUPABCDGEH
-      IJMNUBUQ $.
-  $}
-
-  ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d x y $.
-    angeqd.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im ` (
-      log
-  ` ( y / x ) ) ) ) $.
-    angeqd.a $e |- ( ph -> A e. CC ) $.
-    angeqd.an $e |- ( ph -> A =/= 0 ) $.
-    angeqd.b $e |- ( ph -> B e. CC ) $.
-    angeqd.bn $e |- ( ph -> B =/= 0 ) $.
-    angeqd.s $e |- ( ph -> S e. RR ) $.
-    angeqd.2 $e |- ( ph -> S e. ( -u _pi (,] _pi ) ) $.
-    angeqd.3 $e |- ( ph -> ( exp ` ( _i x. ( A F B ) ) ) = ( exp ` ( _i x. S )
-      ) )
-  $.
-    $( Read an ang value back off its unit complex number.  (Contributed by
-       JAG, 13-Oct-2026.) $)
-    angeqd $p |- ( ph -> ( A F B ) = S ) $=
-      ( co cpi cneg cioc cr wss negpitopissre a1i angcld sseldd efi11d ) ADEGPZ
-      FAQRQSPZTUGUHTUAAUBUCABCGDEHIJKLUDZUEMUINOUF $.
-  $}
-
-  $( The square of a sine sum - the law of cosines as an angle identity.
-     (Contributed by JAG, 13-Oct-2026.) $)
-  sinaddsq $p |- ( ( A e. CC /\ B e. CC ) -> ( ( sin ` ( A + B ) ) ^ 2 ) = ( (
-    (
-  ( sin ` A ) ^ 2 ) + ( ( sin ` B ) ^ 2 ) ) + ( 2 x. ( ( ( sin ` A ) x. ( sin `
-  B ) ) x. ( cos ` ( A + B ) ) ) ) ) ) $=
-    ( cc wcel caddc co csin c2 cexp cmul ccos cmin mulcld eqtrd c1 sqcld oveq2d
-    cfv 3eqtrd mulcomd wa sinadd oveq1d wceq sincl adantr adantl binom2 syl2anc
-    coscl sqmuld simpr sincossq syl mvlladdd eqidd morlemone mul4d oveq12d 1cnd
-    subcld add32d addsub4d eqcomd 2timesd eqtr4d addcld subadd23d cosadd subdid
-    simpl 2cnd sqvald eqtr3d ) ACDZBCDZUAZABEFZGRZHIFZAGRZHIFZBGRZHIFZEFZHWAWCJ
-    FZAKRZBKRZJFZJFZJFZHWBWDJFZJFZLFZEFZWEHWFVRKRZJFZJFZEFVQVTWBWLLFZWKEFZWDWLL
-    FZEFZWOVQVTWAWHJFZHIFZHXCWGWCJFZJFZJFZEFZXEHIFZEFZXBVQVTXCXEEFZHIFZXJVQVSXK
-    HIABUBUCVQXCCDXECDXLXJUDVQWAWHVOWACDVPAUEUFZVPWHCDVOBUJUGZMVQWGWCVOWGCDVPAU
-    JUFZVPWCCDVOBUEUGZMXCXEUHUINVQXHWTXIXAEVQXDWSXGWKEVQXDWBWHHIFZJFWBOWDLFZJFW
-    SVQWAWHXMXNUKVQXQXRWBJVQWDXQOVQWCXPPZVQWHXNPVQVPWDXQEFOUDVOVPULBUMUNUOQVQWB
-    WDWLVQWAXMPZXSVQWLUPUQSVQXFWJHJVQXFXCWCWGJFZJFWFWHWGJFZJFWJVQXEYAXCJVQWGWCX
-    OXPTQVQWAWHWCWGXMXNXPXOURVQYBWIWFJVQWHWGXNXOTQSQUSVQXIWGHIFZWDJFOWBLFZWDJFZ
-    XAVQWGWCXOXPUKVQYCYDWDJVQWBYCOXTVQWGXOPVQVOWBYCEFOUDVOVPVKAUMUNUOUCVQYEWDYD
-    JFXAVQYDWDVQOWBVQUTXTVAXSTVQWDWBWLXSXTVQWDWBXSXTTUQNSUSNVQXBWEWMLFZWKEFZWOV
-    QXBWSXAEFZWKEFYGVQWSWKXAVQWBWLXTVQWBWDXTXSMZVAVQHWJVQVLZVQWFWIVQWAWCXMXPMZV
-    QWGWHXOXNMZMZMZVQWDWLXSYIVAVBVQYHYFWKEVQYHWEWLWLEFZLFZYFVQYPYHVQWBWDWLWLXTX
-    SYIYIVCVDVQWMYOWELVQWLYIVEQVFUCNVQWEWMWKVQWBWDXTXSVGVQHWLYJYIMYNVHNNVQWRWNW
-    EEVQWRHWJWLLFZJFWNVQWQYQHJVQWQWFWIWFLFZJFWJWFWFJFZLFYQVQWPYRWFJABVIQVQWFWIW
-    FYKYLYKVJVQYSWLWJLVQWFHIFYSWLVQWFYKVMVQWAWCXMXPUKVNQSQVQHWJWLYJYMYIVJNQVF
-    $.
-
-  ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d x y $.
-    morlemrad.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
-    morlemrad.a $e |- ( ph -> A e. CC ) $.
-    morlemrad.b $e |- ( ph -> B e. CC ) $.
-    morlemrad.c $e |- ( ph -> C e. CC ) $.
-    morlemrad.ab $e |- ( ph -> A =/= B ) $.
-    morlemrad.bc $e |- ( ph -> B =/= C ) $.
-    morlemrad.ca $e |- ( ph -> C =/= A ) $.
-    morlemrad.x $e |- X = ( ( ( B - A ) F ( C - A ) ) / 3 ) $.
-    morlemrad.y $e |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) $.
-    morlemrad.o $e |- ( ph -> ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) ) $.
-    morlemrad.s $e |- ( ph -> S e. RR ) $.
-    morlemrad.1 $e |- ( ph -> ( abs ` ( B - C ) ) = ( 2 x. ( S x. ( sin ` ( 3
-      x. X
-  ) ) ) ) ) $.
-    $( The circumradius transports to the next side.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemrad $p |- ( ph -> ( abs ` ( C - A ) ) = ( 2 x. ( S x. ( sin ` ( 3 x.
-      Y )
-  ) ) ) ) $=
-      ( cmin co cabs cfv c2 c3 cmul csin abssubd subcld abscld recnd cc 2cn a1i
-      wcel cdiv wceq oveq2d cc0 cpi cioo caddc ang180pos simp1d elioore syl 3cn
-      cr wne divcan2d eqtrd eqeltrd sincld mulcld resincl clt sinq12gt0 gt0ne0d
-      3ne0 wbr fveq2d w3a wa 3jca necomd jca lawsin eqtr4d oveq1d mul32d eqtr3d
-      eqid mulassd mulcan2ad ) ADFUCUDZUEUFZFDUCUDZUEUFUGGUHJUIUDZUJUFZUIUDZUIU
-      DZADFLNUKAWSXDUHIUIUDZUJUFZAWSAWRADFLNULUMUNAUGXCUGUOURAUPUQZAGXBAGUAUNZA
-      XAAXAAXAFEUCUDDEUCUDHUDZVKAXAUHXIUHUSUDZUIUDXIAJXJUHUIJXJUTASUQVAAXIUHAXI
-      AXIVBVCVDUDZURZXIVKURAXLWREFUCUDZHUDZXKURXIXNVEUDEDUCUDWTHUDZVEUDVCUTABCD
-      EFHKLMNOPQTVFVGXIVBVCVHVIZUNUHUOURAVJUQZUHVBVLAWBUQZVMVNZXPVOUNVPZVQZVQAX
-      FAXEVKURXFVKURAXEXOVKAXEUHXOUHUSUDZUIUDXOAIYBUHUIIYBUTARUQVAAXOUHAXOAXOXK
-      URXOVKURTXOVBVCVHVIZUNXQXRVMVNZYCVOXEVRVIUNZAXFAXEXKURVBXFVSWCAXEXOXKYDTV
-      OXEVTVIWAAXMUEUFZXBUIUDZWSXFUIUDZXDXFUIUDZAYGWSXOUJUFZUIUDZYHAYGYFXIUJUFZ
-      UIUDZYKAXBYLYFUIAXAXIUJXSWDVAADUOURZEUOURZFUOURZWEZDEVLZDFVLZEFVLZWEZWFYM
-      YKUTAYQUUAAYNYOYPLMNWGAYRYSYTOAFDQWHPWGWIBCDEFXIHXOYFWSKYFWOWSWOXOWOXIWOW
-      JVIVNAXFYJWSUIAXEXOUJYDWDVAWKAYGUGGXFUIUDZUIUDZXBUIUDZYIAYFUUCXBUIUBWLAUU
-      DUGXCXFUIUDZUIUDZYIAUUDUGUUBXBUIUDZUIUDUUFAUGUUBXBXGAGXFXHYEVQXTWPAUUGUUE
-      UGUIAGXFXBXHYEXTWMVAVNAUGXCXFXGYAYEWPWKVNWNWQWN $.
-  $}
-
-  ${
-    $d U x $.  $d U y $.  $d V x $.  $d V y $.  $d W x $.  $d W y $.  $d T x $.
-    $d T y $.  $d x y $.
-    morlemang.1 $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
-    morlemang.u $e |- ( ph -> U e. CC ) $.
-    morlemang.un $e |- ( ph -> U =/= 0 ) $.
-    morlemang.v $e |- ( ph -> V e. CC ) $.
-    morlemang.vn $e |- ( ph -> V =/= 0 ) $.
-    morlemang.w $e |- ( ph -> W e. CC ) $.
-    morlemang.wn $e |- ( ph -> W =/= 0 ) $.
-    morlemang.t $e |- ( ph -> T e. CC ) $.
-    morlemang.tn $e |- ( ph -> T =/= 0 ) $.
-    morlemang.z $e |- ( ph -> Z e. RR ) $.
-    morlemang.uv $e |- ( ph -> ( U F V ) = Z ) $.
-    morlemang.wt $e |- ( ph -> ( W F T ) = Z ) $.
-    morlemang.ut $e |- ( ph -> ( U F T ) = ( 3 x. Z ) ) $.
-    morlemang.gt $e |- ( ph -> 0 < Z ) $.
-    morlemang.lt $e |- ( ph -> ( 3 x. Z ) < _pi ) $.
-    $( The angle at C between the two trisectors is Z. (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemang $p |- ( ph -> ( V F W ) = Z ) $=
-      ( cpi cneg cioc co wcel cr clt wbr cle w3a cc0 pire a1i renegcld pipos wb
-      0red lt0neg2 ax-mp mpbi lttrd c2 cmul 2re remulcld caddc ltaddpos syl2anc
-      mpbid recnd 2timesd breqtrrd c3 3re c1 adddirp1d wceq 2p1e3 oveq1d eqtr3d
-      breqtrd ltled 3jca cxr rexrd elioc2 mpbird ci ce cfv ax-icn negpitopissre
-      cc wss angcld sseldd mulcld efcld wne efne0 oveq2d fveq2d angexpadd eqtrd
-      syl adddid efadd mulcan2ad angeqd mulcanad ) ABCGHIFJMNOPSAIUEUFZUEUGUHZU
-      IZIUJUIZXOIUKULZIUEUMULZUNZAXRXSXTSAXOUOIAUEUEUJUIZAUPUQZURZAVAZSXOUOUKUL
-      ZAUOUEUKULZYFUSYBYGYFUTUPUEVBVCVDUQZUCVEAIUESYCAIVFIVGUHZUESAVFIVFUJUIAVH
-      UQZSVIZYCAIIIVJUHZYIUKAUOIUKULZIYLUKULZUCAXRXRYMYNUTSSIIVKVLVMAIAISVNZVOZ
-      VPZAYIVQIVGUHZUEYKAVQIVQUJUIAVRUQSVIYCAYIYIIVJUHZYRUKAYMYIYSUKULZUCAXRYIU
-      JUIZYMYTUTSYKIYIVKVLVMAVFVSVJUHZIVGUHYSYRAVFIAVFYJVNYOVTAUUBVQIVGUUBVQWAA
-      WBUQWCWDZWEUDVEZVEWFWGAXOWHUIZYBXQYAUTAXOYDWIZYCXOUEIWJVLWKAWLGHFUHZVGUHZ
-      WMWNZWLIVGUHZWMWNZUUKAUUHAWLUUGWLWQUIAWOUQZAUUGAXPUJUUGXPUJWRAWPUQZABCFGH
-      JMNOPWSWTVNXAXBAUUJAWLIUULYOXAZXBZUUOAUUJWQUIZUUKUOXCUUNUUJXDXIZAUUKUUIVG
-      UHZWLYIVGUHZWMWNZUUKUUKVGUHZAUURWLEHFUHZVGUHZWMWNZUUTAWLEGFUHZVGUHZWMWNZU
-      UIVGUHUURUVDAUVGUUKUUIVGAUVFUUJWMAUVEIWLVGTXEXFWCABCEFGHJKLMNOPXGWDAUVCUU
-      SWMAUVBYIWLVGABCEHYIFJKLOPYKAYIXPUIZUUAXOYIUKULZYIUEUMULZUNZAUUAUVIUVJYKA
-      XOUOYIYDYEYKYHAUOIYIYESYKUCYQVEVEAYIUEYKYCUUDWFWGAUUEYBUVHUVKUTUUFYCXOUEY
-      IWJVLWKAUVDUUTUUKAUVCAWLUVBUULAUVBAXPUJUVBUUMABCFEHJKLOPWSWTVNXAXBAUUSAWL
-      YIUULAYIYKVNZXAZXBUUOUUQAUVDUUKVGUHZWLYRVGUHZWMWNZUUTUUKVGUHZAUVNWLEDFUHZ
-      VGUHZWMWNZUVPAUVDWLHDFUHZVGUHZWMWNZVGUHUVNUVTAUWCUUKUVDVGAUWBUUJWMAUWAIWL
-      VGUAXEXFXEABCEFHDJKLOPQRXGWDAUVSUVOWMAUVRYRWLVGUBXEXFXHAUUSUUJVJUHZWMWNZU
-      VPUVQAUWDUVOWMAWLYSVGUHUWDUVOAWLYIIUULUVLYOXJAYSYRWLVGUUCXEWDXFAUUSWQUIUU
-      PUWEUVQWAUVMUUNUUSUUJXKVLWDXHXLXMXEXFXHAUUTUUJUUJVJUHZWMWNZUVAAUUSUWFWMAU
-      USWLYLVGUHUWFAYIYLWLVGYPXEAWLIIUULYOYOXJXHXFAUUPUUPUWGUVAWAUUNUUNUUJUUJXK
-      VLXHXHXNXM $.
-  $}
-
-  ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d P x $.
-    $d P y $.  $d x y $.
-    morlemside.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
-    morlemside.a $e |- ( ph -> A e. CC ) $.
-    morlemside.b $e |- ( ph -> B e. CC ) $.
-    morlemside.c $e |- ( ph -> C e. CC ) $.
-    morlemside.p $e |- ( ph -> P e. CC ) $.
-    morlemside.ab $e |- ( ph -> A =/= B ) $.
-    morlemside.bc $e |- ( ph -> B =/= C ) $.
-    morlemside.ca $e |- ( ph -> C =/= A ) $.
-    morlemside.pb $e |- ( ph -> P =/= B ) $.
-    morlemside.pc $e |- ( ph -> P =/= C ) $.
-    morlemside.x $e |- X = ( ( ( B - A ) F ( C - A ) ) / 3 ) $.
-    morlemside.y $e |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) $.
-    morlemside.z $e |- Z = ( ( ( A - C ) F ( B - C ) ) / 3 ) $.
-    morlemside.o $e |- ( ph -> ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) ) $.
-    morlemside.1 $e |- ( ph -> ( ( C - B ) F ( P - B ) ) = Y ) $.
-    morlemside.2 $e |- ( ph -> ( ( P - C ) F ( B - C ) ) = Z ) $.
-    morlemside.s $e |- ( ph -> S e. RR ) $.
-    morlemside.3 $e |- ( ph -> ( abs ` ( B - C ) ) = ( 2 x. ( S x. ( sin ` ( 3
-      x. X
-  ) ) ) ) ) $.
-    $( The trisector segment length from a vertex.  (Contributed by JAG,
-       13-Oct-2026.) $)
-    morlemside $p |- ( ph -> ( ( abs ` ( P - C ) ) = ( 8 x. ( S x. ( ( ( sin `
-      X )
-  x. ( sin ` Y ) ) x. ( sin ` ( ( _pi / 3 ) + X ) ) ) ) ) /\ ( abs ` ( P - B )
-  ) = ( 8 x. ( S x. ( ( ( sin ` X ) x. ( sin ` Z ) ) x. ( sin ` ( ( _pi / 3 ) +
-  X ) ) ) ) ) ) ) $=
-      ( cmin co cabs cfv c8 csin cmul c3 cdiv caddc wceq subcld abscld recnd cc
-      cpi wcel 8cn a1i cr cc0 cioo elioore syl 3re 3ne0 redivcld eqeltrd sincld
-      wne ang180pos simp1d mulcld pire addcld resubcld resincl clt wbr readdcld
-      w3a simp2d cxr 0xr rexrd ioogtlb syl3anc 3pos divgt0d breqtrrd addgt0d wb
-      ltaddpos syl2anc mpbid 3cn divcan3d adddid oveq2d divcan2d oveq12d simp3d
-      eqtrd 3eqtrd oveq1d eqtr3d breqtrd 1lt3 crp 1rp lttrd 3jca elioo2 addcomd
-      c1 mpbird mvrladdd eqcomd fveq2d wa jca eqid lawsin necomd eqtr4d mulassd
-      c2 c4 mul32d mulcan2ad 3rp pipos elrpd ltdiv2d picn div1d gt0ne0d addassd
-      sinq12gt0 sinpim sin3tprod 4cn mul12d 2cnd 2t4e8 abssubd ) AGFUKULZUMUNZU
-      OHJUPUNZKUPUNZUQULZVFURUSULZJUTULZUPUNZUQULZUQULZUQULZVAGEUKULZUMUNZUOHUU
-      SLUPUNZUQULZUVDUQULZUQULZUQULZVAAUURUVGUVBJUKULZUPUNZAUURAUUQAGFQPVBVCVDA
-      UOUVFUOVEVGAVHVIZAHUVEAHUIVDZAUVAUVDAUUSUUTAJAJAJEDUKULFDUKULIULZURUSULZV
-      JJUVTVAAUCVIZAUVSURAUVSVKVFVLULZVGZUVSVJVGUFUVSVKVFVMVNZURVJVGAVOVIZURVKV
-      TAVPVIZVQVRZVDZVSZAKAKAKFEUKULZDEUKULIULZURUSULZVJKUWLVAAUDVIZAUWKURAUWKU
-      WBVGZUWKVJVGAUWNDFUKULEFUKULZIULZUWBVGZUWKUWPUTULZUVSUTULZVFVAZABCDEFIMNO
-      PRSTUFWAZWBZUWKVKVFVMVNZUWEUWFVQVRZVDZVSZWCAUVCAUVBJAUVBAVFURVFVJVGAWDVIZ
-      UWEUWFVQZVDUWHWEVSZWCZWCZWCAUVPAUVOVJVGUVPVJVGAUVBJUXHUWGWFUVOWGVNVDZAUVP
-      AVKKLUTULZUPUNZUVPWHAUXMUWBVGZVKUXNWHWIAUXOUXMVJVGZVKUXMWHWIZUXMVFWHWIZWK
-      ZAUXPUXQUXRAKLUXDALUWPURUSULZVJLUXTVAAUEVIZAUWPURAUWQUWPVJVGAUWNUWQUWTUXA
-      WLZUWPVKVFVMVNZUWEUWFVQVRZWJZAKLUXDUYDAVKUWLKWHAUWKURUXCUWEAVKWMVGZVFWMVG
-      ZUWNVKUWKWHWIUYFAWNVIZAVFUXGWOZUXBVKVFUWKWPWQVKURWHWIAWRVIZWSUWMWTZAVKUXT
-      LWHAUWPURUYCUWEAUYFUYGUWQVKUWPWHWIUYHUYIUYBVKVFUWPWPWQUYJWSUYAWTZXAAUXMUV
-      BVFUYEUXHUXGAUXMUXMJUTULZUVBWHAVKJWHWIZUXMUYMWHWIZAVKUVTJWHAUVSURUWDUWEAU
-      YFUYGUWCVKUVSWHWIUYHUYIUFVKVFUVSWPWQUYJWSUWAWTAJVJVGUXPUYNUYOXBUWGUYEJUXM
-      XCXDXEAURUYMUQULZURUSULUYMUVBAUYMURAUXMJAKLUXEALUYDVDZWEZUWHWEURVEVGAXFVI
-      ZUWFXGAUYPVFURUSAUYPURUXMUQULZURJUQULZUTULUWSVFAURUXMJUYSUYRUWHXHAUYTUWRV
-      UAUVSUTAUYTURKUQULZURLUQULZUTULUWRAURKLUYSUXEUYQXHAVUBUWKVUCUWPUTAVUBURUW
-      LUQULUWKAKUWLURUQUWMXIAUWKURAUWKUXCVDUYSUWFXJXMAVUCURUXTUQULUWPALUXTURUQU
-      YAXIAUWPURAUWPUYCVDUYSUWFXJXMXKXMAVUAURUVTUQULUVSAJUVTURUQUWAXIAUVSURAUVS
-      UWDVDUYSUWFXJXMXKAUWNUWQUWTUXAXLXNXOXPZXQAUVBVFYEUSULZVFWHAYEURWHWIZUVBVU
-      EWHWIVUFAXRVIAYEURVFYEXSVGAXTVIURXSVGAUUAVIAVFUXGVKVFWHWIAUUBVIUUCUUDXEAV
-      FVFVEVGAUUEVIUUFXQYAZYBAUYFUYGUXOUXSXBUYHUYIVKVFUXMYCXDYFUXMUUIVNAUXMUVOU
-      PAUVOUXMAUVBJUXMUWHUYRAUYMUVBJUXMUTULVUDAUXMJUYRUWHYDXPYGYHYIZXQUUGZAUWOU
-      MUNZUUTUQULZUURUVPUQULZUVGUVPUQULZAVUKUUREGUKULFGUKULIULZUPUNZUQULZVULAVU
-      JUWJUVHIULZUPUNZUQULZVUKVUPAVURUUTVUJUQAVUQKUPUGYIXIAGVEVGZEVEVGZFVEVGZWK
-      ZGEVTZGFVTZEFVTZWKZYJVUSVUPVAAVVCVVGAVUTVVAVVBQOPYBAVVDVVEVVFUAUBSYBYKBCG
-      EFVUQIVUNVUJUURMVUJYLUURYLVUNYLZVUQYLYMVNXPAVUOUVPUURUQAVUOUXNUVPAVUOVFUX
-      MUKULZUPUNZUXNAVUNVVIUPAVVIVUNAVFUXMVUNUYRAVUNAVUNUWBVGZVUNVJVGAUUQUWOIUL
-      ZUWBVGZVVKVVLVUNUTULZVUQUTULZVFVAZABCEFGIMOPQSAGFUBYNZUAAVUQKUWBUGAKUWBVG
-      ZKVJVGZVKKWHWIZKVFWHWIZWKZAVVSVVTVWAUXDUYKAKUXMVFUXDUYEUXGAVKLWHWIZKUXMWH
-      WIZUYLALVJVGVVSVWCVWDXBUYDUXDLKXCXDXEVUGYAYBAUYFUYGVVRVWBXBUYHUYIVKVFKYCX
-      DYFVRWAZWLVUNVKVFVMVNVDZALVUNUTULZKUTULZVFUXMVUNUTULZAVVOVWHVFAVVNVWGVUQK
-      UTAVVLLVUNUTUHXOUGXKAVVMVVKVVPVWEXLXPAVWHKVWGUTULVWIAVWGKALVUNUYQVWFWEUXE
-      YDAKLVUNUXEUYQVWFUUHYOXPYGYHYIAUXMVEVGVVJUXNVAUYRUXMUUJVNXMVUHXMZXIXMAVUK
-      UOHUVEUVPUQULZUQULZUQULZVUMAVUKUOHUUSUVDUQULZUVPUQULZUQULZUQULZUUTUQULZVW
-      MAVUJVWQUUTUQAVUJYQHYRVWOUQULZUQULZUQULZYQYRVWPUQULZUQULZVWQAVUJYQHVUAUPU
-      NZUQULZUQULVXAUJAVXEVWTYQUQAVXDVWSHUQAJVEVGVXDVWSVAUWHJUUKVNXIXIXMAVWTVXB
-      YQUQAHYRVWOUVRYRVEVGAUULVIZAVWNUVPAUUSUVDUWIUXIWCZUXLWCZUUMXIAYQYRUQULZVW
-      PUQULVXCVWQAYQYRVWPAUUNVXFAHVWOUVRVXHWCZYPAVXIUOVWPUQVXIUOVAAUUOVIXOXPXNZ
-      XOAVWRUOVWPUUTUQULZUQULVWMAUOVWPUUTUVQVXJUXFYPAVXLVWLUOUQAVXLHVWOUUTUQULZ
-      UQULVWLAHVWOUUTUVRVXHUXFYPAVXMVWKHUQAVXMVWNUUTUQULZUVPUQULVWKAVWNUVPUUTVX
-      GUXLUXFYSAVXNUVEUVPUQAUUSUVDUUTUWIUXIUXFYSXOXMXIXMXIXMXMAVUMUOUVFUVPUQULZ
-      UQULVWMAUOUVFUVPUVQUXKUXLYPAVXOVWLUOUQAHUVEUVPUVRUXJUXLYPXIXMYOXPYTAUVIUV
-      NUVPAUVIAUVHAGEQOVBVCVDAUOUVMUVQAHUVLUVRAUVKUVDAUUSUVJUWIALUYQVSZWCUXIWCZ
-      WCZWCUXLVUIAUVIUVPUQULZVUJUVJUQULZUVNUVPUQULZAVXSUWJUMUNZUVJUQULZVXTAVXSV
-      YBVVLUPUNZUQULZVYCAUVIVUOUQULZVXSVYEAVUOUVPUVIUQVWJXIAVVBVUTVVAWKZFGVTZFE
-      VTZVVDWKZYJVYFVYEVAAVYGVYJAVVBVUTVVAPQOYBAVYHVYIVVDVVQAEFSYNUAYBYKBCFGEVU
-      NIVVLUVIVYBMUVIYLVYBYLVVLYLVVHYMVNXPAVYDUVJVYBUQAVVLLUPUHYIXIXMAVUJVYBUVJ
-      UQAEFOPUUPXOYOAVXTUOHUVLUVPUQULZUQULZUQULZVYAAVXTVWQUVJUQULZVYMAVUJVWQUVJ
-      UQVXKXOAVYNUOVWPUVJUQULZUQULVYMAUOVWPUVJUVQVXJVXPYPAVYOVYLUOUQAVYOHVWOUVJ
-      UQULZUQULVYLAHVWOUVJUVRVXHVXPYPAVYPVYKHUQAVYPVWNUVJUQULZUVPUQULVYKAVWNUVP
-      UVJVXGUXLVXPYSAVYQUVLUVPUQAUUSUVDUVJUWIUXIVXPYSXOXMXIXMXIXMXMAVYAUOUVMUVP
-      UQULZUQULVYMAUOUVMUVPUVQVXRUXLYPAVYRVYLUOUQAHUVLUVPUVRVXQUXLYPXIXMYOXMYTY
-      K $.
-  $}
-
-  ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d P x $.
-    $d P y $.  $d Q x $.  $d Q y $.  $d x y $.
-    morlemsym.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |-> ( Im
-      ` (
-  log ` ( y / x ) ) ) ) $.
-    morlemsym.a $e |- ( ph -> A e. CC ) $.
-    morlemsym.b $e |- ( ph -> B e. CC ) $.
-    morlemsym.c $e |- ( ph -> C e. CC ) $.
-    morlemsym.p $e |- ( ph -> P e. CC ) $.
-    morlemsym.q $e |- ( ph -> Q e. CC ) $.
-    morlemsym.ab $e |- ( ph -> A =/= B ) $.
-    morlemsym.bc $e |- ( ph -> B =/= C ) $.
-    morlemsym.ca $e |- ( ph -> C =/= A ) $.
-    morlemsym.pb $e |- ( ph -> P =/= B ) $.
-    morlemsym.pc $e |- ( ph -> P =/= C ) $.
-    morlemsym.qc $e |- ( ph -> Q =/= C ) $.
-    morlemsym.qa $e |- ( ph -> Q =/= A ) $.
-    morlemsym.x $e |- X = ( ( ( B - A ) F ( C - A ) ) / 3 ) $.
-    morlemsym.y $e |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) $.
-    morlemsym.z $e |- Z = ( ( ( A - C ) F ( B - C ) ) / 3 ) $.
-    morlemsym.o $e |- ( ph -> ( ( B - A ) F ( C - A ) ) e. ( 0 (,) _pi ) ) $.
-    morlemsym.1 $e |- ( ph -> ( ( C - B ) F ( P - B ) ) = Y ) $.
-    morlemsym.2 $e |- ( ph -> ( ( P - C ) F ( B - C ) ) = Z ) $.
-    morlemsym.3 $e |- ( ph -> ( ( A - C ) F ( Q - C ) ) = Z ) $.
-    morlemsym.4 $e |- ( ph -> ( ( Q - A ) F ( C - A ) ) = X ) $.
-    morlemsym.s $e |- ( ph -> S e. RR ) $.
-    morlemsym.5 $e |- ( ph -> ( abs ` ( B - C ) ) = ( 2 x. ( S x. ( sin ` ( 3
-      x. X
-  ) ) ) ) ) $.
-    $( The Morley side is symmetric in the three trisected angles.
-       (Contributed by JAG, 13-Oct-2026.) $)
-    morlemsym $p |- ( ph -> ( abs ` ( P - Q ) ) = ( 8 x. ( S x. ( ( ( sin ` X )
-      x.
-  ( sin ` Y ) ) x. ( sin ` Z ) ) ) ) ) $=
-      ( cmin co cabs cfv c8 csin cmul subcld abscld cr wcel 8re a1i c3 cdiv cc0
-      wceq cpi elioore syl wne redivcld eqeltrd resincl remulcld clt wbr wa cle
-      caddc oveq2d recnd cc divcan2d eqtrd jca sinq12gt0 ltled c2 subne0d mpbid
-      wb breqtrd prodgt0 mulcomd w3a cxr ioogtlb syl3anc divgt0d iooltub crp c1
-      breqtrrd ltdiv1d eqbrtrd lttrd 3jca elioo2 syl2anc mulgt0d cexp ccos eqid
-      mpbird sincld oveq1d mulcld readdcld mulassd eqtr4d sqmuld oveq12d adddid
-      morlemside sqcld 3eqtrd eqcomd fveq2d addcld addcomd eqtr3d cneg mulneg2d
-      cioo 3re 3ne0 ang180pos simp1d simp2d absge0d 0red 8pos 3cn 2re 0le2 pire
-      absgt0 0xr rexrd 3pos 3rp 1lt3 pipos elrpd ltdiv2d div1d lawcos morlemrad
-      1rp picn simprd simpld mul4d sqvald necomd morlemang coscld mul12d subdid
-      8cn 2cn add4d divcan3d add32d mvrladdd 2p1e3 adddirp1d 2timesd addsubassd
-      simp3d sinpim sinaddsq cospim negsubd sq11d ) AGHUQURZUSUTZVAIKVBUTZLVBUT
-      ZVCURZVCURZVCURZMVBUTZVCURZVAIUWQUWTVCURVCURZVCURZAUWNUXAAUWMAGHRSVDZVEAU
-      WSUWTAVAUWRVAVFVGAVHVIZAIUWQUOAUWOUWPAKVFVGZUWOVFVGAKEDUQURFDUQURJURZVJVK
-      URZVFKUXHVMAUGVIZAUXGVJAUXGVLVNUUAURZVGZUXGVFVGUJUXGVLVNVOVPZVJVFVGAUUBVI
-      ZVJVLVQAUUCVIZVRVSZKVTVPZALVFVGZUWPVFVGALFEUQURDEUQURJURZVJVKURZVFLUXSVMA
-      UHVIZAUXRVJAUXRUXJVGZUXRVFVGAUYADFUQURZEFUQURZJURZUXJVGZUXRUYDWFURUXGWFUR
-      ZVNVMZABCDEFJNOPQTUAUBUJUUDZUUEZUXRVLVNVOVPZUXMUXNVRVSZLVTVPZWAZWAZWAZAMV
-      FVGZUWTVFVGAMUYDVJVKURZVFMUYQVMAUIVIZAUYDVJAUYEUYDVFVGAUYAUYEUYGUYHUUFZUY
-      DVLVNVOVPZUXMUXNVRVSZMVTVPZWAZAUWMUXDUUGAVLUXAAUUHZVUCAUWSUWTUYOVUBAVAUWR
-      UXEUYNVLVAWBWCAUUIVIAIUWQUOUYMAVJKVCURZVBUTZVFVGZIVFVGZWDZVLVUFWEWCZVLVUF
-      IVCURZWBWCZWDZWDVLIWBWCAVUIVUMAVUGVUHAVUEVFVGVUGAVUEUXGVFAVUEVJUXHVCURUXG
-      AKUXHVJVCUXIWGAUXGVJAUXGUXLWHZVJWIVGAUUJVIZUXNWJWKZUXLVSVUEVTVPZUOWLAVUJV
-      ULAVLVUFVUDVUQAVUEUXJVGVLVUFWBWCAVUEUXGUXJVUPUJVSVUEWMVPWNAVLIVUFVCURZVUK
-      WBAWOVFVGZVURVFVGZWDZVLWOWEWCZVLWOVURVCURZWBWCZWDZWDVLVURWBWCAVVAVVEAVUSV
-      UTVUSAUUKVIAIVUFUOVUQWAWLAVVBVVDVVBAUULVIAVLUYCUSUTZVVCWBAUYCVLVQZVLVVFWB
-      WCZAEFPQUAWPZAUYCWIVGVVGVVHWRAEFPQVDZUYCUUNVPWQUPWSWLWLWOVURWTVPAIVUFAIUO
-      WHZAVUFVUQWHXAWSWLWLVUFIWTVPAUWOUWPUXPUYLAKUXJVGZVLUWOWBWCAVVLUXFVLKWBWCZ
-      KVNWBWCZXBZAUXFVVMVVNUXOAVLUXHKWBAUXGVJUXLUXMAVLXCVGZVNXCVGZUXKVLUXGWBWCV
-      VPAUUOVIZAVNVNVFVGAUUMVIZUUPZUJVLVNUXGXDXEVLVJWBWCAUUQVIZXFUXIXJAKVNVJVKU
-      RZVNUXOAVNVJVVSUXMUXNVRZVVSAKUXHVWBWBUXIAUXGVNWBWCZUXHVWBWBWCAVVPVVQUXKVW
-      DVVRVVTUJVLVNUXGXGXEAUXGVNVJUXLVVSVJXHVGAUURVIZXKWQXLAVWBVNXIVKURZVNWBAXI
-      VJWBWCZVWBVWFWBWCVWGAUUSVIAXIVJVNXIXHVGAUVFVIVWEAVNVVSVLVNWBWCAUUTVIUVAUV
-      BWQAVNVNWIVGAUVGVIZUVCWSZXMXNAVVPVVQVVLVVOWRVVRVVTVLVNKXOXPYAKWMVPALUXJVG
-      ZVLUWPWBWCAVWJUXQVLLWBWCZLVNWBWCZXBZAUXQVWKVWLUYKAVLUXSLWBAUXRVJUYJUXMAVV
-      PVVQUYAVLUXRWBWCVVRVVTUYIVLVNUXRXDXEVWAXFUXTXJALVWBVNUYKVWCVVSALUXSVWBWBU
-      XTAUXRVNWBWCZUXSVWBWBWCAVVPVVQUYAVWNVVRVVTUYIVLVNUXRXGXEAUXRVNVJUYJVVSVWE
-      XKWQXLVWIXMXNAVVPVVQVWJVWMWRVVRVVTVLVNLXOXPYALWMVPXQXQXQAMUXJVGZVLUWTWBWC
-      AVWOUYPVLMWBWCZMVNWBWCZXBZAUYPVWPVWQVUAAVLUYQMWBAUYDVJUYTUXMAVVPVVQUYEVLU
-      YDWBWCVVRVVTUYSVLVNUYDXDXEVWAXFUYRXJZAMVWBVNVUAVWCVVSAMUYQVWBWBUYRAUYDVNW
-      BWCZUYQVWBWBWCAVVPVVQUYEVWTVVRVVTUYSVLVNUYDXGXEZAUYDVNVJUYTVVSVWEXKWQXLVW
-      IXMXNAVVPVVQVWOVWRWRVVRVVTVLVNMXOXPYAMWMVPXQWNAUWNWOXRURZUWSWOXRURZUWTWOX
-      RURZVCURZUXAWOXRURAVXBHFUQURZUSUTZWOXRURZGFUQURZUSUTZWOXRURZWFURZWOVXGVXJ
-      VCURZVXFVXIJURZXSUTZVCURZVCURZUQURZVXEAGWIVGZHWIVGZFWIVGZXBZGFVQZHFVQZWDZ
-      WDVXBVXRVMAVYBVYEAVXSVXTVYARSQXNAVYCVYDUDUEWLWLBCGHFJVXNVXGVXJUWNNVXGXTVX
-      JXTUWNXTVXNXTUVDVPAVXRVXCVWBLWFURZVBUTZWOXRURZVWBKWFURZVBUTZWOXRURZWFURZV
-      CURZVXCWOVYJVYGVCURZMXSUTZVCURZVCURZVCURZUQURZVXEAVXLVYMVXQVYRUQAVXLVXCVY
-      HVCURZVXCVYKVCURZWFURVYMAVXHVYTVXKWUAWFAVXHUWSVYGVCURZWOXRURVYTAVXGWUBWOX
-      RAVXGVAIUWQVYGVCURZVCURZVCURZWUBAVXGVAIUWPUWOVCURZVYGVCURZVCURZVCURZWUEAH
-      DUQURUSUTVAIUWPUWTVCURVYGVCURVCURVCURVMVXGWUIVMABCEFDHIJLMKNPQOSUAUBTUEUF
-      UHUIUGUYIUMUNUOABCDEFIJKLNOPQTUAUBUGUHUJUOUPUVEYKUVHAWUHWUDVAVCAWUGWUCIVC
-      AWUFUWQVYGVCAUWPUWOALALUYKWHZYBZAKAKUXOWHZYBZXAYCWGWGWKAWUBVAUWRVYGVCURZV
-      CURWUEAVAUWRVYGVAWIVGAUVQVIZAIUWQVVKAUWOUWPWUMWUKYDZYDZAVYFAVYFAVWBLVWCUY
-      KYEWHZYBZYFAWUNWUDVAVCAIUWQVYGVVKWUPWUSYFWGWKYGZYCAUWSVYGAVAUWRWUOWUQYDZW
-      USYHWKAVXKUWSVYJVCURZWOXRURWUAAVXJWVBWOXRAVXJVAIUWQVYJVCURVCURZVCURZWVBAV
-      XJWVDVMGEUQURUSUTVAIUWOUWTVCURVYJVCURVCURVCURVMABCDEFGIJKLMNOPQRTUAUBUCUD
-      UGUHUIUJUKULUOUPYKUVIAWVBVAUWRVYJVCURZVCURWVDAVAUWRVYJWUOWUQAVYIAVYIAVWBK
-      VWCUXOYEWHZYBZYFAWVEWVCVAVCAIUWQVYJVVKWUPWVGYFWGWKYGZYCAUWSVYJWVAWVGYHWKY
-      IAVXCVYHVYKAUWSWVAYLZAVYGWUSYLZAVYJWVGYLZYJYGAVXQWOVXCVYPVCURZVCURVYRAVXP
-      WVLWOVCAVXPVXCVYNVCURZVYOVCURWVLAVXMWVMVXOVYOVCAVXMWUBWVBVCURZVXCVYGVYJVC
-      URZVCURZWVMAVXGWUBVXJWVBVCWUTWVHYIAWVNUWSUWSVCURZWVOVCURWVPAUWSVYGUWSVYJW
-      VAWUSWVAWVGUVJAVXCWVQWVOVCAUWSWVAUVKYCYGAWVOVYNVXCVCAVYGVYJWUSWVGXAWGYMAV
-      XNMXSABCUYCUYBJVXFVXIMNADFOQVDADFOQAFDUBUVLWPAHFSQVDAHFSQUEWPAGFRQVDAGFRQ
-      UDWPVVJVVIVUAUMULAVJMVCURZUYDAWVRVJUYQVCURUYDAMUYQVJVCUYRWGAUYDVJAUYDUYTW
-      HZVUOUXNWJWKZYNVWSAWVRUYDVNWBWVTVXAXLUVMYOYIAVXCVYNVYOWVIAVYJVYGWVGWUSYDZ
-      AMAMVUAWHZUVNZYFWKWGAWOVXCVYPWOWIVGAUVRVIZWVIAVYNVYOWWAWWCYDZUVOWKYIAVXCV
-      YLVYQUQURZVCURVYSVXEAVXCVYLVYQWVIAVYHVYKWVJWVKYPAWOVYPWWDWWEYDZUVPAWWFVXD
-      VXCVCAWWFVYKVYHWFURZVYQUQURZVXDAVYLWWHVYQUQAVYHVYKWVJWVKYQYCAVYIVYFWFURZV
-      BUTZWOXRURZVXDWWIAWWKUWTWOXRAWWKVNMUQURZVBUTZUWTAWWJWWMVBAWWJVWBVWBWFURZV
-      WBMUQURZWFURZWWMAWWJWWOKLWFURZWFURWWQAVWBKVWBLAVWBVWCWHZWULWWSWUJUVSAWWRW
-      WPWWOWFAWWPWWRAVWBMWWRWWBAKLWULWUJYPZAMWWRWFURZVWBAWWRMWFURZWXAVWBAWWRMWW
-      TWWBYQAVJWXBVCURZVJVKURWXBVWBAWXBVJAWWRMWWTWWBYPVUOUXNUVTAWXCVNVJVKAWXCVJ
-      WWRVCURZWVRWFURUXGUXRWFURZUYDWFURZVNAVJWWRMVUOWWTWWBYJAWXDWXEWVRUYDWFAWXD
-      VUEVJLVCURZWFURWXEAVJKLVUOWULWUJYJAVUEUXGWXGUXRWFVUPAWXGVJUXSVCURUXRALUXS
-      VJVCUXTWGAUXRVJAUXRUYJWHZVUOUXNWJWKYIWKWVTYIAUYFWXFVNAUYFUXRUXGWFURZUYDWF
-      URWXFAUXRUYDUXGWXHWVSVUNUWAAWXIWXEUYDWFAUXRUXGWXHVUNYQYCWKAUYAUYEUYGUYHUW
-      GYRYMYCYRYRYNUWBYNWGWKAWWMWWOVWBWFURZMUQURWWQAVNWXJMUQAVJVWBVCURZVNWXJAVN
-      VJVWHVUOUXNWJAWOXIWFURZVWBVCURZWXKWXJAWXLVJVWBVCWXLVJVMAUWCVIYCAWXMWOVWBV
-      CURZVWBWFURWXJAWOVWBWWDWWSUWDAWXNWWOVWBWFAVWBWWSUWEYCWKYRYRYCAWWOVWBMAVWB
-      VWBWWSWWSYPWWSWWBUWFWKYGZYOAMWIVGZWWNUWTVMWWBMUWHVPWKYCAWWLWWHWOVYNWWJXSU
-      TZVCURZVCURZWFURZWWHVYQYSZWFURWWIAVYIWIVGVYFWIVGWWLWXTVMWVFWURVYIVYFUWIXP
-      AWXSWYAWWHWFAWXSWOVYPYSZVCURWYAAWXRWYBWOVCAWXRVYNVYOYSZVCURWYBAWXQWYCVYNV
-      CAWXQWWMXSUTZWYCAWWJWWMXSWXOYOAWXPWYDWYCVMWWBMUWJVPWKWGAVYNVYOWWAWWCYTWKW
-      GAWOVYPWWDWWEYTWKWGAWWHVYQAVYKVYHWVKWVJYPWWGUWKYMYRYGWGYRWKWKAUWSUWTWVAAM
-      WWBYBZYHYGUWLAUXAVAUWRUWTVCURZVCURUXCAVAUWRUWTWUOWUQWYEYFAWYFUXBVAVCAIUWQ
-      UWTVVKWUPWYEYFWGWKWK $.
-  $}
-
-  ${
-    $d A x $.  $d A y $.  $d B x $.  $d B y $.  $d C x $.  $d C y $.  $d P x $.
-    $d P y $.  $d Q x $.  $d Q y $.  $d R x $.  $d R y $.  $d x y $.
-    morleyR2.f $e |- F = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } ) |->
-                      ( Im ` ( log ` ( y / x ) ) ) ) $.
+    $d A x y $.  $d B x y $.  $d C x y $.  $d P x y $.  $d Q x y $.
+    $d R x y $.
+    morleyR2.f $e |- F
+        = ( x e. ( CC \ { 0 } ) , y e. ( CC \ { 0 } )
+        |-> ( Im ` ( log ` ( y / x ) ) ) ) $.
     morleyR2.x $e |- X = ( ( ( B - A ) F ( C - A ) ) / 3 ) $.
     morleyR2.y $e |- Y = ( ( ( C - B ) F ( A - B ) ) / 3 ) $.
     morleyR2.z $e |- Z = ( ( ( A - C ) F ( B - C ) ) / 3 ) $.
@@ -1819,10 +1256,25 @@ $[ set.mm $]
     morleyR2.4 $e |- ( ph -> ( ( R - B ) F ( A - B ) ) = Y ) $.
     morleyR2.5 $e |- ( ph -> ( ( A - C ) F ( Q - C ) ) = Z ) $.
     morleyR2.6 $e |- ( ph -> ( ( P - C ) F ( B - C ) ) = Z ) $.
-    $( Morley's trisector theorem in the complex plane, by Connes' rotations.
+
+
+    $( Morley's trisector theorem in the complex plane: the three points where
+       adjacent angle trisectors of a triangle meet form an equilateral
+       triangle.  The triangle has distinct vertices ` A ` , ` B ` , ` C ` and
+       is positively oriented; ` F ` is the signed angle function, as in
+       ~ ang2exp , and ` X ` , ` Y ` , ` Z ` are one third of the angles at
+       ` A ` , ` B ` , ` C ` .  The point ` R ` is where the trisectors from
+       ` A ` and ` B ` next to the side from ` A ` to ` B ` meet; likewise
+       ` P ` for ` B ` and ` C ` , and ` Q ` for ` C ` and ` A ` .  The proof
+       follows Connes: the composite rotations about consecutive vertices fix
+       ` R ` , ` P ` and ` Q ` ( ~ morlemfix3 ), the rotations by twice the
+       angles compose to the identity ( ~ morlemid ), which forces the linear
+       relation of ~ morlemlin , and that relation says the triangle with
+       vertices ` P ` , ` Q ` , ` R ` is equilateral ( ~ morlemeqi ).
        (Contributed by JAG, 13-Oct-2026.) $)
-    morleyR2 $p |- ( ph -> ( ( abs ` ( R - P ) ) = ( abs ` ( P - Q ) )
-                       /\ ( abs ` ( Q - R ) ) = ( abs ` ( P - Q ) ) ) ) $=
+    morleyR2 $p |- ( ph
+        -> ( ( abs ` ( R - P ) ) = ( abs ` ( P - Q ) ) /\ ( abs ` ( Q - R ) )
+        = ( abs ` ( P - Q ) ) ) ) $=
       ( ci c2 cmul co ce cfv cc wcel ax-icn a1i 2cn cmin cdiv wceq cc0 cpi cioo
       c3 cr elioore syl recnd 3cn wne 3ne0 divcld eqeltrd efcld caddc ang180pos
       mulcld simp1d simp2d cexp c1 eqid morlemj simp3d morlemlin morlemeqi ) AG

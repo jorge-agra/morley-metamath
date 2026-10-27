@@ -1,4 +1,7 @@
 $( <MM> <PROOF_ASST> THEOREM=imdivcjabs2  LOC_AFTER=?
+$( The imaginary part of a quotient ` ( B / A ) ` of complex numbers is the
+   imaginary part of ` ( ( * `` A ) x. B ) ` divided by the square of the
+   absolute value of ` A ` . See ~ divcjabs2 . $)
 
 d1::simpll  |- ( ( ( A e. CC /\ A =/= 0 ) /\ B e. CC ) -> A e. CC )
 d2a::simpl  |- ( ( ( A e. CC /\ A =/= 0 ) /\ B e. CC ) -> ( A e. CC /\ A =/= 0 ) )

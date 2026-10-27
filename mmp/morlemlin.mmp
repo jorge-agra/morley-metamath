@@ -1,4 +1,10 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemlin  LOC_AFTER=?
+$( The vertices ` P ` , ` Q ` , ` R ` of the Morley triangle satisfy the linear
+   relation ` ( ( P + ( J x. Q ) ) + ( ( J ^ 2 ) x. R ) ) = 0 ` , where ` J `
+   is the product of the rotation coefficients for twice the trisected angles.
+   The hypotheses are those of ~ morleyR2 . The relation follows from
+   ~ morlemlinalg , applied to the rotations of ~ morlemfix3 and ~ morlemid ,
+   with ` J ` given by ~ morlemj . $)
 
 $d A x
 $d A y

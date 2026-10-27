@@ -12,11 +12,6 @@ are [morlemj.mmp](morlemj.mmp), [morlemlin.mmp](morlemlin.mmp), and
 [morlemeqi.mmp](morlemeqi.mmp). The algebra inside `morlemlin` is developed in
 [morlemlinalg.mmp](morlemlinalg.mmp).
 
-The law-of-sines development ends in [lawsin.mmp](lawsin.mmp). The completed
-trigonometric helpers include [morlemside.mmp](morlemside.mmp) and
-[morlemsym.mmp](morlemsym.mmp); their presence does not represent a second
-completed proof of the target theorem.
-
 `morley.mm` is authoritative. The release verification command checks its
 proofs against the pinned base database; it does not verify these worksheet
 files separately.

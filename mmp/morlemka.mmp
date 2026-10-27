@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemka  LOC_AFTER=?
+$( An identity used by ~ morlemlinalg to collect the terms in ` A ` . Let ` E `
+   , ` D ` , ` G ` be complex numbers whose product ` J ` is a cube root of
+   unity other than ` 1 ` . Then a polynomial in ` E ` , ` D ` , ` G ` and ` J
+   ` with the factor ` ( 1 - E ) ` equals ` ( ( E ^ 3 ) - 1 ) ` . $)
 
 h1::morlemka.e  |- ( ph -> E e. CC )
 h2::morlemka.d  |- ( ph -> D e. CC )
@@ -55,10 +59,10 @@ f3:1:mulridd  |- ( ph -> ( E x. 1 ) = E )
 pEJ:f1,f2,f3:3eqtrd  |- ( ph -> ( ( J ^ 2 ) x. ( E x. J ) ) = E )
 
 $( THE COLLECTION IDENTITY for the A coefficient $)
-k1:cJG,cED,pJG:morlemone  |- ( ph -> ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) = ( ( J x. G ) - ( J ^ 2 ) ) )
+k1:cJG,cED,pJG:mul1subeqd  |- ( ph -> ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) = ( ( J x. G ) - ( J ^ 2 ) ) )
 k2i:cJ2,cGE:mulcld  |- ( ph -> ( ( J ^ 2 ) x. ( G x. E ) ) e. CC )
 k2e:1:eqidd  |- ( ph -> ( ( J ^ 2 ) x. ( G x. E ) ) = ( ( J ^ 2 ) x. ( G x. E ) ) )
-k2:cJ2,cGE,k2e:morlemone  |- ( ph -> ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) = ( ( J ^ 2 ) - ( ( J ^ 2 ) x. ( G x. E ) ) ) )
+k2:cJ2,cGE,k2e:mul1subeqd  |- ( ph -> ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) = ( ( J ^ 2 ) - ( ( J ^ 2 ) x. ( G x. E ) ) ) )
 k3:k1,k2:oveq12d  |- ( ph -> ( ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) + ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) = ( ( ( J x. G ) - ( J ^ 2 ) ) + ( ( J ^ 2 ) - ( ( J ^ 2 ) x. ( G x. E ) ) ) ) )
 k4:cJG,cJ2,k2i:npncand  |- ( ph -> ( ( ( J x. G ) - ( J ^ 2 ) ) + ( ( J ^ 2 ) - ( ( J ^ 2 ) x. ( G x. E ) ) ) ) = ( ( J x. G ) - ( ( J ^ 2 ) x. ( G x. E ) ) ) )
 k5:k3,k4:eqtrd  |- ( ph -> ( ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) + ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) = ( ( J x. G ) - ( ( J ^ 2 ) x. ( G x. E ) ) ) )
@@ -71,7 +75,7 @@ g4:g3:oveq2d  |- ( ph -> ( ( J x. G ) x. ( J x. E ) ) = ( ( J x. G ) x. ( E x. J
 g5:g1,g2,g4:3eqtrd  |- ( ph -> ( ( J ^ 2 ) x. ( G x. E ) ) = ( ( J x. G ) x. ( E x. J ) ) )
 g6:g5:oveq2d  |- ( ph -> ( ( J x. G ) - ( ( J ^ 2 ) x. ( G x. E ) ) ) = ( ( J x. G ) - ( ( J x. G ) x. ( E x. J ) ) ) )
 g7e:1:eqidd  |- ( ph -> ( ( J x. G ) x. ( E x. J ) ) = ( ( J x. G ) x. ( E x. J ) ) )
-g7:cJG,cEJ,g7e:morlemone  |- ( ph -> ( ( J x. G ) x. ( 1 - ( E x. J ) ) ) = ( ( J x. G ) - ( ( J x. G ) x. ( E x. J ) ) ) )
+g7:cJG,cEJ,g7e:mul1subeqd  |- ( ph -> ( ( J x. G ) x. ( 1 - ( E x. J ) ) ) = ( ( J x. G ) - ( ( J x. G ) x. ( E x. J ) ) ) )
 g8:k5,g6:eqtrd  |- ( ph -> ( ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) + ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) = ( ( J x. G ) - ( ( J x. G ) x. ( E x. J ) ) ) )
 KK:g8,g7:eqtr4d  |- ( ph -> ( ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) + ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) = ( ( J x. G ) x. ( 1 - ( E x. J ) ) ) )
 
@@ -94,8 +98,8 @@ m1:KK:oveq2d  |- ( ph -> ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( (
 m2:cm,cd1,cJG,c1EJ:mul4d  |- ( ph -> ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( J x. G ) x. ( 1 - ( E x. J ) ) ) ) = ( ( ( ( E ^ 2 ) x. D ) x. ( J x. G ) ) x. ( ( 1 - ( D x. G ) ) x. ( 1 - ( E x. J ) ) ) ) )
 m3:pM:oveq1d  |- ( ph -> ( ( ( ( E ^ 2 ) x. D ) x. ( J x. G ) ) x. ( ( 1 - ( D x. G ) ) x. ( 1 - ( E x. J ) ) ) ) = ( ( E x. ( J ^ 2 ) ) x. ( ( 1 - ( D x. G ) ) x. ( 1 - ( E x. J ) ) ) ) )
 m4:1,cJ2,cd1,c1EJ:mul4d  |- ( ph -> ( ( E x. ( J ^ 2 ) ) x. ( ( 1 - ( D x. G ) ) x. ( 1 - ( E x. J ) ) ) ) = ( ( E x. ( 1 - ( D x. G ) ) ) x. ( ( J ^ 2 ) x. ( 1 - ( E x. J ) ) ) ) )
-m5:1,cDG,pE:morlemone  |- ( ph -> ( E x. ( 1 - ( D x. G ) ) ) = ( E - J ) )
-m6:cJ2,cEJ,pEJ:morlemone  |- ( ph -> ( ( J ^ 2 ) x. ( 1 - ( E x. J ) ) ) = ( ( J ^ 2 ) - E ) )
+m5:1,cDG,pE:mul1subeqd  |- ( ph -> ( E x. ( 1 - ( D x. G ) ) ) = ( E - J ) )
+m6:cJ2,cEJ,pEJ:mul1subeqd  |- ( ph -> ( ( J ^ 2 ) x. ( 1 - ( E x. J ) ) ) = ( ( J ^ 2 ) - E ) )
 m7:m5,m6:oveq12d  |- ( ph -> ( ( E x. ( 1 - ( D x. G ) ) ) x. ( ( J ^ 2 ) x. ( 1 - ( E x. J ) ) ) ) = ( ( E - J ) x. ( ( J ^ 2 ) - E ) ) )
 m8:m1,m2,m3:3eqtrd  |- ( ph -> ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) + ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) ) = ( ( E x. ( J ^ 2 ) ) x. ( ( 1 - ( D x. G ) ) x. ( 1 - ( E x. J ) ) ) ) )
 m9:m8,m4,m7:3eqtrd  |- ( ph -> ( ( ( ( E ^ 2 ) x. D ) x. ( 1 - ( D x. G ) ) ) x. ( ( ( J x. G ) x. ( 1 - ( E x. D ) ) ) + ( ( J ^ 2 ) x. ( 1 - ( G x. E ) ) ) ) ) = ( ( E - J ) x. ( ( J ^ 2 ) - E ) ) )

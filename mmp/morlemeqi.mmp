@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemeqi  LOC_AFTER=?
+$( Three complex numbers ` U ` , ` V ` , ` W ` with ` ( ( U + ( J x. V ) ) + (
+   ( J ^ 2 ) x. W ) ) = 0 ` , for a cube root of unity ` J ` other than ` 1 ` ,
+   form an equilateral triangle: all three sides have the length of ` ( U - V )
+   ` . $)
 
 h1::morlemeqi.u  |- ( ph -> U e. CC )
 h2::morlemeqi.v  |- ( ph -> V e. CC )
@@ -9,8 +13,8 @@ h6::morlemeqi.2  |- ( ph -> J =/= 1 )
 h7::morlemeqi.3  |- ( ph -> ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) ) = 0 )
 
 $( J is primitive, and has modulus one $)
-z1:4,5,6:morlemeqz  |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) = 0 )
-z2:4,5:morlemabs1  |- ( ph -> ( abs ` J ) = 1 )
+z1:4,5,6:cubeq1sumd  |- ( ph -> ( ( ( J ^ 2 ) + J ) + 1 ) = 0 )
+z2:4,5:cubeq1absd  |- ( ph -> ( abs ` J ) = 1 )
 
 $( two sides, each J times the next, from the one identity and its rotation $)
 p1:1,2,3,4,5,z1,7:morlemeqd  |- ( ph -> ( V - W ) = ( J x. ( U - V ) ) )

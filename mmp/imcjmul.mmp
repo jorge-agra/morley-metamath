@@ -1,4 +1,7 @@
 $( <MM> <PROOF_ASST> THEOREM=imcjmul  LOC_AFTER=?
+$( The imaginary part of ` ( ( * `` A ) x. B ) ` is the determinant of the real
+   and imaginary parts of ` A ` and ` B ` , that is, twice the signed area of
+   the triangle with vertices ` 0 ` , ` A ` and ` B ` . $)
 
 d1::simpl  |- ( ( A e. CC /\ B e. CC ) -> A e. CC )
 d2::simpr  |- ( ( A e. CC /\ B e. CC ) -> B e. CC )

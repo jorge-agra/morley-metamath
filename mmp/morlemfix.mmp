@@ -1,4 +1,10 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemfix  LOC_AFTER=?
+$( Let ` X ` be the signed angle at ` A ` from ` ( B - A ) ` to ` ( R - A ) ` ,
+   and ` Y ` the signed angle at ` B ` from ` ( R - B ) ` to ` ( A - B ) ` .
+   Then the rotation about ` B ` by ` ( 2 x. Y ) ` followed by the rotation
+   about ` A ` by ` ( 2 x. X ) ` fixes ` R ` : each rotation is the composite
+   of two reflections ( ~ cnrfl2 ), and the reflections across the line through
+   ` A ` and ` B ` cancel. $)
 
 $d A x
 $d A y

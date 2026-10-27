@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemeqd  LOC_AFTER=?
+$( If ` ( ( U + ( J x. V ) ) + ( ( J ^ 2 ) x. W ) ) = 0 ` , where ` J ` is a
+   cube root of unity and a root of ` ( ( ( J ^ 2 ) + J ) + 1 ) ` , then the
+   side ` ( V - W ) ` of the triangle with vertices ` U ` , ` V ` , ` W ` is `
+   J ` times its side ` ( U - V ) ` . $)
 
 h1::morlemeqd.u  |- ( ph -> U e. CC )
 h2::morlemeqd.v  |- ( ph -> V e. CC )

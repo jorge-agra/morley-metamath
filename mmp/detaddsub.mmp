@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=detaddsub  LOC_AFTER=?
+$( Adding the first row of a two-by-two determinant to its second row leaves
+   the determinant unchanged: with rows ` A ` , ` B ` and ` C ` , ` D ` , the
+   determinant ` ( ( A x. D ) - ( B x. C ) ) ` equals the one with rows ` A ` ,
+   ` B ` and ` ( A + C ) ` , ` ( B + D ) ` . $)
 
 dA::simpll  |- ( ( ( A e. CC /\ B e. CC ) /\ ( C e. CC /\ D e. CC ) ) -> A e. CC )
 dB::simplr  |- ( ( ( A e. CC /\ B e. CC ) /\ ( C e. CC /\ D e. CC ) ) -> B e. CC )

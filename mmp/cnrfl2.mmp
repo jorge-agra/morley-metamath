@@ -1,4 +1,8 @@
 $( <MM> <PROOF_ASST> THEOREM=cnrfl2  LOC_AFTER=?
+$( The reflection across the line through ` A ` and ` B ` followed by the
+   reflection across the line through ` A ` and ` C ` is the rotation about ` A
+   ` by twice the signed angle from ` ( B - A ) ` to ` ( C - A ) ` . ` F ` is
+   the signed angle function, as in ~ ang2exp . $)
 
 $d A x
 $d A y

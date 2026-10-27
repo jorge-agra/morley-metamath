@@ -1,4 +1,6 @@
 $( <MM> <PROOF_ASST> THEOREM=morlemne1  LOC_AFTER=?
+$( A rotation by an angle ` S ` in the open interval ` ( 0 (,) _pi ) ` is not
+   the identity: its coefficient ` ( exp `` ( _i x. S ) ) ` is not ` 1 ` . $)
 
 h1::morlemne1.s  |- ( ph -> S e. ( 0 (,) _pi ) )
 

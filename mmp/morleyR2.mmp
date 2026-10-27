@@ -1,4 +1,17 @@
 $( <MM> <PROOF_ASST> THEOREM=morleyR2  LOC_AFTER=?
+$( Morley's trisector theorem in the complex plane: the three points where
+     adjacent angle trisectors of a triangle meet form an equilateral triangle.
+     The triangle has distinct vertices ` A ` , ` B ` , ` C ` and is positively
+     oriented; ` F ` is the signed angle function, as in ~ ang2exp , and ` X `
+     , ` Y ` , ` Z ` are one third of the angles at ` A ` , ` B ` , ` C ` . The
+     point ` R ` is where the trisectors from ` A ` and ` B ` next to the side
+     from ` A ` to ` B ` meet; likewise ` P ` for ` B ` and ` C ` , and ` Q `
+     for ` C ` and ` A ` . The proof follows Connes: the composite rotations
+     about consecutive vertices fix ` R ` , ` P ` and ` Q ` ( ~ morlemfix3 ),
+     the rotations by twice the angles compose to the identity ( ~ morlemid ),
+     which forces the linear relation of ~ morlemlin , and that relation says
+     the triangle with vertices ` P ` , ` Q ` , ` R ` is equilateral (
+     ~ morlemeqi ). $)
 
 $d A x
 $d A y

@@ -1,4 +1,7 @@
 $( <MM> <PROOF_ASST> THEOREM=cnrflsw  LOC_AFTER=?
+$( The reflection across the line through distinct points ` A ` and ` B ` (see
+   ~ cnrflinv ) takes the same value at every point ` Z ` whether it is written
+   from ` A ` or from ` B ` . $)
 
 h1::cnrflsw.a  |- ( ph -> A e. CC )
 h2::cnrflsw.b  |- ( ph -> B e. CC )

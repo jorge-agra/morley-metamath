@@ -1,4 +1,6 @@
 $( <MM> <PROOF_ASST> THEOREM=cnrflfix  LOC_AFTER=?
+$( The reflection across the line through distinct points ` A ` and ` W ` (see
+   ~ cnrflinv ) fixes both ` A ` and ` W ` . $)
 
 h1::cnrflfix.a  |- ( ph -> A e. CC )
 h2::cnrflfix.w  |- ( ph -> W e. CC )
